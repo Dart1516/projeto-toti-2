@@ -1,0 +1,225 @@
+.App-body {
+  background-color: var(--color4);
+  padding: 20px;
+  padding-top: 80px;
+  gap: 40px;
+  color: black;
+  width: 100vw;
+}
+
+.titulo-table {
+  align-self: self-start;
+}
+
+.titulo-table::after {
+  content: "";
+  display: block; 
+  border-bottom: 3px solid var(--color2); 
+  width: 120px; 
+  margin-top: 5px; 
+}
+
+
+.cards-container {
+  display: flex;
+  gap: 20px;
+  width: 95%;
+  min-width: 250px;
+  max-width: 1450px;
+}
+
+.card {
+  background-color: var(--color4);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: start;
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 10px;
+}
+
+.filter-container {
+  display: flex;
+    width: 100%;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    height: 125px;
+    justify-content: space-around;
+    align-items: center;
+    text-align: left;
+}
+
+.filter-container h4 {
+  font-size: 1rem;
+  padding-left: 2px;
+}
+
+.input-space {
+  display: flex;
+  flex-direction: column;
+  padding-left: 18px;
+}
+
+.input-filter {
+  width: 90%;
+  height: 40px;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 0.8rem;
+}
+
+.input-filter::placeholder {
+  color: black;
+}
+
+.input-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icon-lupa {
+  font-size: 15px;
+  position: absolute;
+  left: 10px; 
+  color: var(--color5); 
+}
+
+.input-icon input {
+  padding-left: 30px;
+}
+
+.icon-table {
+  font-size: 25px;
+  color: var(--color1);
+  background-color: rgba(50, 168, 82, 0.1);
+  padding: 20px;
+  border-radius: 50%;
+  margin-bottom: 30px;
+}
+
+.card h3 {
+  margin: 0;
+  margin-bottom: 10px;
+  color: var(--color5);
+  font-weight: 100;
+  font-size: 1rem;
+}
+
+.card p {
+  font-size: 24px;
+  margin: 0;
+  color: black;
+}
+
+.title-count {
+  align-self: self-start;
+  text-align: center;
+  font-size: 22px;
+}
+
+.title-count::after {
+  display: block;
+  content: '';
+  width: 60px;
+  border-bottom: 3px solid var(--color1);
+  color: var(--color1);
+}
+
+.background-total {
+  padding: 0px 20px;
+  background-color: var(--color1);
+  border-radius: 14px;
+  color: var(--color4);
+  font-size: 18px;
+  position: relative;
+  left: 10px;
+}
+
+.table-container {
+  display: flex;
+  width: 100%;
+  font-size: 16px;
+  overflow-x: scroll;
+  flex-direction: column;
+}
+
+.professional-table {
+  min-width: 95vw; 
+  border-collapse: collapse;
+  margin: 20px 0;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.professional-table th, .professional-table td {
+  padding: 14px 10px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.professional-table th {
+  background-color: #c5e1e1;
+  color: black;
+  font-weight: 700;
+}
+
+.professional-table tr {
+  color: var(--color4);
+  background-color: #F0F6F6;
+}
+
+.professional-table tr:nth-child(even) {
+  background-color: #c5e1e1;
+  color: black;
+}
+
+.professional-table tr {
+  background-color: var(--color4);
+  color: black;
+}
+
+.professional-table th:first-child, .professional-table td:first-child {
+  min-width: auto;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background-color: inherit;
+  box-shadow: inset -2px 0 0 0px var(--color4);
+  white-space: normal;
+}
+
+.professional-table th:first-child {
+  background-color: #c5e1e1;
+}
+
+.professional-image-table {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.pagination {
+  display: flex;
+  gap: 3px;
+}
+
+.pagination button {
+  padding: 2px 10px;
+}
+
+.pagination button.active {
+  background-color: var(--color1);
+  color: white;
+}
+
+.pagination button:hover {
+  transform: translateY(-1px);
+}

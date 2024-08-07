@@ -1,0 +1,45 @@
+/* src/assets/styles/App.css */
+.body-thank{
+  height: 100vh;
+}
+.thank-you-page {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 80vh;
+  }
+  
+  .thank-you-page h2 {
+    margin-bottom: 20px;
+  }
+  
+  .thank-you-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    align-items: center;
+  }
+  @media only screen and (max-width: 750px) {
+  .thank-you-page {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 65vh;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .thank-you-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    margin-top: 20px;
+  }
+}

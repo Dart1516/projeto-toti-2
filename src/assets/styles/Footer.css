@@ -1,0 +1,112 @@
+.footer-container {
+    background-color: var(--color4);
+    padding: 20px 0 0 20px;
+    width: 100%;
+    max-width: 100vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: static;
+    bottom: 0;
+  }
+  
+  .footer-columns{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+   align-items: start;
+   height: 95%;
+   gap: 1rem;
+   width: 100%;
+   text-align: left;
+  }
+  
+  .footer-column {
+    padding-left: 40px;
+  }
+  
+  .footer-column h4 {
+    font-weight: 700;
+    color: black;
+    font-size: clamp(0.4em, 0.6em + 1vw, 1.2em);
+  }
+  
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+    opacity: 0.9;
+    
+  }
+  .parceiros{
+    display: flex;
+    flex-direction: column;
+  }
+  .footer-column li {
+    color: var(--color1);
+    font-size: clamp(0.3em, 0.5em + 1vw, 1em);
+  }
+  
+  .footer-column a {
+    text-decoration: none;
+    color: var(--color1);
+    font-size: clamp(0.3em, 0.5em + 1vw, 1em);
+  }
+  
+  .footer-column a:hover {
+    text-decoration: underline;
+  }
+
+  .contato-footer {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .footer-logo-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    min-width: 100vw;
+    height: 5%;
+    gap: 20px;
+    padding: 20px 10px;
+  }
+  .footer-logo-container p {
+    text-transform: capitalize;
+    opacity: 0.9;
+    font-size: clamp(0.4em, 0.6em + 1vw, 1em);
+  }
+  
+  .footer-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .icon-footer {
+    font-size: clamp(0.3em, 0.5em + 1vw, 1em);
+  }
+  
+    @media (max-width: 600px) {
+      .footer-container {
+        background-color: var(--color4);
+        padding: 20px 30px;
+        width: 100%;
+        min-width: 100vw;
+        height: auto;
+      }
+      .footer-columns {
+        display: grid;
+        align-items: start;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+     
+       }
+       .footer-logo {
+        width: 80px;
+        border-radius: 100%;
+        object-fit: cover;
+      }
+    }

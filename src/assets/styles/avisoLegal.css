@@ -1,0 +1,45 @@
+
+.container-body{
+    position: relative;
+    right: 0;
+    padding: 6rem;
+    top:5rem ;
+    z-index:  1;
+    height:auto; 
+    min-height: 100vh;
+    justify-items:center; 
+    justify-content:center;
+    align-items:center;
+    display:flex;
+    flex-direction:column;
+    
+}
+.aviso-legal{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    align-items: flex-start;
+    }
+    .legal-content{
+        text-align: left;
+
+    }
+    @media only screen and (max-width: 700px) {
+        .container-body{
+            position: relative;
+            right: 0;
+            padding: 2rem;
+            top:5rem ;
+            z-index:  1;
+            height:auto; 
+            min-height: 100vh;
+            justify-items:center; 
+            justify-content:center;
+            align-items:center;
+            display:flex;
+            flex-direction:column;
+            
+        }
+    }

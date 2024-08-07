@@ -1,0 +1,98 @@
+#container{
+    position: fixed;
+    right: 0;
+    z-index:  1;
+    height:100vh; 
+    justify-items:center; 
+    justify-content:center;
+    align-items:center;
+    display:flex;
+    flex-direction:column;
+    width: 70%;
+    background: #fafafa;
+}
+#body{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap:2rem;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+    width: 80%;
+}
+.form-recovery-password h2{
+    font-size: clamp(0.6em, 0.8em + 1vw, 1.3em);
+}
+.form-recovery-password{
+gap: 2rem;
+display: flex;
+flex-direction: column;
+width: 90%;
+height: 100%;
+align-items: center;
+justify-content: center;
+}
+.form-recovery-password label{
+    font-size: clamp(0.6em, 0.6em + 1vw, 1.2em);
+}
+
+.form-method{
+    gap: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.input-method{
+    border: 0;
+    font-size: clamp(0.6em, 0.6em + 1vw, 1em);
+    padding: 0.3rem 2rem;
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+  .btnRecuperarSenha{
+    border: 0;
+    text-transform: uppercase;
+    width: 100%;
+    height: 3rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background-color: var(--color1);
+    color: var(--color4);
+    transition: box-shadow 0.3s ease;
+  }
+  .btnRecuperarSenha:hover { 
+    transform: translateY(2px); 
+    box-shadow: 0 6px 10px rgba(12, 71, 52, 0.8);
+    border: 0;
+    transition: 0.3s;
+  }
+  #last{
+    margin-top: 2rem;
+  }
+  @media (max-width: 870px) {
+    #container, .method, .form-method{
+        width: 100%;
+    }
+  
+  }
+  @media (max-width: 700px) {
+    #container{
+        padding:0 ;
+    }
+    #container, #body, .method, .form-method{
+        width: 100%;
+    }
+  
+  }
+  

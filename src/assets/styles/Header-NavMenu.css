@@ -1,0 +1,81 @@
+/* ----- Barra de navegación -----*/
+
+.contenedor_de_opciones {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100vw;
+    height: 5.563rem;
+    z-index: 1000;
+    margin: 0;
+    justify-content: space-around;
+    background: var(--color4);
+}
+
+.menu-left {
+  display: flex;
+  width: 20%;
+}
+
+.opciones-izquierda{
+  width: 100%;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  width: 80%;
+  padding: 0 2rem;
+}
+
+.opciones-derecha { 
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.opciones-izquierda li a,
+.opciones-derecha li a {
+  text-decoration: none; /* Quita el subrayado del enlace */
+  color: var(--color6);
+  font-weight: 700;
+  transition: 0.3s; /* Transición suave para el cambio de color del texto */
+  font-size: 20px;
+  padding: 12px;
+}
+
+
+/* Estilos para el contenedor de cada opción en hover */
+.opciones-izquierda li a:hover,
+.opciones-derecha li a:hover { /* Cambia el color de fondo al pasar el cursor */
+  color: var(--color4); /* Cambia el color del texto al pasar el cursor */
+  cursor: pointer; /* Cambia el cursor al pasar el cursor sobre el contenedor */
+  background-color: var(--color2);
+}
+
+/* ----- logo view ----- */
+
+.opciones-derecha {
+  justify-content: center;
+}
+
+.logo-home {
+  width: 60px;
+  height: 60px;
+}
+
+/* ----- END desktop view ----- */
+
+
+
+/*Para el ocultar este menu cuando este en modo teléfono*/
+  @media only screen and (max-width: 768px) {
+    .contenedor_de_opciones {
+      display: none;
+    
+  }}
+/*
+*{
+    border: solid green 2px ;
+}*/

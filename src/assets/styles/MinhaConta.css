@@ -1,0 +1,204 @@
+.App-Conta {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* altura mínima del viewport */
+    min-width: 100vw;
+    max-width: 100vw;
+  }
+
+/*Div Principal*/
+
+.minhaConta {
+    padding: 25px 0px 25px 0px;
+    background-color: var(--color4);
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+}
+
+/*Segmentos y texto*/
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 30px;
+    padding: 2rem;
+    background-color:white;
+    width: 80%;
+}
+
+.inputs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.input-text {
+    width: 100%;
+    color: black;
+    opacity: 0.9;
+}
+
+.input-field {
+    text-align: start;
+    gap: 5px;
+}
+
+/*Botones*/
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: end;
+    align-items: center;
+}
+
+.buttons button {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 16px;
+    background-color: var(--color1);
+    color: var(--color4);
+    padding: 5px 10px;
+    border-radius: 10px;
+    width: 25%;
+    border: none;
+}
+
+.buttons button:hover {
+    opacity: 0.9;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(-4px);;
+}
+
+.buttons button:first-child {
+    color: var(--color1);
+    background-color: transparent;
+    border: none;
+}
+
+/*Títulos*/
+
+.titulo-conta {
+    position: relative;
+    text-align: start;
+    font-size: 28px;
+}
+
+.titulo-conta::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    width: 190px;
+    height: 5px;
+    background-color: var(--color2);
+}
+
+.subtitulo-conta {
+    text-align: start;
+}
+
+/*Text-area*/
+
+.textarea-conta {
+    min-height: 200px;
+    padding: 20px;
+    width: 90%;
+}
+
+/*Dias*/
+
+.form-group {
+    padding: 20px 40px;
+    background-color: white;
+    gap: 30px;
+    margin-top: 30px;
+    width: 80%;
+}
+
+.dia-disponible {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.button-dia-espacio {
+    display: flex;
+    gap: 20px;
+    color: var(--color1);
+    margin-top: 2rem;
+}
+
+.texto-dia {
+    border: none;
+    color: var(--color1);
+    text-transform: uppercase;
+    text-align: left;
+    font-weight: 700;
+    width: 50%;
+    background-color: transparent;
+}
+
+.button-dia-espacio:hover, .button-dia:hover {
+    cursor: pointer;
+}
+
+/*Checkbox radio*/
+
+.radio-espacio {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.radio-espacio p {
+    opacity: 0.7;
+}
+
+.radio-option {
+    display: flex;
+    gap: 20px;
+}
+@media (max-width: 800px) {
+    .section, .form-group{
+        min-width: 90%;
+    }
+}
+@media (max-width: 580px) {
+    .minhaConta {
+        padding:  0px ;
+        margin: 0;
+        background-color: var(--color4);
+        min-width: 100vw;
+    }
+    .section, .form-group{
+        min-width: 100%;
+    }
+    .inputs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1rem;
+    }
+    .buttons {
+        display: flex;
+        width: 100%;
+        gap: 1rem;
+        justify-content: end;
+        align-items: center;
+    }
+    
+    .buttons button {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 16px;
+        background-color: var(--color1);
+        color: var(--color4);
+        padding: 5px 10px;
+        border-radius: 10px;
+        width: 50%;
+        border: none;
+    }
+}
