@@ -1,7 +1,9 @@
-"use client"; 
+"use client";
+
+import React, { useState } from "react";
+import Image from 'next/image';
+import Link from 'next/link';
 import { Typography } from "@mui/material";
-import { useState } from "react";
-import Image from 'next/image'; // Importar el componente Image de next/image
 import Footer from "../components/Footer";
 import Header from "../components/Header-NavMenu";
 import Banner1 from "../assets/images/Banner1.svg";
@@ -42,8 +44,8 @@ export default function Home() {
               </div>
               <p>Uma plataforma que conecta Psicólogos e Educadores Sociais com um líder Comunitário para prestação de serviço voluntário às vítimas das inundações no Rio Grande do Sul</p>  
               <div className='sub-text-home'>
-                <a href="./demo">quero ser voluntário </a>
-                <a href='./JoinUs'>quero ser atendido</a>
+                <Link href="./demo">quero ser voluntário</Link>
+                <Link href='./JoinUs'>quero ser atendido</Link>
               </div>
             </div>
           </div>
@@ -61,7 +63,7 @@ export default function Home() {
               <div className="card-text">
                 <h2>Voluntariado Psicológico</h2>
                 <p>O especialista capaz de oferecer ajuda psicológica, dando as ferramentas para lidar com traumas, fornecerá suporte emocional, tratará estresse pós-traumático e ajudara na recuperação mental.</p>
-                <a href="./JoinUs">Junte-se a causa</a>
+                <Link href="./JoinUs">Junte-se a causa</Link>
               </div>
             </div>
             <div className="card-item">
@@ -71,7 +73,7 @@ export default function Home() {
               <div className="card-text">
                 <h2>Educadores Sociais</h2>
                 <p>Profissionais que trabalham para promover o bem-estar e a inclusão social de individuos e comunidades afetadas pela enchente e que precisam começar do zero.</p>
-                <a href="./JoinUs">Junte-se a causa</a>
+                <Link href="./JoinUs">Junte-se a causa</Link>
               </div>
             </div>
             <div className="card-item">
@@ -81,7 +83,7 @@ export default function Home() {
               <div className="card-text">
                 <h2>Líderes Comunitários</h2>
                 <p>pessoas que organizam e mobilizam ações de apoio em situações de crise, capazes de orientar e direcionar personas em alto nivel de estresse.</p>
-                <a href="./JoinUs">Junte-se a causa</a>
+                <Link href="./JoinUs">Junte-se a causa</Link>
               </div>
             </div>
           </div>
@@ -96,7 +98,7 @@ export default function Home() {
             </div>
             <p>As chuvas que atingem o Rio Grande do Sul causam muita destruição. O governo do estado já considera a tragédia como a pior da história</p>  
             <div className='sub-text-video'>
-              <a href="/Cadastro">quero ser voluntário </a>
+              <Link href="/Cadastro">quero ser voluntário</Link>
             </div>
           </div>
         </div>
@@ -105,7 +107,7 @@ export default function Home() {
             <h1>processo de voluntariado</h1>
             <div className="proceso-texto">
               <h2 className="h2-processo-voluntariado">registro</h2>
-              <p>complete o <a href="./JoinUs">formulário</a> de inscrição com seus dados pessoais e experiência.</p>
+              <p>complete o <Link href="./JoinUs">formulário</Link> de inscrição com seus dados pessoais e experiência.</p>
             </div>
             <div className="proceso-texto">
               <h2 className="h2-processo-voluntariado">para onde vão meus dados?</h2>
@@ -124,7 +126,7 @@ export default function Home() {
             <h1>processo de liderança</h1>
             <div className="proceso-texto-liderança">
               <h2 className="h2-processo-voluntariado">registro</h2>
-              <p>complete o <a href="./JoinUs">formulário</a> de inscrição com seus dados pessoais</p>
+              <p>complete o <Link href="./JoinUs">formulário</Link> de inscrição com seus dados pessoais</p>
             </div>
             <div className="proceso-texto-liderança">
               <h2 className="h2-processo-voluntariado">para onde vão meus dados?</h2>
