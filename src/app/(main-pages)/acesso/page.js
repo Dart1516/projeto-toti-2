@@ -147,7 +147,7 @@ const Acesso = () => {
           Seja bem-vindo(a) de volta
         </Typography>
         <Typography variant="body">
-          Ainda não faz parte da equipe de voluntarios? <Link href="/cadastro">Clique aquí.</Link>
+          Ainda não faz parte da equipe de voluntarios? <Link href="/servicos">Clique aquí.</Link>
         </Typography>
         <StyledLogin>
           <FormGroup style={{ marginTop: "2rem" }}>
