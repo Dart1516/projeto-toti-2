@@ -63,7 +63,7 @@ export default function Home() {
               <div className="card-text">
                 <h2>Voluntariado Psicológico</h2>
                 <p>O especialista capaz de oferecer ajuda psicológica, dando as ferramentas para lidar com traumas, fornecerá suporte emocional, tratará estresse pós-traumático e ajudara na recuperação mental.</p>
-                <Link href="./JoinUs">Junte-se a causa</Link>
+                <Link href="/servicos">Junte-se a causa</Link>
               </div>
             </div>
             <div className="card-item">
@@ -73,7 +73,7 @@ export default function Home() {
               <div className="card-text">
                 <h2>Educadores Sociais</h2>
                 <p>Profissionais que trabalham para promover o bem-estar e a inclusão social de individuos e comunidades afetadas pela enchente e que precisam começar do zero.</p>
-                <Link href="./JoinUs">Junte-se a causa</Link>
+                <Link href="/servicos">Junte-se a causa</Link>
               </div>
             </div>
             <div className="card-item">
@@ -83,7 +83,7 @@ export default function Home() {
               <div className="card-text">
                 <h2>Líderes Comunitários</h2>
                 <p>pessoas que organizam e mobilizam ações de apoio em situações de crise, capazes de orientar e direcionar personas em alto nivel de estresse.</p>
-                <Link href="./JoinUs">Junte-se a causa</Link>
+                <Link href="/servicos">Junte-se a causa</Link>
               </div>
             </div>
           </div>
