@@ -251,29 +251,34 @@ function FormularioLiderImigrante() {
                 required
               >
                 <option value="">-Selecione-</option>
-                <option value="SP">SP</option>
-                <option value="MT">MT</option>
-                <option value="MG">MG</option>
-                <option value="CE">CE</option>
-                <option value="AC">AC</option>
-                <option value="AM">AM</option>
-                <option value="RS">RS</option>
-                <option value="MA">MA</option>
-                <option value="MS">MS</option>
-                <option value="RJ">RJ</option>
-                <option value="RO">RO</option>
-                <option value="SC">SC</option>
-                <option value="PA">PA</option>
-                <option value="PB">PB</option>
-                <option value="PE">PE</option>
-                <option value="PI">PI</option>
-                <option value="RR">RR</option>
-                <option value="RN">RN</option>
-                <option value="SE">SE</option>
-                <option value="TO">TO</option>
-                <option value="DF">DF</option>
-                <option value="GO">GO</option>
-              </select>
+                <option value="AC">Acre (AC)</option>
+  <option value="AL">Alagoas (AL)</option>
+  <option value="AP">Amapá (AP)</option>
+  <option value="AM">Amazonas (AM)</option>
+  <option value="BA">Bahia (BA)</option>
+  <option value="CE">Ceará (CE)</option>
+  <option value="DF">Distrito Federal (DF)</option>
+  <option value="ES">Espírito Santo (ES)</option>
+  <option value="GO">Goiás (GO)</option>
+  <option value="MA">Maranhão (MA)</option>
+  <option value="MT">Mato Grosso (MT)</option>
+  <option value="MS">Mato Grosso do Sul (MS)</option>
+  <option value="MG">Minas Gerais (MG)</option>
+  <option value="PA">Pará (PA)</option>
+  <option value="PB">Paraíba (PB)</option>
+  <option value="PR">Paraná (PR)</option>
+  <option value="PE">Pernambuco (PE)</option>
+  <option value="PI">Piauí (PI)</option>
+  <option value="RJ">Rio de Janeiro (RJ)</option>
+  <option value="RN">Rio Grande do Norte (RN)</option>
+  <option value="RS">Rio Grande do Sul (RS)</option>
+  <option value="RO">Rondônia (RO)</option>
+  <option value="RR">Roraima (RR)</option>
+  <option value="SC">Santa Catarina (SC)</option>
+  <option value="SP">São Paulo (SP)</option>
+  <option value="SE">Sergipe (SE)</option>
+  <option value="TO">Tocantins (TO)</option>
+</select>
             </div>
             <div className="input-field">
               <h4>8. Endereço <span>*</span></h4>
