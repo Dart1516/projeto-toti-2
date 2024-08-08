@@ -2,13 +2,15 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image'; // Importar el componente Image de next/image
+import Image from 'next/image';
 import "../assets/styles/Header-Minha-Conta.css";
 import Logo from "../assets/images/logos/toters-logo-green-dark.svg";
+import { useUser } from '../api/UserContext'; 
 
-function HeaderLogin({ username, rol }) {
+function HeaderLogin() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const { user } = useUser();
 
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -28,7 +30,7 @@ function HeaderLogin({ username, rol }) {
   };
 
   const getRolePath = () => {
-    switch (rol) {
+    switch (user.rol) {
       case 'Lider':
         return "/minha-conta-lider";
       case 'Psicologo':
@@ -48,7 +50,7 @@ function HeaderLogin({ username, rol }) {
         </div>
         <div className="dropdown" ref={dropdownRef}>
           <button className="dropbtn" onClick={toggleDropdown}>
-            Olá, <span> {username}!</span>
+            Olá, <span>{user.username}!</span>
           </button>
           {dropdownOpen && (
             <div className="dropdown-content show">

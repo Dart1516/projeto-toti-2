@@ -1,4 +1,4 @@
-
+import { UserProvider } from '../api/UserContext';
 
 export const metadata = {
   title: "Toters Do Bem",
@@ -30,7 +30,11 @@ export default function RootLayout({ children }) {
         <meta name="theme-color" content="#ffffff" />
         <link rel="icon" href="/favicon/faviconSolidarity.ico" />
       </head>
-      <body>{children}</body>
+      <body>
+        <UserProvider>
+          {children}
+        </UserProvider>
+      </body>
     </html>
   );
 }

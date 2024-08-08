@@ -10,7 +10,7 @@ import { useRouter } from 'next/navigation';
 import Header from "../../../components/Header-NavMenu";
 import Visibility from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOff from '@mui/icons-material/VisibilityOffOutlined';
-import HeaderLogin from "../../../components/Header-Login";
+import { useUser } from '../../../api/UserContext'; 
 
 const StyledContainer = styled("div")(({ theme }) => ({
   position: "fixed",
@@ -32,6 +32,7 @@ const StyledContainer = styled("div")(({ theme }) => ({
     width: "70%"
   }
 }));
+
 const StyledLogin = styled("div")(({ theme }) => ({
   gap: "2rem",
   padding: "5rem 0",
@@ -43,6 +44,7 @@ const StyledLogin = styled("div")(({ theme }) => ({
     padding: "0",
   },
 }));
+
 const StyledButton = styled("button")(() => ({
   width: "100%",
   boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
@@ -67,6 +69,7 @@ const StyledLink = styled(Link)(() => ({
   color: "#084f54",
   cursor: "pointer",
 }));
+
 const StyledItems = styled("div")(() => ({
   display: "flex",
   flexDirection: "row",
@@ -79,10 +82,9 @@ const Acesso = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const router = useRouter(); // Usar useRouter en lugar de useNavigate
-  const [username, setUsername] = useState("");
-  const [rol, setRol] = useState(""); // Añadir estado para el rol
-
+  const router = useRouter();
+  const { user, setUser } = useUser();
+  
   const handleLogin = async () => {
     try {
       if (!email || !password) {
@@ -92,11 +94,10 @@ const Acesso = () => {
       const passwordString = String(password);
       const normalizedEmail = email.toLowerCase();
       const response = await Api.post(`/login/usuarios?email=${normalizedEmail}&password=${passwordString}`);
-      const username = response.data.username;
-      const rol = response.data.roleMessage;
-      setUsername(username);
-      setRol(rol); // Guardar el rol en el estado
-      console.log(rol + username);
+      const { username, roleMessage: rol } = response.data;
+      
+      setUser({ username, rol });
+      
       if (rol) {
         if (rol === 'Lider') {
           router.push("/minha-conta-lider"); 
