@@ -191,7 +191,7 @@ const About = () => {
               direction={{ xs: "column-reverse", md: "row" }}
             >
               <Styledbutton href="./demo">Liderança Emigrante </Styledbutton>
-              <StyledbuttonVoluntario href="./JoinUs">
+              <StyledbuttonVoluntario href="/servicos">
                 Quero ser voluntário
               </StyledbuttonVoluntario>
             </Grid>

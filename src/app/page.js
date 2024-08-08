@@ -44,8 +44,8 @@ export default function Home() {
               </div>
               <p>Uma plataforma que conecta Psicólogos e Educadores Sociais com um líder Comunitário para prestação de serviço voluntário às vítimas das inundações no Rio Grande do Sul</p>  
               <div className='sub-text-home'>
-                <Link href="./demo">quero ser voluntário</Link>
-                <Link href='./JoinUs'>quero ser atendido</Link>
+                <Link href="/servicos">quero ser voluntário</Link>
+                <Link href='/servicos'>quero ser atendido</Link>
               </div>
             </div>
           </div>
@@ -98,7 +98,7 @@ export default function Home() {
             </div>
             <p>As chuvas que atingem o Rio Grande do Sul causam muita destruição. O governo do estado já considera a tragédia como a pior da história</p>  
             <div className='sub-text-video'>
-              <Link href="/Cadastro">quero ser voluntário</Link>
+              <Link href="/servicos">quero ser voluntário</Link>
             </div>
           </div>
         </div>
