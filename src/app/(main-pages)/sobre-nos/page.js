@@ -319,7 +319,7 @@ const About = () => {
             <div id="grid-container-cards">
               <Card className="card-toter">
                 
-                <Image src={David} alt="David" title="David"  height={210} width = {200} />
+                <Image src={David} alt="David" title="David"  height={210} width = {214} />
                 
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
@@ -350,7 +350,7 @@ const About = () => {
               </Card>
               <Card className="card-toter">
                 
-                <Image src={victor} alt="victor" title="victor"  height={210} width = {191} />
+                <Image src={victor} alt="victor" title="victor"  height={210} width = {213} />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     Víctor Alcala
@@ -379,7 +379,7 @@ const About = () => {
                 </CardActions>
               </Card>
               <Card className="card-toter">
-                <Image src={Cristian} alt="Cristian" title="Cristian"  height={210} width = {210} />
+                <Image src={Cristian} alt="Cristian" title="Cristian"  height={210} width = {213} />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     Cristhian Nunes
@@ -408,7 +408,7 @@ const About = () => {
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                <Image src={henry} alt="henry" title="henry"  height={210} width = {210} />
+                <Image src={henry} alt="henry" title="henry"  height={210} width = {213} />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     Henry Luna
@@ -437,7 +437,7 @@ const About = () => {
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                <Image src={Daysi} alt="Daysi" title="Daysi"  height={210} width = {210}/>
+                <Image src={Daysi} alt="Daysi" title="Daysi"  height={210} width = {214}/>
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     Daysibel Cotiz
@@ -466,7 +466,7 @@ const About = () => {
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                <Image src={manuel} alt="manuel" title="manuel"  height={210} width = {210} />
+                <Image src={manuel} alt="manuel" title="manuel"  height={210} width = {213} />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     Manuel Bernardo
@@ -495,7 +495,7 @@ const About = () => {
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                <Image src={avatar} alt="avatar" title="avatar"  height={210} width = {210} />
+                <Image src={avatar} alt="avatar" title="avatar"  height={210} width = {214} />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     Yurisay
@@ -524,7 +524,7 @@ const About = () => {
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                <Image src={nadi} alt="nadi" title="nadi"  height={210} width = {210} />
+                <Image src={nadi} alt="nadi" title="nadi"  height={210} width = {214} />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     Nadi Duno
@@ -553,7 +553,7 @@ const About = () => {
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                <Image src={maria} alt="maria" title="maria"  height={210} width = {210} />
+                <Image src={maria} alt="maria" title="maria"  height={210} width = {214} />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     Maria Rondon
@@ -582,7 +582,7 @@ const About = () => {
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                <Image src={Marianela} alt="Marianela" title="Marianela"  height={210} width = {210} />
+                <Image src={Marianela} alt="Marianela" title="Marianela"  height={210} width = {213} />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     Marianela Arana
@@ -611,7 +611,7 @@ const About = () => {
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                <Image src={Natalia} alt="Natalia" title="Natalia"  height={210} width = {200} />
+                <Image src={Natalia} alt="Natalia" title="Natalia"  height={210} width = {214} />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     Natalia Augusto
@@ -640,7 +640,7 @@ const About = () => {
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                <Image src={avatar} alt="avatar" title="avatar"  height={210} width = {200}/>
+                <Image src={avatar} alt="avatar" title="avatar"  height={210} width = {214}/>
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     Barbara
