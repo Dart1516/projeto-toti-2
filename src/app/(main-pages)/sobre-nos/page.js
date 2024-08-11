@@ -469,7 +469,7 @@ const About = () => {
                 <Image src={manuel} alt="manuel" title="manuel"  height={220} />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    Manuel
+                    Manuel Bernardo
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     Toter
