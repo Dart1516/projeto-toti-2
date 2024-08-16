@@ -17,28 +17,8 @@ const RecuperarSenha = () => {
   const [step, setStep] = useState(1);
   const [error, setError] = useState('');
   const [email, setEmailValidação] = useState('');
-  
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const normalizedEmail = initialForm.email.toLowerCase();
-        const response = await Api.post(`/recoverypassword/email?email=${normalizedEmail}`);
-        console.log("dados enviados com sucesso:", response.data);
-        setError('');
-        setStep(2);
-        setInitialForm("")
-        console.log(normalizedEmail)
-      if (response.data.length === 0) {
-        setError("Usuário não encontrado.");
-        setEmailValidação(response.data.email)
-        return;
-      }
-
-    } catch (error) {
-      console.error("Error al verificar usuário:", error);
-      setError("Ocorreu um erro. Tente novamente.");
-    }
-  };
+  const [userId, setUserId] = useState(null);
+ 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setForm({
@@ -46,21 +26,54 @@ const RecuperarSenha = () => {
       [name]: value,
     });
   };
-
-
+  
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const normalizedEmail = form.email.toLowerCase();
+      const response = await Api.post(`/recoverypassword/email?email=${normalizedEmail}`);
+        if (response.data === "Código de verificacao enviado com sucesso.") {
+          //Retornar o da busqueda do POST ou fazer o Get para os otras tabelas
+          const responseID = await Api.get(`/lideres?email=${normalizedEmail}`);
+          if (responseID.data && responseID.data.length > 0) {
+            const user = responseID.data[0]; 
+            if (user.id) {
+              setUserId(user.id);
+            } else {
+              console.error('O usuário não possui um ID válido');
+              setError('Ocorreu um erro ao obter o ID do usuário');
+            }
+          } else {
+            setError("Usuário não encontrado.");
+          }
+        console.log("Dados enviados com sucesso:", response.data);
+        setError('');
+        setStep(2);
+        setInitialForm("")
+        if (response.data.length === 0) {
+          setError("Usuário não encontrado.");
+          setEmailValidação(response.data.email)
+          return;
+        }
+      }
+    } catch (error) {
+      console.error('Erro ao verificar usuário:', error.response?.data);
+      setError(error.response?.data?.message || 'Ocorreu um erro. Tente novamente.');
+    }
+  };
+  
   const handleVerifyCode = async () => {
     const { code, newPassword } = form;
-
-    // Simulate verifying the code and resetting the password
-    console.log(`Verifying code ${code} and setting new password to ${newPassword}`);
+    console.log(`Codigo  ${code} e senha ${newPassword}`);
     setError('');
     setStep(3);
   };
-
-  const handleNewPasswordSubmit = async () => {
-    // Simulate submitting the new password
-    console.log(`Submitting new password: ${form.newPassword}`);
-    alert('Password successfully reset!');
+  
+  const handleNewPasswordSubmit = async (e) => {
+    e.preventDefault();
+    console.log(`Datos para atualizar a senha, Id Usuario : ${userId} senha nueva : ${form.newPassword}`);
+    //Fazer push para actualizar a senha
+    alert('Por actualizar')
   };
 
   const renderStep = () => {
@@ -106,11 +119,10 @@ const RecuperarSenha = () => {
             />
            
             </div>
-            <button className="btnRecuperarSenha" onClick={handleVerifyCode}>Validar código</button>
-            {error && <p className="error">{error}</p>}
-          <div className="form-method">
-          <label htmlFor="newPassword">Nova Senha:</label>
-            <input
+              {error && <p className="error">{error}</p>}
+              <div className="form-method">
+             <label htmlFor="newPassword">Nova Senha:</label>
+              <input
               type="password"
               id="newPassword"
               name="newPassword"
@@ -119,11 +131,12 @@ const RecuperarSenha = () => {
               placeholder="Ingrese su nueva contraseña"
               required
               className="input-method"
-            />
-             
-            
-          </div>
-          <button  className="btnRecuperarSenha" onClick={() => setStep(1)}>Voltar</button>
+              />
+            </div>
+            <div className="form-recovery-button">
+            <button  className="btnRecuperarSenha" onClick={() => setStep(1)}>Voltar</button>
+              <button className="btnRecuperarSenha" onClick={handleVerifyCode}>Atualizar senha</button>
+            </div>
           </div>
         );
       case 3:
@@ -131,9 +144,10 @@ const RecuperarSenha = () => {
           <div className="form-recovery-password">
             <h2>Nova senha</h2>
             <p>Senha restablecida com sucesso.</p>
-            <button  className="btnRecuperarSenha" onClick={handleNewPasswordSubmit}>Voltar para fazer login</button>
-          <button className="btnRecuperarSenha" onClick={() => setStep(1)}>Voltar</button>
-
+            <div className="form-recovery-button">
+            <button className="btnRecuperarSenha" onClick={() => setStep(1)}>Voltar</button>
+              <button  className="btnRecuperarSenha" onClick={handleNewPasswordSubmit}>Fazer login</button>
+            </div>
           </div>
         );
       default:
