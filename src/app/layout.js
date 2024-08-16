@@ -2,7 +2,12 @@ import { UserProvider } from '../api/UserContext';
 
 export const metadata = {
   title: "Toters Do Bem",
-  description: "Página de Toters do Bem",
+  description: "Somos uma plataforma que conecta psicólogos e educadores sociais com líderes comunitários para oferecer apoio psicológico e social às vítimas das inundações no Rio Grande do Sul. Junte-se a nós e faça a diferença!",
+  titleSocialMedia: "Juntos pela Recuperação do RS: Conecte-se e Ajude",
+  descriptionSocialMedia: "Somos uma plataforma que conecta psicólogos e educadores sociais com líderes comunitários para oferecer apoio psicológico e social às vítimas das inundações no Rio Grande do Sul. Junte-se a nós e faça a diferença!",
+  keywords: "voluntariado, voluntario, inundações, rio grande do sul, psicólogos, educadores sociais, ajuda, ajuda humanitária, solidariedade, toti",
+  robots:"index, follow",
+  urlSite: "https://www.totersdobem.com.br/"
 };
 
 export default function RootLayout({ children }) {
@@ -11,6 +16,11 @@ export default function RootLayout({ children }) {
       <head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
+        <meta property="og:title" content={metadata.titleSocialMedia} />
+        <meta property="og:description" content={metadata.descriptionSocialMedia}  />
+        <meta name="keywords" content={metadata.keywords} />
+        <meta name="robots" content={metadata.robots} />
+        <link rel="canonical" href={metadata.urlSite} />
         <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png" />
         <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png" />
         <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png" />
