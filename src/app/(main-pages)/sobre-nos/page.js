@@ -338,14 +338,6 @@ const About = () => {
                   >
                     Github
                   </Button>
-                  <Button
-                    size="small"
-                    style={{ color: "black" }}
-                    target="_blank"
-                    href="https://www.linkedin.com/in/david-puche/"
-                  >
-                    LinkedIn
-                  </Button>
                 </CardActions>
               </Card>
               <Card className="card-toter">
@@ -368,14 +360,6 @@ const About = () => {
                   >
                     Github
                   </Button>
-                  <Button
-                    size="small"
-                    style={{ color: "black" }}
-                    target="_blank"
-                    href="https://www.linkedin.com/in/alcalamvictor"
-                  >
-                    LinkedIn
-                  </Button>
                 </CardActions>
               </Card>
               <Card className="card-toter">
@@ -396,14 +380,6 @@ const About = () => {
                     href="https://github.com/Dart1516"
                   >
                     Github
-                  </Button>
-                  <Button
-                    size="small"
-                    style={{ color: "black" }}
-                    target="_blank"
-                    href="https://www.linkedin.com/in/cristhian-andres-nunez-gascon-774569168"
-                  >
-                    LinkedIn
                   </Button>
                 </CardActions>
               </Card>
@@ -426,14 +402,6 @@ const About = () => {
                   >
                     Github
                   </Button>
-                  <Button
-                    size="small"
-                    style={{ color: "black" }}
-                    target="_blank"
-                    href="https://www.linkedin.com/in/henry-luna-0793402a/"
-                  >
-                    LinkedIn
-                  </Button>
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
@@ -454,14 +422,6 @@ const About = () => {
                     href="https://github.com/daysibel1175"
                   >
                     Github
-                  </Button>
-                  <Button
-                    size="small"
-                    style={{ color: "black" }}
-                    target="_blank"
-                    href="https://www.linkedin.com/in/daysibelcotizpitter"
-                  >
-                    LinkedIn
                   </Button>
                 </CardActions>
               </Card>
@@ -484,14 +444,6 @@ const About = () => {
                   >
                     Github
                   </Button>
-                  <Button
-                    size="small"
-                    style={{ color: "black" }}
-                    target="_blank"
-                    href="https://www.linkedin.com/in/manuel-bernardo-165373208/"
-                  >
-                    LinkedIn
-                  </Button>
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
@@ -512,14 +464,6 @@ const About = () => {
                     href="https://github.com/Dart1516"
                   >
                     Github
-                  </Button>
-                  <Button
-                    size="small"
-                    style={{ color: "black" }}
-                    target="_blank"
-                    href="https://github.com/Dart1516"
-                  >
-                    LinkedIn
                   </Button>
                 </CardActions>
               </Card>
@@ -542,14 +486,6 @@ const About = () => {
                   >
                     Github
                   </Button>
-                  <Button
-                    size="small"
-                    style={{ color: "black" }}
-                    target="_blank"
-                    href="https://www.linkedin.com/in/nadiduno/"
-                  >
-                    LinkedIn
-                  </Button>
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
@@ -570,14 +506,6 @@ const About = () => {
                     href="https://github.com/Dart1516"
                   >
                     Github
-                  </Button>
-                  <Button
-                    size="small"
-                    style={{ color: "black" }}
-                    target="_blank"
-                    href="https://github.com/Dart1516"
-                  >
-                    LinkedIn
                   </Button>
                 </CardActions>
               </Card>
@@ -600,14 +528,6 @@ const About = () => {
                   >
                     Github
                   </Button>
-                  <Button
-                    size="small"
-                    style={{ color: "black" }}
-                    target="_blank"
-                    href="https://www.linkedin.com/in/marianela-arana/"
-                  >
-                    LinkedIn
-                  </Button>
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
@@ -629,14 +549,6 @@ const About = () => {
                   >
                     Github
                   </Button>
-                  <Button
-                    size="small"
-                    style={{ color: "black" }}
-                    target="_blank"
-                    href="https://www.linkedin.com/in/nataliaaugustoux/"
-                  >
-                    LinkedIn
-                  </Button>
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
@@ -657,14 +569,6 @@ const About = () => {
                     href="https://github.com/Dart1516"
                   >
                     Github
-                  </Button>
-                  <Button
-                    size="small"
-                    style={{ color: "black" }}
-                    target="_blank"
-                    href="https://github.com/Dart1516"
-                  >
-                    LinkedIn
                   </Button>
                 </CardActions>
               </Card>
