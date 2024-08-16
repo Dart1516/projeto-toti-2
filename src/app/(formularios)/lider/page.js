@@ -58,7 +58,7 @@ function FormularioLiderImigrante() {
       setIsLoading(false);
       return;
     }
-    const normalizedEmail = formData.email.toLowerCase();
+    const normalizedEmail = formData.email.toString().toLowerCase();
     const dataToSend = {
       ...formData,
       notes: formData.notes || "",
@@ -133,11 +133,16 @@ function FormularioLiderImigrante() {
 
   const validatePassword = (password) => {
     let errors = [];
+    // Escapar caracteres #*+&=,. (bug)antes de validar
+    const escapedPassword = password.replace(/[#*+&=,.]/g, '\\$&');
     if (!/(?=.*[a-z])/.test(password)) errors.push("Falta minúscula.");
     if (!/(?=.*[A-Z])/.test(password)) errors.push("Falta maiúscula.");
     if (!/(?=.*\d)/.test(password)) errors.push("Falta número.");
-    if (!/(?=.*[@#$%^&=])/.test(password)) errors.push("Falta símbolo. (@#$%&=)");
+    if (!/(?=.*[@$%^;])/.test(password)) errors.push("Falta símbolo. (@$%;)");
     if (password.length < 8) errors.push("A senha deve conter 8 caracteres.");
+    if (!/^[A-Za-z0-9!@$%^*()_{}|:;'<>/?~-]+$/.test(escapedPassword)) {
+      errors.push("Os caracteres (#*+&=,.) não são permitidos.");
+    }
     setPasswordError(errors);
   };
 
@@ -186,7 +191,7 @@ function FormularioLiderImigrante() {
                 required
                 className={`input-text ${errors.cnpj ? "invalid" : ""}`}
                 name="cnpj"
-                pattern="\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}"
+                pattern="\d{2}\.\d{3}\.\d{3}\\d{4}-\d{2}"
                 onFocus={() => resetError()}
               />
             </div>
@@ -309,7 +314,7 @@ function FormularioLiderImigrante() {
                 onChange={handleInputChange}
                 placeholder="Digite seu e-mail"
                 required
-                toLowercase
+                // toLowerCase
                 className={`input-text ${errorEmail ? "invalid" : "valid"}`}
                 onFocus={() => resetEmailError()}
               />
@@ -339,7 +344,9 @@ function FormularioLiderImigrante() {
                 required
                 className={`input-text ${passwordError ? "invalid" : "valid"}`}
                 inputProps={{
-                  pattern: "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_{}|:;'<>/?~])[A-Za-z0-9!@#$%^&*()_{}|:;'<>/?~]{8}$",
+                  //pattern: "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@$%^&*()_{}|:;'<>/?~])[A-Za-z0-9!@$%^&*()_{}|:;'<>/?~]{8}$",
+                  // https://regex101.com/ Para verificar o pattern
+                  pattern: "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@$%^&*git()_{}|:;'<>\?~])[A-Za-z0-9!@$%^&*()_{}|:;'<>\?~]{8}$",
                   
                 }}
                 endAdornment={
