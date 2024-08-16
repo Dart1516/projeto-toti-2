@@ -37,7 +37,12 @@ justify-content: center;
 .form-recovery-password label{
     font-size: clamp(0.6em, 0.6em + 1vw, 1.2em);
 }
-
+.form-recovery-button{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
 .form-method{
     gap: 1rem;
     display: inline-flex;
