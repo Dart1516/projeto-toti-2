@@ -1,4 +1,6 @@
 import { UserProvider } from '../api/UserContext';
+import {Poppins} from 'next/font/google'
+import '../assets/styles/global.css'
 
 export const metadata = {
   title: "Toters Do Bem",
@@ -10,9 +12,16 @@ export const metadata = {
   urlSite: "https://www.totersdobem.com.br/"
 };
 
+const poppins = Poppins({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-poppins',
+  weight: ['400', '500','700']
+})
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className={`${poppins.variable}`}>
       <head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
