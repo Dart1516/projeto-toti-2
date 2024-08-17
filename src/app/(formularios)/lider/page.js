@@ -71,7 +71,7 @@ function FormularioLiderImigrante() {
     try {
       const response = await Api.post("/cadastro/lideres", dataToSend);
       console.log("dados enviados com sucesso:", response.data);
-      router.push("../../thank-you-page");
+      router.push("../../obrigado-page");
     } catch (error) {
       console.error("Error al enviar datos:", error);
       if (error.response?.data?.message?.includes("CPF já cadastrado")) {
