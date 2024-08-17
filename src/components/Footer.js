@@ -32,10 +32,26 @@ function Footer() {
         <div className="footer-column">
           <h4>Parceiros</h4>
           <ul className="parceiros">
-            <li>Parceiro 1</li>
-            <li>Parceiro 2</li>
-            <li>Parceiro 3</li>
-            <li>Parceiro 4</li>
+            <li>
+              <Link href="https://www.acnur.org/portugues/" target="_blank" rel="noopener noreferrer">
+                ACNUR
+              </Link>
+            </li>
+            <li>
+              <Link href="https://caritas.org.br/" target="_blank" rel="noopener noreferrer">
+                Caritas Brasireila
+              </Link>
+            </li>
+            <li>
+              <Link href="https://www.mawon.org/" target="_blank" rel="noopener noreferrer">
+                MAWON
+              </Link>
+            </li>
+            <li>
+              <Link href="https://www.venezuelaglobal.org/" target="_blank" rel="noopener noreferrer">
+                Venezuela Global
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="footer-column">
@@ -56,10 +72,10 @@ function Footer() {
               <FaEnvelope className="icon-footer" />{' '}
               <a href="mailto:admin@totersdobem.com.br">admin@totersdobem.com.br</a>
             </li>
-            <li className="contato-footer">
+            {/* <li className="contato-footer">
               <FaPhone className="icon-footer" />{' '}
               <a href="tel:+559999999999">Telefone</a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
