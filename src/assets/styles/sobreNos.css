@@ -98,15 +98,15 @@
 }
 
 .card-toter {
-    width: 71%;
-    height: 104%;
+    width: 62%;
+    height: 101%;
 
 }
 
+
 .button-cards {
     display: none;
-    
-    
+      
 }
 
 @media only screen and (max-width: 1070px) {
@@ -160,11 +160,14 @@
     .card-toter {
         height: 100%;
         max-height: 400px;
+        width: 191px;
+        
     }
 
     #grid-container-cards {
         grid-template-columns: 1fr 1fr;
         gap: 3rem;
+        
     }
 }
 
@@ -181,9 +184,11 @@
     }
 
     #grid-container-cards {
-        grid-template-columns: 352px;
+        grid-template-columns: 200px;
         gap: 2rem;
         width: 100%;
+        
+     
     }
 
     .hidden {
@@ -202,4 +207,10 @@
         justify-content: center;
         border: 0;
     }
+    .card-toter {
+        justify-content: center;
+        
+        
+    }
+    
 }
