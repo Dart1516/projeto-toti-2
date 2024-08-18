@@ -12,8 +12,8 @@ const ThankYou = () => {
     <div className="body-thank">
           <Header/>
     <div className="thank-you-page">
-      <h2>¡Grato Por Te Registrares!</h2>
-      <p>Seu Registro foi Feito com Exito.</p>
+      <h2>Agradecemos por seu registro!</h2>
+      <p>Seu registro foi realizado com sucesso..</p>
       <div className="thank-you-buttons">
         <Link href="../../acesso" className="button0 button1">Fazer Login</Link>
         <Link href="/" className="button0 button2">Voltar ao Início</Link>
