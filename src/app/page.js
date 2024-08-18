@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState } from "react";
 import Image from "next/image";
@@ -32,7 +32,7 @@ export default function Home() {
   };
 
   return (
-    <div className="App">
+    <div className='App'>
       <Header />
       <div className="body">
         <section className="background-main">
@@ -77,7 +77,7 @@ export default function Home() {
                   height={300}
                 />
               </div>
-              <div className="card-text">
+              <div className='card-text'>
                 <h2>Voluntariado Psicológico</h2>
                 <p>
                   O especialista capaz de oferecer ajuda psicológica, dando as
@@ -97,7 +97,7 @@ export default function Home() {
                   height={300}
                 />
               </div>
-              <div className="card-text">
+              <div className='card-text'>
                 <h2>Educadores Sociais</h2>
                 <p>
                   Profissionais que trabalham para promover o bem-estar e a
@@ -116,7 +116,7 @@ export default function Home() {
                   height={300}
                 />
               </div>
-              <div className="card-text">
+              <div className='card-text'>
                 <h2>Líderes Comunitários</h2>
                 <p>
                   pessoas que organizam e mobilizam ações de apoio em situações
@@ -146,8 +146,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div id="registro-processo">
-          <div className="proceso-voluntariado">
+        <div id='registro-processo'>
+          <div className='proceso-voluntariado'>
             <h1>processo de voluntariado</h1>
             <div className="proceso-texto">
               <h2 className="h2-processo-voluntariado">registro</h2>
@@ -182,7 +182,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="proceso-voluntariado liderança">
+          <div className='proceso-voluntariado liderança'>
             <h1>processo de liderança</h1>
             <div className="proceso-texto-liderança">
               <h2 className="h2-processo-voluntariado">registro</h2>
