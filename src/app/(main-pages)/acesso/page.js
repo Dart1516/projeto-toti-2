@@ -93,7 +93,7 @@ const StyledItems = styled("div")(() => ({
   padding: "1rem",
 }));
   const schema = z.object({
-    email: z.string().email({ message: "Email inválido" }),
+    email: z.string().email({ message: "E-mail inválido" }),
     password: z
       .string()
       .min(6, { message: "A senha deve ter pelo menos 6 caracteres" }),
@@ -120,7 +120,7 @@ const Acesso = () => {
   const handleLogin = async ({email, password}) => {
     try {
       if (!email || !password) {
-        setError("Por favor, preencha todos os campos");
+        setError("Para continuar, por favor, preencha todos os campos obrigatórios.");
         return;
       }
       const passwordString = String(password);
@@ -135,7 +135,8 @@ const Acesso = () => {
 
       if (rol) {
         if (rol === "Lider") {
-          router.push("/minha-conta-lider");
+          // router.push("/minha-conta-lider");
+          router.push("/interfaz-lider");
         } else if (rol === "Psicologo") {
           router.push("/minha-conta-psicologo");
         } else if (rol === "Educadorsocial") {
@@ -144,10 +145,10 @@ const Acesso = () => {
       }
     } catch (error) {
       console.error(
-        "Error al autenticar o cargar los datos del cliente:",
+        "Erro ao autenticar e carregar os dados do cliente:",
         error
       );
-      setError("Email ou senha inválidos");
+      setError("E-mail ou senha inválidos");
     }
   };
 
