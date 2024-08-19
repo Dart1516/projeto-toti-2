@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useState } from "react";
 import Image from "next/image";
@@ -32,27 +32,30 @@ export default function Home() {
   };
 
   return (
-    <div className='App'>
+    <div className="App">
       <Header />
       <div className="body">
         <section className="background-main">
           <main className="main">
             <div className="text-home">
               <div className="text-container">
-                <h1>
-                  TOTERS DO BEM,
-                   SOS RIO GRANDE DO SUL
-                </h1>
+                <h1>TOTERS DO BEM, SOS RIO GRANDE DO SUL</h1>
                 <p>
+                  Conectando voluntários e instituições para fortalecer o Rio Grande do Sul.
+                  Visando oferecer ajuda prática e esperança àqueles afetados pelas
+                  inundações no RS, disponibilizando serviços com psicólogos e
+                  educadores sociais.  
+                </p>
+                {/* <p>
                   Uma plataforma para conectar voluntários e recursos, visando
                   oferecer ajuda prática e esperança àqueles afetados pelas
                   inundações no RS, disponibilizando serviços com psicólogos e
                   educadores sociais.
-                </p>
+                </p> */}
               </div>
               <div className="sub-text-home">
-                <Link href="/servicos">quero ser voluntário</Link>
-                <Link href="/servicos">quero ser atendido</Link>
+                <Link href="/servicos">Quero ser voluntário</Link>
+                {/* <Link href="/servicos">Quero ser atendido</Link> */}
               </div>
             </div>
           </main>
@@ -63,7 +66,7 @@ export default function Home() {
               <strong>Como você pode ajudar?</strong>
             </Typography>
             <p>
-              sua ajuda é crucial para fornecer apoio emergencial às comunidades
+              Sua ajuda é crucial para fornecer apoio emergencial às comunidades
               afetadas, há várias maneiras pelas quais você pode contribuir:
             </p>
           </div>
@@ -77,7 +80,7 @@ export default function Home() {
                   height={300}
                 />
               </div>
-              <div className='card-text'>
+              <div className="card-text">
                 <h2>Voluntariado Psicológico</h2>
                 <p>
                   O especialista capaz de oferecer ajuda psicológica, dando as
@@ -85,7 +88,8 @@ export default function Home() {
                   emocional, tratará estresse pós-traumático e ajudara na
                   recuperação mental.
                 </p>
-                <Link href="/servicos">Junte-se a causa</Link>
+                {/* <Link href="/servicos">Junte-se a causa</Link> */}
+                <Link href="/psicologo">Junte-se a causa</Link>
               </div>
             </div>
             <div className="card-item">
@@ -97,14 +101,15 @@ export default function Home() {
                   height={300}
                 />
               </div>
-              <div className='card-text'>
+              <div className="card-text">
                 <h2>Educadores Sociais</h2>
                 <p>
                   Profissionais que trabalham para promover o bem-estar e a
                   inclusão social de individuos e comunidades afetadas pela
                   enchente e que precisam começar do zero.
                 </p>
-                <Link href="/servicos">Junte-se a causa</Link>
+                {/* <Link href="/servicos">Junte-se a causa</Link> */}
+                <Link href="/educador">Junte-se a causa</Link>
               </div>
             </div>
             <div className="card-item">
@@ -116,14 +121,15 @@ export default function Home() {
                   height={300}
                 />
               </div>
-              <div className='card-text'>
+              <div className="card-text">
                 <h2>Líderes Comunitários</h2>
                 <p>
-                  pessoas que organizam e mobilizam ações de apoio em situações
+                  Pessoas que organizam e mobilizam ações de apoio em situações
                   de crise, capazes de orientar e direcionar personas em alto
                   nivel de estresse.
                 </p>
-                <Link href="/servicos">Junte-se a causa</Link>
+                {/* <Link href="/servicos">Junte-se a causa</Link> */}
+                <Link href="/lider">Junte-se a causa</Link>
               </div>
             </div>
           </div>
@@ -142,32 +148,32 @@ export default function Home() {
               história
             </p>
             <div className="sub-text-video">
-              <Link href="/servicos">quero ser voluntário</Link>
+              <Link href="/servicos">Quero ser voluntário</Link>
             </div>
           </div>
         </div>
-        <div id='registro-processo'>
-          <div className='proceso-voluntariado'>
-            <h1>processo de voluntariado</h1>
+        <div id="registro-processo">
+          <div className="proceso-voluntariado">
+            <h1>Processo de voluntariado</h1>
             <div className="proceso-texto">
-              <h2 className="h2-processo-voluntariado">registro</h2>
+              <h2 className="h2-processo-voluntariado">Registro</h2>
               <p>
-                complete o <Link href="./JoinUs">formulário</Link> de inscrição
+                Complete o <Link href="./JoinUs">formulário</Link> de inscrição
                 com seus dados pessoais e experiência.
               </p>
             </div>
             <div className="proceso-texto">
               <h2 className="h2-processo-voluntariado">
-                para onde vão meus dados?
+                Para onde vão meus dados?
               </h2>
               <p>
                 {" "}
-                iram ao banco de dados que estará disponível para os lideres dos
+                Iram ao banco de dados que estará disponível para os lideres dos
                 refugiados, que necessitam da ajuda de você
               </p>
             </div>
             <div className="proceso-texto">
-              <h2 className="h2-processo-voluntariado">depois do cadastro</h2>
+              <h2 className="h2-processo-voluntariado">Depois do cadastro</h2>
               <p>
                 o Lider do refugiado que precise da sua ajuda entrará em
                 contato, e você será designado para uma área específica, com
@@ -175,37 +181,37 @@ export default function Home() {
               </p>
             </div>
             <div className="proceso-texto contato">
-              <h2 className="h2-processo-voluntariado">depois do contato</h2>
+              <h2 className="h2-processo-voluntariado">Depois do contato</h2>
               <p>
                 Comece a oferecer seu apoio às comunidades afetadas. O líder
                 fornecerá os detalhes do serviço.
               </p>
             </div>
           </div>
-          <div className='proceso-voluntariado liderança'>
-            <h1>processo de liderança</h1>
+          <div className="proceso-voluntariado liderança">
+            <h1>Processo de liderança</h1>
             <div className="proceso-texto-liderança">
-              <h2 className="h2-processo-voluntariado">registro</h2>
+              <h2 className="h2-processo-voluntariado">Registro</h2>
               <p>
-                complete o <Link href="./JoinUs">formulário</Link> de inscrição
+                Complete o <Link href="./JoinUs">formulário</Link> de inscrição
                 com seus dados pessoais
               </p>
             </div>
             <div className="proceso-texto-liderança">
               <h2 className="h2-processo-voluntariado">
-                para onde vão meus dados?
+                Para onde vão meus dados?
               </h2>
               <p> só você terá acesso a seus dados</p>
             </div>
             <div className="proceso-texto-liderança">
-              <h2 className="h2-processo-voluntariado">depois do cadastro</h2>
+              <h2 className="h2-processo-voluntariado">Depois do cadastro</h2>
               <p>
-                com o email e a senha que você cadastrou, terá acesso a lista
+                Com o email e a senha que você cadastrou, terá acesso a lista
                 dos voluntarios disponíveis para atendimento dos seus refugiados
               </p>
             </div>
             <div className="proceso-texto-liderança">
-              <h2 className="h2-processo-voluntariado">contato</h2>
+              <h2 className="h2-processo-voluntariado">Contato</h2>
               <p>
                 Será disponibilizado telefone e email do voluntario para você
                 entrar en contato e receber a ajuda que necessitam o mais rápido
