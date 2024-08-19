@@ -102,6 +102,11 @@
     height: 100%;
 }
 
+.card-toter>img {
+    width: 100%;
+    object-fit: cover;
+}
+
 .button-cards {
     display: none;
 }
