@@ -3,7 +3,6 @@
 import '../../../assets/styles/App.css';
 import '../../../assets/styles/SejaVoluntario.css';
 import '../../../assets/styles/AtendimentoFormulario.css';
-import Header from '../../../components/Header-NavMenu';
 import { useForm, Controller } from 'react-hook-form';
 import { novoClienteValidator } from './novoClienteValidator';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -50,9 +49,6 @@ export default function FormCliente() {
 
   return (
     <div className='App SV'>
-      <div className=''>
-        <Header />
-      </div>
       <div className='wrapper'>
         <span className='background-image'></span>
         <div className='form-aside'>

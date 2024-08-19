@@ -16,7 +16,6 @@ import {
 import { Api } from "../../../services/api";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Header from "../../../components/Header-NavMenu";
 import Visibility from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
 import { useUser } from "../../../api/UserContext";
@@ -166,9 +165,6 @@ const Acesso = () => {
 
   return (
     <div className="App SV">
-      <div className="App-header">
-        <Header />
-      </div>
       <div className="background-image"></div>
       <StyledContainer>
         <Typography variant="h4" color="black">

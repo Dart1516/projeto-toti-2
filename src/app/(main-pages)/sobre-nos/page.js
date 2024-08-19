@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Image from 'next/image'; // Importar el componente Image de next/image
 import Link from 'next/link'; // Importar el componente Link de next/link
-import Header from "../../../components/Header-NavMenu";
 import Footer from "../../../components/Footer";
 import "../../../assets/styles/Mobile-Menu.module.css";
 import "../../../assets/styles/App.css";
@@ -77,9 +76,6 @@ const About = () => {
 
   return (
     <>
-      <header className="App-header">
-        <Header />
-      </header>
       <div id="about">
         <Container
           maxWidth="xl"

@@ -1,6 +1,7 @@
 import { UserProvider } from '../api/UserContext';
 import {Poppins} from 'next/font/google'
 import '../assets/styles/global.css'
+import HeaderAndMenu from '@/components/Header-NavMenu';
 
 export const metadata = {
   title: "Toters Do Bem",
@@ -51,6 +52,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <UserProvider>
+          <HeaderAndMenu />
           {children}
         </UserProvider>
       </body>

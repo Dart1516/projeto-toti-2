@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from "react";
 import mobileStyles from "../assets/styles/Mobile-Menu.module.css";
 import Link from "next/link";
@@ -16,7 +17,7 @@ function MobileMenu() {
       {/* Header */}
       <nav className={mobileStyles["nav-container-mobile"]}>
         <div className={mobileStyles["menu-left"]}>
-          <Link href="../app">
+          <Link href="/">
             <div className={mobileStyles["mobile-logo"]}>
               <Image src={logo} alt="logo" width={150} height={50} />
             </div>

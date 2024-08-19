@@ -64,7 +64,6 @@
 
   .mobile-logo {
     display: flex;
-    max-width: 20%;
     max-height: 100%;
     height: 4rem;
   }

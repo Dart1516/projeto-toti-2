@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Header from "../../../components/Header-NavMenu";
 import "../../../assets/styles/App.css";
 import "../../../assets/styles/SejaVoluntario.css";
 import "../../../assets/styles/avisoLegal.css";
@@ -9,9 +8,6 @@ import "../../../assets/styles/avisoLegal.css";
 function TermoResponsabilidadePsicólogos() {
   return (
     <div className="App">
-      <div className="App-header">
-        <Header />
-      </div>
       <div className="container-body">
         <div className="aviso-legal">
           <h2>Termo de Responsabilidade para Psicólogos Voluntários</h2>

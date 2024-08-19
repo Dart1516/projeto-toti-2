@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import InputMask from "react-input-mask";
-import Header from "../../../components/Header-NavMenu";
 import "../../../assets/styles/App.css";
 import "../../../assets/styles/SejaVoluntario.css";
 import { FaTrash, FaPlus } from "react-icons/fa";
@@ -160,9 +159,6 @@ function FormularioEducadorSocial() {
 
   return (
     <div className="App SV">
-      <div className="App-header">
-        <Header />
-      </div>
       <div className="background-image"></div>
       <div className="container">
         <div className="container-titulo">

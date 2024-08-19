@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Typography } from "@mui/material";
 import Footer from "../components/Footer";
-import Header from "../components/Header-NavMenu";
 import Banner1 from "../assets/images/Banner1.svg";
 import Banner2 from "../assets/images/Banner2.svg";
 import Banner3 from "../assets/images/Banner3.svg";
@@ -33,7 +32,6 @@ export default function Home() {
 
   return (
     <div className="App">
-      <Header />
       <div className="body">
         <section className="background-main">
           <main className="main">
