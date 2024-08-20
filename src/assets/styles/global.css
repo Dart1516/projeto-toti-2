@@ -8,6 +8,7 @@
 :root {
   --desktop-width: 1264px;
   --mobile-width: 390px;
+  --header-height: 5.563rem;
 }
 
 body {

@@ -1,11 +1,10 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import "../../../assets/styles/App.css";
 import "../../../assets/styles/MinhaConta.css";
 import "../../../assets/styles/SejaVoluntario.css";
-import HeaderMinhaConta from "../../../components/Header-Login";
-import Footer from '../../../components/Footer';
-import { FaPlus, FaTrash } from 'react-icons/fa';
+import Footer from "../../../components/Footer";
+import { FaPlus, FaTrash } from "react-icons/fa";
 
 function MinhaConta() {
   const [formData, setFormData] = useState({
@@ -19,7 +18,7 @@ function MinhaConta() {
     area: "",
     tipodevoluntariado: "",
     observacao: "",
-    additionalDays: [{ day: "", hour: "" }]
+    additionalDays: [{ day: "", hour: "" }],
   });
 
   const handleDayChange = (index, event) => {
@@ -41,7 +40,6 @@ function MinhaConta() {
 
   return (
     <div className="App-Conta">
-      <HeaderMinhaConta />
       <div className="minhaConta">
         <div className="section">
           <h2 className="titulo-conta">Minha Conta</h2>
@@ -49,23 +47,48 @@ function MinhaConta() {
           <div className="inputs">
             <div className="input-field">
               <label htmlFor="cpf">CPF</label>
-              <input type="text" id="cpf" placeholder="CPF" className="input-text" />
+              <input
+                type="text"
+                id="cpf"
+                placeholder="CPF"
+                className="input-text"
+              />
             </div>
             <div className="input-field">
               <label htmlFor="nome">Nome completo</label>
-              <input type="text" id="nome" placeholder="Nome completo" className="input-text" />
+              <input
+                type="text"
+                id="nome"
+                placeholder="Nome completo"
+                className="input-text"
+              />
             </div>
             <div className="input-field">
               <label htmlFor="dataNascimento">Data de nascimento</label>
-              <input type="date" id="dataNascimento" placeholder="Data de nascimento" className="input-text" />
+              <input
+                type="date"
+                id="dataNascimento"
+                placeholder="Data de nascimento"
+                className="input-text"
+              />
             </div>
             <div className="input-field">
               <label htmlFor="telefone">Telefone</label>
-              <input type="text" id="telefone" placeholder="Telefone (WhatsApp)" className="input-text" />
+              <input
+                type="text"
+                id="telefone"
+                placeholder="Telefone (WhatsApp)"
+                className="input-text"
+              />
             </div>
             <div className="input-field">
               <label htmlFor="instagram">Instagram (opcional)</label>
-              <input type="text" id="instagram" placeholder="Instagram" className="input-text" />
+              <input
+                type="text"
+                id="instagram"
+                placeholder="Instagram"
+                className="input-text"
+              />
             </div>
             <div className="input-field">
               <label htmlFor="estado">Estado</label>
@@ -112,11 +135,21 @@ function MinhaConta() {
           <div className="inputs">
             <div className="input-field">
               <label htmlFor="crp">CRP</label>
-              <input type="text" id="crp" placeholder="CRP" className="input-text" />
+              <input
+                type="text"
+                id="crp"
+                placeholder="CRP"
+                className="input-text"
+              />
             </div>
             <div className="input-field">
               <label htmlFor="area">Área de especialização</label>
-              <input type="text" id="area" placeholder="Área de especialização" className="input-text" />
+              <input
+                type="text"
+                id="area"
+                placeholder="Área de especialização"
+                className="input-text"
+              />
             </div>
             <div className="input-field">
               <label htmlFor="tipodevoluntariado">Tipo de voluntariado</label>
@@ -139,7 +172,10 @@ function MinhaConta() {
           {formData.additionalDays.map((additionalDay, index) => (
             <div key={index} className="dia-disponible">
               <div>
-                <h4>Dia {index + 1}<span>*</span></h4>
+                <h4>
+                  Dia {index + 1}
+                  <span>*</span>
+                </h4>
                 <select
                   className="form-select"
                   name="day"
@@ -158,7 +194,9 @@ function MinhaConta() {
                 </select>
               </div>
               <div>
-                <h4>Hora<span>*</span></h4>
+                <h4>
+                  Hora<span>*</span>
+                </h4>
                 <select
                   className="form-select"
                   name="hour"
@@ -188,8 +226,10 @@ function MinhaConta() {
             </div>
           ))}
           <div className="button-dia-espacio" onClick={addDay}>
-          <FaPlus/>
-          <h4 onClick={addDay} className="texto-dia">Adicionar outro dia</h4>
+            <FaPlus />
+            <h4 onClick={addDay} className="texto-dia">
+              Adicionar outro dia
+            </h4>
           </div>
           <div className="buttons">
             <button>Cancelar</button>
@@ -201,7 +241,11 @@ function MinhaConta() {
           <h2 className="subtitulo-conta">Cadastro</h2>
           <div className="input-field">
             <label htmlFor="observacao">Observação</label>
-            <textarea id="observacao" placeholder="observacao" className="textarea-conta" />
+            <textarea
+              id="observacao"
+              placeholder="observacao"
+              className="textarea-conta"
+            />
           </div>
           <div className="buttons">
             <button>Cancelar</button>

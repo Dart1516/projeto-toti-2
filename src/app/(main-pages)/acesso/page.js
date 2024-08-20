@@ -1,27 +1,27 @@
 "use client";
 
-import React, { useState } from "react";
-import { Typography } from "@mui/material";
-import { styled } from "@mui/material";
+import { zodResolver } from "@hookform/resolvers/zod";
+import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
+import Visibility from "@mui/icons-material/VisibilityOutlined";
 import {
-  FormGroup,
-  FormControl,
-  InputLabel,
-  Input,
   Checkbox,
+  FormControl,
   FormControlLabel,
-  InputAdornment,
+  FormGroup,
   IconButton,
+  Input,
+  InputAdornment,
+  InputLabel,
+  styled,
+  Typography,
 } from "@mui/material";
-import { Api } from "../../../services/api";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Visibility from "@mui/icons-material/VisibilityOutlined";
-import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
-import { useUser } from "../../../api/UserContext";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useUser } from "../../../api/UserContext";
+import { Api } from "../../../services/api";
 
 const StyledContainer = styled("div")(({ theme }) => ({
   position: "fixed",
@@ -91,18 +91,17 @@ const StyledItems = styled("div")(() => ({
   alignItems: "center",
   padding: "1rem",
 }));
-  const schema = z.object({
-    email: z.string().email({ message: "E-mail inválido" }),
-    password: z
-      .string()
-      .min(6, { message: "A senha deve ter pelo menos 6 caracteres" }),
-  });
+const schema = z.object({
+  email: z.string().email({ message: "E-mail inválido" }),
+  password: z
+    .string()
+    .min(6, { message: "A senha deve ter pelo menos 6 caracteres" }),
+});
 
 const Acesso = () => {
   const [error, setError] = useState(null);
   const router = useRouter();
   const { setUser } = useUser();
-
 
   const {
     register,
@@ -116,10 +115,12 @@ const Acesso = () => {
     handleLogin(data);
   };
 
-  const handleLogin = async ({email, password}) => {
+  const handleLogin = async ({ email, password }) => {
     try {
       if (!email || !password) {
-        setError("Para continuar, por favor, preencha todos os campos obrigatórios.");
+        setError(
+          "Para continuar, por favor, preencha todos os campos obrigatórios."
+        );
         return;
       }
       const passwordString = String(password);
@@ -128,17 +129,17 @@ const Acesso = () => {
         email: normalizedEmail,
         password: passwordString,
       });
-      const { username, roleMessage: rol } = response.data;
+      setUser(response.data);
+      console.log("response", response);
+      const role = response.data.role;
 
-      setUser({ username, rol });
-
-      if (rol) {
-        if (rol === "Lider") {
+      if (role) {
+        if (role === "lider") {
           // router.push("/minha-conta-lider");
           router.push("/interfaz-lider");
-        } else if (rol === "Psicologo") {
+        } else if (role === "psicologo") {
           router.push("/minha-conta-psicologo");
-        } else if (rol === "Educadorsocial") {
+        } else if (role === "educador") {
           router.push("/minha-conta-educador");
         }
       }
@@ -212,7 +213,6 @@ const Acesso = () => {
               </InputLabel>
               <Input
                 type={showPassword ? "text" : "password"}
-
                 required
                 label="senha"
                 fullWidth
