@@ -1,6 +1,5 @@
 "use client";
 
-import { useUser } from "@/api/UserContext";
 import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
 import Visibility from "@mui/icons-material/VisibilityOutlined";
 import { IconButton, Input, InputAdornment } from "@mui/material";
@@ -35,7 +34,6 @@ function FormularioPsicologo() {
     verifyEmail: "",
     verifyPassword: "",
   });
-  const { setUser } = useUser();
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -74,9 +72,7 @@ function FormularioPsicologo() {
 
     try {
       const response = await Api.post("/cadastro/psicologos", dataToSend);
-      setUser(response.data);
-      localStorage.setItem("user", JSON.stringify(response.data));
-      console.log("dados enviados com sucesso:", response.data);
+
       router.push("../../obrigado-page");
     } catch (error) {
       console.error("Error al enviar datos:", error);
