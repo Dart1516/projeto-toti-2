@@ -6,28 +6,35 @@ footer {
 }
 
 .heder_nav_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 5.563rem;
-    width: 100%;
-    position: fixed;
-    z-index: 1000;
-    background: var(--color4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5.563rem;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  background: var(--color4);
 }
 
 .contenedor_de_opciones {
-    display: flex;
-    width: 100%;
-    max-width: var(--desktop-width);
-    margin-left: auto;
-    margin-right: auto;
-    height: 5.563rem;
-    z-index: 1000;
-    margin: 0;
-    justify-content: space-between;
-    align-self: center;
-    background: var(--color4);
+  font-family: "Jost Font";
+  font-size: 1.2em;
+
+  position: fixed;
+  top: 0;
+
+  max-width: 74.4vw;
+  width: 100%;
+  height: 5rem;
+  margin: 0;
+  padding: 0 60px;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-around;
+
+  background: var(--color4);
+  text-transform: uppercase;
 }
 
 .menu-left {
@@ -35,15 +42,21 @@ footer {
 }
 
 .opciones-izquierda {
+  width: 80%;
+  padding: 0 2rem;
+
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: right;
+
+  list-style: none;
 }
 
-.opciones-izquierda .auth-links{
+.opciones-izquierda .auth-links {
   position: relative;
 }
-.opciones-izquierda .auth-links::before{
+
+.opciones-izquierda .auth-links::before {
   content: "";
   position: absolute;
   width: 1px;
@@ -57,37 +70,44 @@ footer {
 
 
 .opciones-izquierda li {
-  list-style: none; /* Quita los puntos de la lista */
-  margin-right: 20px; /* Espacio entre cada opción */
+  list-style: none;
+  /* Quita los puntos de la lista */
+  margin-right: 20px;
+  /* Espacio entre cada opción */
 }
 
 .opciones-izquierda ul {
-  display: flex; /* Alinea las opciones en horizontal */
-  margin: 0; /* Quita el margen de la lista */
-  padding: 0; /* Quita el padding de la lista */
+  display: flex;
+  /* Alinea las opciones en horizontal */
+  margin: 0;
+  /* Quita el margen de la lista */
+  padding: 0;
+  /* Quita el padding de la lista */
 }
 
+.opciones-derecha {
+  width: 100%;
 
-.opciones-derecha { 
-    display: flex;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 
 .opciones-izquierda li a,
 .opciones-derecha li a {
-  text-decoration: none; /* Quita el subrayado del enlace */
+  text-decoration: none;
+  /* Quita el subrayado del enlace */
   color: var(--color6);
   font-weight: 700;
-  transition: 0.3s; /* Transición suave para el cambio de color del texto */
-  font-size: 14px;
+  transition: 0.3s;
+  /* Transición suave para el cambio de color del texto */
+  font-size: 0.8em;
   padding: 12px;
   text-transform: uppercase;
   border-radius: 8px;
 }
 
-.register-btn{
+.register-btn {
   background-color: var(--color1);
   color: #fff !important;
   padding: 14px 26px !important;
@@ -96,10 +116,13 @@ footer {
 
 /* Estilos para el contenedor de cada opción en hover */
 .opciones-izquierda li a:hover,
-.opciones-derecha li a:hover { /* Cambia el color de fondo al pasar el cursor */
-  color: var(--color4); /* Cambia el color del texto al pasar el cursor */
-  cursor: pointer; /* Cambia el cursor al pasar el cursor sobre el contenedor */
-  background-color: var(--color2);
+.opciones-derecha li a:hover {
+  /* Cambia el color de fondo al pasar el cursor */
+  color: var(--color2);
+  /* Cambia el color del texto al pasar el cursor */
+  cursor: pointer;
+  /* Cambia el cursor al pasar el cursor sobre el contenedor */
+  /* background-color: var(--color2); */
 }
 
 /* ----- logo view ----- */
@@ -118,11 +141,13 @@ footer {
 
 
 /*Para el ocultar este menu cuando este en modo teléfono*/
-  @media only screen and (max-width: 768px) {
-    .contenedor_de_opciones {
-      display: none;
-    
-  }}
+@media only screen and (max-width: 768px) {
+  .contenedor_de_opciones {
+    display: none;
+
+  }
+}
+
 /*
 *{
     border: solid green 2px ;
