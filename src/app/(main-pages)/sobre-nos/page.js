@@ -472,7 +472,7 @@ const About = () => {
                     Manuel Bernardo
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Toter
+                    Front End
                   </Typography>
                 </CardContent>
                 <CardActions>
