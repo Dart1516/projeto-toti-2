@@ -2,10 +2,9 @@
 
 import React, { useState } from "react";
 import InputMask from "react-input-mask";
-import Header from "../../../components/Header-NavMenu";
 import "../../../assets/styles/App.css";
 import "../../../assets/styles/SejaVoluntario.css";
-import { Api } from "../../../services/api";
+import { Api, ApiBrasil } from "../../../services/api";
 import { useRouter } from "next/navigation";
 import Visibility from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
@@ -14,19 +13,19 @@ import { InputAdornment, IconButton, Input } from "@mui/material";
 function FormularioLiderImigrante() {
   const router = useRouter();
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    cpf: "",
-    phoneNumber: "",
     organization: "",
     cnpj: "",
+    name: "",
+    cpf: "",
+    phoneNumber: "",
     area: "",
     state: "",
     address: "",
-    notes: "",
+    email: "",
+    verifyEmail: "",
     password: "",
     verifyPassword: "",
-    verifyEmail: "",
+    notes: "",
     termos: false,
   });
   const [passwordError, setPasswordError] = useState("");
@@ -34,21 +33,64 @@ function FormularioLiderImigrante() {
   const [emailMatchError, setEmailMatchError] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [errorEmail, setErrorEmail] = useState("");
+  const [errorCpf, setErrorCpf] = useState("");
+  const [errors, setErrorField] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordVerify, setShowPasswordVerify] = useState(false);
+  const handleTogglePasswordVerify = () => {
+    setShowPasswordVerify(!showPasswordVerify);
+  };
+  const [isCepFocused, setIsCepFocused] = useState(false);
+  const [addressAPi, setAddressAPi] = useState({
+    state: "",
+    street: "",
+    neighborhood: "",
+    city: "",
+    cep: "",
+  });
 
   const validateForm = (form) => {
     delete form.notes;
+    const emptyFields = [];
+    Object.keys(form).forEach((key) => {
+      if (!form[key]) {
+        emptyFields.push(key);
+      }
+    });
     const isNotEmpty = Object.keys(form).every((key) => form[key]);
-    if (!form.termos) {
-      setError("Por favor, aceite os termos e condições antes de enviar o formulário.");
-    } else if (!isNotEmpty) {
-      setError("Por favor, preencha os campos que faltam.");
+    if (emptyFields.length > 0) {
+      const firstEmptyField = emptyFields[0];
+      // Procura o 1 campo vazio e foca o cursor
+      const inputElement = document.querySelector(`#${firstEmptyField}`);
+      if (inputElement) {
+        inputElement.focus();
+      } else {
+        const inputElementByName = document.querySelector(
+          `input[name="${firstEmptyField}"]`
+        );
+        if (inputElementByName) {
+          inputElementByName.focus();
+        } else {
+          console.error(`Campo "${firstEmptyField}" não encontrado`);
+        }
+      }
+      setError(
+        "Para continuar, por favor, preencha todos os campos obrigatórios."
+      );
+      if (firstEmptyField === "termos" && !form.termos) {
+        setError(
+          "Para enviar o formulário, você precisa ler e concordar com os nossos termos e condições."
+        );
+      }
+    } else if (!form.termos) {
+      setError(
+        "Para enviar o formulário, você precisa ler e concordar com os nossos termos e condições."
+      );
     }
-    return isNotEmpty;
+    // return isNotEmpty;
+    return emptyFields.length === 0;
   };
-
-  const [errorEmail, setErrorEmail] = useState('');
-  const [errorCpf, setErrorCpf] = useState('');
-  const [errors, setErrorField] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,30 +100,38 @@ function FormularioLiderImigrante() {
       setIsLoading(false);
       return;
     }
-    const normalizedEmail = formData.email.toLowerCase();
+    const normalizedEmail = formData.email.toString().toLowerCase();
+    const adrressCEPAll = formData.address.split(",");
+    const stateCEP = adrressCEPAll[2].trim();
+    console.log("Estado", stateCEP);
     const dataToSend = {
       ...formData,
       notes: formData.notes || "",
       email: normalizedEmail,
+      state: stateCEP,
     };
 
     delete dataToSend.verifyEmail;
     delete dataToSend.verifyPassword;
-
     try {
       const response = await Api.post("/cadastro/lideres", dataToSend);
-      console.log("dados enviados com sucesso:", response.data);
-      router.push("../../thank-you-page");
+      console.log("Dados enviados com sucesso:", response.data);
+      router.push("../../obrigado-page");
     } catch (error) {
-      console.error("Error al enviar datos:", error);
-      if (error.response?.data?.message?.includes("CPF já cadastrado")) {
-        setErrorCpf("Usuario ja existe, CPF ja cadastrado");
-        setError("Error al enviar datos: CPF ja existe");
-      } else if (error.response?.data?.message?.includes("E-mail já cadastrado")) {
-        setErrorEmail("Usuario ja existe, Email ja cadastrado");
-        setError("Error al enviar datos: Email ja cadastrado");
+      console.error("Erro ao enviar dados:", error);
+      if (error.response?.data?.message?.includes("O CPF informado já está cadastrado")) {
+        setErrorCpf("O CPF informado já está cadastrado");
+        setError("Erro ao enviar dados: O CPF informado já está cadastrado");
+      } else if (
+        error.response?.data?.message?.includes("O E-mail informado já está cadastrado")
+      ) {
+        setErrorEmail("O E-mail informado já está cadastrado");
+        setError("Erro ao enviar dados: O E-mail informado já está cadastrado");
       } else {
-        setError("Error al enviar datos: " + (error.response?.data?.message || error.message));
+        setError(
+          "Erro ao enviar dados: " +
+            (error.response?.data?.message || error.message)
+        );
       }
     }
     setIsLoading(false);
@@ -110,18 +160,31 @@ function FormularioLiderImigrante() {
     }
 
     if (name === "verifyPassword") {
-      setPasswordMatchError(value !== formData.password ? "Las contraseñas no coinciden." : "");
+      setPasswordMatchError(
+        value !== formData.password ? " As senhas não coincidem." : ""
+      );
     }
 
     if (name === "verifyEmail") {
-      setEmailMatchError(value !== formData.email ? "Los correos electrónicos no coinciden." : "");
+      setEmailMatchError(
+        value !== formData.email ? "Os e-mails não coincidem." : ""
+      );
     }
     if (name === "email") {
       const emailValue = formData.email;
-      const isValidEmail = emailValue.length !== 0 && emailValue.match(/^[\w-.]+@[\w-.]+\.[a-zA-Z]{2,}$/i);
+      const isValidEmail =
+        emailValue.length !== 0 &&
+        emailValue.match(/^[\w-.]+@[\w-.]+\.[a-zA-Z]{2,}$/i);
       setErrorEmail(!isValidEmail);
     }
-    const validationFields = ["organization", "cnpj", "phoneNumber", "area", "state", "address"];
+    const validationFields = [
+      "organization",
+      "cnpj",
+      "phoneNumber",
+      "area",
+      "state",
+      "address",
+    ];
     for (const fieldName of validationFields) {
       const fieldValue = formData[fieldName];
       if (fieldValue.trim() === "") {
@@ -133,41 +196,82 @@ function FormularioLiderImigrante() {
 
   const validatePassword = (password) => {
     let errors = [];
+    // Escapar caracteres #*+&=,. (bug)antes de validar
+    const escapedPassword = password.replace(/[#*+&=,.]/g, "\\$&");
     if (!/(?=.*[a-z])/.test(password)) errors.push("Falta minúscula.");
     if (!/(?=.*[A-Z])/.test(password)) errors.push("Falta maiúscula.");
     if (!/(?=.*\d)/.test(password)) errors.push("Falta número.");
-    if (!/(?=.*[@#$%^&=])/.test(password)) errors.push("Falta símbolo. (@#$%&=)");
+    if (!/(?=.*[@$%^;])/.test(password)) errors.push("Falta símbolo. (@$%;)");
     if (password.length < 8) errors.push("A senha deve conter 8 caracteres.");
+    if (!/^[A-Za-z0-9!@$%^*()_{}|:;'<>/?~-]+$/.test(escapedPassword)) {
+      errors.push("Os caracteres (#*+&=,.) não são permitidos.");
+    }
     setPasswordError(errors);
   };
 
-  const [showPassword, setShowPassword] = useState(false);
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const [showPasswordVerify, setShowPasswordVerify] = useState(false);
-  const handleTogglePasswordVerify = () => {
-    setShowPasswordVerify(!showPasswordVerify);
-  };
+  async function handleCEPApi(e) {
+    //Usando a API Brasil para trouxer o endereço
+    const cepcode = e.target.value;
+    if (cepcode === "") {
+      setAddressAPi({
+        state: "",
+        street: "",
+        neighborhood: "",
+        city: "",
+        cep: "",
+      });
+    }
+    setIsCepFocused(false);
+    try {
+      const resp = await ApiBrasil.get(`/${cepcode}`);
+      setIsCepFocused(true);
+      setAddressAPi({
+        state: resp.data.state,
+        street: resp.data.street,
+        neighborhood: resp.data.neighborhood,
+        city: resp.data.city,
+        cep: resp.data.cep,
+      });
+      setFormData({
+        ...formData,
+        address: `${resp.data.street}, ${resp.data.neighborhood}, ${resp.data.state}, ${resp.data.cep}`,
+      });
+    } catch (error) {
+      console.error("Erro na API do CEP", error);
+      setAddressAPi({
+        state: "",
+        street: "",
+        neighborhood: "",
+        city: "",
+        cep: "",
+      });
+    }
+  }
 
   return (
     <div className="App SV">
-      <div className="App-header">
-        <Header />
-      </div>
       <div className="background-image"></div>
       <div className="container">
         <div className="container-titulo">
           <h2>SOS Rio Grande do Sul </h2>
-          <h2>Cadastro de Liderança de ONG para Imigrantes, refugiados e apátridas</h2>
+          <h2>
+            Cadastro de Liderança de ONG para Imigrantes, Refugiados e Apátridas
+          </h2>
         </div>
         <form className="general-inputs">
           <div className="inputs formCadastro">
             <div className="input-field">
-              <h4>1. Nome da ONG que representa<span>*</span></h4>
+              <h4>
+                1. Nome da ONG que representa<span>*</span>
+              </h4>
               <input
-                className={`input-text ${errors.organization ? "invalid" : "valid"}`}
+                className={`input-text ${
+                  errors.organization ? "invalid" : "valid"
+                }`}
                 type="text"
                 name="organization"
                 placeholder="Digite o nome da ONG"
@@ -177,7 +281,9 @@ function FormularioLiderImigrante() {
               />
             </div>
             <div className="input-field">
-              <h4>2. CNPJ Da ONG<span>*</span></h4>
+              <h4>
+                2. CNPJ da ONG<span>*</span>
+              </h4>
               <InputMask
                 mask="99.999.999/9999-99"
                 value={formData.cnpj}
@@ -186,12 +292,14 @@ function FormularioLiderImigrante() {
                 required
                 className={`input-text ${errors.cnpj ? "invalid" : ""}`}
                 name="cnpj"
-                pattern="\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}"
+                pattern="\d{2}\.\d{3}\.\d{3}\\d{4}-\d{2}"
                 onFocus={() => resetError()}
               />
             </div>
             <div className="input-field">
-              <h4>3. Nome Completo do Representante Legal<span>*</span></h4>
+              <h4>
+                3. Nome Completo do Representante Legal<span>*</span>
+              </h4>
               <input
                 className={`input-text ${errors.name ? "invalid" : "valid"}`}
                 type="text"
@@ -203,7 +311,9 @@ function FormularioLiderImigrante() {
               />
             </div>
             <div className="input-field">
-              <h4>4. CPF Do representante Legal <span>*</span></h4>
+              <h4>
+                4. CPF Do representante Legal <span>*</span>
+              </h4>
               <InputMask
                 mask="999.999.999-99"
                 value={formData.cpf}
@@ -217,7 +327,9 @@ function FormularioLiderImigrante() {
               {errorCpf && <p style={{ color: "#ae0000" }}>{errorCpf}</p>}
             </div>
             <div className="input-field">
-              <h4>5. Número do WhatsApp do Representante<span>*</span></h4>
+              <h4>
+                5. Número do WhatsApp do Representante<span>*</span>
+              </h4>
               <InputMask
                 mask="(99) 99999-9999"
                 value={formData.phoneNumber}
@@ -225,12 +337,16 @@ function FormularioLiderImigrante() {
                 placeholder="(DDD) Digite o número"
                 required
                 pattern="\(\d{2}\) \d{5}-\d{4}"
-                className={`input-text ${errors.phoneNumber ? "invalid" : "valid"}`}
+                className={`input-text ${
+                  errors.phoneNumber ? "invalid" : "valid"
+                }`}
                 name="phoneNumber"
               />
             </div>
             <div className="input-field">
-              <h4>6. Área em que trabalha <span>*</span></h4>
+              <h4>
+                6. Área em que trabalha <span>*</span>
+              </h4>
               <input
                 type="text"
                 name="area"
@@ -242,52 +358,39 @@ function FormularioLiderImigrante() {
               />
             </div>
             <div className="input-field">
-              <h4>7. Estado em que reside <span>*</span></h4>
-              <select
-                className={`form-select ${errors.organization ? "invalid" : "valid"}`}
-                name="state"
+              <h4>
+                7. CEP <span>*</span>
+              </h4>
+              <InputMask
+                mask="99999-999"
                 value={formData.state}
                 onChange={handleInputChange}
+                placeholder="Digite seu CEP O valor deve ser numérico"
                 required
-              >
-                <option value="">-Selecione-</option>
-                <option value="AC">Acre (AC)</option>
-  <option value="AL">Alagoas (AL)</option>
-  <option value="AP">Amapá (AP)</option>
-  <option value="AM">Amazonas (AM)</option>
-  <option value="BA">Bahia (BA)</option>
-  <option value="CE">Ceará (CE)</option>
-  <option value="DF">Distrito Federal (DF)</option>
-  <option value="ES">Espírito Santo (ES)</option>
-  <option value="GO">Goiás (GO)</option>
-  <option value="MA">Maranhão (MA)</option>
-  <option value="MT">Mato Grosso (MT)</option>
-  <option value="MS">Mato Grosso do Sul (MS)</option>
-  <option value="MG">Minas Gerais (MG)</option>
-  <option value="PA">Pará (PA)</option>
-  <option value="PB">Paraíba (PB)</option>
-  <option value="PR">Paraná (PR)</option>
-  <option value="PE">Pernambuco (PE)</option>
-  <option value="PI">Piauí (PI)</option>
-  <option value="RJ">Rio de Janeiro (RJ)</option>
-  <option value="RN">Rio Grande do Norte (RN)</option>
-  <option value="RS">Rio Grande do Sul (RS)</option>
-  <option value="RO">Rondônia (RO)</option>
-  <option value="RR">Roraima (RR)</option>
-  <option value="SC">Santa Catarina (SC)</option>
-  <option value="SP">São Paulo (SP)</option>
-  <option value="SE">Sergipe (SE)</option>
-  <option value="TO">Tocantins (TO)</option>
-</select>
+                className={`input-text ${errors.cep ? "invalid" : ""}`}
+                name="state"
+                pattern="\d{5}-\d{3}"
+                onFocus={() => resetError()}
+                onBlur={handleCEPApi}
+              />
             </div>
             <div className="input-field">
-              <h4>8. Endereço <span>*</span></h4>
+              <h4>
+                8. Endereço <span>*</span>
+              </h4>
               <input
                 type="text"
                 name="address"
-                value={formData.address}
+                disabled
+                // value={formData.address}
+                // value={`${addressAPi.street}, ${addressAPi.neighborhood}, ${addressAPi.state}`}
+                value={
+                  isCepFocused && addressAPi.street // Only show address if CEP is focused and API data is available
+                    ? `${addressAPi.street}, ${addressAPi.neighborhood}, ${addressAPi.state}, ${addressAPi.cep}`
+                    : ""
+                }
                 onChange={handleInputChange}
-                placeholder="Digite o endereço"
+                placeholder="Preencha o CEP"
                 required
                 className={`input-text ${errors.address ? "invalid" : "valid"}`}
               />
@@ -296,12 +399,20 @@ function FormularioLiderImigrante() {
 
           <div className="lembre-text">
             <h1>Lembre-se:</h1>
-            <p>Seu e-mail e senha cadastrados serão seu login para o acesso na plataforma</p>
-            <p>Após preencher todos os seus dados clique em <strong>Enviar</strong> e seu cadastro estará completo</p>
+            <p>
+              Seu e-mail e senha cadastrados serão seu login para o acesso na
+              plataforma
+            </p>
+            <p>
+              Após preencher todos os seus dados clique em{" "}
+              <strong>Enviar</strong> e seu cadastro estará completo
+            </p>
           </div>
           <div className="inputs formCadastro">
             <div className="input-field">
-              <h4>Email para cadastro<span>*</span></h4>
+              <h4>
+                Email para cadastro<span>*</span>
+              </h4>
               <input
                 type="email"
                 name="email"
@@ -309,14 +420,16 @@ function FormularioLiderImigrante() {
                 onChange={handleInputChange}
                 placeholder="Digite seu e-mail"
                 required
-                toLowercase
+                // toLowerCase
                 className={`input-text ${errorEmail ? "invalid" : "valid"}`}
                 onFocus={() => resetEmailError()}
               />
               {errorEmail && <p style={{ color: "#ae0000" }}>{errorEmail}</p>}
             </div>
             <div className="input-field">
-              <h4>Verificação do Email<span>*</span></h4>
+              <h4>
+                Verificação do Email<span>*</span>
+              </h4>
               <input
                 type="email"
                 name="verifyEmail"
@@ -324,12 +437,18 @@ function FormularioLiderImigrante() {
                 onChange={handleInputChange}
                 placeholder="Confirme o  seu e-mail"
                 required
-                className={`input-text ${emailMatchError ? "invalid" : "valid"}`}
+                className={`input-text ${
+                  emailMatchError ? "invalid" : "valid"
+                }`}
               />
-              {emailMatchError && <p style={{ color: "red" }}>{emailMatchError}</p>}
+              {emailMatchError && (
+                <p style={{ color: "red" }}>{emailMatchError}</p>
+              )}
             </div>
             <div className="input-field">
-              <h4>Senha<span>*</span></h4>
+              <h4>
+                Senha<span>*</span>
+              </h4>
               <Input
                 type={showPassword ? "text" : "password"}
                 name="password"
@@ -339,8 +458,10 @@ function FormularioLiderImigrante() {
                 required
                 className={`input-text ${passwordError ? "invalid" : "valid"}`}
                 inputProps={{
-                  pattern: "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_{}|:;'<>/?~])[A-Za-z0-9!@#$%^&*()_{}|:;'<>/?~]{8}$",
-                  
+                  //pattern: "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@$%^&*()_{}|:;'<>/?~])[A-Za-z0-9!@$%^&*()_{}|:;'<>/?~]{8}$",
+                  // https://regex101.com/ Para verificar o pattern
+                  pattern:
+                    "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@$%^&*git()_{}|:;'<>?~])[A-Za-z0-9!@$%^&*()_{}|:;'<>?~]{8}$",
                 }}
                 endAdornment={
                   <InputAdornment position="end">
@@ -359,7 +480,9 @@ function FormularioLiderImigrante() {
               )}
             </div>
             <div className="input-field">
-              <h4>Verificação de Senha<span>*</span></h4>
+              <h4>
+                Verificação de Senha<span>*</span>
+              </h4>
               <Input
                 type={showPasswordVerify ? "text" : "password"}
                 name="verifyPassword"
@@ -367,7 +490,9 @@ function FormularioLiderImigrante() {
                 onChange={handleInputChange}
                 placeholder="Confirme a sua senha"
                 required
-                className={`input-text ${passwordMatchError ? "invalid" : "valid"}`}
+                className={`input-text ${
+                  passwordMatchError ? "invalid" : "valid"
+                }`}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton onClick={handleTogglePasswordVerify}>
@@ -376,7 +501,9 @@ function FormularioLiderImigrante() {
                   </InputAdornment>
                 }
               />
-              {passwordMatchError && <p style={{ color: "red" }}>{passwordMatchError}</p>}
+              {passwordMatchError && (
+                <p style={{ color: "red" }}>{passwordMatchError}</p>
+              )}
             </div>
           </div>
           <div className="opcional">
@@ -402,7 +529,16 @@ function FormularioLiderImigrante() {
             />
             <label htmlFor="termos">
               Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de
-              meus dados pessoais por <a href="/avisoLegal" target="_blank">Toters do Bem</a> conforme explicado no seu <a href="/avisoLegal" target="_blank">Aviso Legal de Proteção de Dados</a>, que inclui: 1) a coordenação e gestão de voluntários, e 2) a comunicação sobre atividades e oportunidades relacionadas.
+              meus dados pessoais por{" "}
+              <a href="/avisoLegal" target="_blank">
+                Toters do Bem
+              </a>{" "}
+              conforme explicado no seu{" "}
+              <a href="/avisoLegal" target="_blank">
+                Aviso Legal de Proteção de Dados
+              </a>
+              , que inclui: 1) a coordenação e gestão de voluntários, e 2) a
+              comunicação sobre atividades e oportunidades relacionadas.
             </label>
           </div>
           {error && (

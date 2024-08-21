@@ -3,7 +3,6 @@
 import React from "react";
 import { FaUser, FaBuilding, FaBook, FaEllipsisH } from 'react-icons/fa';
 import Link from 'next/link'; 
-import Header from "../../../components/Header-NavMenu";
 import "../../../assets/styles/App.css";
 import "../../../assets/styles/Cadastro.css";
 import { Typography } from "@mui/material";
@@ -11,9 +10,6 @@ import { Typography } from "@mui/material";
 function Serviços() {
   return (
     <div className="App">
-      <div className="App-header">
-        <Header />
-      </div>
       <div className="background"></div>
       <div className="cadastro">
         <div className="cadastro-titulo">

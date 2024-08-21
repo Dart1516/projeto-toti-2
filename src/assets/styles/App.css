@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Jost Font";
+  src: url(/fonts/JostFont.ttf);
+}
+
 /*Colores*/
 
 :root {
@@ -9,8 +14,23 @@
   --color6: #444950;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
+  max-width: 74.4vw;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
   text-align: center;
+  width: 100vw;
+}
+
+.App-body {
+  font-family: "Jost Font";
 }
 
 .App-logo {
@@ -24,19 +44,6 @@
   }
 }
 
-
-.App-body {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-
 .App-link {
   color: #61dafb;
 }
@@ -45,8 +52,21 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
+@media only screen and (max-width: 380px) {
+  .App {
+    max-width: 380px;
+    width: 100%;
+    margin: 0;
+  }
+
+  .App-body {
+    width: 100%;
+    margin: 0 auto;
+  }
+}

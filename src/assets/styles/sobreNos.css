@@ -103,11 +103,14 @@
 
 }
 
-
-.button-cards {
-    display: none;
-      
+.card-toter>img {
+    width: 100%;
+    object-fit: cover;
+  /*  .button-cards {
+    display: none;*/ 
 }
+
+
 
 @media only screen and (max-width: 1070px) {
     .img-main-center>img {

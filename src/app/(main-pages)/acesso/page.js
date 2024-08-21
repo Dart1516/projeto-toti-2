@@ -3,14 +3,25 @@
 import React, { useState } from "react";
 import { Typography } from "@mui/material";
 import { styled } from "@mui/material";
-import { FormGroup, FormControl, InputLabel, Input, Checkbox, FormControlLabel, InputAdornment, IconButton } from "@mui/material";
+import {
+  FormGroup,
+  FormControl,
+  InputLabel,
+  Input,
+  Checkbox,
+  FormControlLabel,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
 import { Api } from "../../../services/api";
-import Link from 'next/link';
-import { useRouter } from 'next/navigation'; 
-import Header from "../../../components/Header-NavMenu";
-import Visibility from '@mui/icons-material/VisibilityOutlined';
-import VisibilityOff from '@mui/icons-material/VisibilityOffOutlined';
-import { useUser } from '../../../api/UserContext'; 
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import Visibility from "@mui/icons-material/VisibilityOutlined";
+import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
+import { useUser } from "../../../api/UserContext";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 
 const StyledContainer = styled("div")(({ theme }) => ({
   position: "fixed",
@@ -24,23 +35,26 @@ const StyledContainer = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   marginTop: "2rem",
-  [theme.breakpoints.up('xs')]: { // <= mobile
+  [theme.breakpoints.up("xs")]: {
+    // <= mobile
     padding: "5rem 1rem",
     width: "100vw",
   },
-  [theme.breakpoints.up('md')]: { // >=mobile
-    width: "70%"
-  }
+  [theme.breakpoints.up("md")]: {
+    // >=mobile
+    width: "70%",
+  },
 }));
 
-const StyledLogin = styled("div")(({ theme }) => ({
+const StyledLogin = styled("form")(({ theme }) => ({
   gap: "2rem",
   padding: "5rem 0",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
   width: "70%",
-  [theme.breakpoints.up('xs')]: { // <= mobile
+  [theme.breakpoints.up("xs")]: {
+    // <= mobile
     padding: "0",
   },
 }));
@@ -75,53 +89,66 @@ const StyledItems = styled("div")(() => ({
   flexDirection: "row",
   justifyContent: "space-between",
   alignItems: "center",
-  padding: "1rem"
+  padding: "1rem",
 }));
+  const schema = z.object({
+    email: z.string().email({ message: "E-mail inválido" }),
+    password: z
+      .string()
+      .min(6, { message: "A senha deve ter pelo menos 6 caracteres" }),
+  });
 
 const Acesso = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const router = useRouter();
-  const { user, setUser } = useUser();
-  
-  const handleLogin = async () => {
+  const { setUser } = useUser();
+
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit = (data) => {
+    handleLogin(data);
+  };
+
+  const handleLogin = async ({email, password}) => {
     try {
       if (!email || !password) {
-        setError("Por favor, preencha todos os campos");
+        setError("Para continuar, por favor, preencha todos os campos obrigatórios.");
         return;
       }
       const passwordString = String(password);
       const normalizedEmail = email.toLowerCase();
-      const response = await Api.post(`/login/usuarios?email=${normalizedEmail}&password=${passwordString}`);
+      const response = await Api.post(`/login/usuarios`, {
+        email: normalizedEmail,
+        password: passwordString,
+      });
       const { username, roleMessage: rol } = response.data;
-      
+
       setUser({ username, rol });
-      
+
       if (rol) {
-        if (rol === 'Lider') {
-          router.push("/minha-conta-lider"); 
-        } else if (rol === 'Psicologo') {
+        if (rol === "Lider") {
+          // router.push("/minha-conta-lider");
+          router.push("/interfaz-lider");
+        } else if (rol === "Psicologo") {
           router.push("/minha-conta-psicologo");
-        } else if (rol === 'Educadorsocial') {
+        } else if (rol === "Educadorsocial") {
           router.push("/minha-conta-educador");
         }
       }
     } catch (error) {
-      console.error("Error al autenticar o cargar los datos del cliente:", error);
-      setError("Email ou senha inválidos");
+      console.error(
+        "Erro ao autenticar e carregar os dados do cliente:",
+        error
+      );
+      setError("E-mail ou senha inválidos");
     }
-  };
-
-  const handleEmailChange = (event) => {
-    const lowercasedEmail = event.target.value.toLowerCase();
-    setEmail(lowercasedEmail);
-    setError(null);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-    setError(null);
   };
 
   const [rememberMe, setRememberMe] = useState(false);
@@ -138,18 +165,16 @@ const Acesso = () => {
 
   return (
     <div className="App SV">
-      <div className="App-header">
-        <Header />
-      </div>
       <div className="background-image"></div>
       <StyledContainer>
         <Typography variant="h4" color="black">
           Seja bem-vindo(a) de volta
         </Typography>
         <Typography variant="body">
-          Ainda não faz parte da equipe de voluntarios? <Link href="/servicos">Clique aquí.</Link>
+          Ainda não faz parte da equipe de voluntarios?{" "}
+          <Link href="/servicos">Clique aquí.</Link>
         </Typography>
-        <StyledLogin>
+        <StyledLogin onSubmit={handleSubmit(onSubmit)}>
           <FormGroup style={{ marginTop: "2rem" }}>
             <FormControl>
               <InputLabel
@@ -165,11 +190,13 @@ const Acesso = () => {
               </InputLabel>
               <Input
                 type="email"
-                value={email}
-                onChange={handleEmailChange}
+                {...register("email")}
                 required
                 className="input-text login"
               />
+              {errors.email && (
+                <p style={{ color: "red" }}>{errors.email.message}</p>
+              )}
             </FormControl>
             <FormControl style={{ marginTop: "20px" }}>
               <InputLabel
@@ -184,13 +211,13 @@ const Acesso = () => {
                 Senha
               </InputLabel>
               <Input
-                type={showPassword ? 'text' : 'password'}
-                value={password}
-                onChange={handlePasswordChange}
+                type={showPassword ? "text" : "password"}
+
                 required
                 label="senha"
                 fullWidth
                 className="input-text login"
+                {...register("password")}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton onClick={handleTogglePassword}>
@@ -199,6 +226,9 @@ const Acesso = () => {
                   </InputAdornment>
                 }
               />
+              {errors.password && (
+                <p style={{ color: "red" }}>{errors.password.message}</p>
+              )}
             </FormControl>
             <StyledItems>
               <FormControlLabel
@@ -206,14 +236,18 @@ const Acesso = () => {
                   <Checkbox
                     checked={rememberMe}
                     onChange={handleRememberMeChange}
-                    style={{ color: "black", width: "20px", marginRight: "1rem" }}
+                    style={{
+                      color: "black",
+                      width: "20px",
+                      marginRight: "1rem",
+                    }}
                   />
                 }
                 label="Lembrar de mim"
               />
               <StyledLink href="/recuperar-senha">Esqueceu a senha?</StyledLink>
             </StyledItems>
-            <StyledButton onClick={handleLogin}>Entrar</StyledButton>
+            <StyledButton>Entrar</StyledButton>
             {error && <p style={{ color: "red" }}>{error}</p>}{" "}
           </FormGroup>
         </StyledLogin>

@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-poppins);
+}
+
+:root {
+  --desktop-width: 1264px;
+  --mobile-width: 390px;
+}
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
