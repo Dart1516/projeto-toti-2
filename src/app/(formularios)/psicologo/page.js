@@ -1,17 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
-import InputMask from "react-input-mask";
-import { useRouter } from "next/navigation";
+import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
+import Visibility from "@mui/icons-material/VisibilityOutlined";
+import { IconButton, Input, InputAdornment } from "@mui/material";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { FaPlus, FaTrash } from "react-icons/fa";
+import InputMask from "react-input-mask";
 import "../../../assets/styles/App.css";
 import "../../../assets/styles/SejaVoluntario.css";
-import { FaTrash, FaPlus } from "react-icons/fa";
 import { Api } from "../../../services/api";
-import Visibility from "@mui/icons-material/VisibilityOutlined";
-import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
-import { InputAdornment, IconButton, Input } from "@mui/material";
-import Header from "../../../components/Header-NavMenu";
 
 function FormularioPsicologo() {
   const router = useRouter();
@@ -72,8 +71,8 @@ function FormularioPsicologo() {
     delete dataToSend.verifyPassword;
 
     try {
-      const response = await Api.post("/cadastro/psicólogos", dataToSend);
-      console.log("dados enviados com sucesso:", response.data);
+      const response = await Api.post("/cadastro/psicologos", dataToSend);
+
       router.push("../../obrigado-page");
     } catch (error) {
       console.error("Error al enviar datos:", error);
@@ -173,9 +172,6 @@ function FormularioPsicologo() {
 
   return (
     <div className="App SV">
-      <div className="App-header">
-        <Header />
-      </div>
       <div className="background-image"></div>
       <div className="container">
         <div className="container-titulo">

@@ -1,16 +1,16 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import React, { useState, useRef, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import "../assets/styles/Header-Minha-Conta.css";
 import Logo from "../assets/images/logos/toters-logo-green-dark.svg";
-import { useUser } from '../api/UserContext'; 
+import { useUser } from "../api/UserContext";
 
 function HeaderLogin() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const { user } = useUser();
+  const { user, setUser } = useUser();
 
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -30,37 +30,59 @@ function HeaderLogin() {
   };
 
   const getRolePath = () => {
-    switch (user.rol) {
-      case 'Lider':
+    switch (user.role) {
+      case "lider":
         return "/minha-conta-lider";
-      case 'Psicologo':
+      case "psicologo":
         return "/minha-conta-psicologo";
-      case 'Educadorsocial':
+      case "educador":
         return "/minha-conta-educador";
       default:
         return "/";
     }
   };
+  
+
+  const logout = () => {
+    setUser(null);
+    localStorage.removeItem("user");
+  }
+
+  if (!user) {
+    return (
+      <ul className="auth-links">
+        <li>
+          <Link href="/acesso" passHref>
+            Login
+          </Link>
+        </li>
+        <li>
+          <Link href="/servicos" passHref className="register-btn">
+            CADASTRAR
+          </Link>
+        </li>
+      </ul>
+    );
+  }
+
+  const name = user?.name?.split(" ")[0];
 
   return (
-    <div>
-      <nav className="menu-conta">
-        <div className="espacio-imagen">
-          <Image src={Logo} alt="Logo" className="imagen-menu" width={100} height={50} />
-        </div>
-        <div className="dropdown" ref={dropdownRef}>
-          <button className="dropbtn" onClick={toggleDropdown}>
-            Olá, <span>{user.username}!</span>
-          </button>
-          {dropdownOpen && (
-            <div className="dropdown-content show">
-              <Link href={getRolePath()}>Minha Conta</Link>
+    <div className="dropdown" ref={dropdownRef}>
+      <button className="dropbtn" onClick={toggleDropdown}>
+        Olá, <span>{name}!</span>
+      </button>
+      {dropdownOpen && (
+        <div className="dropdown-content show">
+          <Link href={getRolePath()}>Minha Conta</Link>
+          {
+            user.rol === "Lider" && (
               <Link href="/interfaz-lider">Lista de Voluntariados</Link>
-              <Link href="/">Sair</Link>
-            </div>
-          )}
+            )
+          }
+          <Link href="/" onClick={logout}>Sair</Link>
         </div>
-      </nav>
+      )}
     </div>
   );
 }

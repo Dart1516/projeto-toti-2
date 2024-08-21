@@ -116,7 +116,6 @@ function FormularioLiderImigrante() {
     delete dataToSend.verifyPassword;
     try {
       const response = await Api.post("/cadastro/lideres", dataToSend);
-      console.log("Dados enviados com sucesso:", response.data);
       router.push("../../obrigado-page");
     } catch (error) {
       console.error("Erro ao enviar dados:", error);

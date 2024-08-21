@@ -79,7 +79,6 @@ function FormularioEducadorSocial() {
 
     try {
       const response = await Api.post("/cadastro/lideres", dataToSend);
-      console.log("Dados enviados com sucesso:", response.data);
       router.push("../../obrigado-page");
     } catch (error) {
       console.error("Erro ao enviar os dados:", error);

@@ -1,14 +1,12 @@
-"use client"
-import React, { useState } from "react";
+"use client";
+import { useState } from "react";
+import { FaPlus, FaTrash } from "react-icons/fa";
 import "../../../assets/styles/App.css";
 import "../../../assets/styles/MinhaConta.css";
 import "../../../assets/styles/SejaVoluntario.css";
-import HeaderMinhaConta from "../../../components/Header-Login";
-import Footer from '../../../components/Footer';
-import { FaPlus, FaTrash } from 'react-icons/fa';
+import Footer from "../../../components/Footer";
 
 function MinhaContaEducador() {
-
   const [selectedOption, setSelectedOption] = useState(null);
   const handleOptionChange = (option) => {
     setSelectedOption(option);
@@ -25,7 +23,7 @@ function MinhaContaEducador() {
     area: "",
     tipodevoluntariado: "",
     observacao: "",
-    additionalDays: [{ day: "", hour: "" }]
+    additionalDays: [{ day: "", hour: "" }],
   });
 
   const handleInputChange = (event) => {
@@ -52,7 +50,6 @@ function MinhaContaEducador() {
 
   return (
     <div className="App-Conta">
-      <HeaderMinhaConta />
       <div className="minhaConta">
         <div className="section">
           <h2 className="titulo-conta">Minha Conta</h2>
@@ -274,7 +271,10 @@ function MinhaContaEducador() {
           {formData.additionalDays.map((additionalDay, index) => (
             <div key={index} className="dia-disponible">
               <div>
-                <h4>Dia {index + 1}<span>*</span></h4>
+                <h4>
+                  Dia {index + 1}
+                  <span>*</span>
+                </h4>
                 <select
                   className="form-select"
                   name="day"
@@ -293,7 +293,9 @@ function MinhaContaEducador() {
                 </select>
               </div>
               <div>
-                <h4>Hora<span>*</span></h4>
+                <h4>
+                  Hora<span>*</span>
+                </h4>
                 <select
                   className="form-select"
                   name="hour"
@@ -324,7 +326,9 @@ function MinhaContaEducador() {
           ))}
           <div className="button-dia-espacio" onClick={addDay}>
             <FaPlus />
-            <h4 onClick={addDay} className="texto-dia">Adicionar outro dia</h4>
+            <h4 onClick={addDay} className="texto-dia">
+              Adicionar outro dia
+            </h4>
           </div>
           <div className="input-field">
             <label htmlFor="observacao">Observação</label>

@@ -1,28 +1,27 @@
 "use client";
 
-import React, { useState } from "react";
-import { Typography } from "@mui/material";
-import { styled } from "@mui/material";
+import { zodResolver } from "@hookform/resolvers/zod";
+import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
+import Visibility from "@mui/icons-material/VisibilityOutlined";
 import {
-  FormGroup,
-  FormControl,
-  InputLabel,
-  Input,
   Checkbox,
+  FormControl,
   FormControlLabel,
-  InputAdornment,
+  FormGroup,
   IconButton,
+  Input,
+  InputAdornment,
+  InputLabel,
+  styled,
+  Typography,
 } from "@mui/material";
-import { Api } from "../../../services/api";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Visibility from "@mui/icons-material/VisibilityOutlined";
-import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
-import { useUser } from "../../../api/UserContext";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import Header from "../../../components/Header-NavMenu";
+import { useUser } from "../../../api/UserContext";
+import { Api } from "../../../services/api";
 
 const StyledContainer = styled("div")(({ theme }) => ({
   position: "fixed",
@@ -130,17 +129,17 @@ const Acesso = () => {
         email: normalizedEmail,
         password: passwordString,
       });
-      const { username, roleMessage: rol } = response.data;
+      setUser(response.data);
+      console.log("response", response);
+      const role = response.data.role;
 
-      setUser({ username, rol });
-
-      if (rol) {
-        if (rol === "Lider") {
+      if (role) {
+        if (role === "lider") {
           // router.push("/minha-conta-lider");
           router.push("/interfaz-lider");
-        } else if (rol === "Psicologo") {
+        } else if (role === "psicologo") {
           router.push("/minha-conta-psicologo");
-        } else if (rol === "Educadorsocial") {
+        } else if (role === "educador") {
           router.push("/minha-conta-educador");
         }
       }
@@ -167,9 +166,6 @@ const Acesso = () => {
 
   return (
     <div className="App SV">
-      <div className="App-header">
-        <Header />
-      </div>
       <div className="background-image"></div>
       <StyledContainer>
         <Typography variant="h4" color="black">

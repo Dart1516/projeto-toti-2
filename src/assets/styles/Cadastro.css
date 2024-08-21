@@ -40,7 +40,8 @@ body {
     justify-content: space-between;
     z-index: 1000;
     gap: 2rem;
-    min-height: 100vh;
+    min-height: 100%;
+    padding-top: 10rem;
 }
 
 .cadastro-titulo {

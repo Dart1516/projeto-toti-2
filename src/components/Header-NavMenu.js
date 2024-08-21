@@ -4,6 +4,7 @@ import Image from "next/image"; // Importar el componente Image de next/image
 import "../assets/styles/Header-NavMenu.css";
 import MobileMenu from "../components/Mobile-Menu.js";
 import logo from "../assets/images/logos/toters-logo-green-dark.svg";
+import HeaderLogin from "./Header-Login";
 
 function HeaderAndMenu() {
   return (
@@ -38,7 +39,7 @@ function HeaderAndMenu() {
               </Link>
             </li>
           </ul>
-          <ul className="auth-links">
+          {/* <ul className="auth-links">
             <li>
               <Link href="/acesso" passHref>
                 Login
@@ -49,7 +50,8 @@ function HeaderAndMenu() {
                 CADASTRAR
               </Link>
             </li>
-          </ul>
+          </ul> */}
+          <HeaderLogin />
         </div>
       </nav>
     </div>
