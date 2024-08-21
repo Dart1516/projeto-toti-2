@@ -1,11 +1,12 @@
-'use client';
+"use client";
 
-import '../../../assets/styles/App.css';
-import '../../../assets/styles/SejaVoluntario.css';
-import '../../../assets/styles/AtendimentoFormulario.css';
-import { useForm, Controller } from 'react-hook-form';
-import { novoClienteValidator } from './novoClienteValidator';
-import { zodResolver } from '@hookform/resolvers/zod';
+import "../../../assets/styles/App.css";
+import "../../../assets/styles/SejaVoluntario.css";
+import "../../../assets/styles/AtendimentoFormulario.css";
+import { useForm, Controller } from "react-hook-form";
+import { novoClienteValidator } from "./novoClienteValidator";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Header from "../../../components/Header-NavMenu";
 
 export default function FormCliente() {
   const {
@@ -18,7 +19,7 @@ export default function FormCliente() {
   });
 
   function formatCPF(value) {
-    const cleaned = ('' + value).replace(/\D/g, '');
+    const cleaned = ("" + value).replace(/\D/g, "");
     const match = cleaned.match(/^(\d{3})(\d{3})(\d{3})(\d{2})$/);
     if (match) {
       return `${match[1]}.${match[2]}.${match[3]}-${match[4]}`;
@@ -26,7 +27,7 @@ export default function FormCliente() {
     return value;
   }
   function formatPhoneNumber(value) {
-    const cleaned = ('' + value).replace(/\D/g, '');
+    const cleaned = ("" + value).replace(/\D/g, "");
     const match = cleaned.match(/^(\d{2})(\d{0,1})(\d{4})(\d{4})$/);
     if (match) {
       const areaCode = match[1];
@@ -34,7 +35,7 @@ export default function FormCliente() {
       const firstPart = match[3];
       const secondPart = match[4];
 
-      if (firstDigit === '') {
+      if (firstDigit === "") {
         return `(${areaCode})${firstPart}-${secondPart}`;
       } else {
         return `(${areaCode}) ${firstDigit} ${firstPart}-${secondPart}`;
@@ -48,35 +49,38 @@ export default function FormCliente() {
   }
 
   return (
-    <div className='App SV'>
-      <div className='wrapper'>
-        <span className='background-image'></span>
-        <div className='form-aside'>
-          <div className='container-titulo'>
-            <h2 style={{ color: 'black', fontSize: '32px' }}>
-              Quero ser atendido{' '}
+    <div className="App SV">
+      <div className="">
+        <Header />
+      </div>
+      <div className="wrapper">
+        <span className="background-image"></span>
+        <div className="form-aside">
+          <div className="container-titulo">
+            <h2 style={{ color: "black", fontSize: "32px" }}>
+              Quero ser atendido{" "}
             </h2>
-            <p style={{ textAlign: 'left' }}>
+            <p style={{ textAlign: "left" }}>
               Abaixo, você pode criar sua conta e receber ajuda para SOS Rio
               Grande do Sul.
             </p>
           </div>
-          <div className='form-container'>
-            <p className='form-title'>Dados pessoais</p>
+          <div className="form-container">
+            <p className="form-title">Dados pessoais</p>
             <form
-              className='inputs-container'
+              className="inputs-container"
               onSubmit={handleSubmit(onSubmit)}
             >
-              <div className='input-container'>
-                <label htmlFor='cpf'>CPF</label>
+              <div className="input-container">
+                <label htmlFor="cpf">CPF</label>
                 <Controller
-                  name='cpf'
+                  name="cpf"
                   control={control}
-                  defaultValue=''
+                  defaultValue=""
                   render={({ field }) => (
                     <input
-                      placeholder='000.000.000-00'
-                      className='input-reset'
+                      placeholder="000.000.000-00"
+                      className="input-reset"
                       max={14}
                       {...field}
                       onChange={(e) => {
@@ -87,51 +91,51 @@ export default function FormCliente() {
                   )}
                 />
                 {errors.cpf && (
-                  <p style={{ color: 'red', fontSize: '12px' }}>
+                  <p style={{ color: "red", fontSize: "12px" }}>
                     {errors.cpf.message}
                   </p>
                 )}
               </div>
-              <div className='input-container'>
-                <label htmlFor='nome'>Nome</label>
+              <div className="input-container">
+                <label htmlFor="nome">Nome</label>
                 <input
-                  className='input-reset'
-                  name='nome'
-                  placeholder='Nome completo'
-                  {...register('nome')}
+                  className="input-reset"
+                  name="nome"
+                  placeholder="Nome completo"
+                  {...register("nome")}
                 />
                 {errors.nome && (
-                  <p style={{ color: 'red', fontSize: '12px' }}>
+                  <p style={{ color: "red", fontSize: "12px" }}>
                     {errors.nome.message}
                   </p>
                 )}
               </div>
-              <div className='input-container'>
-                <label htmlFor='email'>Email</label>
+              <div className="input-container">
+                <label htmlFor="email">Email</label>
                 <input
-                  className='input-reset'
-                  name='email'
-                  placeholder='fulano@gmail.com'
-                  type='email'
-                  {...register('email')}
+                  className="input-reset"
+                  name="email"
+                  placeholder="fulano@gmail.com"
+                  type="email"
+                  {...register("email")}
                 />
                 {errors.email && (
-                  <p style={{ color: 'red', fontSize: '12px' }}>
+                  <p style={{ color: "red", fontSize: "12px" }}>
                     {errors.email.message}
                   </p>
                 )}
               </div>
-              <div className='input-container'>
-                <label htmlFor='numero'>Telefone</label>
+              <div className="input-container">
+                <label htmlFor="numero">Telefone</label>
                 <Controller
-                  name='numero'
+                  name="numero"
                   control={control}
-                  defaultValue=''
+                  defaultValue=""
                   render={({ field }) => (
                     <input
-                      placeholder='(00) 9 0000-0000'
-                      className='input-reset'
-                      type='tel'
+                      placeholder="(00) 9 0000-0000"
+                      className="input-reset"
+                      type="tel"
                       {...field}
                       onChange={(e) => {
                         const filteredValue = formatPhoneNumber(e.target.value);
@@ -141,12 +145,12 @@ export default function FormCliente() {
                   )}
                 />
                 {errors.numero && (
-                  <p style={{ color: 'red', fontSize: '12px' }}>
+                  <p style={{ color: "red", fontSize: "12px" }}>
                     {errors.numero.message}
                   </p>
                 )}
               </div>
-              <button className={`SV`} type='submit'>
+              <button className={`SV`} type="submit">
                 Enviar
               </button>
             </form>

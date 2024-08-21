@@ -22,6 +22,7 @@ import { useUser } from "../../../api/UserContext";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import Header from "../../../components/Header-NavMenu";
 
 const StyledContainer = styled("div")(({ theme }) => ({
   position: "fixed",
@@ -91,18 +92,17 @@ const StyledItems = styled("div")(() => ({
   alignItems: "center",
   padding: "1rem",
 }));
-  const schema = z.object({
-    email: z.string().email({ message: "E-mail inválido" }),
-    password: z
-      .string()
-      .min(6, { message: "A senha deve ter pelo menos 6 caracteres" }),
-  });
+const schema = z.object({
+  email: z.string().email({ message: "E-mail inválido" }),
+  password: z
+    .string()
+    .min(6, { message: "A senha deve ter pelo menos 6 caracteres" }),
+});
 
 const Acesso = () => {
   const [error, setError] = useState(null);
   const router = useRouter();
   const { setUser } = useUser();
-
 
   const {
     register,
@@ -116,10 +116,12 @@ const Acesso = () => {
     handleLogin(data);
   };
 
-  const handleLogin = async ({email, password}) => {
+  const handleLogin = async ({ email, password }) => {
     try {
       if (!email || !password) {
-        setError("Para continuar, por favor, preencha todos os campos obrigatórios.");
+        setError(
+          "Para continuar, por favor, preencha todos os campos obrigatórios."
+        );
         return;
       }
       const passwordString = String(password);
@@ -165,6 +167,9 @@ const Acesso = () => {
 
   return (
     <div className="App SV">
+      <div className="App-header">
+        <Header />
+      </div>
       <div className="background-image"></div>
       <StyledContainer>
         <Typography variant="h4" color="black">
@@ -212,7 +217,6 @@ const Acesso = () => {
               </InputLabel>
               <Input
                 type={showPassword ? "text" : "password"}
-
                 required
                 label="senha"
                 fullWidth

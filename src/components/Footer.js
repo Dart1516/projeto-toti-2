@@ -115,7 +115,7 @@ function Footer() {
           height={50}
         />
         <p>
-          Todos os direitos reservados | {currentMonth} {currentYear}
+          Todos os direitos reservados - {currentMonth} {currentYear}
         </p>
       </div>
     </div>

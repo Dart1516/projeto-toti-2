@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import Visibility from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
 import { InputAdornment, IconButton, Input } from "@mui/material";
+import Header from "../../../components/Header-NavMenu";
 
 function FormularioLiderImigrante() {
   const router = useRouter();
@@ -119,11 +120,17 @@ function FormularioLiderImigrante() {
       router.push("../../obrigado-page");
     } catch (error) {
       console.error("Erro ao enviar dados:", error);
-      if (error.response?.data?.message?.includes("O CPF informado já está cadastrado")) {
+      if (
+        error.response?.data?.message?.includes(
+          "O CPF informado já está cadastrado"
+        )
+      ) {
         setErrorCpf("O CPF informado já está cadastrado");
         setError("Erro ao enviar dados: O CPF informado já está cadastrado");
       } else if (
-        error.response?.data?.message?.includes("O E-mail informado já está cadastrado")
+        error.response?.data?.message?.includes(
+          "O E-mail informado já está cadastrado"
+        )
       ) {
         setErrorEmail("O E-mail informado já está cadastrado");
         setError("Erro ao enviar dados: O E-mail informado já está cadastrado");
@@ -254,6 +261,9 @@ function FormularioLiderImigrante() {
 
   return (
     <div className="App SV">
+      <div className="App-header">
+        <Header />
+      </div>
       <div className="background-image"></div>
       <div className="container">
         <div className="container-titulo">

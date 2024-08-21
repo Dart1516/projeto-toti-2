@@ -1,20 +1,26 @@
 "use client";
 
 import React from "react";
-import { FaUser, FaBuilding, FaBook, FaEllipsisH } from 'react-icons/fa';
-import Link from 'next/link'; 
+import { FaUser, FaBuilding, FaBook, FaEllipsisH } from "react-icons/fa";
+import Link from "next/link";
 import "../../../assets/styles/App.css";
 import "../../../assets/styles/Cadastro.css";
 import { Typography } from "@mui/material";
+import Header from "../../../components/Header-NavMenu";
 
 function Serviços() {
   return (
     <div className="App">
+      <div className="App-header">
+        <Header />
+      </div>
       <div className="background"></div>
       <div className="cadastro">
         <div className="cadastro-titulo">
           <h1>Cadastro Social</h1>
-          <Typography>selecione para qual formulário você gostaria de ser redirecionado.</Typography>
+          <Typography>
+            selecione para qual formulário você gostaria de ser redirecionado.
+          </Typography>
         </div>
         <div className="cuadro-opciones">
           <div className="opción">
@@ -50,13 +56,10 @@ function Serviços() {
               </div>
             </Link>
           </div>
-        
         </div>
         <div>
           <Link href="/">
-            <button className="botón-cadastro">
-              voltar
-            </button>
+            <button className="botón-cadastro">voltar</button>
           </Link>
         </div>
       </div>

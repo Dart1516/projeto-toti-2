@@ -3,8 +3,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Typography } from "@mui/material";
 import Footer from "../components/Footer";
+import Header from "../components/Header-NavMenu";
 import Banner1 from "../assets/images/Banner1.svg";
 import Banner2 from "../assets/images/Banner2.svg";
 import Banner3 from "../assets/images/Banner3.svg";
@@ -18,6 +18,8 @@ import lideres from "../assets/images/lideres.svg";
 import psicologa from "../assets/images/psicologa.svg";
 import "../assets/styles/App.css";
 import "../assets/styles/HomePage.css";
+import background from "../assets/images/banner-home.svg";
+import background_mobile from "../assets/images/banner-home2.png";
 import Video1 from "../assets/videos/home.mp4";
 
 export default function Home() {
@@ -32,37 +34,48 @@ export default function Home() {
 
   return (
     <div className="App">
-      <div className="body">
-        <section className="background-main">
-          <main className="main">
-            <div className="text-home">
-              <div className="text-container">
-                <h1>TOTERS DO BEM, SOS RIO GRANDE DO SUL</h1>
-                <p>
-                  Conectando voluntários e instituições para fortalecer o Rio
-                  Grande do Sul. Visando oferecer ajuda prática e esperança
-                  àqueles afetados pelas inundações no RS, disponibilizando
-                  serviços com psicólogos e educadores sociais.
-                </p>
-                {/* <p>
-                  Uma plataforma para conectar voluntários e recursos, visando
-                  oferecer ajuda prática e esperança àqueles afetados pelas
-                  inundações no RS, disponibilizando serviços com psicólogos e
-                  educadores sociais.
-                </p> */}
-              </div>
-              <div className="sub-text-home">
-                <Link href="/servicos">Quero ser voluntário</Link>
-                {/* <Link href="/servicos">Quero ser atendido</Link> */}
-              </div>
+      <Header />
+      <div className="App-body">
+        <section className="banner">
+          <Image
+            src={background}
+            alt="Toters do bem"
+            width={0}
+            height={0}
+            className="banner-image"
+          />
+          <Image
+            src={background_mobile}
+            alt="Toters do bem"
+            width={0}
+            height={0}
+            className="banner-image-mobile"
+          />
+
+          <div className="banner-content">
+            <div className="banner-title">
+              <h2>TOTERS DO BEM,</h2>
+              <h2>SOS RIO GRANDE DO SUL</h2>
             </div>
-          </main>
+            <hr className="banner-line" />
+            <div className="banner-subtitle">
+              <p>
+                Uma plataforma que <strong>conecta</strong> Psicólogos e
+                Educadores Sociais com um líder Comunitário para prestação de
+                serviço voluntário às vítimas das inundações no Rio Grande do
+                Sul.
+              </p>
+            </div>
+            <div className="banner-buttons">
+              <Link href="/servicos">quero ser voluntário</Link>
+              <Link href="/servicos">quero ser atendido</Link>
+            </div>
+          </div>
         </section>
-        <div className="voluntariado">
+        <section className="voluntariado">
           <div className="tipo-vo-texto">
-            <Typography variant="h3">
-              <strong>Como você pode ajudar?</strong>
-            </Typography>
+            <h2>Como você pode ajudar?</h2>
+            <hr />
             <p>
               Sua ajuda é crucial para fornecer apoio emergencial às comunidades
               afetadas, há várias maneiras pelas quais você pode contribuir:
@@ -86,8 +99,7 @@ export default function Home() {
                   emocional, tratará estresse pós-traumático e ajudara na
                   recuperação mental.
                 </p>
-                {/* <Link href="/servicos">Junte-se a causa</Link> */}
-                <Link href="/psicologo">Junte-se a causa</Link>
+                <Link href="/servicos">Junte-se a causa</Link>
               </div>
             </div>
             <div className="card-item">
@@ -106,8 +118,7 @@ export default function Home() {
                   inclusão social de individuos e comunidades afetadas pela
                   enchente e que precisam começar do zero.
                 </p>
-                {/* <Link href="/servicos">Junte-se a causa</Link> */}
-                <Link href="/educador">Junte-se a causa</Link>
+                <Link href="/servicos">Junte-se a causa</Link>
               </div>
             </div>
             <div className="card-item">
@@ -126,13 +137,12 @@ export default function Home() {
                   de crise, capazes de orientar e direcionar personas em alto
                   nivel de estresse.
                 </p>
-                {/* <Link href="/servicos">Junte-se a causa</Link> */}
-                <Link href="/lider">Junte-se a causa</Link>
+                <Link href="/servicos">Junte-se a causa</Link>
               </div>
             </div>
           </div>
-        </div>
-        <div className="video-espacio">
+        </section>
+        <section className="video-espacio">
           <div className="video">
             <video src={Video1} controls />
           </div>
@@ -146,32 +156,32 @@ export default function Home() {
               história
             </p>
             <div className="sub-text-video">
-              <Link href="/servicos">Quero ser voluntário</Link>
+              <Link href="/servicos">quero ser voluntário</Link>
             </div>
           </div>
-        </div>
-        <div id="registro-processo">
+        </section>
+        <section id="registro-processo">
           <div className="proceso-voluntariado">
             <h1>Processo de voluntariado</h1>
             <div className="proceso-texto">
-              <h2 className="h2-processo-voluntariado">Registro</h2>
+              <h2 className="h2-processo-voluntariado">registro</h2>
               <p>
-                Complete o <Link href="./JoinUs">formulário</Link> de inscrição
+                complete o <Link href="./JoinUs">formulário</Link> de inscrição
                 com seus dados pessoais e experiência.
               </p>
             </div>
             <div className="proceso-texto">
               <h2 className="h2-processo-voluntariado">
-                Para onde vão meus dados?
+                para onde vão meus dados?
               </h2>
               <p>
                 {" "}
-                Iram ao banco de dados que estará disponível para os lideres dos
+                iram ao banco de dados que estará disponível para os lideres dos
                 refugiados, que necessitam da ajuda de você
               </p>
             </div>
             <div className="proceso-texto">
-              <h2 className="h2-processo-voluntariado">Depois do cadastro</h2>
+              <h2 className="h2-processo-voluntariado">depois do cadastro</h2>
               <p>
                 o Lider do refugiado que precise da sua ajuda entrará em
                 contato, e você será designado para uma área específica, com
@@ -179,7 +189,7 @@ export default function Home() {
               </p>
             </div>
             <div className="proceso-texto contato">
-              <h2 className="h2-processo-voluntariado">Depois do contato</h2>
+              <h2 className="h2-processo-voluntariado">depois do contato</h2>
               <p>
                 Comece a oferecer seu apoio às comunidades afetadas. O líder
                 fornecerá os detalhes do serviço.
@@ -189,27 +199,27 @@ export default function Home() {
           <div className="proceso-voluntariado liderança">
             <h1>Processo de liderança</h1>
             <div className="proceso-texto-liderança">
-              <h2 className="h2-processo-voluntariado">Registro</h2>
+              <h2 className="h2-processo-voluntariado">registro</h2>
               <p>
-                Complete o <Link href="./JoinUs">formulário</Link> de inscrição
+                complete o <Link href="./JoinUs">formulário</Link> de inscrição
                 com seus dados pessoais
               </p>
             </div>
             <div className="proceso-texto-liderança">
               <h2 className="h2-processo-voluntariado">
-                Para onde vão meus dados?
+                para onde vão meus dados?
               </h2>
               <p> só você terá acesso a seus dados</p>
             </div>
             <div className="proceso-texto-liderança">
-              <h2 className="h2-processo-voluntariado">Depois do cadastro</h2>
+              <h2 className="h2-processo-voluntariado">depois do cadastro</h2>
               <p>
-                Com o email e a senha que você cadastrou, terá acesso a lista
-                dos voluntarios disponíveis para atendimento dos seus refugiados
+                com o email e a senha que você cadastrou, terá acesso a lista
+                dos voluntários disponíveis para atendimento dos seus refugiados
               </p>
             </div>
             <div className="proceso-texto-liderança">
-              <h2 className="h2-processo-voluntariado">Contato</h2>
+              <h2 className="h2-processo-voluntariado">contato</h2>
               <p>
                 Será disponibilizado telefone e email do voluntario para você
                 entrar en contato e receber a ajuda que necessitam o mais rápido
@@ -217,13 +227,13 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </div>
-        <div className="banner-espacio">
+        </section>
+        <section className="banner-espacio">
           <div className="texto-video">
             <h2>Faça parte dos que fazem a diferença</h2>
           </div>
-          <div className="desplazarImágenes">
-            <div className="contenedorImágenes">
+          <div className="desplazarImagenes">
+            <div className="contenedorImagenes">
               <Image
                 src={Banner1}
                 alt="galeria de fotos"
@@ -292,8 +302,8 @@ export default function Home() {
               />
             </div>
           </div>
-        </div>
-        <div className="perguntas-section">
+        </section>
+        <section className="perguntas-section">
           <h2 className="titulo-h2 second">Perguntas frequentes</h2>
           <div className="pergunta">
             <div className="pergunta-encabeçado">
@@ -345,7 +355,7 @@ export default function Home() {
             <div className="pergunta-encabeçado">
               <div className="titulo-pergunta">
                 <h2>03</h2>
-                <h1>Quem é que é o Líder Comunitario?</h1>
+                <h1>Quem é o Líder Comunitário?</h1>
               </div>
               <button
                 className={`sign ${activeIndices[2] ? "active" : ""}`}
@@ -417,7 +427,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </div>
+        </section>
       </div>
       <footer>
         <Footer />
