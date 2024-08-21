@@ -10,7 +10,9 @@ import "../../../assets/styles/Button.css";
 const ThankYou = () => {
   return (
     <div className="body-thank">
-          <Header/>
+    <div className="App-header">
+        <Header />
+      </div>
     <div className="thank-you-page">
       <h2>Agradecemos por seu registro!</h2>
       <p>Seu registro foi realizado com sucesso..</p>

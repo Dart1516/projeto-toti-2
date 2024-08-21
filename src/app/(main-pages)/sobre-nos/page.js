@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from 'next/image'; // Importar el componente Image de next/image
-import Link from 'next/link'; // Importar el componente Link de next/link
+import Image from "next/image"; // Importar el componente Image de next/image
+import Link from "next/link"; // Importar el componente Link de next/link
 import Footer from "../../../components/Footer";
 import "../../../assets/styles/Mobile-Menu.module.css";
 import "../../../assets/styles/App.css";
@@ -24,18 +24,22 @@ import AutorenewIcon from "@mui/icons-material/Autorenew";
 import SecurityIcon from "@mui/icons-material/Security";
 import PeopleIcon from "@mui/icons-material/People";
 import StarIcon from "@mui/icons-material/Star";
-import David from "../../../assets/images/toters/toter2.jpg";
-import manuel from "../../../assets/images/toters/toter4.jpg";
-import Daysi from "../../../assets/images/toters/toter1.jpg";
-import victor from "../../../assets/images/toters/toter3.jpg";
-import Cristian from "../../../assets/images/toters/toter5.jpg";
-import henry from "../../../assets/images/toters/toter6.jpg";
-import maria from "../../../assets/images/toters/toter7.jpg";
-import nadi from "../../../assets/images/toters/toter8.jpg";
-import Marianela from "../../../assets/images/toters/Marianela.jpeg";
-import Natalia from "../../../assets/images/toters/Natalia1.jpg";
-import avatar from "../../../assets/images/toters/avatar.jpeg";
+import barbara from "../../../assets/images/toters/Barbara.jpg";
+import bruno from "../../../assets/images/toters/Bruno.jpg";
+import camila from "../../../assets/images/toters/Camila.jpg";
+import david from "../../../assets/images/toters/David.jpg";
+import daysi from "../../../assets/images/toters/Daysi.jpg";
+import jani from "../../../assets/images/toters/Jani.png";
+import manuel from "../../../assets/images/toters/Manuel.jpg";
+import marianela from "../../../assets/images/toters/Maríanela.jpg";
+import maria from "../../../assets/images/toters/Maria.jpg";
+import miguel from "../../../assets/images/toters/Miguel.png";
+import Natalia from "../../../assets/images/toters/Nadi.jpeg";
+import luis from "../../../assets/images/toters/Luis.jpg";
+import avatar from "../../../assets/images/toters/Maríanela.jpg";
+import Daysi from "../../../assets/images/toters/Jani.png";
 import "../../../assets/styles/sobreNos.css";
+import Header from "../../../components/Header-NavMenu";
 
 const About = () => {
   const [showAllCards, setShowAllCards] = useState(false);
@@ -76,6 +80,9 @@ const About = () => {
 
   return (
     <>
+      <header className="App-header">
+        <Header />
+      </header>
       <div id="about">
         <Container
           maxWidth="xl"
@@ -111,7 +118,12 @@ const About = () => {
           <div className="grid-container-main reverse">
             {/* img da segunda div--------------------- */}
             <div className="img-main-center">
-              <StyledImg src={imgComunidade} alt="Voluntarios no RS" width={800} height={450} />
+              <StyledImg
+                src={imgComunidade}
+                alt="Voluntarios no RS"
+                width={800}
+                height={450}
+              />
               <span>
                 As Toters Marianela Arana & Mayfer Ramirez, são voluntarias no
                 RS
@@ -162,7 +174,12 @@ const About = () => {
             </div>
             {/* img da primeira div -------------------- */}
             <div className="img-main">
-              <StyledImg src={imagenGente} alt="Imagem sobre nós" width={800} height={450} />
+              <StyledImg
+                src={imagenGente}
+                alt="Imagem sobre nós"
+                width={800}
+                height={450}
+              />
             </div>
           </div>
           <Grid
@@ -308,15 +325,102 @@ const About = () => {
               color="black"
               fontWeight={700}
             >
-              Nossos Time
+              Nosso Time
               <hr className="hr center" />
             </Typography>
 
             <div id="grid-container-cards">
               <Card className="card-toter">
-                
-                <Image src={David} alt="David" title="David"  height={220} />
-                
+                <Image
+                  src={barbara}
+                  alt="barbara"
+                  title="barbara"
+                  height={190}
+                  width={190}
+                />
+
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                   Barbara Nery
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Mentor TI
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/barbarasemacento"
+                  >
+                    Github
+                  </Button>
+                </CardActions>
+              </Card>
+              <Card className="card-toter">
+                <Image
+                  src={bruno}
+                  alt="bruno"
+                  title="bruno"
+                  height={190}
+                  width={190}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                   Bruno de Souza
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Voluntário TI
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/brunoclaumari"
+                  >
+                    Github
+                  </Button>
+                </CardActions>
+              </Card>
+              <Card className="card-toter">
+                <Image
+                  src={camila}
+                  alt="camila"
+                  title="camila"
+                  height={190}
+                  width={190}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Camila Souza
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Voluntária TI
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/camiladz"
+                  >
+                    Github
+                  </Button>
+                </CardActions>
+              </Card>
+              
+              <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                <Image
+                  src={david}
+                  alt="david"
+                  title="david"
+                  height={190}
+                  width={190}
+                />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     David Puche
@@ -330,42 +434,27 @@ const About = () => {
                     size="small"
                     style={{ color: "black" }}
                     target="_blank"
-                    href="https://github.com/Dart1516"
+                    href="https://github.com/Danvddpf1"
                   >
                     Github
                   </Button>
                 </CardActions>
               </Card>
-              <Card className="card-toter">
-                
-                <Image src={victor} alt="victor" title="victor"  height={220} />
+              
+              <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                <Image
+                  src={daysi}
+                  alt="daysi"
+                  title="daysi"
+                  height={190}
+                  width={190}
+                />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    Víctor Alcala
+                    Diassibel Cotiz
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Toter
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    size="small"
-                    style={{ color: "black" }}
-                    target="_blank"
-                    href="https://github.com/Dart1516"
-                  >
-                    Github
-                  </Button>
-                </CardActions>
-              </Card>
-              <Card className="card-toter">
-                <Image src={Cristian} alt="Cristian" title="Cristian"  height={220} />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Cristhian Nunes
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Toter
+                    Lider TI - Back End
                   </Typography>
                 </CardContent>
                 <CardActions>
@@ -380,13 +469,19 @@ const About = () => {
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                <Image src={henry} alt="henry" title="henry"  height={220} />
+                <Image
+                  src={jani}
+                  alt="Daysi"
+                  title="Daysi"
+                  height={190}
+                  width={190}
+                />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    Henry Luna
+                    Jani Exaez
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Toter
+                   Voluntária TI
                   </Typography>
                 </CardContent>
                 <CardActions>
@@ -394,20 +489,26 @@ const About = () => {
                     size="small"
                     style={{ color: "black" }}
                     target="_blank"
-                    href="https://github.com/Dart1516"
+                    href="https://github.com/jexaez"
                   >
                     Github
                   </Button>
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                <Image src={Daysi} alt="Daysi" title="Daysi"  height={220} />
+                <Image
+                  src={luis}
+                  alt="luis"
+                  title="luis"
+                  height={190}
+                  width={190}
+                />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    Daysibel Cotiz
+                    Luis Cláudio
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Toter
+                    Voluntário TI
                   </Typography>
                 </CardContent>
                 <CardActions>
@@ -415,17 +516,23 @@ const About = () => {
                     size="small"
                     style={{ color: "black" }}
                     target="_blank"
-                    href="https://github.com/daysibel1175"
+                    href="https://github.com/luiz-claudio-rj"
                   >
                     Github
                   </Button>
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                <Image src={manuel} alt="manuel" title="manuel"  height={220} />
+                <Image
+                  src={manuel}
+                  alt="manuel"
+                  title="manuel"
+                  height={190}
+                  width={190}
+                />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    Manuel
+                    Manuel Bernardo
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     Toter
@@ -443,13 +550,19 @@ const About = () => {
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                <Image src={avatar} alt="avatar" title="avatar"  height={220} />
+                <Image
+                  src={marianela}
+                  alt="marianela"
+                  title="marianela"
+                  height={190}
+                  width={190}
+                />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    Yurisay
+                  Maríanela Arana
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Toter Desenho e Marketing
+                   Gestora de Projeto - Analista de Dados 
                   </Typography>
                 </CardContent>
                 <CardActions>
@@ -464,28 +577,13 @@ const About = () => {
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                <Image src={nadi} alt="nadi" title="nadi"  height={220} />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Nadi Duno
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Toter
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    size="small"
-                    style={{ color: "black" }}
-                    target="_blank"
-                    href="https://github.com/Dart1516"
-                  >
-                    Github
-                  </Button>
-                </CardActions>
-              </Card>
-              <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                <Image src={maria} alt="maria" title="maria"  height={220} />
+                <Image
+                  src={maria}
+                  alt="Marianela"
+                  title="Marianela"
+                  height={190}
+                  width={190}
+                />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     Maria Rondon
@@ -506,13 +604,46 @@ const About = () => {
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                <Image src={Marianela} alt="Marianela" title="Marianela"  height={220} />
+                <Image
+                  src={miguel}
+                  alt="miguel"
+                  title="miguel"
+                  height={190}
+                  width={190}
+                />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    Marianela Arana
+                    Miguel Lozada
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Toter, Analista de dados, Gestora do Projeto
+                    Voluntário TI
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/Lozada98"
+                  >
+                    Github
+                  </Button>
+                </CardActions>
+              </Card>
+              <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                <Image
+                  src={Natalia}
+                  alt="Natalia"
+                  title="Natalia"
+                  height={190}
+                  width={190}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Nadi Duno
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Toter
                   </Typography>
                 </CardContent>
                 <CardActions>
@@ -527,7 +658,68 @@ const About = () => {
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                <Image src={Natalia} alt="Natalia" title="Natalia"  height={220} />
+                <Image
+                  src={Natalia}
+                  alt="Natalia"
+                  title="Natalia"
+                  height={190}
+                  width={190}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Natalia Augusto
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    UX/UI Designer
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/Dart1516"
+                  >
+                    Github
+                  </Button>
+                </CardActions>
+              </Card>
+              
+              <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                <Image
+                  src={avatar}
+                  alt="avatar"
+                  title="avatar"
+                  height={190}
+                  width={190}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Barbara
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Voluntaria Mentor
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/Dart1516"
+                  >
+                    Github
+                  </Button>
+                </CardActions>
+              </Card>
+              <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                <Image
+                  src={Natalia}
+                  alt="Natalia"
+                  title="Natalia"
+                  height={190}
+                  width={190}
+                />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     Natalia Augusto
@@ -548,13 +740,75 @@ const About = () => {
                 </CardActions>
               </Card>
               <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                <Image src={avatar} alt="avatar" title="avatar"  height={220} />
+                <Image
+                  src={Natalia}
+                  alt="Natalia"
+                  title="Natalia"
+                  height={190}
+                  width={190}
+                />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    Barbara
+                    Natalia Augusto
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Voluntaria Mentor
+                    UX/UI Designer
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/Dart1516"
+                  >
+                    Github
+                  </Button>
+                </CardActions>
+              </Card>
+              
+              
+              <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                <Image
+                  src={Natalia}
+                  alt="Natalia"
+                  title="Natalia"
+                  height={190}
+                  width={190}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Natalia Augusto
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    UX/UI Designer
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button
+                    size="small"
+                    style={{ color: "black" }}
+                    target="_blank"
+                    href="https://github.com/Dart1516"
+                  >
+                    Github
+                  </Button>
+                </CardActions>
+              </Card>
+              <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+                <Image
+                  src={Natalia}
+                  alt="Natalia"
+                  title="Natalia"
+                  height={190}
+                  width={190}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Natalia Augusto
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    UX/UI Designer
                   </Typography>
                 </CardContent>
                 <CardActions>

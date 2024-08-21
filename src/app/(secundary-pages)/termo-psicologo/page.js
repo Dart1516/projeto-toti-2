@@ -4,18 +4,22 @@ import React from "react";
 import "../../../assets/styles/App.css";
 import "../../../assets/styles/SejaVoluntario.css";
 import "../../../assets/styles/avisoLegal.css";
+import Header from "../../../components/Header-NavMenu";
 
 function TermoResponsabilidadePsicólogos() {
   return (
     <div className="App">
+      <div className="App-header">
+        <Header />
+      </div>
       <div className="container-body">
         <div className="aviso-legal">
           <h2>Termo de Responsabilidade para Psicólogos Voluntários</h2>
 
           <div className="legal-content">
             <p>
-              Ao marcar a caixa abaixo, concordo com os seguintes
-              termos de responsabilidade como psicólogo voluntário de Toters do bem:
+              Ao marcar a caixa abaixo, concordo com os seguintes termos de
+              responsabilidade como psicólogo voluntário de Toters do bem:
             </p>
 
             <h3>1. Acordos de Sessões</h3>
@@ -71,9 +75,6 @@ function TermoResponsabilidadePsicólogos() {
               no CRP está ativo e sem pendências. Também estou cadastrado no
               Cadastro e-Psi, permitindo a psicoterapia no formato online.
             </p>
-
-   
-
           </div>
         </div>
       </div>

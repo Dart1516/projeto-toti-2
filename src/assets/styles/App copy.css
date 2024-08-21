@@ -1,0 +1,72 @@
+@font-face {
+  font-family: "Jost Font";
+  src: url(/fonts/JostFont.ttf);
+}
+
+/*Colores*/
+
+:root {
+  --color1: #084f54;
+  --color2: #FFB30B;
+  --color3: #001542;
+  --color4: #F0F0F0;
+  --color5: #7A7A7A;
+  --color6: #444950;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  max-width: 74.4vw;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  text-align: center;
+  width: 100vw;
+}
+
+.App-body {
+  font-family: "Jost Font";
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .App {
+    max-width: 380px;
+    width: 100%;
+    margin: 0;
+  }
+
+  .App-body {
+    width: 100%;
+    margin: 0 auto;
+  }
+}

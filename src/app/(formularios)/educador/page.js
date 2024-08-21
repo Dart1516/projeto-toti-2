@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import Visibility from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
 import { InputAdornment, IconButton, Input } from "@mui/material";
+import Header from "../../../components/Header-NavMenu";
 
 function FormularioEducadorSocial() {
   const router = useRouter();
@@ -46,7 +47,9 @@ function FormularioEducadorSocial() {
     delete form.notes;
     const isNotEmpty = Object.keys(form).every((key) => form[key]);
     if (!form.termos) {
-      setError("Por favor, aceite os termos e condições antes de enviar o formulário.");
+      setError(
+        "Por favor, aceite os termos e condições antes de enviar o formulário."
+      );
     } else if (!isNotEmpty) {
       setError("Por favor, preencha os campos que faltam.");
     }
@@ -82,11 +85,16 @@ function FormularioEducadorSocial() {
       if (error.response?.data?.message?.includes("CPF já cadastrado")) {
         setErrorCpf("Usuário já existe, CPF cadastrado");
         setError("Erro ao enviar os dados: CPF ja existe");
-      } else if (error.response?.data?.message?.includes("E-mail já cadastrado")) {
+      } else if (
+        error.response?.data?.message?.includes("E-mail já cadastrado")
+      ) {
         setErrorEmail("Usuario já existe, Email cadastrado");
         setError("Erro ao enviar dados: Email cadastrado");
       } else {
-        setError("Erro ao enviar dados: " + (error.response?.data?.message || error.message));
+        setError(
+          "Erro ao enviar dados: " +
+            (error.response?.data?.message || error.message)
+        );
       }
     }
     setIsLoading(false);
@@ -128,11 +136,15 @@ function FormularioEducadorSocial() {
     }
 
     if (name === "verifyPassword") {
-      setPasswordMatchError(value !== formData.password ? "As senhas não coincidem." : "");
+      setPasswordMatchError(
+        value !== formData.password ? "As senhas não coincidem." : ""
+      );
     }
 
     if (name === "verifyEmail") {
-      setEmailMatchError(value !== formData.email ? "Os emails não coincidem." : "");
+      setEmailMatchError(
+        value !== formData.email ? "Os emails não coincidem." : ""
+      );
     }
   };
 
@@ -151,13 +163,17 @@ function FormularioEducadorSocial() {
     if (!/(?=.*[a-z])/.test(password)) errors.push("Falta minúscula.");
     if (!/(?=.*[A-Z])/.test(password)) errors.push("Falta maiúscula.");
     if (!/(?=.*\d)/.test(password)) errors.push("Falta número.");
-    if (!/(?=.*[@#$%^&=])/.test(password)) errors.push("Falta símbolo. (@#$%&=)");
+    if (!/(?=.*[@#$%^&=])/.test(password))
+      errors.push("Falta símbolo. (@#$%&=)");
     if (password.length < 8) errors.push("A senha deve conter 8 caracteres.");
     setPasswordError(errors);
   };
 
   return (
     <div className="App SV">
+      <div className="App-header">
+        <Header />
+      </div>
       <div className="background-image"></div>
       <div className="container">
         <div className="container-titulo">
@@ -167,7 +183,9 @@ function FormularioEducadorSocial() {
         <form className="general-inputs">
           <div className="inputs formCadastro">
             <div className="input-field">
-              <h4>1. Nome Completo<span>*</span></h4>
+              <h4>
+                1. Nome Completo<span>*</span>
+              </h4>
               <input
                 className="input-text"
                 type="text"
@@ -179,7 +197,9 @@ function FormularioEducadorSocial() {
               />
             </div>
             <div className="input-field">
-              <h4>2. CPF<span>*</span></h4>
+              <h4>
+                2. CPF<span>*</span>
+              </h4>
               <InputMask
                 mask="999.999.999-99"
                 value={formData.cpf}
@@ -193,7 +213,9 @@ function FormularioEducadorSocial() {
               {errorCpf && <p style={{ color: "red" }}>{errorCpf}</p>}
             </div>
             <div className="input-field">
-              <h4>3. Data de Nascimento<span>*</span></h4>
+              <h4>
+                3. Data de Nascimento<span>*</span>
+              </h4>
               <input
                 className="input-text"
                 type="date"
@@ -204,7 +226,9 @@ function FormularioEducadorSocial() {
               />
             </div>
             <div className="input-field">
-              <h4>4. Número do WhatsApp<span>*</span></h4>
+              <h4>
+                4. Número do WhatsApp<span>*</span>
+              </h4>
               <InputMask
                 mask="(99) 99999-9999"
                 value={formData.phoneNumber}
@@ -228,7 +252,9 @@ function FormularioEducadorSocial() {
               />
             </div>
             <div className="input-field">
-              <h4>6. Profession<span>*</span></h4>
+              <h4>
+                6. Profession<span>*</span>
+              </h4>
               <input
                 className="input-text"
                 type="text"
@@ -240,7 +266,9 @@ function FormularioEducadorSocial() {
               />
             </div>
             <div className="input-field">
-              <h4>7. Certificado<span>*</span></h4>
+              <h4>
+                7. Certificado<span>*</span>
+              </h4>
               <input
                 type="text"
                 name="certificate"
@@ -252,7 +280,9 @@ function FormularioEducadorSocial() {
               />
             </div>
             <div className="input-field">
-              <h4>8. Estado <span>*</span></h4>
+              <h4>
+                8. Estado <span>*</span>
+              </h4>
               <select
                 className="form-select"
                 name="state"
@@ -286,7 +316,9 @@ function FormularioEducadorSocial() {
               </select>
             </div>
             <div className="input-field">
-              <h4>9. Cidade<span>*</span></h4>
+              <h4>
+                9. Cidade<span>*</span>
+              </h4>
               <input
                 type="text"
                 name="city"
@@ -298,7 +330,9 @@ function FormularioEducadorSocial() {
               />
             </div>
             <div className="input-field">
-              <h4>10. Bairro <span>*</span></h4>
+              <h4>
+                10. Bairro <span>*</span>
+              </h4>
               <input
                 type="text"
                 name="neighborhood"
@@ -311,7 +345,10 @@ function FormularioEducadorSocial() {
             </div>
           </div>
           <div className="form-group formulario">
-            <h4>Disponibilidade para prestar serviço presencial na sua cidade ou bairro <span>*</span></h4>
+            <h4>
+              Disponibilidade para prestar serviço presencial na sua cidade ou
+              bairro <span>*</span>
+            </h4>
             <select
               className="form-select"
               name="availability"
@@ -339,7 +376,10 @@ function FormularioEducadorSocial() {
             <div className="form-group formulario" key={index}>
               <div className="dia-disponible">
                 <div>
-                  <h4>Dia Disponível {index + 1}<span>*</span></h4>
+                  <h4>
+                    Dia Disponível {index + 1}
+                    <span>*</span>
+                  </h4>
                   <select
                     className="form-select"
                     name="day"
@@ -358,7 +398,10 @@ function FormularioEducadorSocial() {
                   </select>
                 </div>
                 <div>
-                  <h4>Hora Disponível {index + 1}<span>*</span></h4>
+                  <h4>
+                    Hora Disponível {index + 1}
+                    <span>*</span>
+                  </h4>
                   <select
                     className="form-select"
                     name="hour"
@@ -383,7 +426,10 @@ function FormularioEducadorSocial() {
                   </select>
                 </div>
                 {index > 0 && (
-                  <FaTrash onClick={() => removeDay(index)} className="borrar" />
+                  <FaTrash
+                    onClick={() => removeDay(index)}
+                    className="borrar"
+                  />
                 )}
                 {index === additionalDays.length - 1 && (
                   <button type="button" onClick={() => addDay()}>
@@ -395,12 +441,20 @@ function FormularioEducadorSocial() {
           ))}
           <div className="lembre-text">
             <h1>Lembre-se:</h1>
-            <p>Seu e-mail e senha cadastrados serão seu login para o acesso na plataforma</p>
-            <p>Após preencher todos os seus dados clique em <strong>Enviar</strong> e seu cadastro estará completo</p>
+            <p>
+              Seu e-mail e senha cadastrados serão seu login para o acesso na
+              plataforma
+            </p>
+            <p>
+              Após preencher todos os seus dados clique em{" "}
+              <strong>Enviar</strong> e seu cadastro estará completo
+            </p>
           </div>
           <div className="inputs formCadastro">
             <div className="input-field">
-              <h4>Email para cadastro<span>*</span></h4>
+              <h4>
+                Email para cadastro<span>*</span>
+              </h4>
               <input
                 type="email"
                 name="email"
@@ -413,7 +467,9 @@ function FormularioEducadorSocial() {
               {errorEmail && <p style={{ color: "red" }}>{errorEmail}</p>}
             </div>
             <div className="input-field">
-              <h4>Verificação do Email<span>*</span></h4>
+              <h4>
+                Verificação do Email<span>*</span>
+              </h4>
               <input
                 type="email"
                 name="verifyEmail"
@@ -423,10 +479,14 @@ function FormularioEducadorSocial() {
                 required
                 className="input-text"
               />
-              {emailMatchError && <p style={{ color: "#ae0000" }}>{emailMatchError}</p>}
+              {emailMatchError && (
+                <p style={{ color: "#ae0000" }}>{emailMatchError}</p>
+              )}
             </div>
             <div className="input-field">
-              <h4>Senha<span>*</span></h4>
+              <h4>
+                Senha<span>*</span>
+              </h4>
               <Input
                 type={showPassword ? "text" : "password"}
                 name="password"
@@ -434,9 +494,12 @@ function FormularioEducadorSocial() {
                 onChange={handleInputChange}
                 placeholder="Crie sua senha"
                 required
-                className={passwordError ? "input-text error-border" : "input-text"}
+                className={
+                  passwordError ? "input-text error-border" : "input-text"
+                }
                 inputProps={{
-                  pattern: "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_{}|:;'<>/?~])[A-Za-z0-9!@#$%^&*()_{}|:;'<>/?~]{8}$",
+                  pattern:
+                    "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_{}|:;'<>/?~])[A-Za-z0-9!@#$%^&*()_{}|:;'<>/?~]{8}$",
                   maxLength: 8,
                 }}
                 endAdornment={
@@ -456,7 +519,9 @@ function FormularioEducadorSocial() {
               )}
             </div>
             <div className="input-field">
-              <h4>Verificação de Senha<span>*</span></h4>
+              <h4>
+                Verificação de Senha<span>*</span>
+              </h4>
               <Input
                 type={showPasswordVerify ? "text" : "password"}
                 name="verifyPassword"
@@ -473,7 +538,9 @@ function FormularioEducadorSocial() {
                   </InputAdornment>
                 }
               />
-              {passwordMatchError && <p style={{ color: "#ae0000" }}>{passwordMatchError}</p>}
+              {passwordMatchError && (
+                <p style={{ color: "#ae0000" }}>{passwordMatchError}</p>
+              )}
             </div>
           </div>
           <div className="opcional">
@@ -499,7 +566,16 @@ function FormularioEducadorSocial() {
             />
             <label htmlFor="termos">
               Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de
-              meus dados pessoais por <a href="/avisoLegal" target="_blank">Toters do bem</a> conforme explicado no seu <a href="/avisoLegal" target="_blank">Aviso Legal de Proteção de Dados</a>, que inclui: 1) a coordenação e gestão de voluntários, e 2) a comunicação sobre atividades e oportunidades relacionadas.
+              meus dados pessoais por{" "}
+              <a href="/avisoLegal" target="_blank">
+                Toters do bem
+              </a>{" "}
+              conforme explicado no seu{" "}
+              <a href="/avisoLegal" target="_blank">
+                Aviso Legal de Proteção de Dados
+              </a>
+              , que inclui: 1) a coordenação e gestão de voluntários, e 2) a
+              comunicação sobre atividades e oportunidades relacionadas.
             </label>
           </div>
           {error && (
