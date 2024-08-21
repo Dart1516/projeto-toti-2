@@ -30,7 +30,7 @@ function HeaderLogin() {
   };
 
   const getRolePath = () => {
-    switch (user.rol) {
+    switch (user.role) {
       case "lider":
         return "/minha-conta-lider";
       case "psicologo":
@@ -41,6 +41,7 @@ function HeaderLogin() {
         return "/";
     }
   };
+  
 
   const logout = () => {
     setUser(null);

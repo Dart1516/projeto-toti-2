@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const Api = axios.create({
-    baseURL : "https://api-rs-pquf.onrender.com/"
+    baseURL : "http://localhost:2500"
 })
 
 export const ApiBrasil = axios.create({

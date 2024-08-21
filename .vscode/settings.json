@@ -22,5 +22,15 @@
         "Styledbutton",
         "tipodevoluntariado",
         "Yurisay"
-    ]
+    ],
+    "javascript.validate.enable": true,
+    "typescript.validate.enable": true,
+    "editor.formatOnType": true,
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "javascript.suggest.autoImports": true,
+    "typescript.suggest.autoImports": true,
+    "js/ts.implicitProjectConfig.checkJs": true,
+    "js/ts.implicitProjectConfig.strictFunctionTypes": true
 }

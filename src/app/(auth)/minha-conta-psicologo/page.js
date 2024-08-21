@@ -1,12 +1,17 @@
 "use client";
-import React, { useState } from "react";
-import "../../../assets/styles/App.css";
-import "../../../assets/styles/MinhaConta.css";
-import "../../../assets/styles/SejaVoluntario.css";
-import Footer from "../../../components/Footer";
+import { useUser } from "@/api/UserContext";
+import "@/assets/styles/App.css";
+import "@/assets/styles/MinhaConta.css";
+import "@/assets/styles/SejaVoluntario.css";
+import { Router } from "next/router";
+import { useEffect, useState } from "react";
 import { FaPlus, FaTrash } from "react-icons/fa";
+import Footer from "../../../components/Footer";
+import MinhaContaForm from "./components/minha-conta";
 
 function MinhaConta() {
+  const { user } = useUser();
+
   const [formData, setFormData] = useState({
     cpf: "",
     nome: "",
@@ -38,97 +43,16 @@ function MinhaConta() {
     setFormData({ ...formData, additionalDays: values });
   };
 
+  useEffect(() => {
+    if (!user) {
+      Router.push("/login");
+    }
+  }, [user]);
+
   return (
     <div className="App-Conta">
       <div className="minhaConta">
-        <div className="section">
-          <h2 className="titulo-conta">Minha Conta</h2>
-          <h2 className="subtitulo-conta">Dados Pessoais</h2>
-          <div className="inputs">
-            <div className="input-field">
-              <label htmlFor="cpf">CPF</label>
-              <input
-                type="text"
-                id="cpf"
-                placeholder="CPF"
-                className="input-text"
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="nome">Nome completo</label>
-              <input
-                type="text"
-                id="nome"
-                placeholder="Nome completo"
-                className="input-text"
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="dataNascimento">Data de nascimento</label>
-              <input
-                type="date"
-                id="dataNascimento"
-                placeholder="Data de nascimento"
-                className="input-text"
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="telefone">Telefone</label>
-              <input
-                type="text"
-                id="telefone"
-                placeholder="Telefone (WhatsApp)"
-                className="input-text"
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="instagram">Instagram (opcional)</label>
-              <input
-                type="text"
-                id="instagram"
-                placeholder="Instagram"
-                className="input-text"
-              />
-            </div>
-            <div className="input-field">
-              <label htmlFor="estado">Estado</label>
-              <select id="estado" className="input-text">
-                <option value="">Selecione um estado</option>
-                <option value="AC">Acre (AC)</option>
-                <option value="AL">Alagoas (AL)</option>
-                <option value="AP">Amapá (AP)</option>
-                <option value="AM">Amazonas (AM)</option>
-                <option value="BA">Bahia (BA)</option>
-                <option value="CE">Ceará (CE)</option>
-                <option value="DF">Distrito Federal (DF)</option>
-                <option value="ES">Espírito Santo (ES)</option>
-                <option value="GO">Goiás (GO)</option>
-                <option value="MA">Maranhão (MA)</option>
-                <option value="MT">Mato Grosso (MT)</option>
-                <option value="MS">Mato Grosso do Sul (MS)</option>
-                <option value="MG">Minas Gerais (MG)</option>
-                <option value="PA">Pará (PA)</option>
-                <option value="PB">Paraíba (PB)</option>
-                <option value="PR">Paraná (PR)</option>
-                <option value="PE">Pernambuco (PE)</option>
-                <option value="PI">Piauí (PI)</option>
-                <option value="RJ">Rio de Janeiro (RJ)</option>
-                <option value="RN">Rio Grande do Norte (RN)</option>
-                <option value="RS">Rio Grande do Sul (RS)</option>
-                <option value="RO">Rondônia (RO)</option>
-                <option value="RR">Roraima (RR)</option>
-                <option value="SC">Santa Catarina (SC)</option>
-                <option value="SP">São Paulo (SP)</option>
-                <option value="SE">Sergipe (SE)</option>
-                <option value="TO">Tocantins (TO)</option>
-              </select>
-            </div>
-          </div>
-          <div className="buttons">
-            <button>Cancelar</button>
-            <button>Salvar alterações</button>
-          </div>
-        </div>
+        <MinhaContaForm />
 
         <div className="section">
           <h2 className="subtitulo-conta">Voluntariado</h2>

@@ -66,6 +66,8 @@
     border-radius: 10px;
     width: 25%;
     border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .buttons button:hover {
