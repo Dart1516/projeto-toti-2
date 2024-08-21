@@ -8,9 +8,11 @@ import { useEffect, useState } from "react";
 import { FaPlus, FaTrash } from "react-icons/fa";
 import Footer from "../../../components/Footer";
 import MinhaContaForm from "./components/minha-conta";
+import { useRouter } from "next/navigation";
 
 function MinhaConta() {
   const { user } = useUser();
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     cpf: "",
@@ -45,7 +47,7 @@ function MinhaConta() {
 
   useEffect(() => {
     if (!user) {
-      Router.push("/login");
+      router.push("/");
     }
   }, [user]);
 
