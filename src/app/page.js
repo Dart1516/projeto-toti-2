@@ -132,6 +132,7 @@ export default function Home() {
 				</div>
 				<div className="video-espacio">
 					<div className="video">
+						{/* biome-ignore lint/a11y/useMediaCaption: <explanation> */}
 						<video src={Video1} controls />
 					</div>
 					<div className="text-video">
@@ -148,67 +149,96 @@ export default function Home() {
 					</div>
 				</div>
 				<section className="registro-processo">
-					<main className="container">
-						<div className="proceso-voluntariado">
-							<h1>Processo de voluntariado</h1>
-							<div className="proceso-texto">
-								<h2 className="h2-processo-voluntariado">Registro</h2>
-								<p>
-									Complete o <Link href="./JoinUs">formulário</Link> de inscrição com
-									seus dados pessoais e experiência.
-								</p>
-							</div>
-							<div className="proceso-texto">
-								<h2 className="h2-processo-voluntariado">Para onde vão meus dados?</h2>
-								<p>
-									{" "}
-									Iram ao banco de dados que estará disponível para os lideres dos
-									refugiados, que necessitam da ajuda de você
-								</p>
-							</div>
-							<div className="proceso-texto">
-								<h2 className="h2-processo-voluntariado">Depois do cadastro</h2>
-								<p>
-									o Lider do refugiado que precise da sua ajuda entrará em contato, e
-									você será designado para uma área específica, com base na suas
-									habilidades e disponibilidade.
-								</p>
-							</div>
-							<div className="proceso-texto contato">
-								<h2 className="h2-processo-voluntariado">Depois do contato</h2>
-								<p>
-									Comece a oferecer seu apoio às comunidades afetadas. O líder fornecerá
-									os detalhes do serviço.
-								</p>
+					<main className="processo-voluntariado">
+						<div className="container">
+							<h1>Processo de Voluntariado</h1>
+							<div className="processos">
+								<div className="processo">
+									<h2>01</h2>
+									<div className="texto-processo">
+										<h3>Registro</h3>
+										<p>
+											Preencha o <Link href={"/servicos"}>formulário</Link> com seus dados
+											pessoais e experiência.
+										</p>
+									</div>
+								</div>
+								<div className="processo">
+									<h2>02</h2>
+									<div className="texto-processo">
+										<h3>Para onde vão meus dados?</h3>
+										<p>
+											Iram ao banco de dados que estará disponível para os lideres dos
+											refugiados, que necessitam da ajuda de você.
+										</p>
+									</div>
+								</div>
+								<div className="processo">
+									<h2>03</h2>
+									<div className="texto-processo">
+										<h3>Depois do cadastro</h3>
+										<p>
+											o Lider do refugiado que precise da sua ajuda entrará em contato, e
+											você será designado para uma área específica, com base na suas
+											habilidades e disponibilidade.
+										</p>
+									</div>
+								</div>
+								<div className="processo">
+									<h2>04</h2>
+									<div className="texto-processo">
+										<h3>Depois do contato</h3>
+										<p>
+											Comece a oferecer seu apoio às comunidades afetadas. O líder
+											fornecerá os detalhes do serviço.
+										</p>
+									</div>
+								</div>
 							</div>
 						</div>
-						<div className="proceso-voluntariado liderança">
+					</main>
+					<main className="processo-lider">
+						<div className="container">
+							<div className="processos">
+								<div className="processo">
+									<h2>01</h2>
+									<div className="texto-processo">
+										<h3>Registro</h3>
+										<p>
+											Preencha o <Link href={"/servicos"}>formulário</Link> de inscrição
+											com seus dados pessoais.
+										</p>
+									</div>
+								</div>
+								<div className="processo">
+									<h2>02</h2>
+									<div className="texto-processo">
+										<h3>Para onde vão meus dados?</h3>
+										<p>só você terá acesso a seus dados.</p>
+									</div>
+								</div>
+								<div className="processo">
+									<h2>03</h2>
+									<div className="texto-processo">
+										<h3>Depois do cadastro</h3>
+										<p>
+											Com o email e a senha que você cadastrou, terá acesso a lista dos
+											voluntarios disponíveis para atendimento dos seus refugiados.
+										</p>
+									</div>
+								</div>
+								<div className="processo">
+									<h2>04</h2>
+									<div className="texto-processo">
+										<h3>Depois do contato</h3>
+										<p>
+											Será disponibilizado telefone e email do voluntario para você entrar
+											en contato e receber a ajuda que necessitam o mais rápido possível.
+										</p>
+									</div>
+								</div>
+							</div>
 							<h1>Processo de liderança</h1>
-							<div className="proceso-texto-liderança">
-								<h2 className="h2-processo-voluntariado">Registro</h2>
-								<p>
-									Complete o <Link href="./JoinUs">formulário</Link> de inscrição com
-									seus dados pessoais
-								</p>
-							</div>
-							<div className="proceso-texto-liderança">
-								<h2 className="h2-processo-voluntariado">Para onde vão meus dados?</h2>
-								<p> só você terá acesso a seus dados</p>
-							</div>
-							<div className="proceso-texto-liderança">
-								<h2 className="h2-processo-voluntariado">Depois do cadastro</h2>
-								<p>
-									Com o email e a senha que você cadastrou, terá acesso a lista dos
-									voluntarios disponíveis para atendimento dos seus refugiados
-								</p>
-							</div>
-							<div className="proceso-texto-liderança">
-								<h2 className="h2-processo-voluntariado">Contato</h2>
-								<p>
-									Será disponibilizado telefone e email do voluntario para você entrar en
-									contato e receber a ajuda que necessitam o mais rápido possível
-								</p>
-							</div>
 						</div>
 					</main>
 				</section>
@@ -243,7 +273,6 @@ export default function Home() {
 							<button
 								className={`sign ${activeIndices[0] ? "active" : ""}`}
 								onClick={() => toggleSign(0)}
-								type="button"
 							>
 								<div />
 								<div />
