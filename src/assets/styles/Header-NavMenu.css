@@ -9,10 +9,10 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 5.563rem;
+    height: var(--header-height);
     width: 100%;
     position: fixed;
-    z-index: 1000;
+    z-index: 9999;
     background: var(--color4);
 }
 
@@ -22,8 +22,8 @@ footer {
     max-width: var(--desktop-width);
     margin-left: auto;
     margin-right: auto;
-    height: 5.563rem;
-    z-index: 1000;
+    height: var(--header-height);
+    z-index: 9999;
     margin: 0;
     justify-content: space-between;
     align-self: center;
@@ -38,6 +38,8 @@ footer {
   display: flex;
   align-items: center;
   gap: 20px;
+  width: 100%;
+  justify-content: flex-end;
 }
 
 .opciones-izquierda .auth-links{

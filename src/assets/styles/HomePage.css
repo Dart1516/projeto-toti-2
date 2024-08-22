@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5rem;
 }
 
 .web {
@@ -131,7 +130,7 @@
   margin-bottom: 3rem;
 }
 
-main h1::after {
+.main h1::after {
   content: "";
   position: absolute;
   left: 0;
@@ -157,8 +156,8 @@ main h1::after {
   width: 100%;
   flex-direction: column;
   height: auto;
-  padding: 2rem 4rem;
   min-height: 100vh;
+  max-width: var(--desktop-width);
 }
 
 .tipo-vo-texto {
@@ -282,13 +281,22 @@ main h1::after {
 }
 
 .sub-text-video a {
-  text-decoration: none;
-  background-color: var(--color1);
-  color: white;
-  padding: 8px;
+  font-size: 1em;
+  font-weight: 500;
+  color: var(--color4);
+
+  padding: 13px 35px;
   border-radius: 10px;
+  background-color: var(--color1);
+
+  text-decoration: none;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  transition: 0.2s;
+}
+
+.sub-text-video a:hover {
+  color: var(--color1);
+  background-color: var(--color2);
 }
 
 .video video {
@@ -298,125 +306,199 @@ main h1::after {
 
 /*Proceso de Voluntariado*/
 
-#registro-processo {
+section.registro-processo {
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  background: url(../images/fundo.png);
-  background-size: cover;
-  background-position: center;
-  background-attachment: local;
-  z-index: 0;
+  flex-direction: column;
 }
-.proceso-voluntariado {
+
+section.registro-processo .processo-voluntariado {
   display: flex;
   flex-direction: column;
-  gap: 2.8rem;
-  align-items: flex-start;
+  background: url("../images/Processo de voluntariado.png") center/cover
+    no-repeat;
+}
+
+section.registro-processo .processo-voluntariado .container {
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.117);
-  padding: 3rem 1rem 3rem 2rem;
+  max-width: var(--desktop-width);
+  margin: 78px auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-.proceso-voluntariado h1 {
-  padding: 10px 0;
-  color: var(--color1);
-  font-size: clamp(0.8em, 1em + 1vw, 1.6em);
-}
-.proceso-voluntariado h1::first-letter {
-  text-transform: capitalize;
-}
-h2.h2-processo-voluntariado {
-  margin-bottom: 0;
-}
-.proceso-voluntariado h2,
-.proceso-texto.contato h2 {
-  color: var(--color1);
-}
-.proceso-texto.contato .h2-processo-voluntariado {
-  color: var(--color3);
-}
-.proceso-texto.contato p {
-  color: var(--color4);
-}
-.proceso-voluntariado p a {
-  text-decoration: none;
-  color: var(--color4);
-  border-bottom: 2px var(--color1) solid;
-  transition: all 0.5s;
+@media screen and (max-width: 1120px) {
+  section.registro-processo .processo-voluntariado .container {
+    grid-template-columns: 1fr;
+    gap: 5rem;
+  }
 }
 
-.proceso-voluntariado p a:hover {
-  filter: brightness(2);
-}
-.proceso-texto {
+section.registro-processo .processo-voluntariado .container .processos {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  justify-content: center;
-  align-items: self-start;
+  gap: 4rem;
+  height: 100%;
+}
+
+section.registro-processo .processo-voluntariado .container h1 {
+  font-size: 2rem;
+  line-height: 1.2;
   color: var(--color4);
+  max-width: 395px;
+  text-align: left;
+  position: relative;
+  justify-self: center;
+}
+
+section.registro-processo .processo-voluntariado .container h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 80px;
+  width: 10rem;
+  height: 3px;
+  background-color: var(--color2);
+}
+
+section.registro-processo .processo-voluntariado .processo {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
   text-align: left;
 }
 
-.proceso-texto p {
-  margin: 0;
-  word-wrap: break-word;
+section.registro-processo .processo-voluntariado .processo a {
+  font-weight: bold;
+  color: #000;
 }
 
-.proceso-texto h2::first-letter,
-.proceso-texto.contato h2::first-letter,
-.proceso-texto p::first-letter {
-  text-transform: capitalize;
-}
-
-/* processo de liderança */
-.proceso-voluntariado.liderança h1 {
-  padding: 10px 0;
-  color: var(--color2);
-  font-size: clamp(0.8em, 1em + 1vw, 1.6em);
-}
-.proceso-texto-liderança h2 {
-  color: var(--color2);
-}
-.proceso-voluntariado.liderança h1::first-letter {
-  text-transform: capitalize;
-}
-
-.proceso-voluntariado-liderança p a {
-  text-decoration: none;
-  color: var(--color4);
-  border-bottom: 2px var(--color2) solid;
-  transition: all 0.5s;
-  font-size: clamp(0.3em, 0.4em + 1vw, 0.8em);
-}
-.proceso-texto-liderança {
+section.registro-processo .processo-voluntariado .processo .text-processo {
   display: flex;
-  gap: 15px;
-  flex-direction: column;
-  align-items: self-start;
-  color: var(--color4);
+  width: 100%;
+  gap: 4rem;
   text-align: left;
 }
-.proceso-voluntariado.liderança p a:hover {
-  filter: brightness(2);
-}
-.proceso-texto-liderança p {
-  margin: 0;
-  word-wrap: break-word;
+
+section.registro-processo .processo-voluntariado .processo h2,
+section.registro-processo .processo-voluntariado .processo h3 {
+  font-size: 2rem;
+  line-height: 1.2;
 }
 
-.proceso-texto-liderança h2::first-letter,
-.proceso-texto-liderança p::first-letter {
-  text-transform: capitalize;
+section.registro-processo .processo-voluntariado .processo p {
+  font-size: 1rem;
+  line-height: 1.2rem;
+  max-width: 315px;
+  margin-top: 1rem;
 }
-#registro-processo h2 {
-  font-size: clamp(0.7em, 0.9em + 1vw, 1.5em);
+
+.registro-processo .processo-voluntariado .processos .processo:nth-child(3),
+.registro-processo .processo-voluntariado .processos .processo:nth-child(4) {
+  color: white;
 }
-#registro-processo p {
-  font-size: clamp(0.7em, 0.9em + 1vw, 1.3em);
+/*Proceso de Lider*/
+
+section.registro-processo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
+
+section.registro-processo .processo-lider {
+  display: flex;
+  flex-direction: column;
+  background: url("../images/Processo de liderança.png") center/cover no-repeat;
+}
+
+section.registro-processo .processo-lider .container {
+  width: 100%;
+  max-width: var(--desktop-width);
+  margin: 78px auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+section.registro-processo .processo-lider .container .processos {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  height: 100%;
+}
+
+section.registro-processo .processo-lider .container h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+  color: var(--color4);
+  max-width: 200px;
+  text-align: right;
+  position: relative;
+  justify-self: center;
+}
+
+section.registro-processo .processo-lider .container h1::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 80px;
+  width: 10rem;
+  height: 3px;
+  background-color: var(--color2);
+}
+
+section.registro-processo .processo-lider .processo {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+  text-align: left;
+}
+
+section.registro-processo .processo-lider .processo a {
+  font-weight: bold;
+  color: #000;
+}
+
+section.registro-processo .processo-lider .processo .text-processo {
+  display: flex;
+  width: 100%;
+  gap: 4rem;
+  text-align: left;
+}
+
+section.registro-processo .processo-lider .processo h2,
+section.registro-processo .processo-lider .processo h3 {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+section.registro-processo .processo-lider .processo p {
+  font-size: 1rem;
+  line-height: 1.2rem;
+  max-width: 315px;
+  margin-top: 1rem;
+}
+@media screen and (max-width: 1120px) {
+  section.registro-processo .processo-lider .container {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 5rem;
+  }
+  section.registro-processo .processo-lider .container h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    color: var(--color1);
+    max-width: unset;
+    text-align: center;
+    position: relative;
+    justify-self: center;
+  }
+  section.registro-processo .processo-lider .container h1::before {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 1120px) {
   .background-main {
     position: relative;
@@ -539,13 +621,14 @@ h2.h2-processo-voluntariado {
   align-items: center;
   gap: 30px;
   padding: 70px 0;
+  max-width: var(--desktop-width);
 }
 
 .pergunta {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  padding: 0 2rem;
   gap: 25px;
 }
 
@@ -698,7 +781,7 @@ h2.h2-processo-voluntariado {
     font-size: clamp(0.3em, 0.4em + 1vw, 0.8em);
     width: 100%;
   }
-  #registro-processo {
+  .registro-processo {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -754,7 +837,7 @@ h2.h2-processo-voluntariado {
     width: 400px;
     height: inherit;
     padding: 0;
-    flex:1;
+    flex: 1;
     height: 100%;
   }
   .main h1 {
@@ -767,7 +850,7 @@ h2.h2-processo-voluntariado {
     font-size: 16px;
   }
 
-  .main .text-home{
+  .main .text-home {
     padding: 0;
     justify-content: space-between;
     flex: 1;
@@ -785,7 +868,7 @@ h2.h2-processo-voluntariado {
     margin-bottom: 50px;
   }
 
-  .main .sub-text-home{
+  .main .sub-text-home {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -837,7 +920,7 @@ h2.h2-processo-voluntariado {
     word-break: break-all;
     padding-top: 1rem;
   }
-  #registro-processo {
+  .registro-processo {
     flex-direction: column;
   }
 
