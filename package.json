@@ -30,6 +30,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.8.3",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
     "file-loader": "^6.2.0"
