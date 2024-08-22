@@ -22,6 +22,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useUser } from "../../../api/UserContext";
 import { Api } from "../../../services/api";
+import './../../../assets/styles/SejaVoluntario.css';
 
 const StyledContainer = styled("div")(({ theme }) => ({
   position: "fixed",
@@ -42,7 +43,8 @@ const StyledContainer = styled("div")(({ theme }) => ({
   },
   [theme.breakpoints.up("md")]: {
     // >=mobile
-    width: "70%",
+    width: "100%",
+    maxWidth: "50vw",
   },
 }));
 
@@ -52,7 +54,8 @@ const StyledLogin = styled("form")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  width: "70%",
+  width: "100%",
+  maxWidth: "500px",
   [theme.breakpoints.up("xs")]: {
     // <= mobile
     padding: "0",
