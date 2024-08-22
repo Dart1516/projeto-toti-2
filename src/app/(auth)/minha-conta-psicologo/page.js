@@ -7,7 +7,7 @@ import { Router } from "next/router";
 import { useEffect, useState } from "react";
 import { FaPlus, FaTrash } from "react-icons/fa";
 import Footer from "../../../components/Footer";
-import MinhaContaForm from "./components/minha-conta";
+import MinhaContaForm from "../../../components/minha-conta";
 import { useRouter } from "next/navigation";
 
 function MinhaConta() {
