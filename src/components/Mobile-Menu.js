@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import mobileStyles from "../assets/styles/Mobile-Menu.module.css";
 import Link from "next/link";
 import Image from 'next/image'; // Importar el componente Image de next/image
@@ -11,6 +11,10 @@ function MobileMenu() {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  const handleCloseMenu = () => {
+    setMenuOpen(false);
+  }
 
   return (
     <div>
@@ -35,18 +39,21 @@ function MobileMenu() {
           <div className={mobileStyles["menu"]}>
             <ul>
               <li>
-                <Link href="/" passHref>
+                <Link href="/" passHref onClick={handleCloseMenu}>
                   Início
                 </Link>
               </li>
               <li>
-                <Link href="/sobre-nos">Sobre Nós</Link>
+                <Link href="/sobre-nos" onClick={handleCloseMenu}>Sobre Nós</Link>
               </li>
               <li>
-                <Link href="/servicos">Serviços</Link>
+                <Link href="/servicos" onClick={handleCloseMenu}>Serviços</Link>
               </li>
               <li>
-                <Link href="/acesso">Login</Link>
+                <Link href="/acesso" onClick={handleCloseMenu}>Login</Link>
+              </li>
+              <li>
+                <Link href="/acesso" onClick={handleCloseMenu}>Cadastrar</Link>
               </li>
             </ul>
           </div>
