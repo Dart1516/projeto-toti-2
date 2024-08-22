@@ -157,8 +157,8 @@ main h1::after {
   width: 100%;
   flex-direction: column;
   height: auto;
-  padding: 2rem 4rem;
   min-height: 100vh;
+  max-width: var(--desktop-width);
 }
 
 .tipo-vo-texto {
@@ -282,13 +282,22 @@ main h1::after {
 }
 
 .sub-text-video a {
-  text-decoration: none;
-  background-color: var(--color1);
-  color: white;
-  padding: 8px;
+  font-size: 1em;
+  font-weight: 500;
+  color: var(--color4);
+
+  padding: 13px 35px;
   border-radius: 10px;
+  background-color: var(--color1);
+
+  text-decoration: none;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  transition: 0.2s;
+}
+
+.sub-text-video a:hover {
+  color: var(--color1);
+  background-color: var(--color2);
 }
 
 .video video {
@@ -298,17 +307,27 @@ main h1::after {
 
 /*Proceso de Voluntariado*/
 
-#registro-processo {
+.registro-processo {
   width: 100%;
   display: flex;
-  justify-content: space-between;
-  flex-direction: row;
   background: url(../images/fundo.png);
   background-size: cover;
   background-position: center;
   background-attachment: local;
-  z-index: 0;
 }
+
+.registro-processo main.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 3rem 0;
+  background-color: transparent;
+  max-width: var(--desktop-width);
+  margin: 0 auto;
+}
+
 .proceso-voluntariado {
   display: flex;
   flex-direction: column;
@@ -411,10 +430,10 @@ h2.h2-processo-voluntariado {
 .proceso-texto-liderança p::first-letter {
   text-transform: capitalize;
 }
-#registro-processo h2 {
+.registro-processo h2 {
   font-size: clamp(0.7em, 0.9em + 1vw, 1.5em);
 }
-#registro-processo p {
+.registro-processo p {
   font-size: clamp(0.7em, 0.9em + 1vw, 1.3em);
 }
 @media only screen and (max-width: 1120px) {
@@ -698,7 +717,7 @@ h2.h2-processo-voluntariado {
     font-size: clamp(0.3em, 0.4em + 1vw, 0.8em);
     width: 100%;
   }
-  #registro-processo {
+  .registro-processo {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -837,7 +856,7 @@ h2.h2-processo-voluntariado {
     word-break: break-all;
     padding-top: 1rem;
   }
-  #registro-processo {
+  .registro-processo {
     flex-direction: column;
   }
 
