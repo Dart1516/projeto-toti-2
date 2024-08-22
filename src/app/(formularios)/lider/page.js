@@ -53,12 +53,12 @@ function FormularioLiderImigrante() {
 
 	const validateForm = (form) => {
 		form.notes = undefined;
-		const emptyFields = [];
-		Object.keys(form).forEach((key) => {
+		const emptyFields = Object.keys(form).reduce((acc, key) => {
 			if (!form[key]) {
-				emptyFields.push(key);
+				acc.push(key);
 			}
-		});
+			return acc;
+		}, []);
 		const isNotEmpty = Object.keys(form).every((key) => form[key]);
 		if (emptyFields.length > 0) {
 			const firstEmptyField = emptyFields[0];
@@ -259,9 +259,6 @@ function FormularioLiderImigrante() {
 
 	return (
 		<div className="App SV">
-			<div className="App-header">
-				<Header />
-			</div>
 			<div className="background-image" />
 			<div className="container">
 				<div className="container-titulo">
@@ -473,8 +470,8 @@ function FormularioLiderImigrante() {
 							/>
 							{passwordError.length > 0 && (
 								<ul className="error-message">
-									{passwordError.map((error, index) => (
-										<li key={index}>{error}</li>
+									{passwordError.map((error) => (
+										<li key={`error-${error}`}>{error}</li>
 									))}
 								</ul>
 							)}
