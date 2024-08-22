@@ -33,48 +33,48 @@ import React, { createContext, useContext, useEffect, useState } from "react";
  */
 
 const UserContext = createContext(
-  /** @type {UserContextValue | undefined} */ (undefined)
+	/** @type {UserContextValue | undefined} */ (undefined),
 );
 
 /**
  * @param {{ children: React.ReactNode }} props
  */
 export const UserProvider = ({ children }) => {
-  /**
-   * @type {[UserState, React.Dispatch<React.SetStateAction<UserState>>]}
-   */
-  const [user, update] = useState(() => {
-    if (typeof window === "undefined") {
-      return null;
-    }
-    const storaged = localStorage.getItem("user");
-    if (storaged) {
-      return JSON.parse(storaged);
-    }
-    return null;
-  });
+	/**
+	 * @type {[UserState, React.Dispatch<React.SetStateAction<UserState>>]}
+	 */
+	const [user, update] = useState(() => {
+		if (typeof window === "undefined") {
+			return null;
+		}
+		const storaged = localStorage.getItem("user");
+		if (storaged) {
+			return JSON.parse(storaged);
+		}
+		return null;
+	});
 
-  /**
-   * @param {UserState} user
-   */
-  const setUser = (user) => {
-    localStorage.setItem("user", JSON.stringify(user));
-    console.log(user);
-    update(user);
-  };
+	/**
+	 * @param {UserState} user
+	 */
+	const setUser = (user) => {
+		localStorage.setItem("user", JSON.stringify(user));
+		console.log(user);
+		update(user);
+	};
 
-  useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      update(JSON.parse(user));
-    }
-  }, []);
+	useEffect(() => {
+		const user = localStorage.getItem("user");
+		if (user) {
+			update(JSON.parse(user));
+		}
+	}, []);
 
-  return (
-    <UserContext.Provider value={{ user, setUser }}>
-      {children}
-    </UserContext.Provider>
-  );
+	return (
+		<UserContext.Provider value={{ user, setUser }}>
+			{children}
+		</UserContext.Provider>
+	);
 };
 
 /**
@@ -82,9 +82,9 @@ export const UserProvider = ({ children }) => {
  * @returns {UserContextValue}
  */
 export const useUser = () => {
-  const context = useContext(UserContext);
-  if (context === undefined) {
-    throw new Error("useUser must be used within a UserProvider");
-  }
-  return context;
+	const context = useContext(UserContext);
+	if (context === undefined) {
+		throw new Error("useUser must be used within a UserProvider");
+	}
+	return context;
 };

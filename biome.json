@@ -1,12 +1,39 @@
 {
 	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+	"formatter": {
+		"lineWidth": 80,
+		"indentStyle": "tab",
+		"indentWidth": 1,
+		"lineEnding": "crlf",
+		"enabled": true
+	},
 	"organizeImports": {
 		"enabled": true
 	},
 	"linter": {
-		"enabled": true,
 		"rules": {
-			"recommended": false
+			"a11y": {
+				"useButtonType": "off",
+				"useKeyWithClickEvents": "off",
+				"useMediaCaption": "off"
+			},
+			"suspicious": {
+				"noArrayIndexKey": "off"
+			},
+			"complexity": {
+				"noForEach": "off"
+			}
 		}
+	},
+	"files": {
+		"ignore": [
+			"node_modules",
+			"dist",
+			"build",
+			"out",
+			"target",
+			".vscode",
+			".next"
+		]
 	}
 }
