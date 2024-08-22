@@ -1,11 +1,9 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import "../assets/styles/Header-Minha-Conta.css";
-import Logo from "../assets/images/logos/toters-logo-green-dark.svg";
+import { useEffect, useRef, useState } from "react";
 import { useUser } from "../api/UserContext";
+import "../assets/styles/Header-Minha-Conta.css";
 
 function HeaderLogin() {
   const [dropdownOpen, setDropdownOpen] = useState(false);

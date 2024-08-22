@@ -10,7 +10,6 @@ function HeaderAndMenu() {
   return (
     <div className="heder_nav_container">
       <MobileMenu />
-      {/* Icono del menú hamburguesa */}
       <nav className="contenedor_de_opciones">
         <div className="menu-left">
           <ul className="opciones-derecha">
@@ -39,18 +38,6 @@ function HeaderAndMenu() {
               </Link>
             </li>
           </ul>
-          {/* <ul className="auth-links">
-            <li>
-              <Link href="/acesso" passHref>
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link href="/servicos" passHref className="register-btn">
-                CADASTRAR
-              </Link>
-            </li>
-          </ul> */}
           <HeaderLogin />
         </div>
       </nav>
