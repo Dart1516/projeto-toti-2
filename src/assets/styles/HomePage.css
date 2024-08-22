@@ -621,13 +621,14 @@ section.registro-processo .processo-lider .processo p {
   align-items: center;
   gap: 30px;
   padding: 70px 0;
+  max-width: var(--desktop-width);
 }
 
 .pergunta {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  padding: 0 2rem;
   gap: 25px;
 }
 
