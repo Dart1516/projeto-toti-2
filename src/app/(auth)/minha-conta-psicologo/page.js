@@ -1,8 +1,8 @@
 "use client";
-import { useUser } from "@/api/UserContext";
-import "@/assets/styles/App.css";
-import "@/assets/styles/MinhaConta.css";
-import "@/assets/styles/SejaVoluntario.css";
+import { useUser } from "../../../api/UserContext";
+import "../../../assets/styles/App.css";
+import "../../../assets/styles/MinhaConta.css";
+import "../../../assets/styles/SejaVoluntario.css";
 import { Router } from "next/router";
 import { useEffect, useState } from "react";
 import { FaPlus, FaTrash } from "react-icons/fa";

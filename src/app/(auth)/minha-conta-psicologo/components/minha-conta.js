@@ -1,11 +1,11 @@
 "use client";
-import { useUser } from "@/api/UserContext";
+import { useUser } from "../../../../api/UserContext";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { format } from "date-fns";
-import "@/assets/styles/App.css";
-import "@/assets/styles/MinhaConta.css";
-import "@/assets/styles/SejaVoluntario.css";
+import "../../../../assets/styles/App.css";
+import "../../../../assets/styles/MinhaConta.css";
+import "../../../../assets/styles/SejaVoluntario.css";
 export default function MinhaContaForm() {
   const { user } = useUser();
 
