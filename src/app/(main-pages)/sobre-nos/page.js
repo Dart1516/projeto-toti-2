@@ -448,7 +448,7 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/Dart1516"
+										href="https://github.com/daysibel1175"
 									>
 										Github
 									</Button>
@@ -572,7 +572,7 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/Dart1516"
+										href="https://github.com/ToterMa"
 									>
 										Github
 									</Button>
@@ -599,7 +599,7 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/Dart1516"
+										href="https://github.com/mmedicci"
 									>
 										Github
 									</Button>
@@ -697,7 +697,7 @@ const About = () => {
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
-										Samuel Felipe Erazo
+										Samuel Erazo
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
 										Voluntario TI
@@ -724,7 +724,7 @@ const About = () => {
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
-										Sergio Eduardo Valério 
+										Sergio  Valério 
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
 										Voluntário TI
@@ -735,7 +735,7 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/hluna23"
+										href="https://github.com/Scyies"
 									>
 										Github
 									</Button>
@@ -779,7 +779,7 @@ const About = () => {
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
-										Yurisay
+										Yurisay Martinez
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
 										Toter
