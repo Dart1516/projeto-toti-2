@@ -407,12 +407,7 @@ const About = () => {
 							</Card>
 
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-                <Image
-                  src={david}
-                  alt="david"
-                  title="david"
-                  height={190}
-                  width={190} />
+								<Image src={david} alt="david" title="david" height={190} width={190} />
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
 										David Puche
@@ -448,13 +443,13 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/daysibel1175"
+										href="https://github.com/daysibel1175npm ru"
 									>
 										Github
 									</Button>
 								</CardActions>
-              </Card>
-              <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+							</Card>
+							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
 									src={henry}
 									alt="Natalia"
@@ -579,13 +574,7 @@ const About = () => {
 								</CardActions>
 							</Card>
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-								<Image
-									src={maria}
-									alt="maria"
-									title="maria"
-									height={190}
-									width={190}
-								/>
+								<Image src={maria} alt="maria" title="maria" height={190} width={190} />
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
 										Maria Rondon
@@ -633,19 +622,13 @@ const About = () => {
 								</CardActions>
 							</Card>
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-								<Image
-									src={nadi}
-									alt="nadi"
-									title="nadi"
-									height={190}
-									width={190}
-								/>
+								<Image src={nadi} alt="nadi" title="nadi" height={190} width={190} />
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
 										Nadi Duno
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Lider TI - Front End 
+										Lider TI - Front End
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -713,8 +696,8 @@ const About = () => {
 										Github
 									</Button>
 								</CardActions>
-              </Card>
-              <Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+							</Card>
+							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
 									src={sergio}
 									alt="sergio"
@@ -724,7 +707,7 @@ const About = () => {
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
-										Sergio  Valério 
+										Sergio Valério
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
 										Voluntário TI
@@ -768,7 +751,7 @@ const About = () => {
 									</Button>
 								</CardActions>
 							</Card>
-							
+
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
 									src={yurisay}
