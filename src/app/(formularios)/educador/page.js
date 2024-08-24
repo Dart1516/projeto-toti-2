@@ -167,9 +167,6 @@ function FormularioEducadorSocial() {
 
 	return (
 		<div className="App SV">
-			<div className="App-header">
-				<Header />
-			</div>
 			<div className="background-image" />
 			<div className="container">
 				<div className="container-titulo">
