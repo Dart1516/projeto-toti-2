@@ -1,555 +1,634 @@
 "use client";
-
+/* Formulario com Resolver (React Hoork From + ZOD)*/
 import React, { useState } from "react";
 import InputMask from "react-input-mask";
 import "../../../assets/styles/App.css";
 import "../../../assets/styles/SejaVoluntario.css";
 import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
 import Visibility from "@mui/icons-material/VisibilityOutlined";
-import { IconButton, Input, InputAdornment } from "@mui/material";
+// import { IconButton, InputAdornment } from "@mui/material";
 import { useRouter } from "next/navigation";
-import Header from "../../../components/Header-NavMenu";
 import { Api, ApiBrasil } from "../../../services/api";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ErrorMessage } from "@hookform/error-message";
+import bcrypt from 'bcryptjs';
+
+function validateCNPJ(cnpj) {
+  //Algoritmo dos dígitos verificadores CNPJ
+  cnpj = cnpj.replace(/\D/g, "");
+  if (cnpj.length !== 14) {
+    return false;
+  }
+  if (/^(\d)\1{13}$/.test(cnpj)) {
+    return false;
+  }
+  let tamanho = cnpj.length - 2;
+  let numeros = cnpj.substring(0, tamanho);
+  let digitos = cnpj.substring(tamanho);
+  let soma = 0;
+  let pos = tamanho - 7;
+  for (let i = tamanho; i >= 1; i--) {
+    soma += numeros.charAt(tamanho - i) * pos--;
+    if (pos < 2) {
+      pos = 9;
+    }
+  }
+  let resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+  if (resultado != digitos.charAt(0)) {
+    return false;
+  }
+  tamanho = tamanho + 1;
+  numeros = cnpj.substring(0, tamanho);
+  soma = 0;
+  pos = tamanho - 7;
+  for (let i = tamanho; i >= 1; i--) {
+    soma += numeros.charAt(tamanho - i) * pos--;
+    if (pos < 2) {
+      pos = 9;
+    }
+  }
+  resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+  if (resultado != digitos.charAt(1)) {
+    return false;
+  }
+
+  return true;
+}
+
+function validateCPF(cpf) {
+  //Algoritmo dos dígitos verificadores CPF
+  cpf = cpf.replace(/\D/g, "");
+  if (cpf.length !== 11) {
+    return false;
+  }
+  if (/^(\d)\1{10}$/.test(cpf)) {
+    return false;
+  }
+  let soma = 0;
+  let resto;
+  for (let i = 1; i <= 9; i++) {
+    soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+  }
+  resto = (soma * 10) % 11;
+  if (resto === 10 || resto === 11) {
+    resto = 0;
+  }
+  if (resto !== parseInt(cpf.substring(9, 10))) {
+    return false;
+  }
+
+  soma = 0;
+  for (let i = 1; i <= 10; i++) {
+    soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+  }
+  resto = (soma * 10) % 11;
+  if (resto === 10 || resto === 11) {
+    resto = 0;
+  }
+  if (resto !== parseInt(cpf.substring(10, 11))) {
+    return false;
+  }
+
+  // Se chegou até aqui, o CPF é válido
+  return true;
+}
+
+async function isCEPValid(state) {
+  //Verifica o CEP na API Brasil
+  try {
+    const resp = await ApiBrasil.get(`/${state}`);
+    return !resp.data.erro;
+  } catch (error) {
+    return false;
+  }
+}
+
+const createFormDataSchema = z.object({
+  // Validação com zod
+  organization: z
+    .string()
+    .nonempty("A organização é obrigatório")
+    .min(3, "A organização precisa no mínimo 3 carateres")
+    .max(100, "A organização precisa no máximo 100 carateres"),
+  cnpj: z
+    .string()
+    .nonempty("CNPJ é obrigatório")
+    .regex(
+      /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/,
+      "CNPJ inválido. Exemplo: 99.999.999/9999-99"
+    )
+    .refine(validateCNPJ, "CNPJ inválido"),
+  name: z
+    .string()
+    .nonempty("O Nome é obrigatório")
+    .min(3, "O Nome precisa no mínimo 3 carateres")
+    .max(50, "O Nome precisa no máximo 50 carateres"),
+  cpf: z
+    .string()
+    .nonempty("CPF é obrigatório")
+    .regex(
+      /^\d{3}\.\d{3}\.\d{3}-\d{2}$/,
+      "CPF inválido. Exemplo: 999.999.999-99"
+    )
+    .refine(validateCPF, "CPF inválido"),
+  phoneNumber: z
+    .string()
+    .nonempty("O número de telefone é obrigatório")
+    .regex(
+      /^\(\d{2}\)\d{5}-\d{4}$/,
+      "Número de telefone inválido. Exemplo: (99)99999-9999"),
+  area: z
+    .string()
+    .nonempty("A é obrigatório")
+    .min(3, "A precisa no mínimo 3 carateres")
+    .max(100, "A precisa no máximo 100 carateres"),
+  state: z
+    .string()
+    .nonempty("O CEP é obrigatório")
+    .regex(/^\d{5}-\d{3}$/, "CEP inválido. Exemplo: 99999-999")
+    .refine(isCEPValid, "CEP inválido"),
+  address: z.string().optional(),
+  email: z
+    .string()
+    .nonempty("O e-mail é obrigatório")
+    .email("Formato de e-mail inválido"),
+  verifyEmail: z
+    .string()
+    .nonempty("A verificação do e-mail é obrigatório")
+    .email("Formato de e-mail inválido"),
+  password: z
+    .string()
+    .nonempty("A senha é obrigatório")
+    .min(8, "A senha deve ter no mínimo 8 caracteres")
+    .regex(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$%;])(?!.*[#*+&=,.]).{8,}$/,
+      "A senha deve conter pelo menos uma letra maiúscula, uma minúscula, um número, um caractere especial (@$%;), evite (#*+&=)"
+    ),
+  verifyPassword: z
+    .string()
+    .nonempty("A senha é obrigatório")
+    .min(8, "A senha deve ter no mínimo 8 caracteres")
+    .regex(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$%;])(?!.*[#*+&=,.]).{8,}$/,
+      "A senha deve conter pelo menos uma letra maiúscula, uma minúscula, um número, um caractere especial (@$%;), evite (#*+&=),"
+    ),
+  notes: z.string().optional(),
+  termos: z
+    .boolean()
+    .refine((value) => value, "Você precisa concordar com os termos"),
+});
 
 function FormularioLiderImigrante() {
-	const router = useRouter();
-	const [formData, setFormData] = useState({
-		organization: "",
-		cnpj: "",
-		name: "",
-		cpf: "",
-		phoneNumber: "",
-		area: "",
-		state: "",
-		address: "",
-		email: "",
-		verifyEmail: "",
-		password: "",
-		verifyPassword: "",
-		notes: "",
-		termos: false,
-	});
-	const [passwordError, setPasswordError] = useState("");
-	const [passwordMatchError, setPasswordMatchError] = useState("");
-	const [emailMatchError, setEmailMatchError] = useState("");
-	const [error, setError] = useState("");
-	const [isLoading, setIsLoading] = useState(false);
-	const [errorEmail, setErrorEmail] = useState("");
-	const [errorCpf, setErrorCpf] = useState("");
-	const [errors, setErrorField] = useState("");
-	const [showPassword, setShowPassword] = useState(false);
-	const [showPasswordVerify, setShowPasswordVerify] = useState(false);
-	const handleTogglePasswordVerify = () => {
-		setShowPasswordVerify(!showPasswordVerify);
-	};
-	const [isCepFocused, setIsCepFocused] = useState(false);
-	const [addressAPi, setAddressAPi] = useState({
-		state: "",
-		street: "",
-		neighborhood: "",
-		city: "",
-		cep: "",
-	});
+  const router = useRouter();
 
-	const validateForm = (form) => {
-		form.notes = undefined;
-		const emptyFields = Object.keys(form).reduce((acc, key) => {
-			if (!form[key]) {
-				acc.push(key);
-			}
-			return acc;
-		}, []);
-		const isNotEmpty = Object.keys(form).every((key) => form[key]);
-		if (emptyFields.length > 0) {
-			const firstEmptyField = emptyFields[0];
-			// Procura o 1 campo vazio e foca o cursor
-			const inputElement = document.querySelector(`#${firstEmptyField}`);
-			if (inputElement) {
-				inputElement.focus();
-			} else {
-				const inputElementByName = document.querySelector(
-					`input[name="${firstEmptyField}"]`,
-				);
-				if (inputElementByName) {
-					inputElementByName.focus();
-				} else {
-					console.error(`Campo "${firstEmptyField}" não encontrado`);
-				}
-			}
-			setError(
-				"Para continuar, por favor, preencha todos os campos obrigatórios.",
-			);
-			if (firstEmptyField === "termos" && !form.termos) {
-				setError(
-					"Para enviar o formulário, você precisa ler e concordar com os nossos termos e condições.",
-				);
-			}
-		} else if (!form.termos) {
-			setError(
-				"Para enviar o formulário, você precisa ler e concordar com os nossos termos e condições.",
-			);
-		}
-		// return isNotEmpty;
-		return emptyFields.length === 0;
-	};
+  const [output, setOutput] = useState("");
+  const [isCepFocused, setIsCepFocused] = useState(false);
+  const [addressAPi, setAddressAPi] = useState({
+    state: "",
+    street: "",
+    neighborhood: "",
+    city: "",
+    cep: "",
+    address: "",
+  });
+  const [showPassword, setShowPassword] = useState(false);
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		setIsLoading(true);
-		const result = validateForm({ ...formData });
-		if (!result) {
-			setIsLoading(false);
-			return;
-		}
-		const normalizedEmail = formData.email.toString().toLowerCase();
-		const adrressCEPAll = formData.address.split(",");
-		const stateCEP = adrressCEPAll[2].trim();
-		console.log("Estado", stateCEP);
-		const dataToSend = {
-			...formData,
-			notes: formData.notes || "",
-			email: normalizedEmail,
-			state: stateCEP,
-		};
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
-		dataToSend.verifyEmail = undefined;
-		dataToSend.verifyPassword = undefined;
-		try {
-			const response = await Api.post("/cadastro/lideres", dataToSend);
-			router.push("../../obrigado-page");
-		} catch (error) {
-			console.error("Erro ao enviar dados:", error);
-			if (
-				error.response?.data?.message?.includes(
-					"O CPF informado já está cadastrado",
-				)
-			) {
-				setErrorCpf("O CPF informado já está cadastrado");
-				setError("Erro ao enviar dados: O CPF informado já está cadastrado");
-			} else if (
-				error.response?.data?.message?.includes(
-					"O E-mail informado já está cadastrado",
-				)
-			) {
-				setErrorEmail("O E-mail informado já está cadastrado");
-				setError("Erro ao enviar dados: O E-mail informado já está cadastrado");
-			} else {
-				setError(
-					`Erro ao enviar dados: ${error.response?.data?.message || error.message}`,
-				);
-			}
-		}
-		setIsLoading(false);
-	};
+  const dataSuperRefineSchema = createFormDataSchema.superRefine(
+    (data, ctx) => {
+      if (data.email !== data.verifyEmail) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Os emails não coincidem",
+          path: ["verifyEmail"],
+        });
+      }
+      if (data.password !== data.verifyPassword) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "As senhas não coincidem",
+          path: ["verifyPassword"],
+        });
+      }
+    }
+  );
 
-	const handleTermsChange = (event) => {
-		setFormData({ ...formData, [event.target.name]: event.target.checked });
-	};
+  const {
+    register,
+    handleSubmit,
+    formState: { isLoading, errors },
+  } = useForm({
+    resolver: zodResolver(dataSuperRefineSchema),
+  });
 
-	const resetEmailError = () => {
-		setErrorEmail("");
-	};
-	const resetError = () => {
-		setErrorField("");
-	};
+  async function handleCEPApi(e) {
+    //Usando a API Brasil para trouxer o endereço
+    const cepcode = e.target.value;
 
-	const handleInputChange = (event) => {
-		const { name, value } = event.target;
-		setFormData({
-			...formData,
-			[name]: value,
-		});
+    if (cepcode === "") {
+      setAddressAPi({
+        state: "",
+        street: "",
+        neighborhood: "",
+        city: "",
+        cep: "",
+        address: "",
+      });
+    }
+    setIsCepFocused(false);
+    try {
+      const resp = await ApiBrasil.get(`/${cepcode}`);
+      setIsCepFocused(true);
+      setAddressAPi({
+        state: resp.data.state,
+        street: resp.data.street,
+        neighborhood: resp.data.neighborhood,
+        city: resp.data.city,
+        cep: resp.data.cep,
+        address: `${resp.data.street}, ${resp.data.neighborhood}, ${resp.data.state}, ${resp.data.cep}`,
+      });
+      setFormData({
+        ...formData,
+        address: `${resp.data.street}, ${resp.data.neighborhood}, ${resp.data.state}, ${resp.data.cep}`,
+      });
+    } catch (error) {
+      console.error("Erro na API do CEP", error);
+      setAddressAPi({
+        state: "",
+        street: "",
+        neighborhood: "",
+        city: "",
+        cep: "",
+        address: "",
+      });
+    }
+  }
 
-		if (name === "password") {
-			validatePassword(value);
-		}
+  function createData(formData) {
+    const saltRounds = 10;
+    const hashedPassword = bcrypt.hashSync(formData.password, saltRounds);
+    formData.password = hashedPassword;
+    setOutput(JSON.stringify(formData, null, 2));
+    console.log(formData);
+    alert('Chamar a API para Guardar os dados')
+    /*  Ver dados em page da pasta lider-2*/
+  }
 
-		if (name === "verifyPassword") {
-			setPasswordMatchError(
-				value !== formData.password ? " As senhas não coincidem." : "",
-			);
-		}
+  return (
+    <div className="App SV">
+      <div className="background-image" />
+      <div className="container">
+        <div className="container-titulo">
+          <h2>SOS Rio Grande do Sul </h2>
+          <h2>
+            Cadastro de Liderança de ONG para Imigrantes, Refugiados e Apátridas
+          </h2>
+        </div>
+        <form onSubmit={handleSubmit(createData)} className="general-inputs">
+          <div className="inputs formCadastro">
+            {/* Organização */}
+            <div className="input-field">
+              <p htmlFor="organization">
+                1. Nome da ONG que representa
+                <span className="errorChar"> * </span>
+              </p>
+              <input
+                className={`input-text ${
+                  errors.organization ? "invalid" : "valid"
+                }`}
+                type="text"
+                placeholder="Digite o nome da ONG"
+                {...register("organization")}
+              />
+              <ErrorMessage
+                className="error-message"
+                errors={errors}
+                name="organization"
+                as="p"
+              />
+            </div>
 
-		if (name === "verifyEmail") {
-			setEmailMatchError(
-				value !== formData.email ? "Os e-mails não coincidem." : "",
-			);
-		}
-		if (name === "email") {
-			const emailValue = formData.email;
-			const isValidEmail =
-				emailValue.length !== 0 &&
-				emailValue.match(/^[\w-.]+@[\w-.]+\.[a-zA-Z]{2,}$/i);
-			setErrorEmail(!isValidEmail);
-		}
-		const validationFields = [
-			"organization",
-			"cnpj",
-			"phoneNumber",
-			"area",
-			"state",
-			"address",
-		];
-		for (const fieldName of validationFields) {
-			const fieldValue = formData[fieldName];
-			if (fieldValue.trim() === "") {
-				setErrorField(fieldName);
-			}
-			return;
-		}
-	};
+            {/* CNPJ*/}
+            <div className="input-field">
+              <p htmlFor="cnpj">
+                2. CNPJ da ONG
+                <span className="errorChar"> * </span>
+              </p>
+              <InputMask
+                mask="99.999.999/9999-99"
+                className={`input-text ${errors.cnpj ? "invalid" : "valid"}`}
+                placeholder="Digite o CNPJ, um valor numérico"
+                {...register("cnpj")}
+              />
+              <ErrorMessage
+                className="error-message"
+                errors={errors}
+                name="cnpj"
+                as="p"
+              />
+            </div>
 
-	const validatePassword = (password) => {
-		const errors = [];
-		// Escapar caracteres #*+&=,. (bug)antes de validar
-		const escapedPassword = password.replace(/[#*+&=,.]/g, "\\$&");
-		if (!/(?=.*[a-z])/.test(password)) errors.push("Falta minúscula.");
-		if (!/(?=.*[A-Z])/.test(password)) errors.push("Falta maiúscula.");
-		if (!/(?=.*\d)/.test(password)) errors.push("Falta número.");
-		if (!/(?=.*[@$%^;])/.test(password)) errors.push("Falta símbolo. (@$%;)");
-		if (password.length < 8) errors.push("A senha deve conter 8 caracteres.");
-		if (!/^[A-Za-z0-9!@$%^*()_{}|:;'<>/?~-]+$/.test(escapedPassword)) {
-			errors.push("Os caracteres (#*+&=,.) não são permitidos.");
-		}
-		setPasswordError(errors);
-	};
+            {/* Nome */}
+            <div className="input-field">
+              <p htmlFor="name">
+                3. Nome Completo do Representante Legal
+                <span className="errorChar"> * </span>
+              </p>
+              <input
+                className={`input-text ${errors.name ? "invalid" : "valid"}`}
+                type="text"
+                placeholder="Digite seu nome completo"
+                {...register("name")}
+              />
+              <ErrorMessage
+                className="error-message"
+                errors={errors}
+                name="name"
+                as="p"
+              />
+            </div>
 
-	const handleTogglePassword = () => {
-		setShowPassword(!showPassword);
-	};
+            {/* CPF*/}
+            <div className="input-field">
+              <p htmlFor="cpf">
+                4. CPF do Representante Legal
+                <span className="errorChar"> * </span>
+              </p>
+              <InputMask
+                mask="999.999.999-99"
+                className={`input-text ${errors.cpf ? "invalid" : "valid"}`}
+                placeholder="Digite o CPF, um valor numérico"
+                {...register("cpf")}
+              />
+              <ErrorMessage
+                className="error-message"
+                errors={errors}
+                name="cpf"
+                as="p"
+              />
+            </div>
 
-	async function handleCEPApi(e) {
-		//Usando a API Brasil para trouxer o endereço
-		const cepcode = e.target.value;
-		if (cepcode === "") {
-			setAddressAPi({
-				state: "",
-				street: "",
-				neighborhood: "",
-				city: "",
-				cep: "",
-			});
-		}
-		setIsCepFocused(false);
-		try {
-			const resp = await ApiBrasil.get(`/${cepcode}`);
-			setIsCepFocused(true);
-			setAddressAPi({
-				state: resp.data.state,
-				street: resp.data.street,
-				neighborhood: resp.data.neighborhood,
-				city: resp.data.city,
-				cep: resp.data.cep,
-			});
-			setFormData({
-				...formData,
-				address: `${resp.data.street}, ${resp.data.neighborhood}, ${resp.data.state}, ${resp.data.cep}`,
-			});
-		} catch (error) {
-			console.error("Erro na API do CEP", error);
-			setAddressAPi({
-				state: "",
-				street: "",
-				neighborhood: "",
-				city: "",
-				cep: "",
-			});
-		}
-	}
+            {/* Telefone*/}
+            <div className="input-field">
+              <p htmlFor="phoneNumber">
+                5. Número do WhatsApp
+                <span className="errorChar"> * </span>
+              </p>
+              <InputMask
+                mask="(99)99999-9999"
+                className={`input-text ${
+                  errors.phoneNumber ? "invalid" : "valid"
+                }`}
+                placeholder="Digite seu número"
+                {...register("phoneNumber")}
+              />
+              <ErrorMessage
+                className="error-message"
+                errors={errors}
+                name="phoneNumber"
+                as="p"
+              />
+            </div>
 
-	return (
-		<div className="App SV">
-			<div className="background-image" />
-			<div className="container">
-				<div className="container-titulo">
-					<h2>SOS Rio Grande do Sul </h2>
-					<h2>
-						Cadastro de Liderança de ONG para Imigrantes, Refugiados e Apátridas
-					</h2>
-				</div>
-				<form className="general-inputs">
-					<div className="inputs formCadastro">
-						<div className="input-field">
-							<h4>
-								1. Nome da ONG que representa<span>*</span>
-							</h4>
-							<input
-								className={`input-text ${errors.organization ? "invalid" : "valid"}`}
-								type="text"
-								name="organization"
-								placeholder="Digite o nome da ONG"
-								value={formData.organization}
-								onChange={handleInputChange}
-								required
-							/>
-						</div>
-						<div className="input-field">
-							<h4>
-								2. CNPJ da ONG<span>*</span>
-							</h4>
-							<InputMask
-								mask="99.999.999/9999-99"
-								value={formData.cnpj}
-								onChange={handleInputChange}
-								placeholder="Digite seu CNPJ O valor deve ser numérico"
-								required
-								className={`input-text ${errors.cnpj ? "invalid" : ""}`}
-								name="cnpj"
-								pattern="\d{2}\.\d{3}\.\d{3}\\d{4}-\d{2}"
-								onFocus={() => resetError()}
-							/>
-						</div>
-						<div className="input-field">
-							<h4>
-								3. Nome Completo do Representante Legal<span>*</span>
-							</h4>
-							<input
-								className={`input-text ${errors.name ? "invalid" : "valid"}`}
-								type="text"
-								name="name"
-								placeholder="Digite seu nome"
-								value={formData.name}
-								onChange={handleInputChange}
-								required
-							/>
-						</div>
-						<div className="input-field">
-							<h4>
-								4. CPF Do representante Legal <span>*</span>
-							</h4>
-							<InputMask
-								mask="999.999.999-99"
-								value={formData.cpf}
-								onChange={handleInputChange}
-								placeholder="Digite seu CPF O valor deve ser numérico"
-								required
-								className={`input-text ${errorCpf ? "invalid" : "valid"}`}
-								pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
-								name="cpf"
-							/>
-							{errorCpf && <p style={{ color: "#ae0000" }}>{errorCpf}</p>}
-						</div>
-						<div className="input-field">
-							<h4>
-								5. Número do WhatsApp do Representante<span>*</span>
-							</h4>
-							<InputMask
-								mask="(99) 99999-9999"
-								value={formData.phoneNumber}
-								onChange={handleInputChange}
-								placeholder="(DDD) Digite o número"
-								required
-								pattern="\(\d{2}\) \d{5}-\d{4}"
-								className={`input-text ${errors.phoneNumber ? "invalid" : "valid"}`}
-								name="phoneNumber"
-							/>
-						</div>
-						<div className="input-field">
-							<h4>
-								6. Área em que trabalha <span>*</span>
-							</h4>
-							<input
-								type="text"
-								name="area"
-								value={formData.area}
-								onChange={handleInputChange}
-								placeholder="Digite a área em que trabalha"
-								className={`input-text ${errors.area ? "invalid" : "valid"}`}
-								required
-							/>
-						</div>
-						<div className="input-field">
-							<h4>
-								7. CEP <span>*</span>
-							</h4>
-							<InputMask
-								mask="99999-999"
-								value={formData.state}
-								onChange={handleInputChange}
-								placeholder="Digite seu CEP O valor deve ser numérico"
-								required
-								className={`input-text ${errors.cep ? "invalid" : ""}`}
-								name="state"
-								pattern="\d{5}-\d{3}"
-								onFocus={() => resetError()}
-								onBlur={handleCEPApi}
-							/>
-						</div>
-						<div className="input-field">
-							<h4>
-								8. Endereço <span>*</span>
-							</h4>
-							<input
-								type="text"
-								name="address"
-								disabled
-								// value={formData.address}
-								// value={`${addressAPi.street}, ${addressAPi.neighborhood}, ${addressAPi.state}`}
-								value={
-									isCepFocused && addressAPi.street // Only show address if CEP is focused and API data is available
-										? `${addressAPi.street}, ${addressAPi.neighborhood}, ${addressAPi.state}, ${addressAPi.cep}`
-										: ""
-								}
-								onChange={handleInputChange}
-								placeholder="Preencha o CEP"
-								required
-								className={`input-text ${errors.address ? "invalid" : "valid"}`}
-							/>
-						</div>
-					</div>
+            {/* Area */}
+            <div className="input-field">
+              <p htmlFor="area">
+                6. Área em que trabalha
+                <span className="errorChar"> * </span>
+              </p>
+              <input
+                className={`input-text ${errors.area ? "invalid" : "valid"}`}
+                type="text"
+                placeholder="Digite a área em que trabalha"
+                {...register("area")}
+              />
+              <ErrorMessage
+                className="error-message"
+                errors={errors}
+                name="area"
+                as="p"
+              />
+            </div>
 
-					<div className="lembre-text">
-						<h1>Lembre-se:</h1>
-						<p>
-							Seu e-mail e senha cadastrados serão seu login para o acesso na
-							plataforma
-						</p>
-						<p>
-							Após preencher todos os seus dados clique em <strong>Enviar</strong> e
-							seu cadastro estará completo
-						</p>
-					</div>
-					<div className="inputs formCadastro">
-						<div className="input-field">
-							<h4>
-								Email para cadastro<span>*</span>
-							</h4>
-							<input
-								type="email"
-								name="email"
-								value={formData.email}
-								onChange={handleInputChange}
-								placeholder="Digite seu e-mail"
-								required
-								// toLowerCase
-								className={`input-text ${errorEmail ? "invalid" : "valid"}`}
-								onFocus={() => resetEmailError()}
-							/>
-							{errorEmail && <p style={{ color: "#ae0000" }}>{errorEmail}</p>}
-						</div>
-						<div className="input-field">
-							<h4>
-								Verificação do Email<span>*</span>
-							</h4>
-							<input
-								type="email"
-								name="verifyEmail"
-								value={formData.verifyEmail}
-								onChange={handleInputChange}
-								placeholder="Confirme o  seu e-mail"
-								required
-								className={`input-text ${emailMatchError ? "invalid" : "valid"}`}
-							/>
-							{emailMatchError && <p style={{ color: "red" }}>{emailMatchError}</p>}
-						</div>
-						<div className="input-field">
-							<h4>
-								Senha<span>*</span>
-							</h4>
-							<Input
-								type={showPassword ? "text" : "password"}
-								name="password"
-								value={formData.password}
-								onChange={handleInputChange}
-								placeholder="Crie sua senha"
-								required
-								className={`input-text ${passwordError ? "invalid" : "valid"}`}
-								inputProps={{
-									//pattern: "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@$%^&*()_{}|:;'<>/?~])[A-Za-z0-9!@$%^&*()_{}|:;'<>/?~]{8}$",
-									// https://regex101.com/ Para verificar o pattern
-									pattern:
-										"^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@$%^&*git()_{}|:;'<>?~])[A-Za-z0-9!@$%^&*()_{}|:;'<>?~]{8}$",
-								}}
-								endAdornment={
-									<InputAdornment position="end">
-										<IconButton onClick={handleTogglePassword}>
-											{showPassword ? <VisibilityOff /> : <Visibility />}
-										</IconButton>
-									</InputAdornment>
-								}
-							/>
-							{passwordError.length > 0 && (
-								<ul className="error-message">
-									{passwordError.map((error) => (
-										<li key={`error-${error}`}>{error}</li>
-									))}
-								</ul>
-							)}
-						</div>
-						<div className="input-field">
-							<h4>
-								Verificação de Senha<span>*</span>
-							</h4>
-							<Input
-								type={showPasswordVerify ? "text" : "password"}
-								name="verifyPassword"
-								value={formData.verifyPassword}
-								onChange={handleInputChange}
-								placeholder="Confirme a sua senha"
-								required
-								className={`input-text ${passwordMatchError ? "invalid" : "valid"}`}
-								endAdornment={
-									<InputAdornment position="end">
-										<IconButton onClick={handleTogglePasswordVerify}>
-											{showPasswordVerify ? <VisibilityOff /> : <Visibility />}
-										</IconButton>
-									</InputAdornment>
-								}
-							/>
-							{passwordMatchError && (
-								<p style={{ color: "red" }}>{passwordMatchError}</p>
-							)}
-						</div>
-					</div>
-					<div className="opcional">
-						<h4>Observação (opcional)</h4>
-						<textarea
-							name="notes"
-							cols="60"
-							rows="10"
-							placeholder="Sua mensagem"
-							className="contact-inputs"
-							value={formData.notes}
-							onChange={handleInputChange}
-						/>
-					</div>
-					<div className="legal">
-						<input
-							type="checkbox"
-							id="termos"
-							name="termos"
-							onChange={handleTermsChange}
-							required
-							checked={formData.termos}
-						/>
-						<label htmlFor="termos">
-							Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de meus
-							dados pessoais por{" "}
-							<a href="/avisoLegal" target="_blank" rel="noreferrer">
-								Toters do Bem
-							</a>{" "}
-							conforme explicado no seu{" "}
-							<a href="/avisoLegal" target="_blank" rel="noreferrer">
-								Aviso Legal de Proteção de Dados
-							</a>
-							, que inclui: 1) a coordenação e gestão de voluntários, e 2) a
-							comunicação sobre atividades e oportunidades relacionadas.
-						</label>
-					</div>
-					{error && <p style={{ color: "red", marginBottom: "1rem" }}>{error}</p>}
-					<button
-						className={`SV${isLoading ? " submit-disabled" : ""}`}
-						type="submit"
-						onClick={handleSubmit}
-						disabled={isLoading}
-					>
-						Enviar
-					</button>
-				</form>
-			</div>
-			<footer className="App-footer" />
-		</div>
-	);
+            {/* CEP */}
+            <div className="input-field">
+              <p htmlFor="state">
+                7. CEP
+                <span className="errorChar"> * </span>
+              </p>
+              <InputMask
+                mask="99999-999"
+                className={`input-text ${errors.state ? "invalid" : "valid"}`}
+                placeholder="Digite seu CEP, um valor numérico"
+                {...register("state")}
+                onBlur={handleCEPApi}
+              />
+              <ErrorMessage
+                className="error-message"
+                errors={errors}
+                name="state"
+                as="p"
+              />
+            </div>
+
+            {/* Endereço */}
+            <div className="input-field">
+              <p htmlFor="address">
+                8. Endereço
+                <span className="errorChar"> * </span>
+              </p>
+              <input
+                className={`input-text ${errors.address ? "invalid" : "valid"}`}
+                type="text"
+                placeholder="Preencha o CEP"
+                {...register("address")}
+              />
+              <ErrorMessage
+                className="error-message"
+                errors={errors}
+                name="address"
+                as="p"
+              />
+            </div>
+          </div>
+
+          <div className="lembre-text">
+            <h1>Lembre-se:</h1>
+            <p>
+              Seu e-mail e senha cadastrados serão seu login para o acesso na
+              plataforma
+            </p>
+            <p>
+              Após preencher todos os seus dados clique em{" "}
+              <strong>Enviar</strong> e seu cadastro estará completo
+            </p>
+          </div>
+
+          <div className="inputs formCadastro">
+            {/* Email */}
+            <div className="input-field">
+              <p htmlFor="email">
+                Email para cadastro
+                <span className="errorChar"> * </span>
+              </p>
+              <input
+                className={`input-text ${errors.email ? "invalid" : "valid"}`}
+                type="email"
+                placeholder="Digite seu e-mail"
+                {...register("email")}
+              />
+              <ErrorMessage
+                className="error-message"
+                errors={errors}
+                name="email"
+                as="p"
+              />
+            </div>
+
+            {/* Verifique Email */}
+            <div className="input-field">
+              <p htmlFor="verifyEmail">
+                Verificação do Email
+                <span className="errorChar"> * </span>
+              </p>
+              <input
+                className={`input-text ${
+                  errors.verifyEmail ? "invalid" : "valid"
+                }`}
+                type="email"
+                placeholder="Confirme seu e-mail"
+                {...register("verifyEmail")}
+              />
+              <ErrorMessage
+                className="error-message"
+                errors={errors}
+                name="verifyEmail"
+                as="p"
+              />
+            </div>
+
+            {/* Senha */}
+            <div className="input-field">
+              <p htmlFor="password">
+                Senha
+                <span className="errorChar"> * </span>
+              </p>
+              <div className="input-container">
+                <input
+                  className={`input-text ${
+                    errors.password ? "invalid" : "valid"
+                  }`}
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Crie uma senha"
+                  {...register("password")}
+                />
+                <button
+                  className="visibility-icon"
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </button>
+              </div>
+              <ErrorMessage
+                className="error-message"
+                errors={errors}
+                name="password"
+                as="p"
+              />
+            </div>
+
+            {/* Confirmar Senha */}
+            <div className="input-field">
+              <p htmlFor="verifyPassword">
+                Verificação de senha
+                <span className="errorChar"> * </span>
+              </p>
+              <div className="input-container">
+                <input
+                  className={`input-text ${
+                    errors.verifyPassword ? "invalid" : "valid"
+                  }`}
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Confirme sua senha"
+                  {...register("verifyPassword")}
+                />
+                <button
+                  className="visibility-icon"
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </button>
+              </div>
+              <ErrorMessage
+                className="error-message"
+                errors={errors}
+                name="verifyPassword"
+                as="p"
+              />
+            </div>
+          </div>
+
+          {/* Observações */}
+          <div className="opcional">
+            <p htmlFor="notes">Observações (opcional)</p>
+
+            <textarea
+              className="contact-inputs"
+              {...register("notes")}
+              cols="60"
+              rows="10"
+              placeholder="Digite suas observações aqui..."
+            />
+          </div>
+
+          {/* Termoslegais */}
+          <div>
+            <div className="legal">
+              <input type="checkbox" {...register("termos")} />
+              <label htmlFor="termos">
+                Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de
+                meus dados pessoais por{" "}
+                <a href="/avisoLegal" target="_blank" rel="noreferrer">
+                  Toters do Bem
+                </a>{" "}
+                conforme explicado no seu{" "}
+                <a href="/avisoLegal" target="_blank" rel="noreferrer">
+                  Aviso Legal de Proteção de Dados
+                </a>
+                , que inclui: 1) a coordenação e gestão de voluntários, e 2) a
+                comunicação sobre atividades e oportunidades relacionadas.
+              </label>
+            </div>
+            <div className="errorTermo">
+              <ErrorMessage
+                className="error-message"
+                errors={errors}
+                name="termos"
+                as="p"
+              />
+            </div>
+          </div>
+
+          <button
+            className={`SV${isLoading ? " submit-disabled" : ""}`}
+            type="submit"
+            disabled={isLoading}
+          >
+            {isLoading ? "Carregando..." : "Enviar"}
+          </button>
+          <pre>{output}</pre>
+        </form>
+      </div>
+      <footer className="App-footer" />
+    </div>
+  );
 }
 
 export default FormularioLiderImigrante;

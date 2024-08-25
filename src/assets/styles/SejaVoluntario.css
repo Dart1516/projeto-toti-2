@@ -82,12 +82,32 @@ h2 {
 .input-field {
   display: flex;
   flex-direction: column;
+  
 } 
 
-.error-message {
-  color: #ae0000;
+.input-field p {
+  text-align: left;
+}
+
+.errorChar {
+  color: var(--colorerror);
+}
+
+.errorTermo{
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  margin-top: -2rem;
+}
+
+.error-message {
+  color: var(--colorerror);
+  font-size: small;
+  text-align: left;
+  margin-top: 0.75rem;
 }
 
 
@@ -194,7 +214,7 @@ h4 {
 
 .lembre-text h1 {
   font-weight: 700;
-  font-size: clamp(1em, 1em + 1vw, 1.5em);
+  font-size: clamp(1em, 1em + 1vw, 1.25em);
 }
 
 .lembre-text h2:first-child {
@@ -268,18 +288,19 @@ button.SV {
   text-align: center;
   transition: background-color 0.3s ease, box-shadow 0.3s ease,
     transform 0.3s ease;
-  margin-bottom: 60px;
+  margin: 2rem 0 0.5rem 0;
 }
 
 button.SV:hover {
   opacity: 0.9;
   box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
-  transform: translateY(-4px);
+  transform: translateY(-3px);
 }
 
 button.submit-disabled,
 button.submit-disabled:hover {
   opacity: 0.3;
+  cursor: not-allowed;
 }
 
 @media (max-width: 850px) {
@@ -303,6 +324,21 @@ button.submit-disabled:hover {
   .inputs.formCadastro {
     gap: 1.5rem;
   }
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+}
+.visibility-icon {
+  position:relative;
+  margin-left: -2.5rem;
+  display: flex;
+  align-items: center;
+  background: none; 
+  border: none;
+  padding: 0;
+  color: var(--color5);
 }
 
 @media (max-width: 600px) {
