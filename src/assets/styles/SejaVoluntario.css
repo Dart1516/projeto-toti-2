@@ -110,6 +110,13 @@ h2 {
   margin-top: 0.75rem;
 }
 
+.error-message2{
+  color: var(--colorerror);
+  font-size: medium;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
 
 .input-field,
 .form-group.formulario {
