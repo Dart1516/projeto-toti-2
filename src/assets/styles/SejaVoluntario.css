@@ -340,12 +340,19 @@ button.submit-disabled:hover {
 .visibility-icon {
   position:relative;
   margin-left: -2.5rem;
+  margin-top: 0.5rem;
   display: flex;
   align-items: center;
   background: none; 
   border: none;
   padding: 0;
   color: var(--color5);
+  opacity: 1;
+}
+
+.visibility-icon:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
 
 @media (max-width: 600px) {
