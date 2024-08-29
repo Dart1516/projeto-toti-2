@@ -284,13 +284,14 @@ function FormularioPsicologo() {
 
 	async function createData(formData) {
 		// const { verifyEmail, verifyPassword, ...dataToSend } = { ...formData };
-		const { verifyEmail, verifyPassword, birthDate, ...rest } = formData;
-
+		const { verifyEmail, verifyPassword, birthDate, day, hour, ...rest } =
+			formData;
 		const dataToSend = {
 			...rest,
-			birthDate: null,
+			// birthDate: null,
+			availableTimes: [{ day: formData.day, hour: formData.hour }],
 			// Mudar a dara a ISO 8601 exemplo 2004-11-26T00:00:00.000+00:00
-			// birthDate: moment(birthDate).format("YYYY-MM-DD[T]HH:mm:ss[Z]"),
+			birthDate: moment(birthDate).format("YYYY-MM-DD[T]HH:mm:ss[Z]"),
 		};
 		// setOutput(JSON.stringify(dataToSend, null, 2));
 		console.log("Dados do Formulario ", dataToSend);
