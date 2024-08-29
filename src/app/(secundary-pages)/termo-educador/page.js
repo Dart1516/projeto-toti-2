@@ -12,7 +12,7 @@ function TermoResponsabilidadePsicólogos() {
 		<div className="App">
 			<div className="container-body">
 				<div className="aviso-legal">
-					<h2>Termo de Responsabilidade para Psicólogos Voluntários</h2>
+					<h2>Termo de Responsabilidade para Educadores Sociais Voluntários</h2>
 
 					<div className="legal-content">
 						<p>

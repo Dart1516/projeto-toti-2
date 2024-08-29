@@ -6,7 +6,7 @@ import "../../../assets/styles/App.css";
 import "../../../assets/styles/SejaVoluntario.css";
 import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
 import Visibility from "@mui/icons-material/VisibilityOutlined";
-import { IconButton, InputAdornment } from "@mui/material";
+// import { IconButton, InputAdornment } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Api } from "../../../services/api";
@@ -301,12 +301,11 @@ function FormularioPsicologo() {
 			console.log(response);
 		} catch (error) {
 			console.error("Erro ao enviar dados:", error);
-			setOutput(<div className="error-message2">Erro no cadastro</div>);
-			// setOutput(
-			//   <div className="error-message2">
-			//     {/* Cadastro existente, modifica o e-mail ou CPF */}
-			//   </div>
-			// );
+			setOutput(
+				<div className="error-message2">
+					Cadastro existente, modifica o e-mail ou CPF
+				</div>,
+			);
 		}
 	}
 
@@ -402,7 +401,8 @@ function FormularioPsicologo() {
 
 						{/* Rede social */}
 						<div className="input-field">
-							<p htmlFor="rede_social">5. Rede social (opcional)</p>
+							<p htmlFor="rede_social">5. Rede social</p>
+							<span className="errorChar"> * </span>
 							<input
 								className={`input-text ${errors.rede_social ? "invalid" : "valid"}`}
 								type="text"
@@ -666,12 +666,20 @@ function FormularioPsicologo() {
 							<label htmlFor="termos">
 								Confirmo que
 								<strong>&nbsp;li e aceito o </strong>
-								<Link href="../../aviso-legal" target="_blank" rel="noreferrer">
+								<Link
+									href="../../termo-psicologo"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									Termo de Responsabilidade
 								</Link>
 								&nbsp;como voluntário. E autorizo o uso dos meus dados de acordo com
 								a&nbsp;
-								<Link href="/avisoLegal" target="_blank" rel="noreferrer">
+								<Link
+									href="../../aviso-legal"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									Política de Privacidade.
 								</Link>
 							</label>

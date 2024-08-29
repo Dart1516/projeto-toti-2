@@ -9,8 +9,9 @@ import Visibility from "@mui/icons-material/VisibilityOutlined";
 import { IconButton, Input, InputAdornment } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { FaPlus, FaTrash } from "react-icons/fa";
-import Header from "../../../components/Header-NavMenu";
+// import Header from "../../../components/Header-NavMenu";
 import { Api } from "../../../services/api";
+import Link from "next/link";
 
 function FormularioEducadorSocial() {
 	const router = useRouter();
@@ -553,17 +554,20 @@ function FormularioEducadorSocial() {
 							checked={formData.termos}
 						/>
 						<label htmlFor="termos">
-							Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de meus
-							dados pessoais por{" "}
-							<a href="/avisoLegal" target="_blank" rel="noreferrer">
-								Toters do bem
-							</a>{" "}
-							conforme explicado no seu{" "}
-							<a href="/avisoLegal" target="_blank" rel="noreferrer">
-								Aviso Legal de Proteção de Dados
-							</a>
-							, que inclui: 1) a coordenação e gestão de voluntários, e 2) a
-							comunicação sobre atividades e oportunidades relacionadas.
+							Confirmo que
+							<strong>&nbsp;li e aceito o </strong>
+							<Link
+								href="../../termo-educador"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								Termo de Responsabilidade
+							</Link>
+							&nbsp;como voluntário. E autorizo o uso dos meus dados de acordo com
+							a&nbsp;
+							<Link href="../../aviso-legal" target="_blank" rel="noopener noreferrer">
+								Política de Privacidade.
+							</Link>
 						</label>
 					</div>
 					{error && (

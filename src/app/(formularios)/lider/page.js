@@ -13,6 +13,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ErrorMessage } from "@hookform/error-message";
+import Link from "next/link";
 
 function calculateDigitCNPJ(cnpj, tamanho) {
 	let soma = 0;
@@ -566,29 +567,23 @@ function FormularioLiderImigrante() {
 							<label htmlFor="termos">
 								Confirmo que
 								<strong>&nbsp;li e aceito o </strong>
-								<a href="/avisoLegal" target="_blank" rel="noreferrer">
+								<Link
+									href="../../termo-lider"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									Termo de Responsabilidade
-								</a>
+								</Link>
 								&nbsp;como voluntário. E autorizo o uso dos meus dados de acordo com
 								a&nbsp;
-								<a href="/avisoLegal" target="_blank" rel="noreferrer">
+								<Link
+									href="../../aviso-legal"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
 									Política de Privacidade.
-								</a>
+								</Link>
 							</label>
-
-							{/* <label htmlFor="termos">
-                Ao marcar esta caixa e clicar em Enviar, aceito o tratamento de
-                meus dados pessoais por{" "}
-                <a href="/avisoLegal" target="_blank" rel="noreferrer">
-                  Toters do Bem
-                </a>{" "}
-                conforme explicado no seu{" "}
-                <a href="/avisoLegal" target="_blank" rel="noreferrer">
-                  Aviso Legal de Proteção de Dados
-                </a>
-                , que inclui: 1) a coordenação e gestão de voluntários, e 2) a
-                comunicação sobre atividades e oportunidades relacionadas.
-              </label> */}
 						</div>
 						<div className="errorTermo">
 							<ErrorMessage
