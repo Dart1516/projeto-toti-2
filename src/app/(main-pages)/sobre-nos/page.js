@@ -333,7 +333,7 @@ const About = () => {
 								<Image
 									src={barbara}
 									alt="barbara"
-									title="barbara"
+									title="Barbara Nery"
 									height={190}
 									width={190}
 								/>
@@ -343,7 +343,7 @@ const About = () => {
 										Barbara Nery
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Mentor TI
+										Mentora TI
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -358,13 +358,13 @@ const About = () => {
 								</CardActions>
 							</Card>
 							<Card className="card-toter">
-								<Image src={bruno} alt="bruno" title="bruno" height={190} width={190} />
+								<Image src={bruno} alt="bruno" title="Bruno de Souza" height={190} width={190} />
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
 										Bruno de Souza
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Voluntário TI
+										Full Stack
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -382,7 +382,7 @@ const About = () => {
 								<Image
 									src={camila}
 									alt="camila"
-									title="camila"
+									title="Camila Souza"
 									height={190}
 									width={190}
 								/>
@@ -391,7 +391,7 @@ const About = () => {
 										Camila Souza
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Voluntária TI
+										Front-end
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -407,13 +407,13 @@ const About = () => {
 							</Card>
 
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-								<Image src={david} alt="david" title="david" height={190} width={190} />
+								<Image src={david} alt="david" title="David Puche" height={190} width={190} />
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
-										David Puche
+										David Puche | Toter
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Toter
+										Front-end
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -429,13 +429,13 @@ const About = () => {
 							</Card>
 
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-								<Image src={daysi} alt="daysi" title="daysi" height={190} width={190} />
+								<Image src={daysi} alt="daysi" title="Daysibel Cotiz" height={190} width={190} />
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
-										Dayssibel Cotiz
+										Daysibel Cotiz 
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Lider TI - Back End
+										Líder TI: Back-end | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -443,7 +443,7 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/daysibel1175npm ru"
+										href="https://github.com/daysibel1175"
 									>
 										Github
 									</Button>
@@ -452,8 +452,8 @@ const About = () => {
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
 									src={henry}
-									alt="Natalia"
-									title="Natalia"
+									alt="Henry"
+									title="Henry Luna"
 									height={190}
 									width={190}
 								/>
@@ -462,7 +462,7 @@ const About = () => {
 										Henry Luna
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Toter
+										Front-end | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -478,13 +478,13 @@ const About = () => {
 							</Card>
 
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-								<Image src={jani} alt="Daysi" title="Daysi" height={190} width={190} />
+								<Image src={jani} alt="Jani" title="Jani Exaez" height={190} width={190} />
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
-										Jani Exaez
+										Jani Exaez | Toter
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Voluntária TI
+										Front-end
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -499,13 +499,13 @@ const About = () => {
 								</CardActions>
 							</Card>
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-								<Image src={luis} alt="luis" title="luis" height={190} width={190} />
+								<Image src={luis} alt="luis" title="Luis Cláudio" height={190} width={190} />
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
 										Luis Cláudio
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Voluntário TI
+										Full Stack
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -523,7 +523,7 @@ const About = () => {
 								<Image
 									src={manuel}
 									alt="manuel"
-									title="manuel"
+									title="Manuel Bernardo"
 									height={190}
 									width={190}
 								/>
@@ -532,7 +532,7 @@ const About = () => {
 										Manuel Bernardo
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Toter
+										Front-end | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -550,7 +550,7 @@ const About = () => {
 								<Image
 									src={marianela}
 									alt="marianela"
-									title="marianela"
+									title="Maríanela Arana"
 									height={190}
 									width={190}
 								/>
@@ -559,7 +559,7 @@ const About = () => {
 										Maríanela Arana
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Gestora de Projeto - Analista de Dados
+										Gestora de Projeto | Analista de Dados | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -574,13 +574,13 @@ const About = () => {
 								</CardActions>
 							</Card>
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-								<Image src={maria} alt="maria" title="maria" height={190} width={190} />
+								<Image src={maria} alt="maria" title="Maria Rondon" height={190} width={190} />
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
 										Maria Rondon
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Toter
+										Front-end | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -598,7 +598,7 @@ const About = () => {
 								<Image
 									src={miguel}
 									alt="miguel"
-									title="miguel"
+									title="Miguel Lozada"
 									height={190}
 									width={190}
 								/>
@@ -607,7 +607,7 @@ const About = () => {
 										Miguel Lozada
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Voluntário TI
+										Back-end
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -622,13 +622,13 @@ const About = () => {
 								</CardActions>
 							</Card>
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-								<Image src={nadi} alt="nadi" title="nadi" height={190} width={190} />
+								<Image src={nadi} alt="nadi" title="Nadi Duno" height={190} width={190} />
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
 										Nadi Duno
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Lider TI - Front End
+										Líder TI: Front-end | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -646,7 +646,7 @@ const About = () => {
 								<Image
 									src={Natalia}
 									alt="Natalia"
-									title="Natalia"
+									title="Natalia Augusto"
 									height={190}
 									width={190}
 								/>
@@ -665,7 +665,7 @@ const About = () => {
 										target="_blank"
 										href="https://nataliaaugustoux.com/"
 									>
-										Github
+										Portfólio
 									</Button>
 								</CardActions>
 							</Card>
@@ -674,7 +674,7 @@ const About = () => {
 								<Image
 									src={samuel}
 									alt="samuel"
-									title="samuel"
+									title="Samuel Erazo"
 									height={190}
 									width={190}
 								/>
@@ -683,7 +683,7 @@ const About = () => {
 										Samuel Erazo
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Voluntario TI
+										Front-end | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -701,7 +701,7 @@ const About = () => {
 								<Image
 									src={sergio}
 									alt="sergio"
-									title="sergio"
+									title="Sergio Valério"
 									height={190}
 									width={190}
 								/>
@@ -710,7 +710,7 @@ const About = () => {
 										Sergio Valério
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Voluntário TI
+										Front-end
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -728,7 +728,7 @@ const About = () => {
 								<Image
 									src={victor}
 									alt="vitor"
-									title="vitor"
+									title="Victor Alcalá"
 									height={200}
 									width={150}
 								/>
@@ -737,7 +737,7 @@ const About = () => {
 										Victor Alcalá
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Toter
+										Front-end | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -745,7 +745,7 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/Dart1516"
+										href="https://github.com/VictorAlcala0111"
 									>
 										Github
 									</Button>
@@ -756,16 +756,16 @@ const About = () => {
 								<Image
 									src={yurisay}
 									alt="yurisay"
-									title="yurisay"
+									title="Yurisay Martínez"
 									height={190}
 									width={190}
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
-										Yurisay Martinez
+										Yurisay Martínez
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Toter
+										Front-end | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -779,9 +779,9 @@ const About = () => {
 									</Button>
 								</CardActions>
 							</Card>
-							<button onClick={toggleCards} className="button-cards">
+							{/* <button onClick={toggleCards} className="button-cards">
 								{showAllCards ? "Ver menos" : "Ver mais"}
-							</button>
+							</button> */}
 						</div>
 					</div>
 				</Container>

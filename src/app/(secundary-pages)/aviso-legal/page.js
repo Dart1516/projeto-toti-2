@@ -4,14 +4,12 @@ import React from "react";
 import "../../../assets/styles/App.css";
 import "../../../assets/styles/SejaVoluntario.css";
 import "../../../assets/styles/avisoLegal.css";
-import Header from "../../../components/Header-NavMenu";
+import { useRouter } from "next/navigation";
 
 function AvisoLegal() {
+	const router = useRouter();
 	return (
 		<div className="App">
-			<div className="App-header">
-				<Header />
-			</div>
 			<div className="container-body">
 				<div className="aviso-legal">
 					<h2>Aviso Legal de Proteção de Dados</h2>
