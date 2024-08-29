@@ -5,6 +5,7 @@ import "../../../assets/styles/Button.css";
 import "../../../assets/styles/recuperarSenha.css";
 import { Typography } from "@mui/material";
 import { Api } from "../../../services/api";
+import { useRouter } from "next/navigation";
 
 const RecuperarSenha = () => {
 	const [initialForm, setInitialForm] = useState({
@@ -18,6 +19,8 @@ const RecuperarSenha = () => {
 	const [email, setEmailValidação] = useState("");
 	const [userId, setUserId] = useState(null);
 
+	const router = useRouter();
+
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
 		setForm({
@@ -30,10 +33,12 @@ const RecuperarSenha = () => {
 		e.preventDefault();
 		try {
 			const normalizedEmail = form.email.toLowerCase();
-			const response = await Api.post(
-				`/recoverypassword/email?email=${normalizedEmail}`,
-			);
-			if (response.data === "Código de verificacao enviado com sucesso.") {
+			const response = await Api.post("/send/verifycode", {
+				email: normalizedEmail,
+			});
+			console.log(`response: ${response.data}`);
+
+			if (response.data === "Código de verificacao enviado com sucesso. ") {
 				//Retornar o da busqueda do POST ou fazer o Get para os otras tabelas
 				const responseID = await Api.get(`/lideres?email=${normalizedEmail}`);
 				if (responseID.data && responseID.data.length > 0) {
@@ -49,8 +54,13 @@ const RecuperarSenha = () => {
 				}
 				console.log("Dados enviados com sucesso:", response.data);
 				setError("");
+				setInitialForm({
+					email: normalizedEmail,
+					code: "",
+					newPassword: "",
+				});
+
 				setStep(2);
-				setInitialForm("");
 				if (response.data.length === 0) {
 					setError("Usuário não encontrado.");
 					setEmailValidação(response.data.email);
@@ -67,18 +77,32 @@ const RecuperarSenha = () => {
 
 	const handleVerifyCode = async () => {
 		const { code, newPassword } = form;
-		console.log(`Codigo  ${code} e senha ${newPassword}`);
-		setError("");
-		setStep(3);
+		//console.log(`Codigo  ${code} e senha ${newPassword}`);
+
+		try {
+			/* Faz a atualização de senha com verificação do código na API */
+			const response = await Api.put("/atualizarSenha", {
+				email: form.email,
+				password: newPassword,
+				code: code,
+			});
+
+			if (response.status === 200) {
+				setError("");
+				setStep(3);
+			}
+		} catch (error) {
+			console.error("Erro ao atualizar senha:", error.response?.data);
+			setError(
+				error.response?.data?.message || "Ocorreu um erro. Tente novamente.",
+			);
+		}
 	};
 
 	const handleNewPasswordSubmit = async (e) => {
 		e.preventDefault();
-		console.log(
-			`Datos para atualizar a senha, Id Usuario : ${userId} senha nueva : ${form.newPassword}`,
-		);
 		//Fazer push para actualizar a senha
-		alert("Por actualizar");
+		router.push("/acesso");
 	};
 
 	const renderStep = () => {
@@ -126,7 +150,6 @@ const RecuperarSenha = () => {
 								className="input-method"
 							/>
 						</div>
-						{error && <p className="error">{error}</p>}
 						<div className="form-method">
 							<label htmlFor="newPassword">Nova Senha:</label>
 							<input
@@ -148,6 +171,11 @@ const RecuperarSenha = () => {
 								Atualizar senha
 							</button>
 						</div>
+						{error && (
+							<p className="error" style={{ color: "red" }}>
+								{error}
+							</p>
+						)}
 					</div>
 				);
 			case 3:
