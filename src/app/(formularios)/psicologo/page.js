@@ -6,7 +6,6 @@ import "../../../assets/styles/App.css";
 import "../../../assets/styles/SejaVoluntario.css";
 import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
 import Visibility from "@mui/icons-material/VisibilityOutlined";
-// import { IconButton, InputAdornment } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Api } from "../../../services/api";
@@ -16,9 +15,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ErrorMessage } from "@hookform/error-message";
 import * as yup from "yup";
 import moment from "moment";
-
-// import { IconButton, Input, InputAdornment } from "@mui/material";
-// import { FaPlus, FaTrash } from "react-icons/fa";
 
 function calculateDigitCPF(value, tamanho, pesos) {
 	let soma = 0;
@@ -142,7 +138,6 @@ function FormularioPsicologo() {
 
 	const [output, setOutput] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
-	const [additionalDays, setAdditionalDays] = useState([{ day: "", hour: "" }]);
 
 	const togglePasswordVisibility = () => {
 		setShowPassword(!showPassword);
@@ -283,12 +278,10 @@ function FormularioPsicologo() {
 	});
 
 	async function createData(formData) {
-		// const { verifyEmail, verifyPassword, ...dataToSend } = { ...formData };
 		const { verifyEmail, verifyPassword, birthDate, day, hour, ...rest } =
 			formData;
 		const dataToSend = {
 			...rest,
-			// birthDate: null,
 			availableTimes: [{ day: formData.day, hour: formData.hour }],
 			// Mudar a dara a ISO 8601 exemplo 2004-11-26T00:00:00.000+00:00
 			birthDate: moment(birthDate).format("YYYY-MM-DD[T]HH:mm:ss[Z]"),
@@ -297,15 +290,14 @@ function FormularioPsicologo() {
 		console.log("Dados do Formulario ", dataToSend);
 		try {
 			const response = await Api.post("/cadastro/psicologos", dataToSend);
+			if (!response.ok) {
+				throw new Error("Erro ao enviar dados");
+			}
 			router.push("../../obrigado-page");
 			console.log(response);
 		} catch (error) {
 			console.error("Erro ao enviar dados:", error);
-			setOutput(
-				<div className="error-message2">
-					Cadastro existente, por favor modificar o e-mail ou CPF
-				</div>,
-			);
+			setOutput("Cadastro existente, por favor modificar o e-mail ou CPF");
 		}
 	}
 
@@ -321,10 +313,10 @@ function FormularioPsicologo() {
 					<div className="inputs formCadastro">
 						{/* Nome */}
 						<div className="input-field">
-							<p htmlFor="name">
-								1. Nome completo
+							<label htmlFor="name">
+								<p>1. Nome completo</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<input
 								className={`input-text ${errors.name ? "invalid" : "valid"}`}
 								type="text"
@@ -341,10 +333,10 @@ function FormularioPsicologo() {
 
 						{/* CPF*/}
 						<div className="input-field">
-							<p htmlFor="cpf">
-								2. CPF
+							<label htmlFor="cpf">
+								<p>2. CPF</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<InputMask
 								mask="999.999.999-99"
 								className={`input-text ${errors.cpf ? "invalid" : "valid"}`}
@@ -361,10 +353,10 @@ function FormularioPsicologo() {
 
 						{/* Data nasc*/}
 						<div className="input-field">
-							<p htmlFor="birthDate">
-								3. Data de Nascimento
+							<label htmlFor="birthDate">
+								<p>3. Data de Nascimento</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<input
 								className={`input-text ${errors.birthDate ? "invalid" : "valid"}`}
 								type="date"
@@ -381,10 +373,10 @@ function FormularioPsicologo() {
 
 						{/* Telefone*/}
 						<div className="input-field">
-							<p htmlFor="phoneNumber">
-								4. Número do whatsApp
+							<label htmlFor="phoneNumber">
+								<p>4. Número do whatsApp</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<InputMask
 								mask="(99)99999-9999"
 								className={`input-text ${errors.phoneNumber ? "invalid" : "valid"}`}
@@ -401,8 +393,10 @@ function FormularioPsicologo() {
 
 						{/* Rede social */}
 						<div className="input-field">
-							<p htmlFor="rede_social">5. Rede social</p>
-							<span className="errorChar"> * </span>
+							<label htmlFor="rede_social">
+								<p>5. Rede social</p>
+								<span className="errorChar"> * </span>
+							</label>
 							<input
 								className={`input-text ${errors.rede_social ? "invalid" : "valid"}`}
 								type="text"
@@ -419,10 +413,10 @@ function FormularioPsicologo() {
 
 						{/* CRP*/}
 						<div className="input-field">
-							<p htmlFor="crp">
-								6. CRP
+							<label htmlFor="crp">
+								<p>6. CRP</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<InputMask
 								mask="99-999999"
 								className={`input-text ${errors.crp ? "invalid" : "valid"}`}
@@ -439,10 +433,10 @@ function FormularioPsicologo() {
 
 						{/* Area de Especialização*/}
 						<div className="input-field">
-							<p htmlFor="specialization">
-								7. Área de especialização
+							<label htmlFor="specialization">
+								<p>7. Área de especialização</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<select
 								className={`input-text ${errors.specialization ? "invalid" : "valid"}`}
 								{...register("specialization")}
@@ -463,10 +457,10 @@ function FormularioPsicologo() {
 
 						{/* Estado*/}
 						<div className="input-field">
-							<p htmlFor="state">
-								8. Estado
+							<label htmlFor="state">
+								<p>8. Estado</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<select
 								className={`input-text ${errors.state ? "invalid" : "valid"}`}
 								{...register("state")}
@@ -487,10 +481,10 @@ function FormularioPsicologo() {
 
 						{/* Dia*/}
 						<div className="input-field">
-							<p htmlFor="day">
-								9. Dia disponível
+							<label htmlFor="day">
+								<p>9. Dia disponível</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<select
 								className={`input-text ${errors.day ? "invalid" : "valid"}`}
 								{...register("day")}
@@ -511,10 +505,10 @@ function FormularioPsicologo() {
 
 						{/* Hora*/}
 						<div className="input-field">
-							<p htmlFor="hour">
-								9. Hora disponível
+							<label htmlFor="hour">
+								<p>10. Hora disponível</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<select
 								className={`input-text ${errors.hour ? "invalid" : "valid"}`}
 								{...register("hour")}
@@ -549,10 +543,10 @@ function FormularioPsicologo() {
 					<div className="inputs formCadastro">
 						{/* Email */}
 						<div className="input-field">
-							<p htmlFor="email">
-								Email para cadastro
+							<label htmlFor="email">
+								<p>Email para cadastro</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<input
 								className={`input-text ${errors.email ? "invalid" : "valid"}`}
 								type="email"
@@ -569,10 +563,10 @@ function FormularioPsicologo() {
 
 						{/* Verifique Email */}
 						<div className="input-field">
-							<p htmlFor="verifyEmail">
-								Verificação do Email
+							<label htmlFor="verifyEmail">
+								<p>Verificação do Email</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<input
 								className={`input-text ${errors.verifyEmail ? "invalid" : "valid"}`}
 								type="email"
@@ -589,10 +583,10 @@ function FormularioPsicologo() {
 
 						{/* Senha */}
 						<div className="input-field">
-							<p htmlFor="password">
-								Senha
+							<label htmlFor="password">
+								<p>Senha</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<div className="input-container">
 								<input
 									className={`input-text ${errors.password ? "invalid" : "valid"}`}
@@ -618,10 +612,10 @@ function FormularioPsicologo() {
 
 						{/* Confirmar Senha */}
 						<div className="input-field">
-							<p htmlFor="verifyPassword">
-								Verificação de senha
+							<label htmlFor="verifyPassword">
+								<p>Verificação de senha</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<div className="input-container">
 								<input
 									className={`input-text ${errors.verifyPassword ? "invalid" : "valid"}`}
@@ -648,13 +642,13 @@ function FormularioPsicologo() {
 
 					{/* Observações */}
 					<div className="opcional">
-						<p htmlFor="notes">Observações (opcional)</p>
+						<label htmlFor="notes">Observações (opcional)</label>
 
 						<textarea
 							className="contact-inputs"
 							{...register("notes")}
-							cols="60"
-							rows="10"
+							cols={60}
+							rows={10}
 							placeholder="Digite suas observações aqui..."
 						/>
 					</div>
