@@ -76,10 +76,12 @@ const StyledButton = styled("button")(() => ({
 	cursor: "pointer",
 	color: "white",
 	fontSize: "18px",
+	transition: "transform 0.3s ease, background-color 0.3s ease",
 	"&:hover": {
 		color: "white",
 		border: "0",
-		backgroundColor: " RGB(68, 119,130)",
+		backgroundColor: "#033232",
+		transform: "translateY(-0.5px)",
 	},
 }));
 

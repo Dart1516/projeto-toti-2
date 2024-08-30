@@ -63,23 +63,35 @@ const About = () => {
 	const Styledbutton = styled(Link)(() => ({
 		alignItems: "center",
 		borderRadius: "10px",
+		boxShadow: "0 2px 4px rgba(0, 0, 0, 0.06)",
 		textDecoration: "none",
 		padding: "0.7rem 3rem",
 		fontSize: "1rem",
 		backgroundColor: "#FFB30B",
-		color: "black",
+		color: "#633100",
 		fontWeight: "600",
+		transition: "transform 0.3s ease, background-color 0.3s ease",
+		"&:hover": {
+			backgroundColor: "#FFE246",
+			transform: "translateY(-0.5px)",
+		},
 	}));
 
 	const StyledbuttonVoluntario = styled(Link)(() => ({
 		alignItems: "center",
 		borderRadius: "10px",
+		boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
 		textDecoration: "none",
 		padding: "0.7rem 3rem",
 		fontSize: "1rem",
 		backgroundColor: "#084f54",
 		color: "#ffff",
 		fontWeight: "600",
+		transition: "transform 0.3s ease, background-color 0.3s ease",
+		"&:hover": {
+			backgroundColor: "#033232",
+			transform: "translateY(-0.5px)",
+		},
 	}));
 
 	return (

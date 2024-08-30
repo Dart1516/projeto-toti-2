@@ -294,19 +294,17 @@ button.SV {
   color: var(--color4);
   background-color: var(--color1);
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   text-align: center;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease,
-    transform 0.3s ease;
+  transition: background-color 0.3s ease,transform 0.3s ease;
   margin: 2rem 0 0.5rem 0;
 }
 
 button.SV:hover {
-  opacity: 0.9;
-  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
-  transform: translateY(-3px);
+  background-color: var(--color7);
+  transform: translateY(-0.5px);
 }
 
 button.submit-disabled,
