@@ -434,10 +434,10 @@ const About = () => {
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
-										David Puche | Toter
+										David Puche
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Front-end
+										Front-end| Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -517,10 +517,10 @@ const About = () => {
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
-										Jani Exaez | Toter
+										Jani Exaez
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Front-end
+										Front-end | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
