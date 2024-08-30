@@ -63,23 +63,35 @@ const About = () => {
 	const Styledbutton = styled(Link)(() => ({
 		alignItems: "center",
 		borderRadius: "10px",
+		boxShadow: "0 2px 4px rgba(0, 0, 0, 0.06)",
 		textDecoration: "none",
 		padding: "0.7rem 3rem",
 		fontSize: "1rem",
 		backgroundColor: "#FFB30B",
-		color: "black",
+		color: "#633100",
 		fontWeight: "600",
+		transition: "transform 0.3s ease, background-color 0.3s ease",
+		"&:hover": {
+			backgroundColor: "#FFE246",
+			transform: "translateY(-0.5px)",
+		},
 	}));
 
 	const StyledbuttonVoluntario = styled(Link)(() => ({
 		alignItems: "center",
 		borderRadius: "10px",
+		boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
 		textDecoration: "none",
 		padding: "0.7rem 3rem",
 		fontSize: "1rem",
 		backgroundColor: "#084f54",
 		color: "#ffff",
 		fontWeight: "600",
+		transition: "transform 0.3s ease, background-color 0.3s ease",
+		"&:hover": {
+			backgroundColor: "#033232",
+			transform: "translateY(-0.5px)",
+		},
 	}));
 
 	return (
@@ -358,7 +370,13 @@ const About = () => {
 								</CardActions>
 							</Card>
 							<Card className="card-toter">
-								<Image src={bruno} alt="bruno" title="Bruno de Souza" height={190} width={190} />
+								<Image
+									src={bruno}
+									alt="bruno"
+									title="Bruno de Souza"
+									height={190}
+									width={190}
+								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
 										Bruno de Souza
@@ -407,7 +425,13 @@ const About = () => {
 							</Card>
 
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-								<Image src={david} alt="david" title="David Puche" height={190} width={190} />
+								<Image
+									src={david}
+									alt="david"
+									title="David Puche"
+									height={190}
+									width={190}
+								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
 										David Puche | Toter
@@ -429,10 +453,16 @@ const About = () => {
 							</Card>
 
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-								<Image src={daysi} alt="daysi" title="Daysibel Cotiz" height={190} width={190} />
+								<Image
+									src={daysi}
+									alt="daysi"
+									title="Daysibel Cotiz"
+									height={190}
+									width={190}
+								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
-										Daysibel Cotiz 
+										Daysibel Cotiz
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
 										Líder TI: Back-end | Toter
@@ -478,7 +508,13 @@ const About = () => {
 							</Card>
 
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-								<Image src={jani} alt="Jani" title="Jani Exaez" height={190} width={190} />
+								<Image
+									src={jani}
+									alt="Jani"
+									title="Jani Exaez"
+									height={190}
+									width={190}
+								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
 										Jani Exaez | Toter
@@ -499,7 +535,13 @@ const About = () => {
 								</CardActions>
 							</Card>
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-								<Image src={luis} alt="luis" title="Luis Cláudio" height={190} width={190} />
+								<Image
+									src={luis}
+									alt="luis"
+									title="Luis Cláudio"
+									height={190}
+									width={190}
+								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
 										Luis Cláudio
@@ -574,7 +616,13 @@ const About = () => {
 								</CardActions>
 							</Card>
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-								<Image src={maria} alt="maria" title="Maria Rondon" height={190} width={190} />
+								<Image
+									src={maria}
+									alt="maria"
+									title="Maria Rondon"
+									height={190}
+									width={190}
+								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
 										Maria Rondon
@@ -622,7 +670,13 @@ const About = () => {
 								</CardActions>
 							</Card>
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
-								<Image src={nadi} alt="nadi" title="Nadi Duno" height={190} width={190} />
+								<Image
+									src={nadi}
+									alt="nadi"
+									title="Nadi Duno"
+									height={190}
+									width={190}
+								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
 										Nadi Duno

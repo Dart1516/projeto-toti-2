@@ -160,7 +160,7 @@ body {
   color: var(--color4);
   background-color: var(--color1); /* Color de fondo principal */
   border: none;
-  border-radius: 4px; /* Bordes redondeados */
+  border-radius: 8px; /* Bordes redondeados */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
   cursor: pointer;
   text-align: center;
@@ -170,8 +170,9 @@ body {
 
 .botón-cadastro:hover {
   opacity: 0.9;
-  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3); /* Sombra al hacer hover */
-  transform: translateY(-4px); /* Eleva el botón */
+  /*box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);*/ /* Sombra al hacer hover */
+  transform: translateY(-0.5px); /* Eleva el botón */
+  background-color: var(--color7);
 }
 
 .botón-cadastro:active {

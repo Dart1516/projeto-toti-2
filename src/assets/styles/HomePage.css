@@ -88,7 +88,7 @@
   color: #6e3100;
   background-color: var(--color2);
 
-  transition: 0.5s;
+  transition: 0.3s;
   text-transform: uppercase;
   border-radius: 0.5rem;
   font-weight: 700;
@@ -109,12 +109,13 @@
 .sub-text-home a:hover {
   color: white;
   background-color: var(--color2);
-  transform: translateY(-4px);
+  transform: translateY(-0.5px);
 }
 
 .sub-text-home a:first-child:hover {
   background-color: var(--color1);
   color: var(--color4);
+  transform: translateY(-0.5px);
 }
 
 /*Títulos Main*/
@@ -291,12 +292,12 @@
 
   text-decoration: none;
   text-transform: uppercase;
-  transition: 0.2s;
+  transition: "transform 0.3s ease, background-color 0.3s ease",
 }
 
 .sub-text-video a:hover {
-  color: var(--color1);
-  background-color: var(--color2);
+  background-color: var(--color7);
+  transform: translateY(-0.5px);
 }
 
 .video video {
