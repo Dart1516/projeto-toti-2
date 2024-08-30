@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useUser } from "../api/UserContext";
 import "../assets/styles/Header-Minha-Conta.css";
+import { ROLES } from "./../utils/constants";
 
 function HeaderLogin() {
 	const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -72,7 +73,7 @@ function HeaderLogin() {
 			{dropdownOpen && (
 				<div className="dropdown-content show">
 					<Link href={getRolePath()}>Minha Conta</Link>
-					{user.rol === "Lider" && (
+					{user.role === ROLES.LIDER && (
 						<Link href="/interfaz-lider">Lista de Voluntariados</Link>
 					)}
 					<Link href="/" onClick={logout}>
