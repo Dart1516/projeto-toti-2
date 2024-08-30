@@ -182,8 +182,9 @@ function InterfazLider() {
 									<td>{educador.profession}</td>
 									<td>{educador.phoneNumber}</td>
 									<td>{educador.email}</td>
-									<td>{educador.state}</td>,<br />
-									<td>{educador.city}</td>
+									<td>
+										{educador.state} / {educador.city}
+									</td>
 								</tr>
 							))}
 						</tbody>
