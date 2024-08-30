@@ -113,7 +113,7 @@
 }
 
 .sub-text-home a:first-child:hover {
-  background-color: var(--color1);
+  background-color: var(--color8);
   color: var(--color4);
   transform: translateY(-0.5px);
 }
