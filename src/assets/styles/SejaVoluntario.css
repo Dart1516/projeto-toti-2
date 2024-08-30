@@ -84,6 +84,10 @@ h2 {
   flex-direction: column;
   
 } 
+label {
+  display: flex;
+  align-items: center;
+}
 
 .input-field p {
   text-align: left;
@@ -91,6 +95,7 @@ h2 {
 
 .errorChar {
   color: var(--colorerror);
+  padding-left: 0.5rem;
 }
 
 .errorTermo{

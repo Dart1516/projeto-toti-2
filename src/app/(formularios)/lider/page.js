@@ -6,7 +6,6 @@ import "../../../assets/styles/App.css";
 import "../../../assets/styles/SejaVoluntario.css";
 import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
 import Visibility from "@mui/icons-material/VisibilityOutlined";
-// import { IconButton, InputAdornment} from "@mui/material";
 import { useRouter } from "next/navigation";
 import { Api, ApiBrasil } from "../../../services/api";
 import { useForm } from "react-hook-form";
@@ -189,7 +188,6 @@ function FormularioLiderImigrante() {
 	const [output, setOutput] = useState("");
 	const [isCepFocused, setIsCepFocused] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
-	const [errorCpf, setErrorCpf] = useState("");
 
 	const togglePasswordVisibility = () => {
 		setShowPassword(!showPassword);
@@ -247,16 +245,14 @@ function FormularioLiderImigrante() {
 		console.log("Dados do Formulario ", dataToSend);
 		try {
 			const response = await Api.post("/cadastro/lideres", dataToSend);
+			if (!response.ok) {
+				throw new Error("Erro ao enviar dados");
+			}
 			router.push("../../obrigado-page");
 			console.log(response);
 		} catch (error) {
 			console.error("Erro ao enviar dados:", error);
-			// setOutput(JSON.stringify(error));
-			setOutput(
-				<div className="error-message2">
-					Cadastro existente, modifica o e-mail ou CPF
-				</div>,
-			);
+			setOutput("Cadastro existente, por favor modificar o e-mail ou CPF");
 		}
 	}
 
@@ -274,10 +270,10 @@ function FormularioLiderImigrante() {
 					<div className="inputs formCadastro">
 						{/* Organização */}
 						<div className="input-field">
-							<p htmlFor="organization">
-								1. Nome da ONG que representa
+							<label htmlFor="organization">
+								<p>1. Nome da ONG que representa</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<input
 								className={`input-text ${errors.organization ? "invalid" : "valid"}`}
 								type="text"
@@ -294,10 +290,10 @@ function FormularioLiderImigrante() {
 
 						{/* CNPJ*/}
 						<div className="input-field">
-							<p htmlFor="cnpj">
-								2. CNPJ da ONG
+							<label htmlFor="cnpj">
+								<p>2. CNPJ da ONG</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<InputMask
 								mask="99.999.999/9999-99"
 								className={`input-text ${errors.cnpj ? "invalid" : "valid"}`}
@@ -314,10 +310,10 @@ function FormularioLiderImigrante() {
 
 						{/* Nome */}
 						<div className="input-field">
-							<p htmlFor="name">
-								3. Nome Completo do Representante Legal
+							<label htmlFor="name">
+								<p>3. Nome completo do representante legal</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<input
 								className={`input-text ${errors.name ? "invalid" : "valid"}`}
 								type="text"
@@ -334,10 +330,10 @@ function FormularioLiderImigrante() {
 
 						{/* CPF*/}
 						<div className="input-field">
-							<p htmlFor="cpf">
-								4. CPF do Representante Legal
+							<label htmlFor="cpf">
+								<p>4. CPF do representante legal</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<InputMask
 								mask="999.999.999-99"
 								className={`input-text ${errors.cpf ? "invalid" : "valid"}`}
@@ -354,10 +350,10 @@ function FormularioLiderImigrante() {
 
 						{/* Telefone*/}
 						<div className="input-field">
-							<p htmlFor="phoneNumber">
-								5. Número do WhatsApp
+							<label htmlFor="phoneNumber">
+								<p>5. Número do whatsApp</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<InputMask
 								mask="(99)99999-9999"
 								className={`input-text ${errors.phoneNumber ? "invalid" : "valid"}`}
@@ -374,10 +370,10 @@ function FormularioLiderImigrante() {
 
 						{/* Area */}
 						<div className="input-field">
-							<p htmlFor="area">
-								6. Área em que trabalha
+							<label htmlFor="area">
+								<p>6. Área em que trabalha</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<input
 								className={`input-text ${errors.area ? "invalid" : "valid"}`}
 								type="text"
@@ -394,10 +390,10 @@ function FormularioLiderImigrante() {
 
 						{/* CEP */}
 						<div className="input-field">
-							<p htmlFor="cep">
-								7. CEP
+							<label htmlFor="cep">
+								<p> 7. CEP</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<InputMask
 								mask="99999-999"
 								className={`input-text ${errors.cep ? "invalid" : "valid"}`}
@@ -414,15 +410,14 @@ function FormularioLiderImigrante() {
 
 						{/* Endereço */}
 						<div className="input-field">
-							<p htmlFor="address">
-								8. Endereço
+							<label htmlFor="address">
+								<p>8. Endereço</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<input
 								className={`input-text ${errors.address ? "invalid" : "valid"}`}
 								type="text"
 								placeholder="Preencha um CEP válido"
-								// disabled={isCepFocused}
 								disabled
 								{...register("address")}
 							/>
@@ -450,10 +445,10 @@ function FormularioLiderImigrante() {
 					<div className="inputs formCadastro">
 						{/* Email */}
 						<div className="input-field">
-							<p htmlFor="email">
-								Email para cadastro
+							<label htmlFor="email">
+								<p>E-mail para cadastro</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<input
 								className={`input-text ${errors.email ? "invalid" : "valid"}`}
 								type="email"
@@ -470,10 +465,10 @@ function FormularioLiderImigrante() {
 
 						{/* Verifique Email */}
 						<div className="input-field">
-							<p htmlFor="verifyEmail">
-								Verificação do Email
+							<label htmlFor="verifyEmail">
+								<p>Verificação do e-mail</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<input
 								className={`input-text ${errors.verifyEmail ? "invalid" : "valid"}`}
 								type="email"
@@ -490,10 +485,10 @@ function FormularioLiderImigrante() {
 
 						{/* Senha */}
 						<div className="input-field">
-							<p htmlFor="password">
-								Senha
+							<label htmlFor="password">
+								<p>Senha</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<div className="input-container">
 								<input
 									className={`input-text ${errors.password ? "invalid" : "valid"}`}
@@ -519,10 +514,10 @@ function FormularioLiderImigrante() {
 
 						{/* Confirmar Senha */}
 						<div className="input-field">
-							<p htmlFor="verifyPassword">
-								Verificação de senha
+							<label htmlFor="verifyPassword">
+								<p>Verificação de senha</p>
 								<span className="errorChar"> * </span>
-							</p>
+							</label>
 							<div className="input-container">
 								<input
 									className={`input-text ${errors.verifyPassword ? "invalid" : "valid"}`}
@@ -549,13 +544,13 @@ function FormularioLiderImigrante() {
 
 					{/* Observações */}
 					<div className="opcional">
-						<p htmlFor="notes">Observações (opcional)</p>
+						<label htmlFor="notes">Observações (opcional)</label>
 
-						<textarea
+						<textarlabela
 							className="contact-inputs"
 							{...register("notes")}
-							cols="60"
-							rows="10"
+							cols={60}
+							rows={10}
 							placeholder="Digite suas observações aqui..."
 						/>
 					</div>

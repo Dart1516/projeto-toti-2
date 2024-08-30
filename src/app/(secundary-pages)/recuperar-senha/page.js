@@ -77,7 +77,6 @@ const RecuperarSenha = () => {
 
 	const handleVerifyCode = async () => {
 		const { code, newPassword } = form;
-		//console.log(`Codigo  ${code} e senha ${newPassword}`);
 
 		try {
 			/* Faz a atualização de senha com verificação do código na API */
