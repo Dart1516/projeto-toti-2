@@ -354,7 +354,7 @@ function FormularioPsicologo() {
 						{/* Data nasc*/}
 						<div className="input-field">
 							<label htmlFor="birthDate">
-								<p>3. Data de Nascimento</p>
+								<p>3. Data de nascimento</p>
 								<span className="errorChar"> * </span>
 							</label>
 							<input
@@ -544,7 +544,7 @@ function FormularioPsicologo() {
 						{/* Email */}
 						<div className="input-field">
 							<label htmlFor="email">
-								<p>Email para cadastro</p>
+								<p>E-mail para cadastro</p>
 								<span className="errorChar"> * </span>
 							</label>
 							<input
@@ -564,7 +564,7 @@ function FormularioPsicologo() {
 						{/* Verifique Email */}
 						<div className="input-field">
 							<label htmlFor="verifyEmail">
-								<p>Verificação do Email</p>
+								<p>Verificação do e-mail</p>
 								<span className="errorChar"> * </span>
 							</label>
 							<input

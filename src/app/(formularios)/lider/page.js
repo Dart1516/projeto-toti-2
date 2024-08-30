@@ -311,7 +311,7 @@ function FormularioLiderImigrante() {
 						{/* Nome */}
 						<div className="input-field">
 							<label htmlFor="name">
-								<p>3. Nome Completo do Representante Legal</p>
+								<p>3. Nome completo do representante legal</p>
 								<span className="errorChar"> * </span>
 							</label>
 							<input
@@ -331,7 +331,7 @@ function FormularioLiderImigrante() {
 						{/* CPF*/}
 						<div className="input-field">
 							<label htmlFor="cpf">
-								<p>4. CPF do Representante Legal</p>
+								<p>4. CPF do representante legal</p>
 								<span className="errorChar"> * </span>
 							</label>
 							<InputMask
@@ -351,7 +351,7 @@ function FormularioLiderImigrante() {
 						{/* Telefone*/}
 						<div className="input-field">
 							<label htmlFor="phoneNumber">
-								<p>5. Número do WhatsApp</p>
+								<p>5. Número do whatsApp</p>
 								<span className="errorChar"> * </span>
 							</label>
 							<InputMask
@@ -418,7 +418,6 @@ function FormularioLiderImigrante() {
 								className={`input-text ${errors.address ? "invalid" : "valid"}`}
 								type="text"
 								placeholder="Preencha um CEP válido"
-								// disabled={isCepFocused}
 								disabled
 								{...register("address")}
 							/>
@@ -447,7 +446,7 @@ function FormularioLiderImigrante() {
 						{/* Email */}
 						<div className="input-field">
 							<label htmlFor="email">
-								<p>Email para cadastro</p>
+								<p>E-mail para cadastro</p>
 								<span className="errorChar"> * </span>
 							</label>
 							<input
@@ -467,7 +466,7 @@ function FormularioLiderImigrante() {
 						{/* Verifique Email */}
 						<div className="input-field">
 							<label htmlFor="verifyEmail">
-								<p>Verificação do Email</p>
+								<p>Verificação do e-mail</p>
 								<span className="errorChar"> * </span>
 							</label>
 							<input
