@@ -254,7 +254,7 @@ function FormularioLiderImigrante() {
 			// setOutput(JSON.stringify(error));
 			setOutput(
 				<div className="error-message2">
-					Cadastro existente, modifica o e-mail ou CPF
+					Cadastro existente, por favor modificar o e-mail ou CPF
 				</div>,
 			);
 		}

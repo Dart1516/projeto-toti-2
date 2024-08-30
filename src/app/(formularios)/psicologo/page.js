@@ -303,7 +303,7 @@ function FormularioPsicologo() {
 			console.error("Erro ao enviar dados:", error);
 			setOutput(
 				<div className="error-message2">
-					Cadastro existente, modifica o e-mail ou CPF
+					Cadastro existente, por favor modificar o e-mail ou CPF
 				</div>,
 			);
 		}
