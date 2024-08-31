@@ -546,7 +546,7 @@ function FormularioLiderImigrante() {
 					<div className="opcional">
 						<label htmlFor="notes">Observações (opcional)</label>
 
-						<textarlabela
+						<textarea
 							className="contact-inputs"
 							{...register("notes")}
 							cols={60}
@@ -560,24 +560,26 @@ function FormularioLiderImigrante() {
 						<div className="legal">
 							<input type="checkbox" {...register("termos")} />
 							<label htmlFor="termos">
-								Confirmo que
-								<strong>&nbsp;li e aceito o </strong>
-								<Link
-									href="../../termo-lider"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									Termo de Responsabilidade
-								</Link>
-								&nbsp;como voluntário. E autorizo o uso dos meus dados de acordo com
-								a&nbsp;
-								<Link
-									href="../../aviso-legal"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									Política de Privacidade.
-								</Link>
+								<p>
+									Confirmo que
+									<strong>&nbsp;li e aceito o </strong>
+									<Link
+										href="../../termo-lider"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										Termo de Responsabilidade
+									</Link>
+									&nbsp;como voluntário. E autorizo o uso dos meus dados de acordo com
+									a&nbsp;
+									<Link
+										href="../../aviso-legal"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										Política de Privacidade.
+									</Link>
+								</p>
 							</label>
 						</div>
 						<div className="errorTermo">
