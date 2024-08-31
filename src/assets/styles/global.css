@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: var(--font-poppins);
+  font-family: var(--font-poppins), sans-serif;
 }
 
 :root {
@@ -16,8 +16,8 @@
   --color5: #7a7a7a;
   --color6: #444950;
   --colorerror: red;
-  --color7:#003537;
-  --color8:#18A7A7;
+  --color7: #003537;
+  --color8: #18a7a7;
 }
 
 body {

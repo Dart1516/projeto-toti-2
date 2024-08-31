@@ -1,15 +1,22 @@
+"use client";
 import Image from "next/image"; // Importar el componente Image de next/image
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../assets/styles/Header-NavMenu.css";
 import logo from "../assets/images/logos/toters-logo-green-dark.svg";
 import MobileMenu from "../components/Mobile-Menu.js";
 import HeaderLogin from "./Header-Login";
 
 function HeaderAndMenu() {
+	const [isClient, setIsClient] = useState(false);
+
+	useEffect(() => {
+		setIsClient(true);
+	}, []);
+
 	return (
 		<div className="heder_nav_container">
-			<MobileMenu />
+			{isClient && <MobileMenu />}
 			<nav className="contenedor_de_opciones">
 				<div className="menu-left">
 					<ul className="opciones-derecha">
@@ -38,7 +45,7 @@ function HeaderAndMenu() {
 							</Link>
 						</li>
 					</ul>
-					<HeaderLogin />
+					{isClient && <HeaderLogin />}
 				</div>
 			</nav>
 		</div>
