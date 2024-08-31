@@ -73,7 +73,7 @@ export default function Home() {
 							<div className="card-img">
 								<Image
 									src={psicologa}
-									alt="Voluntariado Psicológico"
+									alt="A imagem mostra duas pessoas sentadas frente a frente em um escritório ou sala de estar iluminada. A pessoa à esquerda, que parece ser uma profissional, está tomando notas enquanto conversa com a outra pessoa à direita, que está sentada em uma cadeira e parece estar compartilhando algo. Entre elas há uma mesa de vidro e uma planta grande. Há luz natural entrando por uma janela ao fundo."
 									width={500}
 									height={300}
 								/>
@@ -93,7 +93,7 @@ export default function Home() {
 							<div className="card-img">
 								<Image
 									src={educador}
-									alt="Educadores Sociais"
+									alt=" A imagem captura um close-up de duas mãos entrelaçadas. Uma pessoa segura a mão da outra com delicadeza, transmitindo um gesto de apoio, conforto e empatia. O fundo desfocado, com tons quentes, reforça a sensação de acolhimento e conexão"
 									width={500}
 									height={300}
 								/>
@@ -113,7 +113,7 @@ export default function Home() {
 							<div className="card-img">
 								<Image
 									src={lideres}
-									alt="Líderes Comunitários"
+									alt="A imagem mostra um grupo de pessoas, que uniram suas mãos no centro da imagem. As mãos, que pertencem a pessoas de diferentes idades e tons de pele, estão sobrepostas uma sobre a outra, formando uma pilha que simboliza a união, o trabalho em equipe e a colaboração"
 									width={500}
 									height={300}
 								/>
@@ -248,17 +248,72 @@ export default function Home() {
 					</div>
 					<div className="desplazarImágenes">
 						<div className="contenedorImágenes">
-							<Image src={Banner1} alt="galeria de fotos" width={500} height={300} />
-							<Image src={Banner2} alt="galeria de fotos" width={500} height={300} />
-							<Image src={Banner3} alt="galeria de fotos" width={500} height={300} />
-							<Image src={Banner4} alt="galeria de fotos" width={500} height={300} />
-							<Image src={Banner5} alt="galeria de fotos" width={500} height={300} />
-							<Image src={Banner6} alt="galeria de fotos" width={500} height={300} />
-							<Image src={Banner7} alt="galeria de fotos" width={500} height={300} />
-							<Image src={Banner8} alt="galeria de fotos" width={500} height={300} />
-							<Image src={Banner1} alt="galeria de fotos" width={500} height={300} />
-							<Image src={Banner2} alt="galeria de fotos" width={500} height={300} />
-							<Image src={Banner3} alt="galeria de fotos" width={500} height={300} />
+							<Image
+								src={Banner1}
+								alt="A imagem mostra um grupo de pessoas reunidas em uma área ao ar livre dentro de uma comunidade. A maioria das pessoas são mulheres, algumas com crianças, que estão formando um círculo ou semicírculo. No centro, uma mulher vestida com uma jaqueta azul e um boné parece estar liderando uma conversa ou reunião, enquanto os outros a escutam atentamente. A cena acontece sob um céu claro, com cercas de madeira e casas ao fundo, sugerindo que estão em uma área residencial ou em um bairro humilde."
+								width={500}
+								height={300}
+							/>
+							<Image
+								src={Banner2}
+								alt=" Um grupo de pessoas está de pé ao ar livre, formando um círculo. Uma pessoa com um colete azul da ACNUR (Agência da ONU para Refugiados) está de costas para a câmera, observando o grupo. A maioria das pessoas no grupo são mulheres, e parecem estar participando de alguma atividade comunitária ou reunião"
+								width={500}
+								height={300}
+							/>
+							<Image
+								src={Banner3}
+								alt=" Um grande grupo de pessoas está reunido em um espaço interno, com várias sacolas pretas cheias no chão. Todos parecem felizes, e algumas pessoas mostram o polegar para cima. Há uma sensação de cooperação e trabalho em equipe."
+								width={500}
+								height={300}
+							/>
+							<Image
+								src={Banner4}
+								alt="A foto mostra um grupo de pessoas reunidas ao ar livre durante o dia, há uma pessoa de costas para a câmera, vestindo uma camiseta branca com texto nas costas e faz o símbolo da paz com os dedos. tem uma segunda pessoa também está de costas para a câmera e veste uma blusa escura, No lado esquerdo da imagem, mais pessoas são visíveis; estao interagindo entre eles, O fundo mostra um espaço aberto "
+								width={500}
+								height={300}
+							/>
+							<Image
+								src={Banner5}
+								alt="Duas mulheres sorridentes estão tirando uma selfie. Uma delas usa óculos e uma camiseta branca que diz Migração, Diversidade e Tecnologia Ambas estão felizes e parecem estar aproveitando o momento."
+								width={500}
+								height={300}
+							/>
+							<Image
+								src={Banner6}
+								alt="Imagem mostrando três pessoas em um espaço interno. À esquerda, duas pessoas estão sentadas em cadeiras de madeira, vestindo jaquetas azuis da UNHCR (Agência da ONU para Refugiados). Uma delas, com cabelo cacheado, está de costas, enquanto a outra, com o cabelo preso, está sentada ao fundo, de pernas cruzadas, olhando para a direita. À direita, um homem sentado em uma cadeira de plástico branca, usando um conjunto esportivo preto, segurando um celular e sorrindo. Há sacos empilhados no fundo e um ar-condicionado na parede."
+								width={500}
+								height={300}
+							/>
+							<Image
+								src={Banner7}
+								alt="Imagem mostrando dois homens de pé ao lado de uma caminhonete branca em uma rua. Eles estão frente a frente, interagindo. O homem à esquerda veste uma jaqueta azul com listras brancas, jeans e carrega uma mochila preta nas costas. O homem à direita usa um boné preto, suéter cinza, calças escuras e tênis esportivos. Ao redor da caminhonete, há várias sacolas com objetos e suprimentos."
+								width={500}
+								height={300}
+							/>
+							<Image
+								src={Banner8}
+								alt="Na imagem, podemos ver oito homens que, juntos, estão empurrando uma pequena lancha pesqueira. Seus rostos parecem um pouco tristes. Dentro da lancha, há uma mulher com uma blusa colorida e, na embarcação, há o que parece ser comida e outras coisas dentro de sacolas plásticas pretas. A rua está cheia de água ao redor das casas e, ao fundo, vê-se o pôr do sol."
+								width={500}
+								height={300}
+							/>
+							<Image
+								src={Banner1}
+								alt="A imagem mostra um grupo de pessoas reunidas em uma área ao ar livre dentro de uma comunidade. A maioria das pessoas são mulheres, algumas com crianças, que estão formando um círculo ou semicírculo. No centro, uma mulher vestida com uma jaqueta azul e um boné parece estar liderando uma conversa ou reunião, enquanto os outros a escutam atentamente. A cena acontece sob um céu claro, com cercas de madeira e casas ao fundo, sugerindo que estão em uma área residencial ou em um bairro humilde"
+								width={500}
+								height={300}
+							/>
+							<Image
+								src={Banner2}
+								alt="Um grupo de pessoas está de pé ao ar livre, formando um círculo. Uma pessoa com um colete azul da ACNUR (Agência da ONU para Refugiados) está de costas para a câmera, observando o grupo. A maioria das pessoas no grupo são mulheres, e parecem estar participando de alguma atividade comunitária ou reunião"
+								width={500}
+								height={300}
+							/>
+							<Image
+								src={Banner3}
+								alt="Um grande grupo de pessoas está reunido em um espaço interno, com várias sacolas pretas cheias no chão. Todos parecem felizes, e algumas pessoas mostram o polegar para cima. Há uma sensação de cooperação e trabalho em equipe"
+								width={500}
+								height={300}
+							/>
 						</div>
 					</div>
 				</div>

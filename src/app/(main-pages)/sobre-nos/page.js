@@ -33,13 +33,13 @@ import jani from "../../../assets/images/toters/Jani.png";
 import luis from "../../../assets/images/toters/Luis.jpg";
 import manuel from "../../../assets/images/toters/Manuel.jpg";
 import maria from "../../../assets/images/toters/Maria.jpg";
-import marianela from "../../../assets/images/toters/Maríanela.png";
+import marianela from "../../../assets/images/toters/Maríanela.jpg";
 import miguel from "../../../assets/images/toters/Miguel.png";
 import nadi from "../../../assets/images/toters/Nadi.jpeg";
 import Natalia from "../../../assets/images/toters/Natalia.jpg";
 import samuel from "../../../assets/images/toters/Samuel.jpg";
 import sergio from "../../../assets/images/toters/Sergio.jpg";
-import victor from "../../../assets/images/toters/Victor.png";
+import victor from "../../../assets/images/toters/Victor.jpg";
 import yurisay from "../../../assets/images/toters/Yurisay.jpg";
 import imgComunidade from "../../../assets/images/voluntarios.jpg";
 import "../../../assets/styles/sobreNos.css";
@@ -68,19 +68,13 @@ const About = () => {
 		padding: "0.7rem 3rem",
 		fontSize: "1rem",
 		backgroundColor: "#FFB30B",
-		color: "#633100",
+		color: "black",
 		fontWeight: "600",
-		transition: "transform 0.3s ease, background-color 0.3s ease",
-		"&:hover": {
-			backgroundColor: "#FFE246",
-			transform: "translateY(-0.5px)",
-		},
 	}));
 
 	const StyledbuttonVoluntario = styled(Link)(() => ({
 		alignItems: "center",
 		borderRadius: "10px",
-		boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
 		textDecoration: "none",
 		padding: "0.7rem 3rem",
 		fontSize: "1rem",
@@ -89,7 +83,7 @@ const About = () => {
 		fontWeight: "600",
 		transition: "transform 0.3s ease, background-color 0.3s ease",
 		"&:hover": {
-			backgroundColor: "#033232",
+			backgroundColor: "#FFE246",
 			transform: "translateY(-0.5px)",
 		},
 	}));
@@ -135,7 +129,7 @@ const About = () => {
 						<div className="img-main-center">
 							<StyledImg
 								src={imgComunidade}
-								alt="Voluntarios no RS"
+								alt="Um grupo de pessoas está em uma sala, organizando e manuseando sacos grandes cheios de roupas ou outros itens. Duas mulheres no centro estão segurando sacos pretos grandes. Ao fundo, vê-se outros voluntários trabalhando e vários elementos decorativos, como bandeiras."
 								width={800}
 								height={450}
 							/>
@@ -189,7 +183,7 @@ const About = () => {
 						<div className="img-main">
 							<StyledImg
 								src={imagenGente}
-								alt="Imagem sobre nós"
+								alt="Um grupo de pessoas está sendo resgatado em um barco inflável através de uma rua inundada. As casas ao lado estão parcialmente submersas na água. A cena reflete uma situação de emergência e resgate."
 								width={800}
 								height={450}
 							/>
