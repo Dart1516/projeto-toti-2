@@ -344,7 +344,7 @@ const About = () => {
 							<Card className="card-toter">
 								<Image
 									src={barbara}
-									alt="barbara"
+									alt="Mulher com cabelo longo e escuro. Está vestida com um suéter preto. Sua expressão é séria e profissional. A foto está em preto e branco."
 									title="Barbara Nery"
 									height={190}
 									width={190}
@@ -372,7 +372,7 @@ const About = () => {
 							<Card className="card-toter">
 								<Image
 									src={bruno}
-									alt="bruno"
+									alt="Homem jovem com cabelo curto e óculos. Sorri e veste uma camiseta escura. A imagem parece ser tirada ao ar livre."
 									title="Bruno de Souza"
 									height={190}
 									width={190}
@@ -399,7 +399,7 @@ const About = () => {
 							<Card className="card-toter">
 								<Image
 									src={camila}
-									alt="camila"
+									alt="Mulher jovem com cabelo longo e escuro, ligeiramente inclinado para a frente. Parece séria e está vestida com uma camiseta de cor escura."
 									title="Camila Souza"
 									height={190}
 									width={190}
@@ -427,7 +427,7 @@ const About = () => {
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
 									src={david}
-									alt="david"
+									alt="Homem com cabelo curto e escuro, com um largo sorriso. Usa uma camisa branca e uma gravata azul, posando de forma formal."
 									title="David Puche"
 									height={190}
 									width={190}
@@ -437,7 +437,7 @@ const About = () => {
 										David Puche
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Front-end| Toter
+										Líder TI: Front-end | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -455,14 +455,14 @@ const About = () => {
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
 									src={daysi}
-									alt="daysi"
+									alt="Mulher com cabelo castanho claro e liso, penteado para um lado. Veste uma blusa de manga longa e tem uma expressão amigável."
 									title="Daysibel Cotiz"
 									height={190}
 									width={190}
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
-										Daysibel Cotiz
+										Dayssibel Cotiz
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
 										Líder TI: Back-end | Toter
@@ -482,7 +482,7 @@ const About = () => {
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
 									src={henry}
-									alt="Henry"
+									alt="Um homem com óculos e camisa polo marrom"
 									title="Henry Luna"
 									height={190}
 									width={190}
@@ -510,7 +510,7 @@ const About = () => {
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
 									src={jani}
-									alt="Jani"
+									alt="Mulher jovem com cabelo longo e liso, tingido de uma cor loiro escuro. Está sorrindo e veste uma jaqueta escura com uma blusa vermelha."
 									title="Jani Exaez"
 									height={190}
 									width={190}
@@ -537,7 +537,7 @@ const About = () => {
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
 									src={luis}
-									alt="luis"
+									alt="Homem de pele escura e cabelo curto. A imagem mostra um logotipo digital sobre o rosto, indicando que pode estar usando um efeito visual na foto"
 									title="Luis Cláudio"
 									height={190}
 									width={190}
@@ -564,7 +564,7 @@ const About = () => {
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
 									src={manuel}
-									alt="manuel"
+									alt="Homem jovem com cabelo curto e crespo. Veste uma camisa branca e uma gravata vermelha, com um fundo de tela azul brilhante."
 									title="Manuel Bernardo"
 									height={190}
 									width={190}
@@ -591,7 +591,7 @@ const About = () => {
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
 									src={marianela}
-									alt="marianela"
+									alt="Mulher com óculos e cabelo longo e escuro. Está vestida com um suéter cinza claro e aparece sorrindo."
 									title="Maríanela Arana"
 									height={190}
 									width={190}
@@ -619,7 +619,7 @@ const About = () => {
 								<Image
 									src={maria}
 									alt="maria"
-									title="Maria Rondon"
+									title="Mulher com cabelo longo e escuro, preso. Usa óculos e uma camiseta escura. Está sorrindo e parece estar em um ambiente interno."
 									height={190}
 									width={190}
 								/>
@@ -646,7 +646,7 @@ const About = () => {
 								<Image
 									src={miguel}
 									alt="miguel"
-									title="Miguel Lozada"
+									title="Homem jovem com cabelo curto e loiro. Está ligeiramente inclinado para a câmera, com uma expressão séria. Veste uma camiseta cinza claro."
 									height={190}
 									width={190}
 								/>
@@ -655,7 +655,7 @@ const About = () => {
 										Miguel Lozada
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Back-end
+										Voluntário TI
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -672,7 +672,7 @@ const About = () => {
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
 									src={nadi}
-									alt="nadi"
+									alt="Mulher com cabelo curto e preto, penteado para cima. Sorri amplamente e veste uma camiseta de cor escura. O fundo de sua foto é de cor amarela brilhante."
 									title="Nadi Duno"
 									height={190}
 									width={190}
@@ -699,7 +699,7 @@ const About = () => {
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
 									src={Natalia}
-									alt="Natalia"
+									alt="Mulher branca de cabelo preto, com vestido preto"
 									title="Natalia Augusto"
 									height={190}
 									width={190}
@@ -727,7 +727,7 @@ const About = () => {
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
 									src={samuel}
-									alt="samuel"
+									alt="Homem usando óculos de sol e mochila"
 									title="Samuel Erazo"
 									height={190}
 									width={190}
@@ -754,7 +754,7 @@ const About = () => {
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
 									src={sergio}
-									alt="sergio"
+									alt="Homem branco, com camiseta azul"
 									title="Sergio Valério"
 									height={190}
 									width={190}
@@ -781,7 +781,7 @@ const About = () => {
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
 									src={victor}
-									alt="vitor"
+									alt="Homem com camiseta preta e fone de ouvido"
 									title="Victor Alcalá"
 									height={200}
 									width={150}
@@ -799,7 +799,7 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/VictorAlcala0111"
+										href="https://github.com/Dart1516"
 									>
 										Github
 									</Button>
@@ -809,7 +809,7 @@ const About = () => {
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
 									src={yurisay}
-									alt="yurisay"
+									alt="Mulher com cabelo preto longo, camiseta branca"
 									title="Yurisay Martínez"
 									height={190}
 									width={190}
@@ -833,9 +833,6 @@ const About = () => {
 									</Button>
 								</CardActions>
 							</Card>
-							{/* <button onClick={toggleCards} className="button-cards">
-								{showAllCards ? "Ver menos" : "Ver mais"}
-							</button> */}
 						</div>
 					</div>
 				</Container>
