@@ -55,10 +55,10 @@ function eighteenYearsAgo() {
 	return today;
 }
 
-async function isCEPValid(state) {
+async function isCEPValid(cep) {
 	//Verifica o CEP na API Brasil
 	try {
-		const resp = await ApiBrasil.get(`/${state}`);
+		const resp = await ApiBrasil.get(`/${cep}`);
 		return !resp.data.erro;
 	} catch (error) {
 		return false;
@@ -267,9 +267,19 @@ function FormularioEducadorSocial() {
 			// Mudar a dara a ISO 8601 exemplo 2004-11-26T00:00:00.000+00:00
 			birthDate: moment(birthDate).format("YYYY-MM-DD[T]HH:mm:ss[Z]"),
 		};
-		setOutput(JSON.stringify(dataToSend, null, 2));
+		// setOutput(JSON.stringify(dataToSend, null, 2));
 		console.log("Dados do Formulario ", dataToSend);
-		//Fazer post
+		try {
+			const response = await Api.post("/cadastro/educador", dataToSend);
+			if (!response.ok) {
+				throw new Error("Erro ao enviar dados");
+			}
+			router.push("../../obrigado-page");
+			console.log(response);
+		} catch (error) {
+			console.error("Erro ao enviar dados:", error);
+			setOutput("Cadastro existente, por favor modificar o e-mail ou CPF");
+		}
 	}
 
 	return (
