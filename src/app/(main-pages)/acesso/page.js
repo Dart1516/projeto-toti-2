@@ -23,6 +23,7 @@ import { z } from "zod";
 import { useUser } from "../../../api/UserContext";
 import { Api } from "../../../services/api";
 import "./../../../assets/styles/SejaVoluntario.css";
+import { ROLES } from "../../../utils/constants";
 
 const StyledContainer = styled("div")(({ theme }) => ({
 	position: "fixed",
@@ -75,10 +76,12 @@ const StyledButton = styled("button")(() => ({
 	cursor: "pointer",
 	color: "white",
 	fontSize: "18px",
+	transition: "transform 0.3s ease, background-color 0.3s ease",
 	"&:hover": {
 		color: "white",
 		border: "0",
-		backgroundColor: " RGB(68, 119,130)",
+		backgroundColor: "#033232",
+		transform: "translateY(-0.5px)",
 	},
 }));
 
@@ -103,6 +106,7 @@ const schema = z.object({
 
 const Acesso = () => {
 	const [error, setError] = useState(null);
+	const [loading, setLoading] = useState(false);
 	const router = useRouter();
 	const { setUser } = useUser();
 
@@ -128,27 +132,31 @@ const Acesso = () => {
 			}
 			const passwordString = String(password);
 			const normalizedEmail = email.toLowerCase();
+			setLoading(true);
 			const response = await Api.post("/login/usuarios", {
 				email: normalizedEmail,
 				password: passwordString,
 			});
 			setUser(response.data);
-			console.log("response", response);
 			const role = response.data.role;
 
 			if (role) {
-				if (role === "lider") {
+				if (role === ROLES.LIDER) {
 					// router.push("/minha-conta-lider");
 					router.push("/interfaz-lider");
-				} else if (role === "psicologo") {
+				} else if (role === ROLES.PSICOLOGO) {
 					router.push("/minha-conta-psicologo");
-				} else if (role === "educador") {
+				} else if (role === ROLES.EDUCADOR) {
 					router.push("/minha-conta-educador");
+				} else {
+					router.push("/");
 				}
 			}
 		} catch (error) {
 			console.error("Erro ao autenticar e carregar os dados do cliente:", error);
 			setError("E-mail ou senha inválidos");
+		} finally {
+			setLoading(false);
 		}
 	};
 
@@ -245,7 +253,9 @@ const Acesso = () => {
 							/>
 							<StyledLink href="/recuperar-senha">Esqueceu a senha?</StyledLink>
 						</StyledItems>
-						<StyledButton>Entrar</StyledButton>
+						<StyledButton disabled={loading}>
+							{loading ? "Carregando..." : "Entrar"}
+						</StyledButton>
 						{error && <p style={{ color: "red" }}>{error}</p>}{" "}
 					</FormGroup>
 				</StyledLogin>
