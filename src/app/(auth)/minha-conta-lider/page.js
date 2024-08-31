@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useUser } from "../../../api/UserContext";
 import "../../../assets/styles/App.css";
@@ -6,7 +7,7 @@ import "../../../assets/styles/MinhaConta.css";
 import "../../../assets/styles/SejaVoluntario.css";
 import Footer from "../../../components/Footer";
 
-function minhaConta() {
+function MinhaContaLider() {
 	const { user } = useUser();
 
 	const { register, handleSubmit } = useForm({
@@ -232,4 +233,4 @@ function minhaConta() {
 	);
 }
 
-export default minhaConta;
+export default MinhaContaLider;

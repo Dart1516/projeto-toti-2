@@ -20,6 +20,8 @@ import React, { createContext, useContext, useEffect, useState } from "react";
  * @property {string} createdAt
  * @property {string} updatedAt
  * @property {string} role
+ * @property {string} address
+ * @property {string} area
  */
 
 /**
