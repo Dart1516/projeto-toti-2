@@ -13,7 +13,9 @@ export default function MinhaContaForm() {
 		defaultValues: {
 			cpf: user?.cpf,
 			nome: user?.name,
-			dataNascimento: user ? format(new Date(user?.birthDate), "yyyy-MM-dd") : "",
+			dataNascimento: user?.birthDate
+				? format(new Date(user?.birthDate), "yyyy-MM-dd")
+				: "",
 			telefone: user?.phoneNumber,
 			instagram: user?.rede_social,
 			estado: user?.state,

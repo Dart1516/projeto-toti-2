@@ -1,9 +1,27 @@
+"use client";
+import { useForm } from "react-hook-form";
+import { useUser } from "../../../api/UserContext";
 import "../../../assets/styles/App.css";
 import "../../../assets/styles/MinhaConta.css";
 import "../../../assets/styles/SejaVoluntario.css";
 import Footer from "../../../components/Footer";
 
 function minhaConta() {
+	const { user } = useUser();
+
+	const { register, handleSubmit } = useForm({
+		defaultValues: {
+			cpf: user?.cpf,
+			nome: user?.name,
+			email: user?.email,
+			telefone: user?.phoneNumber,
+			area: user?.area,
+			estado: user?.state,
+			address: user?.address,
+			notes: user?.notes,
+		},
+	});
+
 	return (
 		<div className="App-Conta">
 			<div className="minhaConta">
@@ -18,6 +36,7 @@ function minhaConta() {
 								id="cpf"
 								placeholder="Cpf representante"
 								className="input-text"
+								{...register("cpf")}
 							/>
 						</div>
 						<div className="input-field">
@@ -27,6 +46,7 @@ function minhaConta() {
 								id="nome"
 								placeholder="Nome representante"
 								className="input-text"
+								{...register("nome")}
 							/>
 						</div>
 						<div className="input-field">
@@ -36,6 +56,7 @@ function minhaConta() {
 								id="email"
 								placeholder="E-mail representante"
 								className="input-text"
+								{...register("email")}
 							/>
 						</div>
 						<div className="input-field">
@@ -45,6 +66,7 @@ function minhaConta() {
 								id="telefone"
 								placeholder="Telefone (WhatsApp)"
 								className="input-text"
+								{...register("telefone")}
 							/>
 						</div>
 						<div className="input-field">
@@ -54,11 +76,12 @@ function minhaConta() {
 								id="area"
 								placeholder="Área em que trabalha"
 								className="input-text"
+								{...register("area")}
 							/>
 						</div>
 						<div className="input-field">
 							<label htmlFor="estado">Estado que reside</label>
-							<select id="estado" className="input-text">
+							<select id="estado" className="input-text" {...register("estado")}>
 								<option value="">Selecione um estado</option>
 								<option value="AC">Acre (AC)</option>
 								<option value="AL">Alagoas (AL)</option>
@@ -96,24 +119,7 @@ function minhaConta() {
 								id="endereço"
 								placeholder="Endereço"
 								className="input-text"
-							/>
-						</div>
-						<div className="input-field">
-							<label htmlFor="numero">Número</label>
-							<input
-								type="text"
-								id="numero"
-								placeholder="Número"
-								className="input-text"
-							/>
-						</div>
-						<div className="input-field">
-							<label htmlFor="complemento">Complemento</label>
-							<input
-								type="text"
-								id="complemento"
-								placeholder="Complemento"
-								className="input-text"
+								{...register("address")}
 							/>
 						</div>
 					</div>
@@ -213,6 +219,7 @@ function minhaConta() {
 						id="observacao"
 						placeholder="Observação"
 						className="textarea-conta"
+						{...register("notes")}
 					/>
 					<div className="buttons">
 						<button>Cancelar</button>
