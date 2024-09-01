@@ -98,6 +98,26 @@ label {
   padding-left: 0.5rem;
 }
 
+.plusChar,.deleteChar{
+  cursor: pointer;
+  color: var(--color1);
+  padding-left: 0.5rem;
+  transition: background-color 0.3s ease,transform 0.3s ease;
+  opacity: 1;
+}
+
+.plusChar:hover {
+  color: var(--color8);
+  opacity: 0.8;
+}
+
+.deleteChar{
+  color: var(--colorerror);
+}
+
+.deleteChar:hover {
+  opacity: 0.8;
+}
 .errorTermo{
   display: flex;
   flex-direction: column;
@@ -122,6 +142,14 @@ label {
   margin-top: 1.5rem;
 }
 
+.containerErrorDay{
+  display: flex;
+  justify-content: center;
+  color: var(--colorerror);
+  gap: 1rem;
+  margin-bottom: -2rem;
+  
+}
 
 .input-field,
 .form-group.formulario {
@@ -194,6 +222,10 @@ h4 {
   border-radius: 4px;
   font-size: 16px;
 }
+
+.form-select{
+  width: 100%;
+}
 .input-text.login {
   width: 100%;
 }
@@ -201,7 +233,7 @@ h4 {
 .dia-disponible {
   display: flex;
   flex-direction: row;
-  align-items: end;
+  align-items: center;
   gap: 30px;
 }
 
@@ -231,11 +263,6 @@ h4 {
 
 .lembre-text h2:first-child {
   font-weight: 700;
-}
-
-.borrar {
-  height: 40px;
-  width: 20px;
 }
 
 .opcional {

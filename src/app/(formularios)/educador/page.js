@@ -7,10 +7,11 @@ import "../../../assets/styles/App.css";
 import "../../../assets/styles/SejaVoluntario.css";
 import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
 import Visibility from "@mui/icons-material/VisibilityOutlined";
+import { FaPlus, FaTrash } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Api, ApiBrasil } from "../../../services/api";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ErrorMessage } from "@hookform/error-message";
@@ -103,7 +104,7 @@ const createFormDataSchema = z.object({
 			/^\(\d{2}\)\d{5}-\d{4}$/,
 			"Número de telefone inválido. Exemplo: (99)99999-9999",
 		),
-	rede_social: z.string().nonempty("URl é obrigatório"),
+	rede_social: z.string().optional(),
 	profession: z
 		.string()
 		.nonempty("A profissão é obrigatório")
@@ -136,8 +137,12 @@ const createFormDataSchema = z.object({
 				.map((word) => word[0].toLocaleUpperCase().concat(word.substring(1)))
 				.join(" ");
 		}),
-	day: z.string().nonempty("Selecione um dia"),
-	hour: z.string().nonempty("Selecione a hora"),
+	availableTimes: z.array(
+		z.object({
+			day: z.string().nonempty("Selecione o dia"),
+			hour: z.string().nonempty("Selecione a hora"),
+		}),
+	),
 	email: z
 		.string()
 		.nonempty("O e-mail é obrigatório")
@@ -226,14 +231,22 @@ function FormularioEducadorSocial() {
 		}
 	});
 
+	const daySuffixes = ["ro", "do", "ro", "to", "to", "to", "mo"];
+
 	const {
 		register,
 
 		handleSubmit,
 		setValue,
 		formState: { isLoading, isSubmitting, errors },
+		control,
 	} = useForm({
 		resolver: zodResolver(dataSuperRefineSchema),
+	});
+
+	const { fields, append, remove } = useFieldArray({
+		control,
+		name: "availableTimes",
 	});
 
 	async function handleCEPApi(e) {
@@ -259,11 +272,9 @@ function FormularioEducadorSocial() {
 	}
 
 	async function createData(formData) {
-		const { verifyEmail, verifyPassword, birthDate, day, hour, cep, ...rest } =
-			formData;
+		const { verifyEmail, verifyPassword, birthDate, cep, ...rest } = formData;
 		const dataToSend = {
 			...rest,
-			availableTimes: [{ day: formData.day, hour: formData.hour }],
 			// Mudar a dara a ISO 8601 exemplo 2004-11-26T00:00:00.000+00:00
 			birthDate: moment(birthDate).format("YYYY-MM-DD[T]HH:mm:ss[Z]"),
 		};
@@ -375,8 +386,7 @@ function FormularioEducadorSocial() {
 						{/* Rede social */}
 						<div className="input-field">
 							<label htmlFor="rede_social">
-								<p>5. Rede social</p>
-								<span className="errorChar"> * </span>
+								<p>5. Rede social (opcional)</p>
 							</label>
 							<input
 								className={`input-text ${errors.rede_social ? "invalid" : "valid"}`}
@@ -456,8 +466,7 @@ function FormularioEducadorSocial() {
 						{/* Certificado */}
 						<div className="input-field">
 							<label htmlFor="certificate">
-								<p>8. Certificado</p>
-								<span className="errorChar"> * </span>
+								<p>9. Certificado (opcional)</p>
 							</label>
 							<input
 								className={`input-text ${errors.certificate ? "invalid" : "valid"}`}
@@ -474,55 +483,93 @@ function FormularioEducadorSocial() {
 						</div>
 					</div>
 
-					<div className="inputs formCadastro">
-						{/* Dia*/}
-						<div className="input-field">
-							<label htmlFor="day">
-								<p>10. Dia disponível</p>
-								<span className="errorChar"> * </span>
-							</label>
-							<select
-								className={`input-text ${errors.day ? "invalid" : "valid"}`}
-								{...register("day")}
-							>
-								{daysAvailable.map((daysAvailable) => (
-									<option key={daysAvailable.value} value={daysAvailable.value}>
-										{daysAvailable.label}
-									</option>
-								))}
-							</select>
-							<ErrorMessage
-								className="error-message"
-								errors={errors}
-								name="day"
-								as="p"
-							/>
-						</div>
+					<label htmlFor="availableTimes">
+						<p>
+							10. Quando você pode ajudar? Adicione seus horários disponíveis clicando
+							no ícone
+						</p>
+						{fields.length < 7 && (
+							<span className="plusChar">
+								<FaPlus onClick={() => append({})} title="Agregar horário" size={20} />
+							</span>
+						)}
+					</label>
+					{fields.map((field, index) => {
+						return (
+							<div className="form-group formulario" key={field.id}>
+								<div className="dia-disponible">
+									<label htmlFor={field.id} />
+									{/* Dia */}
+									<div>
+										<p>
+											{`${index + 1}${
+												daySuffixes[index % daySuffixes.length]
+											} dia disponível`}
+											<span className="errorChar"> * </span>
+										</p>
+									</div>
+									<div>
+										<select
+											className={`input-text form-select ${
+												errors.day ? "invalid" : "valid"
+											}`}
+											{...register(`availableTimes.${index}.day`)}
+											// control={control}
+										>
+											{daysAvailable.map((daysAvailable) => (
+												<option key={daysAvailable.value} value={daysAvailable.value}>
+													{daysAvailable.label}
+												</option>
+											))}
+										</select>
+									</div>
 
-						{/* Hora*/}
-						<div className="input-field">
-							<label htmlFor="hour">
-								<p>11. Hora disponível</p>
-								<span className="errorChar"> * </span>
-							</label>
-							<select
-								className={`input-text ${errors.hour ? "invalid" : "valid"}`}
-								{...register("hour")}
-							>
-								{hourAvailable.map((hourAvailable) => (
-									<option key={hourAvailable.value} value={hourAvailable.value}>
-										{hourAvailable.label}
-									</option>
-								))}
-							</select>
-							<ErrorMessage
-								className="error-message"
-								errors={errors}
-								name="hour"
-								as="p"
-							/>
-						</div>
-					</div>
+									{/* Hora */}
+									<div>
+										<select
+											className={`input-text form-select ${
+												errors.hour ? "invalid" : "valid"
+											}`}
+											{...register(`availableTimes.${index}.hour`)}
+											// control={control}
+										>
+											{hourAvailable.map((hourAvailable) => (
+												<option key={hourAvailable.value} value={hourAvailable.value}>
+													{hourAvailable.label}
+												</option>
+											))}
+										</select>
+									</div>
+
+									{index > 0 && (
+										<span className="deleteChar">
+											<FaTrash onClick={() => remove(index)} title="Eliminar" size={15} />
+										</span>
+									)}
+								</div>
+								<div className="containerErrorDay">
+									<ErrorMessage
+										className="error-message"
+										errors={errors}
+										name={`availableTimes.${index}.day`}
+										as="p"
+										render={({ message }) => <p>{message}</p>}
+									/>
+									{errors?.availableTimes?.[index]?.day &&
+										errors?.availableTimes?.[index]?.hour && <span>e</span>}
+
+									<ErrorMessage
+										className="error-message"
+										errors={errors}
+										name={`availableTimes.${index}.hour`}
+										as="p"
+										render={({ message }) => <p>{message}</p>}
+									/>
+								</div>
+							</div>
+						);
+					})}
+					{/* *************************************** */}
 
 					<div className="lembre-text">
 						<h1>Lembre-se:</h1>
