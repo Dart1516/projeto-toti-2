@@ -3,7 +3,8 @@
 import React, { useState } from "react";
 import InputMask from "react-input-mask";
 import "../../../assets/styles/App.css";
-import "../../../assets/styles/SejaVoluntario.css";
+// import "../../../assets/styles/SejaVoluntario.css";
+import styles from "../../../assets/styles/SejaVoluntario.module.css";
 import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
 import Visibility from "@mui/icons-material/VisibilityOutlined";
 import { useRouter } from "next/navigation";
@@ -257,31 +258,34 @@ function FormularioLiderImigrante() {
 	}
 
 	return (
-		<div className="App SV">
-			<div className="background-image" />
-			<div className="container">
-				<div className="container-titulo">
+		<div className={`${styles.App} ${styles.SV}`}>
+			<div className={styles.background - image} />
+			<div className={styles.container}>
+				<div className={styles.container - titulo}>
 					<h2>SOS Rio Grande do Sul </h2>
 					<h2>
 						Cadastro de Liderança de ONG para Imigrantes, Refugiados e Apátridas
 					</h2>
 				</div>
-				<form onSubmit={handleSubmit(createData)} className="general-inputs">
-					<div className="inputs formCadastro">
+				<form
+					onSubmit={handleSubmit(createData)}
+					className={styles.general - inputs}
+				>
+					<div className={`${styles.inputs} ${styles.formCadastro}`}>
 						{/* Organização */}
-						<div className="input-field">
+						<div className={styles.input - field}>
 							<label htmlFor="organization">
 								<p>1. Nome da ONG que representa</p>
-								<span className="errorChar"> * </span>
+								<span className={styles.errorChar}> * </span>
 							</label>
 							<input
-								className={`input-text ${errors.organization ? "invalid" : "valid"}`}
+								className={`${styles.input - text} ${errors.organization ? styles.invalid : styles.valid}`}
 								type="text"
 								placeholder="Digite o nome da ONG"
 								{...register("organization")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles.error - message}
 								errors={errors}
 								name="organization"
 								as="p"
@@ -289,19 +293,19 @@ function FormularioLiderImigrante() {
 						</div>
 
 						{/* CNPJ*/}
-						<div className="input-field">
+						<div className={styles.input - field}>
 							<label htmlFor="cnpj">
 								<p>2. CNPJ da ONG</p>
-								<span className="errorChar"> * </span>
+								<span className={styles.errorChar}> * </span>
 							</label>
 							<InputMask
 								mask="99.999.999/9999-99"
-								className={`input-text ${errors.cnpj ? "invalid" : "valid"}`}
+								className={`${styles.input - text} ${errors.cnpj ? styles.invalid : styles.valid}`}
 								placeholder="Digite o CNPJ, um valor numérico"
 								{...register("cnpj")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles.error - message}
 								errors={errors}
 								name="cnpj"
 								as="p"
@@ -309,19 +313,19 @@ function FormularioLiderImigrante() {
 						</div>
 
 						{/* Nome */}
-						<div className="input-field">
+						<div className={styles.input - field}>
 							<label htmlFor="name">
 								<p>3. Nome completo do representante legal</p>
-								<span className="errorChar"> * </span>
+								<span className={styles.errorChar}> * </span>
 							</label>
 							<input
-								className={`input-text ${errors.name ? "invalid" : "valid"}`}
+								className={`${styles.input - text} ${errors.name ? styles.invalid : styles.valid}`}
 								type="text"
 								placeholder="Digite seu nome completo"
 								{...register("name")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles.error - message}
 								errors={errors}
 								name="name"
 								as="p"
@@ -329,19 +333,19 @@ function FormularioLiderImigrante() {
 						</div>
 
 						{/* CPF*/}
-						<div className="input-field">
+						<div className={styles.input - field}>
 							<label htmlFor="cpf">
 								<p>4. CPF do representante legal</p>
-								<span className="errorChar"> * </span>
+								<span className={styles.errorChar}> * </span>
 							</label>
 							<InputMask
 								mask="999.999.999-99"
-								className={`input-text ${errors.cpf ? "invalid" : "valid"}`}
+								className={`${styles.input - text} ${errors.cpf ? styles.invalid : styles.valid}`}
 								placeholder="Digite o CPF, um valor numérico"
 								{...register("cpf")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles.error - message}
 								errors={errors}
 								name="cpf"
 								as="p"
@@ -349,19 +353,19 @@ function FormularioLiderImigrante() {
 						</div>
 
 						{/* Telefone*/}
-						<div className="input-field">
+						<div className={styles.input - field}>
 							<label htmlFor="phoneNumber">
 								<p>5. Número do whatsApp</p>
-								<span className="errorChar"> * </span>
+								<span className={styles.errorChar}> * </span>
 							</label>
 							<InputMask
 								mask="(99)99999-9999"
-								className={`input-text ${errors.phoneNumber ? "invalid" : "valid"}`}
+								className={`${styles.input - text} ${errors.phoneNumber ? styles.invalid : styles.valid}`}
 								placeholder="Digite seu número"
 								{...register("phoneNumber")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles.error - message}
 								errors={errors}
 								name="phoneNumber"
 								as="p"
@@ -369,19 +373,19 @@ function FormularioLiderImigrante() {
 						</div>
 
 						{/* Area */}
-						<div className="input-field">
+						<div className={styles.input - field}>
 							<label htmlFor="area">
 								<p>6. Área em que trabalha</p>
-								<span className="errorChar"> * </span>
+								<span className={styles.errorChar}> * </span>
 							</label>
 							<input
-								className={`input-text ${errors.area ? "invalid" : "valid"}`}
+								className={`${styles.input - text} ${errors.area ? styles.invalid : styles.valid}`}
 								type="text"
 								placeholder="Digite a área em que trabalha"
 								{...register("area")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles.error - message}
 								errors={errors}
 								name="area"
 								as="p"
@@ -389,19 +393,19 @@ function FormularioLiderImigrante() {
 						</div>
 
 						{/* CEP */}
-						<div className="input-field">
+						<div className={styles.input - field}>
 							<label htmlFor="cep">
 								<p> 7. CEP</p>
-								<span className="errorChar"> * </span>
+								<span className={styles.errorChar}> * </span>
 							</label>
 							<InputMask
 								mask="99999-999"
-								className={`input-text ${errors.cep ? "invalid" : "valid"}`}
+								className={`${styles.input - text} ${errors.cep ? styles.invalid : styles.valid}`}
 								placeholder="Digite seu CEP, um valor numérico"
 								{...register("cep", { onBlur: handleCEPApi })}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles.error - message}
 								errors={errors}
 								name="cep"
 								as="p"
@@ -409,20 +413,20 @@ function FormularioLiderImigrante() {
 						</div>
 
 						{/* Endereço */}
-						<div className="input-field">
+						<div className={styles.input - field}>
 							<label htmlFor="address">
 								<p>8. Endereço</p>
-								<span className="errorChar"> * </span>
+								<span className={styles.errorChar}> * </span>
 							</label>
 							<input
-								className={`input-text ${errors.address ? "invalid" : "valid"}`}
+								className={`${styles.input - text} ${errors.address ? styles.invalid : styles.valid}`}
 								type="text"
 								placeholder="Preencha um CEP válido"
 								disabled
 								{...register("address")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles.error - message}
 								errors={errors}
 								name="address"
 								as="p"
@@ -430,7 +434,7 @@ function FormularioLiderImigrante() {
 						</div>
 					</div>
 
-					<div className="lembre-text">
+					<div className={styles.lembre - text}>
 						<h1>Lembre-se:</h1>
 						<p>
 							Seu e-mail e senha cadastrados serão seu login para o acesso na
@@ -442,21 +446,21 @@ function FormularioLiderImigrante() {
 						</p>
 					</div>
 
-					<div className="inputs formCadastro">
+					<div className={`${styles.inputs} ${formCadastro}`}>
 						{/* Email */}
-						<div className="input-field">
+						<div className={styles.input - field}>
 							<label htmlFor="email">
 								<p>E-mail para cadastro</p>
-								<span className="errorChar"> * </span>
+								<span className={styles.errorChar}> * </span>
 							</label>
 							<input
-								className={`input-text ${errors.email ? "invalid" : "valid"}`}
+								className={`${styles.input - text} ${errors.email ? styles.invalid : styles.valid}`}
 								type="email"
 								placeholder="Digite seu e-mail"
 								{...register("email")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles.error - message}
 								errors={errors}
 								name="email"
 								as="p"
@@ -464,19 +468,19 @@ function FormularioLiderImigrante() {
 						</div>
 
 						{/* Verifique Email */}
-						<div className="input-field">
+						<div className={styles.input - field}>
 							<label htmlFor="verifyEmail">
 								<p>Verificação do e-mail</p>
-								<span className="errorChar"> * </span>
+								<span className={styles.errorChar}> * </span>
 							</label>
 							<input
-								className={`input-text ${errors.verifyEmail ? "invalid" : "valid"}`}
+								className={`${styles.input - text} ${errors.verifyEmail ? styles.invalid : styles.valid}`}
 								type="email"
 								placeholder="Confirme seu e-mail"
 								{...register("verifyEmail")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles.error - message}
 								errors={errors}
 								name="verifyEmail"
 								as="p"
@@ -484,20 +488,20 @@ function FormularioLiderImigrante() {
 						</div>
 
 						{/* Senha */}
-						<div className="input-field">
+						<div className={styles.input - field}>
 							<label htmlFor="password">
 								<p>Senha</p>
-								<span className="errorChar"> * </span>
+								<span className={styles.errorChar}> * </span>
 							</label>
-							<div className="input-container">
+							<div className={styles.input - container}>
 								<input
-									className={`input-text ${errors.password ? "invalid" : "valid"}`}
+									className={`${styles.input - text} ${errors.password ? styles.invalid : styles.valid}`}
 									type={showPassword ? "text" : "password"}
 									placeholder="Crie uma senha"
 									{...register("password")}
 								/>
 								<button
-									className="visibility-icon"
+									className={styles.visibility - icon}
 									type="button"
 									onClick={togglePasswordVisibility}
 								>
@@ -505,7 +509,7 @@ function FormularioLiderImigrante() {
 								</button>
 							</div>
 							<ErrorMessage
-								className="error-message"
+								className={styles.error - message}
 								errors={errors}
 								name="password"
 								as="p"
@@ -513,20 +517,20 @@ function FormularioLiderImigrante() {
 						</div>
 
 						{/* Confirmar Senha */}
-						<div className="input-field">
+						<div className={styles.input - field}>
 							<label htmlFor="verifyPassword">
 								<p>Verificação de senha</p>
-								<span className="errorChar"> * </span>
+								<span className={styles.errorChar}> * </span>
 							</label>
-							<div className="input-container">
+							<div className={styles.input - container}>
 								<input
-									className={`input-text ${errors.verifyPassword ? "invalid" : "valid"}`}
+									className={`${styles.input - text} ${errors.verifyPassword ? styles.invalid : styles.valid}`}
 									type={showPassword ? "text" : "password"}
 									placeholder="Confirme sua senha"
 									{...register("verifyPassword")}
 								/>
 								<button
-									className="visibility-icon"
+									className={styles.visibility - icon}
 									type="button"
 									onClick={togglePasswordVisibility}
 								>
@@ -534,7 +538,7 @@ function FormularioLiderImigrante() {
 								</button>
 							</div>
 							<ErrorMessage
-								className="error-message"
+								className={styles.error - message}
 								errors={errors}
 								name="verifyPassword"
 								as="p"
@@ -543,11 +547,11 @@ function FormularioLiderImigrante() {
 					</div>
 
 					{/* Observações */}
-					<div className="opcional">
+					<div className={styles.opcional}>
 						<label htmlFor="notes">Observações (opcional)</label>
 
 						<textarea
-							className="contact-inputs"
+							className={styles.contact - inputs}
 							{...register("notes")}
 							cols={60}
 							rows={10}
@@ -557,7 +561,7 @@ function FormularioLiderImigrante() {
 
 					{/* Termoslegais */}
 					<div>
-						<div className="legal">
+						<div className={styles.legal}>
 							<input type="checkbox" {...register("termos")} />
 							<label htmlFor="termos">
 								<p>
@@ -582,9 +586,9 @@ function FormularioLiderImigrante() {
 								</p>
 							</label>
 						</div>
-						<div className="errorTermo">
+						<div className={styles.errorTermo}>
 							<ErrorMessage
-								className="error-message"
+								className={styles.error - message}
 								errors={errors}
 								name="termos"
 								as="p"
@@ -593,7 +597,7 @@ function FormularioLiderImigrante() {
 					</div>
 
 					<button
-						className={`SV${isLoading ? " submit-disabled" : ""}`}
+						className={`${styles.SV} ${isLoading ? styles.submit - disabled : ""}`}
 						type="submit"
 						disabled={isSubmitting}
 					>
