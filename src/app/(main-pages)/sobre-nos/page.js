@@ -35,7 +35,7 @@ import manuel from "../../../assets/images/toters/Manuel.jpg";
 import maria from "../../../assets/images/toters/Maria.jpg";
 import marianela from "../../../assets/images/toters/Maríanela.png";
 import miguel from "../../../assets/images/toters/Miguel.png";
-import nadi from "../../../assets/images/toters/Nadi.jpeg";
+import nadi from "../../../assets/images/toters/Nadi.png";
 import Natalia from "../../../assets/images/toters/Natalia.jpg";
 import samuel from "../../../assets/images/toters/Samuel.jpg";
 import sergio from "../../../assets/images/toters/Sergio.jpg";
@@ -500,9 +500,9 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/hluna23"
+										href="https://www.linkedin.com/in/henry-luna-0793402a/"
 									>
-										Github
+										Linkedin
 									</Button>
 								</CardActions>
 							</Card>
@@ -520,7 +520,7 @@ const About = () => {
 										Jani Exaez
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Front-end | Toter
+										Voluntário | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -528,9 +528,9 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/jexaez"
+										href="https://www.linkedin.com/in/jexaez/"
 									>
-										Github
+										Linkedin
 									</Button>
 								</CardActions>
 							</Card>
@@ -547,7 +547,7 @@ const About = () => {
 										Luis Cláudio
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Full Stack
+										Voluntário | Amig Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -555,9 +555,9 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/luiz-claudio-rj"
+										href="https://www.linkedin.com/in/luizincode/"
 									>
-										Github
+										Linkedin
 									</Button>
 								</CardActions>
 							</Card>
@@ -574,7 +574,7 @@ const About = () => {
 										Manuel Bernardo
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Front-end | Toter
+										Voluntário | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -582,9 +582,9 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/ManueBernardo"
+										href="https://www.linkedin.com/in/manuel-bernardo-165373208/"
 									>
-										Github
+										Linkedin
 									</Button>
 								</CardActions>
 							</Card>
@@ -601,7 +601,7 @@ const About = () => {
 										Maríanela Arana
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Gestora de Projeto | Analista de Dados | Toter
+										Voluntária | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -609,9 +609,9 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/ToterMa"
+										href="https://www.linkedin.com/in/marianela-arana/"
 									>
-										Github
+										Linkedin
 									</Button>
 								</CardActions>
 							</Card>
@@ -628,7 +628,7 @@ const About = () => {
 										Maria Rondon
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Front-end | Toter
+										Voluntária | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -636,9 +636,9 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/mmedicci"
+										href="https://www.linkedin.com/in/mariamedicci"
 									>
-										Github
+										Linkedin
 									</Button>
 								</CardActions>
 							</Card>
@@ -655,7 +655,7 @@ const About = () => {
 										Miguel Lozada
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Voluntário TI
+										Voluntário | Amigo Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -663,9 +663,9 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/Lozada98"
+										href="https://www.linkedin.com/in/lozada98"
 									>
-										Github
+										Linkedin
 									</Button>
 								</CardActions>
 							</Card>
@@ -682,7 +682,7 @@ const About = () => {
 										Nadi Duno
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Líder TI: Front-end | Toter
+										Voluntário | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -690,9 +690,9 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/nadiduno/"
+										href="https://www.linkedin.com/in/nadiduno/"
 									>
-										Github
+										Linkedin
 									</Button>
 								</CardActions>
 							</Card>
@@ -709,7 +709,7 @@ const About = () => {
 										Natalia Augusto
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										UX/UI Designer
+										Voluntário | Amiga Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -717,9 +717,9 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://nataliaaugustoux.com/"
+										href="hhttps://www.linkedin.com/in/nataliaaugustoux/"
 									>
-										Portfólio
+										Linkedin
 									</Button>
 								</CardActions>
 							</Card>
@@ -737,7 +737,7 @@ const About = () => {
 										Samuel Erazo
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Front-end | Toter
+										Voluntário | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -745,9 +745,9 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/shemuelx"
+										href="https://www.linkedin.com/in/samuel-felipe-erazo"
 									>
-										Github
+										Linkedin
 									</Button>
 								</CardActions>
 							</Card>
@@ -764,7 +764,7 @@ const About = () => {
 										Sergio Valério
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Front-end
+										Voluntário | Amigo Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -772,9 +772,9 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/Scyies"
+										href="https://www.linkedin.com/in/sergio-valerio/"
 									>
-										Github
+										Linkedin
 									</Button>
 								</CardActions>
 							</Card>
@@ -791,7 +791,7 @@ const About = () => {
 										Victor Alcalá
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Front-end | Toter
+										Voluntário | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -799,9 +799,9 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/Dart1516"
+										href="https://www.linkedin.com/in/alcalamvictor"
 									>
-										Github
+										Linkedin
 									</Button>
 								</CardActions>
 							</Card>
@@ -819,7 +819,7 @@ const About = () => {
 										Yurisay Martínez
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Front-end | Toter
+										Voluntária | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -827,9 +827,36 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/yurisaym"
+										href="https://www.linkedin.com/in/yurisay-martinez/"
 									>
-										Github
+										Linkedin
+									</Button>
+								</CardActions>
+							</Card>
+							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+								<Image
+									src={yurisay}
+									alt="Mulher com cabelo preto longo, camiseta branca"
+									title="Yurisay Martínez"
+									height={190}
+									width={190}
+								/>
+								<CardContent>
+									<Typography gutterBottom variant="h5" component="div">
+										Yurisay Martínez
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Voluntária | Toter
+									</Typography>
+								</CardContent>
+								<CardActions>
+									<Button
+										size="small"
+										style={{ color: "black" }}
+										target="_blank"
+										href="https://www.linkedin.com/in/yurisay-martinez/"
+									>
+										Linkedin
 									</Button>
 								</CardActions>
 							</Card>
