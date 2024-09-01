@@ -355,7 +355,7 @@ const About = () => {
 										Barbara Nery
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Mentora TI
+										Voluntária | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -363,9 +363,9 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/barbarasemacento"
+										href="https://www.linkedin.com/in/barbarafnery/"
 									>
-										Github
+										Linkedin
 									</Button>
 								</CardActions>
 							</Card>
@@ -382,7 +382,7 @@ const About = () => {
 										Bruno de Souza
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Full Stack
+										Voluntário | Amigo Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -390,9 +390,9 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/brunoclaumari"
+										href="https://www.linkedin.com/in/bruno-de-sousa-silva-312528176/"
 									>
-										Github
+										Linkedin
 									</Button>
 								</CardActions>
 							</Card>
@@ -409,7 +409,7 @@ const About = () => {
 										Camila Souza
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Front-end
+										Voluntária | Amiga Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -419,7 +419,7 @@ const About = () => {
 										target="_blank"
 										href="https://github.com/camiladz"
 									>
-										Github
+										Linkedin
 									</Button>
 								</CardActions>
 							</Card>
@@ -437,7 +437,7 @@ const About = () => {
 										David Puche
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Líder TI: Front-end | Toter
+										Voluntário | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -445,9 +445,9 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/Danvddpf1"
+										href="https://www.linkedin.com/in/david-puche/"
 									>
-										Github
+										Linkedin
 									</Button>
 								</CardActions>
 							</Card>
@@ -465,7 +465,7 @@ const About = () => {
 										Dayssibel Cotiz
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Líder TI: Back-end | Toter
+										Voluntária | Toter
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -473,9 +473,9 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://github.com/daysibel1175"
+										href="https://www.linkedin.com/in/daysibelcotizpitter"
 									>
-										Github
+										Linkedin
 									</Button>
 								</CardActions>
 							</Card>
