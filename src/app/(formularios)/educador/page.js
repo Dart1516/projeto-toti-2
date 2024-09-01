@@ -282,9 +282,6 @@ function FormularioEducadorSocial() {
 		console.log("Dados do Formulario ", dataToSend);
 		try {
 			const response = await Api.post("/cadastro/educador", dataToSend);
-			if (!response.ok) {
-				throw new Error("Erro ao enviar dados");
-			}
 			router.push("../../obrigado-page");
 			console.log(response);
 		} catch (error) {
@@ -466,7 +463,8 @@ function FormularioEducadorSocial() {
 						{/* Certificado */}
 						<div className="input-field">
 							<label htmlFor="certificate">
-								<p>9. Certificado (opcional)</p>
+								<p>9. Certificado</p>
+								<span className="errorChar"> * </span>
 							</label>
 							<input
 								className={`input-text ${errors.certificate ? "invalid" : "valid"}`}
@@ -514,7 +512,6 @@ function FormularioEducadorSocial() {
 												errors.day ? "invalid" : "valid"
 											}`}
 											{...register(`availableTimes.${index}.day`)}
-											// control={control}
 										>
 											{daysAvailable.map((daysAvailable) => (
 												<option key={daysAvailable.value} value={daysAvailable.value}>
@@ -531,7 +528,6 @@ function FormularioEducadorSocial() {
 												errors.hour ? "invalid" : "valid"
 											}`}
 											{...register(`availableTimes.${index}.hour`)}
-											// control={control}
 										>
 											{hourAvailable.map((hourAvailable) => (
 												<option key={hourAvailable.value} value={hourAvailable.value}>
@@ -569,7 +565,6 @@ function FormularioEducadorSocial() {
 							</div>
 						);
 					})}
-					{/* *************************************** */}
 
 					<div className="lembre-text">
 						<h1>Lembre-se:</h1>
