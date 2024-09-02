@@ -748,7 +748,7 @@ let response;
 					>
 						{isSubmitting ? "Carregando..." : "Enviar"}
 					</button>
-					<pre>{output}</pre>
+					<pre className="error-message-api">{output}</pre>
 				</form>
 			</div>
 			<footer className="App-footer" />
