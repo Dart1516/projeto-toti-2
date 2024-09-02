@@ -238,22 +238,33 @@ function FormularioLiderImigrante() {
 			setIsCepFocused(false);
 		}
 	}
-
+let response;
 	async function createData(formData) {
 		const { cep, verifyEmail, verifyPassword, ...dataToSend } = { ...formData };
 		// setOutput(JSON.stringify(dataToSend, null, 2));
 		console.log("Dados do Formulario ", dataToSend);
 		try {
 			const response = await Api.post("/cadastro/lideres", dataToSend);
-			if (!response.ok) {
-				throw new Error("Erro ao enviar dados");
+			if (response) {
+				router.push("../../obrigado-page");
 			}
-			router.push("../../obrigado-page");
 			console.log(response);
 		} catch (error) {
-			console.error("Erro ao enviar dados:", error);
-			setOutput("Cadastro existente, por favor modificar o e-mail ou CPF");
-		}
+			let errorMessage;
+		  
+			if (error.response && error.response.data && error.response.data.message) {
+			  if (error.response.data.message.includes("CPF já cadastrado")) {
+				errorMessage = "CPF inserido ja cadastrado. Ja tem uma conta? Faça login. Se ainda não tem, favor conferir os dados no formulario.";
+			  } else if (error.response.data.message.includes("E-mail já cadastrado")) {
+				errorMessage = "Email inserido já cadastrado. Ja tem uma conta? faça login. Se ainda não tem, favor conferir os dados no formulario.";
+			  } 
+			}else {
+				errorMessage = "Ops! A conexão falhou. O cadastro não foi bem sucedido, vamos tentar de novo?";
+			  }
+		  
+			console.error("Error ao enviar os dados:", error);
+			setOutput(errorMessage);
+		  }
 	}
 
 	return (
@@ -599,7 +610,7 @@ function FormularioLiderImigrante() {
 					>
 						{isSubmitting ? "Carregando..." : "Enviar"}
 					</button>
-					<pre>{output}</pre>
+					<pre className="error-message-api">{output}</pre>
 				</form>
 			</div>
 			<footer className="App-footer" />
