@@ -320,7 +320,7 @@ section.registro-processo .processo-voluntariado {
     no-repeat;
 }
 
-section.registro-processo .processo-voluntariado .container {
+section.registro-processo .processo-voluntariado .container-caixa {
   width: 100%;
   max-width: var(--desktop-width);
   margin: 78px auto;
@@ -330,20 +330,20 @@ section.registro-processo .processo-voluntariado .container {
 }
 
 @media screen and (max-width: 1120px) {
-  section.registro-processo .processo-voluntariado .container {
+  section.registro-processo .processo-voluntariado .container-caixa {
     grid-template-columns: 1fr;
     gap: 5rem;
   }
 }
 
-section.registro-processo .processo-voluntariado .container .processos {
+section.registro-processo .processo-voluntariado .container-caixa .processos {
   display: flex;
   flex-direction: column;
   gap: 4rem;
   height: 100%;
 }
 
-section.registro-processo .processo-voluntariado .container h1 {
+section.registro-processo .processo-voluntariado .container-caixa h1 {
   font-size: 2rem;
   line-height: 1.2;
   color: var(--color4);
@@ -353,7 +353,7 @@ section.registro-processo .processo-voluntariado .container h1 {
   justify-self: center;
 }
 
-section.registro-processo .processo-voluntariado .container h1::after {
+section.registro-processo .processo-voluntariado .container-caixa h1::after {
   content: "";
   position: absolute;
   left: 0;
@@ -413,7 +413,7 @@ section.registro-processo .processo-lider {
   background: url("../images/Processo de liderança.png") center/cover no-repeat;
 }
 
-section.registro-processo .processo-lider .container {
+section.registro-processo .processo-lider .container-caixa {
   width: 100%;
   max-width: var(--desktop-width);
   margin: 78px auto;
@@ -422,14 +422,14 @@ section.registro-processo .processo-lider .container {
   grid-template-columns: 1fr 1fr;
 }
 
-section.registro-processo .processo-lider .container .processos {
+section.registro-processo .processo-lider .container-caixa .processos {
   display: flex;
   flex-direction: column;
   gap: 4rem;
   height: 100%;
 }
 
-section.registro-processo .processo-lider .container h1 {
+section.registro-processo .processo-lider .container-caixa h1 {
   font-size: 2rem;
   line-height: 1.2;
   color: var(--color4);
@@ -439,7 +439,7 @@ section.registro-processo .processo-lider .container h1 {
   justify-self: center;
 }
 
-section.registro-processo .processo-lider .container h1::before {
+section.registro-processo .processo-lider .container-caixa h1::before {
   content: "";
   position: absolute;
   right: 0;
@@ -481,12 +481,12 @@ section.registro-processo .processo-lider .processo p {
   margin-top: 1rem;
 }
 @media screen and (max-width: 1120px) {
-  section.registro-processo .processo-lider .container {
+  section.registro-processo .processo-lider .container-caixa {
     display: flex;
     flex-direction: column-reverse;
     gap: 5rem;
   }
-  section.registro-processo .processo-lider .container h1 {
+  section.registro-processo .processo-lider .container-caixa h1 {
     font-size: 2rem;
     line-height: 1.2;
     color: var(--color1);
@@ -495,7 +495,7 @@ section.registro-processo .processo-lider .processo p {
     position: relative;
     justify-self: center;
   }
-  section.registro-processo .processo-lider .container h1::before {
+  section.registro-processo .processo-lider .container-caixa h1::before {
     display: none;
   }
 }

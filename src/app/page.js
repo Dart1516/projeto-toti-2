@@ -150,7 +150,7 @@ export default function Home() {
 				</div>
 				<section className="registro-processo">
 					<main className="processo-voluntariado">
-						<div className="container">
+						<div className="container-caixa">
 							<h1>Processo de Voluntariado</h1>
 							<div className="processos">
 								<div className="processo">
@@ -198,7 +198,7 @@ export default function Home() {
 						</div>
 					</main>
 					<main className="processo-lider">
-						<div className="container">
+						<div className="container-caixa">
 							<div className="processos">
 								<div className="processo">
 									<h2>01</h2>
