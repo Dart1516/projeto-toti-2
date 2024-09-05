@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import "../../../assets/styles/App.css";
 import "../../../assets/styles/interfazLider.css";
 import { Api } from "../../../services/api";
+import React from "react";
 
 function InterfazLider() {
 	// Estados para los voluntarios
