@@ -42,38 +42,11 @@ function Footer() {
 					<ul className="parceiros">
 						<li>
 							<Link
-								href="https://www.acnur.org/portugues/"
+								href="https://www.associacaodosangolanos.ong.br/"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								ACNUR
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="https://caritas.org.br/"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								Caritas Brasireila
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="https://www.mawon.org/"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								MAWON
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="https://www.venezuelaglobal.org/"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								Venezuela Global
+								Associação de Angolanos RS
 							</Link>
 						</li>
 					</ul>
