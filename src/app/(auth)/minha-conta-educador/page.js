@@ -5,6 +5,10 @@ import "../../../assets/styles/App.css";
 import "../../../assets/styles/MinhaConta.css";
 import "../../../assets/styles/SejaVoluntario.css";
 import Footer from "../../../components/Footer";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import React from "react";
 
 function MinhaContaEducador() {
 	const [selectedOption, setSelectedOption] = useState(null);
@@ -19,7 +23,7 @@ function MinhaContaEducador() {
 		instagram: "",
 		estado: "",
 		cidade: "",
-		crp: "",
+		certificado: "",
 		area: "",
 		tipodevoluntariado: "",
 		observacao: "",
@@ -48,8 +52,51 @@ function MinhaContaEducador() {
 		setFormData({ ...formData, additionalDays: values });
 	};
 
+	const EducadorSchema = z.object({
+		cpf: z
+			.string()
+			.min(11)
+			.regex(
+				/^\d{3}\.\d{3}\.\d{3}-\d{2}$/,
+				"CPF inválido. Exemplo: 999.999.999-99",
+			),
+		nome: z.string().min(1),
+		dataNascimento: z.string().min(1).date(),
+		telefone: z
+			.string()
+			.min(1)
+			.regex(
+				/^\(\d{2}\)\d{5}-\d{4}$/,
+				"Número de telefone inválido. Exemplo: (99)99999-9999",
+			),
+		instagram: z.string().optional(),
+		estado: z.string().optional(),
+		cidade: z.string().optional(),
+		certificado: z
+			.string()
+			.min(3, "O certificado precisa no mínimo 3 carateres")
+			.max(20, "O certificado precisa no máximo 20 carateres"),
+		area: z.string().min(1),
+		tipodevoluntariado: z.string().min(1),
+		observacao: z.string().optional(),
+		additionalDays: z.array(
+			z.object({
+				day: z.string().min(1, "Selecione o dia"),
+				hour: z.string().min(1, "Selecione a hora"),
+			}),
+		),
+	});
+
+	function formLog(data) {
+		console.log(data);
+	}
+
+	const { register, handleSubmit } = useForm({
+		resolver: zodResolver(EducadorSchema),
+	});
+
 	return (
-		<div className="App-Conta">
+		<form onSubmit={handleSubmit(formLog)} className="App-Conta">
 			<div className="minhaConta">
 				<div className="section">
 					<h2 className="titulo-conta">Minha Conta</h2>
@@ -60,11 +107,9 @@ function MinhaContaEducador() {
 							<input
 								type="text"
 								id="cpf"
-								name="cpf"
-								value={formData.cpf}
-								onChange={handleInputChange}
 								placeholder="CPF"
 								className="input-text"
+								{...register("cpf")}
 							/>
 						</div>
 						<div className="input-field">
@@ -72,11 +117,9 @@ function MinhaContaEducador() {
 							<input
 								type="text"
 								id="nome"
-								name="nome"
-								value={formData.nome}
-								onChange={handleInputChange}
 								placeholder="Nome completo"
 								className="input-text"
+								{...register("nome")}
 							/>
 						</div>
 						<div className="input-field">
@@ -84,11 +127,9 @@ function MinhaContaEducador() {
 							<input
 								type="date"
 								id="dataNascimento"
-								name="dataNascimento"
-								value={formData.dataNascimento}
-								onChange={handleInputChange}
 								placeholder="Data de nascimento"
 								className="input-text"
+								{...register("dataNascimento")}
 							/>
 						</div>
 						<div className="input-field">
@@ -96,11 +137,9 @@ function MinhaContaEducador() {
 							<input
 								type="text"
 								id="telefone"
-								name="telefone"
-								value={formData.telefone}
-								onChange={handleInputChange}
 								placeholder="Telefone (WhatsApp)"
 								className="input-text"
+								{...register("telefone")}
 							/>
 						</div>
 						<div className="input-field">
@@ -108,11 +147,9 @@ function MinhaContaEducador() {
 							<input
 								type="text"
 								id="instagram"
-								name="instagram"
-								value={formData.instagram}
-								onChange={handleInputChange}
 								placeholder="Instagram"
 								className="input-text"
+								{...register("instagram")}
 							/>
 						</div>
 						<div className="input-field">
@@ -120,22 +157,14 @@ function MinhaContaEducador() {
 							<input
 								type="text"
 								id="certificado"
-								name="certificado"
-								value={formData.certificado}
-								onChange={handleInputChange}
 								placeholder="certificado"
 								className="input-text"
+								{...register("crp")}
 							/>
 						</div>
 						<div className="input-field">
 							<label htmlFor="estado">Estado</label>
-							<select
-								id="estado"
-								name="estado"
-								value={formData.estado}
-								onChange={handleInputChange}
-								className="input-text"
-							>
+							<select id="estado" className="input-text" {...register("estado")}>
 								<option value="">Selecione um estado</option>
 								<option value="AC">Acre (AC)</option>
 								<option value="AL">Alagoas (AL)</option>
@@ -171,11 +200,9 @@ function MinhaContaEducador() {
 							<input
 								type="text"
 								id="cidade"
-								name="cidade"
-								value={formData.cidade}
-								onChange={handleInputChange}
 								placeholder="Cidade"
 								className="input-text"
+								{...register("cidade")}
 							/>
 						</div>
 						<div className="input-field">
@@ -183,11 +210,9 @@ function MinhaContaEducador() {
 							<input
 								type="text"
 								id="endereço"
-								name="endereço"
-								value={formData.endereço}
-								onChange={handleInputChange}
 								placeholder="Endereço"
 								className="input-text"
+								{...register("endereco")}
 							/>
 						</div>
 						<div className="input-field">
@@ -195,11 +220,9 @@ function MinhaContaEducador() {
 							<input
 								type="text"
 								id="numero"
-								name="numero"
-								value={formData.numero}
-								onChange={handleInputChange}
 								placeholder="Número"
 								className="input-text"
+								{...register("numero")}
 							/>
 						</div>
 						<div className="input-field">
@@ -207,11 +230,9 @@ function MinhaContaEducador() {
 							<input
 								type="text"
 								id="complemento"
-								name="complemento"
-								value={formData.complemento}
-								onChange={handleInputChange}
 								placeholder="Complemento"
 								className="input-text"
+								{...register("complemento")}
 							/>
 						</div>
 						<div className="input-field">
@@ -219,11 +240,9 @@ function MinhaContaEducador() {
 							<input
 								type="text"
 								id="bairro"
-								name="bairro"
-								value={formData.bairro}
-								onChange={handleInputChange}
 								placeholder="Bairro"
 								className="input-text"
+								{...register("bairro")}
 							/>
 						</div>
 					</div>
@@ -367,7 +386,7 @@ function MinhaContaEducador() {
 				</div>
 			</div>
 			<Footer />
-		</div>
+		</form>
 	);
 }
 
