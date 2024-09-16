@@ -475,7 +475,7 @@ const About = () => {
               <Card className={`card-toter ${showAllCards ? '' : 'hidden'}`}>
                 <Image
                   src={henry}
-                  alt="Henry"   
+                  alt="Homem de óculos, pele morena e cabelo curto. Ele está vestindo uma camisa bege e tem os braços cruzados. O fundo é azul com um padrão geométrico em branco."
                   title="Henrry"
                   height={190}
                   width={190}
@@ -530,7 +530,7 @@ const About = () => {
               <Card className={`card-toter ${showAllCards ? '' : 'hidden'}`}>
                 <Image
                   src={luis}
-                  alt="Homem de pele escura e cabelo curto. A imagem mostra um logotipo digital sobre o rosto, indicando que pode estar usando um efeito visual na foto"
+                  alt=": Homem de pele morena, cabelo curto e barba. Ele veste uma camiseta vermelha, nofundo tem um padrão azul circular, semelhante a uma impressão digital."
                   title="luis"
                   height={190}
                   width={190}
@@ -665,7 +665,7 @@ const About = () => {
               <Card className={`card-toter ${showAllCards ? '' : 'hidden'}`}>
                 <Image
                   src={nadi}
-                  alt="Mulher com cabelo curto e preto, penteado para cima. Sorri amplamente e veste uma camiseta de cor escura. O fundo de sua foto é de cor amarela brilhante."
+                  alt="Mulher de cabelo curto e escuro, usando um jaleco branco com aparência profissional. Ela sorri para a câmera."
                   title="nadi"
                   height={190}
                   width={190}
@@ -692,7 +692,7 @@ const About = () => {
               <Card className={`card-toter ${showAllCards ? '' : 'hidden'}`}>
                 <Image
                   src={Natalia}
-                  alt="Natalia"
+                  alt="NMulher de cabelo cacheado e longo. Sua expressão é séria, com um fundo neutro."
                   title="Natalia"
                   height={190}
                   width={190}
@@ -720,7 +720,7 @@ const About = () => {
               <Card className={`card-toter ${showAllCards ? '' : 'hidden'}`}>
                 <Image
                   src={samuel}
-                  alt="samuel"
+                  alt="Um homem usando óculos de sol, com cabelo curto e barba. O fundo parece ser ao ar livre"
                   title="samuel"
                   height={190}
                   width={190}
@@ -747,7 +747,7 @@ const About = () => {
               <Card className={`card-toter ${showAllCards ? '' : 'hidden'}`}>
                 <Image
                   src={sergio}
-                  alt="sergio"
+                  alt="Um jovem de cabelo curto e barba leve. Ele veste uma camiseta clara e sua expressão é relaxada"
                   title="sergio"
                   height={190}
                   width={190}
@@ -774,7 +774,7 @@ const About = () => {
               <Card className={`card-toter ${showAllCards ? '' : 'hidden'}`}>
                 <Image
                   src={victor}
-                  alt="vitor"
+                  alt="Um jovem de cabelo curto, usando grandes fones de ouvido pretos. Ele sorri levemente para a câmera."
                   title="vitor"
                   height={200}
                   width={150}
@@ -802,14 +802,14 @@ const About = () => {
               <Card className={`card-toter ${showAllCards ? '' : 'hidden'}`}>
                 <Image
                   src={yurisay}
-                  alt="yurisay"
+                  alt="Mulher de cabelo longo e escuro, com uma camiseta branca com logotipo. Ela tem uma expressão séria para a câmera."
                   title="yurisay"
                   height={190}
                   width={190}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    Yurisay Martinez
+                    Yurisay Martínez
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     Toter
