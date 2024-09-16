@@ -33,13 +33,16 @@ import jani from "../../../assets/images/toters/Jani.png";
 import luis from "../../../assets/images/toters/Luis.jpg";
 import manuel from "../../../assets/images/toters/Manuel.jpg";
 import maria from "../../../assets/images/toters/Maria.jpg";
+import merlina from "../../../assets/images/toters/Merlina.jpg";
 import marianela from "../../../assets/images/toters/Maríanela.png";
 import miguel from "../../../assets/images/toters/Miguel.png";
 import nadi from "../../../assets/images/toters/Nadi.png";
-import Natalia from "../../../assets/images/toters/Natalia.jpg";
+import natalia from "../../../assets/images/toters/Natalia.jpg";
+import patricia from "../../../assets/images/toters/Patricia.jpg";
 import samuel from "../../../assets/images/toters/Samuel.jpg";
 import sergio from "../../../assets/images/toters/Sergio.jpg";
 import victor from "../../../assets/images/toters/Victor.png";
+import yuri from "../../../assets/images/toters/Yuri.jpg";
 import yurisay from "../../../assets/images/toters/Yurisay.jpg";
 import imgComunidade from "../../../assets/images/voluntarios.jpg";
 import "../../../assets/styles/sobreNos.css";
@@ -346,8 +349,8 @@ const About = () => {
 									src={barbara}
 									alt="Mulher com cabelo longo e escuro. Está vestida com um suéter preto. Sua expressão é séria e profissional. A foto está em preto e branco."
 									title="Barbara Nery"
-									height={190}
-									width={190}
+									height={200}
+									width={200}
 								/>
 
 								<CardContent>
@@ -356,6 +359,9 @@ const About = () => {
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
 										Voluntária | Toter
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Mentora TI
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -374,8 +380,8 @@ const About = () => {
 									src={bruno}
 									alt="Homem jovem com cabelo curto e óculos. Sorri e veste uma camiseta escura. A imagem parece ser tirada ao ar livre."
 									title="Bruno de Souza"
-									height={190}
-									width={190}
+									height={200}
+									width={200}
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
@@ -383,6 +389,9 @@ const About = () => {
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
 										Voluntário | Amigo Toter
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Full Stack
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -401,8 +410,8 @@ const About = () => {
 									src={camila}
 									alt="Mulher jovem com cabelo longo e escuro, ligeiramente inclinado para a frente. Parece séria e está vestida com uma camiseta de cor escura."
 									title="Camila Souza"
-									height={190}
-									width={190}
+									height={200}
+									width={200}
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
@@ -410,6 +419,9 @@ const About = () => {
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
 										Voluntária | Amiga Toter
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Front-end
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -429,8 +441,8 @@ const About = () => {
 									src={david}
 									alt="Homem com cabelo curto e escuro, com um largo sorriso. Usa uma camisa branca e uma gravata azul, posando de forma formal."
 									title="David Puche"
-									height={190}
-									width={190}
+									height={200}
+									width={200}
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
@@ -438,6 +450,9 @@ const About = () => {
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
 										Voluntário | Toter
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Líder TI: Front-end
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -457,8 +472,8 @@ const About = () => {
 									src={daysi}
 									alt="Mulher com cabelo castanho claro e liso, penteado para um lado. Veste uma blusa de manga longa e tem uma expressão amigável."
 									title="Daysibel Cotiz"
-									height={190}
-									width={190}
+									height={200}
+									width={200}
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
@@ -466,6 +481,9 @@ const About = () => {
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
 										Voluntária | Toter
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Líder TI: Back-end
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -484,15 +502,18 @@ const About = () => {
 									src={henry}
 									alt="Um homem com óculos e camisa polo marrom"
 									title="Henry Luna"
-									height={190}
-									width={190}
+									height={200}
+									width={200}
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
 										Henry Luna
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Front-end | Toter
+										Voluntário | Toter
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Front-end
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -512,15 +533,18 @@ const About = () => {
 									src={jani}
 									alt="Mulher jovem com cabelo longo e liso, tingido de uma cor loiro escuro. Está sorrindo e veste uma jaqueta escura com uma blusa vermelha."
 									title="Jani Exaez"
-									height={190}
-									width={190}
+									height={200}
+									width={200}
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
 										Jani Exaez
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Voluntário | Toter
+										Voluntária | Toter
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Front-end
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -539,15 +563,19 @@ const About = () => {
 									src={luis}
 									alt="Homem de pele escura e cabelo curto. A imagem mostra um logotipo digital sobre o rosto, indicando que pode estar usando um efeito visual na foto"
 									title="Luis Cláudio"
-									height={190}
-									width={190}
+									height={200}
+									width={200}
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
 										Luis Cláudio
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Voluntário | Amig Toter
+										Voluntário | Amigo Toter
+									</Typography>
+
+									<Typography variant="body2" color="text.secondary">
+										Full Stack
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -566,8 +594,8 @@ const About = () => {
 									src={manuel}
 									alt="Homem jovem com cabelo curto e crespo. Veste uma camisa branca e uma gravata vermelha, com um fundo de tela azul brilhante."
 									title="Manuel Bernardo"
-									height={190}
-									width={190}
+									height={200}
+									width={200}
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
@@ -575,6 +603,9 @@ const About = () => {
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
 										Voluntário | Toter
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Front-end
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -593,8 +624,8 @@ const About = () => {
 									src={marianela}
 									alt="Mulher com óculos e cabelo longo e escuro. Está vestida com um suéter cinza claro e aparece sorrindo."
 									title="Maríanela Arana"
-									height={190}
-									width={190}
+									height={200}
+									width={200}
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
@@ -602,6 +633,9 @@ const About = () => {
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
 										Voluntária | Toter
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Gestora de Projeto
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -618,10 +652,10 @@ const About = () => {
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
 									src={maria}
-									alt="maria"
-									title="Mulher com cabelo longo e escuro, preso. Usa óculos e uma camiseta escura. Está sorrindo e parece estar em um ambiente interno."
-									height={190}
-									width={190}
+									alt="Mulher com cabelo longo e escuro, preso. Usa óculos e uma camiseta escura. Está sorrindo e parece estar em um ambiente interno."
+									title="Maria Rondon"
+									height={200}
+									width={200}
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
@@ -629,6 +663,9 @@ const About = () => {
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
 										Voluntária | Toter
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Front-end
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -644,11 +681,41 @@ const About = () => {
 							</Card>
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
+									src={merlina}
+									alt="Mulher com cabelo cacheado. Camiseta roxa"
+									title="Merlina Saudade"
+									height={200}
+									width={200}
+								/>
+								<CardContent>
+									<Typography gutterBottom variant="h5" component="div">
+										Merlina Saudade
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Voluntária | Amiga Toter
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Psicologa
+									</Typography>
+								</CardContent>
+								<CardActions>
+									<Button
+										size="small"
+										style={{ color: "black" }}
+										target="_blank"
+										href="https://www.linkedin.com/in/merlina-saudade-ferreira-neira-5a78bb15a/"
+									>
+										Linkedin
+									</Button>
+								</CardActions>
+							</Card>
+							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+								<Image
 									src={miguel}
 									alt="miguel"
 									title="Homem jovem com cabelo curto e loiro. Está ligeiramente inclinado para a câmera, com uma expressão séria. Veste uma camiseta cinza claro."
-									height={190}
-									width={190}
+									height={200}
+									width={200}
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
@@ -656,6 +723,9 @@ const About = () => {
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
 										Voluntário | Amigo Toter
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Back-end
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -674,8 +744,8 @@ const About = () => {
 									src={nadi}
 									alt="Mulher com cabelo curto e preto, penteado para cima. Sorri amplamente e veste uma camiseta de cor escura. O fundo de sua foto é de cor amarela brilhante."
 									title="Nadi Duno"
-									height={190}
-									width={190}
+									height={200}
+									width={200}
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
@@ -683,6 +753,9 @@ const About = () => {
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
 										Voluntário | Toter
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Líder TI: Front-end
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -698,18 +771,21 @@ const About = () => {
 							</Card>
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
-									src={Natalia}
+									src={natalia}
 									alt="Mulher branca de cabelo preto, com vestido preto"
 									title="Natalia Augusto"
-									height={190}
-									width={190}
+									height={200}
+									width={200}
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
 										Natalia Augusto
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Voluntário | Amiga Toter
+										Voluntária | Amiga Toter
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										UX/UI Designer
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -723,14 +799,43 @@ const About = () => {
 									</Button>
 								</CardActions>
 							</Card>
-
+							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+								<Image
+									src={patricia}
+									alt="Mulher com cabelo longo e escuro. Com ropa elegante preta e branca"
+									title="Patricia Adorno "
+									height={200}
+									width={200}
+								/>
+								<CardContent>
+									<Typography gutterBottom variant="h5" component="div">
+										Patricia Adorno
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Voluntária | Amiga Toter
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Advogada
+									</Typography>
+								</CardContent>
+								<CardActions>
+									<Button
+										size="small"
+										style={{ color: "black" }}
+										target="_blank"
+										href="https://www.linkedin.com/in/patricia-adorno-villamayor/"
+									>
+										Linkedin
+									</Button>
+								</CardActions>
+							</Card>
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
 									src={samuel}
 									alt="Homem usando óculos de sol e mochila"
 									title="Samuel Erazo"
-									height={190}
-									width={190}
+									height={200}
+									width={200}
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
@@ -738,6 +843,9 @@ const About = () => {
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
 										Voluntário | Toter
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Front-end
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -756,8 +864,8 @@ const About = () => {
 									src={sergio}
 									alt="Homem branco, com camiseta azul"
 									title="Sergio Valério"
-									height={190}
-									width={190}
+									height={200}
+									width={200}
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
@@ -765,6 +873,9 @@ const About = () => {
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
 										Voluntário | Amigo Toter
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Front-end
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -793,6 +904,9 @@ const About = () => {
 									<Typography variant="body2" color="text.secondary">
 										Voluntário | Toter
 									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Front-end
+									</Typography>
 								</CardContent>
 								<CardActions>
 									<Button
@@ -808,18 +922,21 @@ const About = () => {
 
 							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
 								<Image
-									src={yurisay}
-									alt="Mulher com cabelo preto longo, camiseta branca"
-									title="Yurisay Martínez"
-									height={190}
-									width={190}
+									src={yuri}
+									alt="Homem jovem com cabelo curto e loiro, camiseta preta"
+									title="Yuri Rodrigues"
+									height={200}
+									width={200}
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
-										Yurisay Martínez
+										Yuri Rodrigues
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
-										Voluntária | Toter
+										Voluntário | Amigo Toter
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Front-end
 									</Typography>
 								</CardContent>
 								<CardActions>
@@ -827,7 +944,7 @@ const About = () => {
 										size="small"
 										style={{ color: "black" }}
 										target="_blank"
-										href="https://www.linkedin.com/in/yurisay-martinez/"
+										href="https://www.linkedin.com/in/yuri-rodrigues-nogueira/"
 									>
 										Linkedin
 									</Button>
@@ -838,8 +955,8 @@ const About = () => {
 									src={yurisay}
 									alt="Mulher com cabelo preto longo, camiseta branca"
 									title="Yurisay Martínez"
-									height={190}
-									width={190}
+									height={200}
+									width={200}
 								/>
 								<CardContent>
 									<Typography gutterBottom variant="h5" component="div">
@@ -847,6 +964,9 @@ const About = () => {
 									</Typography>
 									<Typography variant="body2" color="text.secondary">
 										Voluntária | Toter
+									</Typography>
+									<Typography variant="body2" color="text.secondary">
+										Front-end
 									</Typography>
 								</CardContent>
 								<CardActions>
