@@ -7,8 +7,8 @@ import { FaEnvelope, FaPhone } from "react-icons/fa";
 import logo from "../../src/assets/images/logos/toters-logo-green-dark.svg";
 
 function Footer() {
-	const currentYear = new Date().getFullYear();
-	const currentMonth = new Date().toLocaleString("default", { month: "long" });
+	// const currentYear = new Date().getFullYear();
+	// const currentMonth = new Date().toLocaleString("default", { month: "long" });
 
 	return (
 		<div className="footer-container">
@@ -42,38 +42,11 @@ function Footer() {
 					<ul className="parceiros">
 						<li>
 							<Link
-								href="https://www.acnur.org/portugues/"
+								href="https://www.associacaodosangolanos.ong.br/"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								ACNUR
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="https://caritas.org.br/"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								Caritas Brasireila
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="https://www.mawon.org/"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								MAWON
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="https://www.venezuelaglobal.org/"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								Venezuela Global
+								Associação de Angolanos RS
 							</Link>
 						</li>
 					</ul>
@@ -112,9 +85,7 @@ function Footer() {
 					width={150}
 					height={50}
 				/>
-				<p>
-					Todos os direitos reservados - {currentMonth} {currentYear}
-				</p>
+				<p>Todos os direitos reservados - Julho © 2024</p>
 			</div>
 		</div>
 	);

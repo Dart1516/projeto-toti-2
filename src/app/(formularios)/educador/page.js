@@ -270,7 +270,7 @@ function FormularioEducadorSocial() {
 			setIsCepFocused(false);
 		}
 	}
-
+let response;
 	async function createData(formData) {
 		const { verifyEmail, verifyPassword, birthDate, cep, ...rest } = formData;
 		const dataToSend = {
@@ -282,15 +282,25 @@ function FormularioEducadorSocial() {
 		console.log("Dados do Formulario ", dataToSend);
 		try {
 			const response = await Api.post("/cadastro/educador", dataToSend);
-			if (!response.ok) {
-				throw new Error("Erro ao enviar dados");
-			}
-			router.push("../../obrigado-page");
-			console.log(response);
+			if (response) {
+				router.push("../../obrigado-page");
+			}console.log(response);
 		} catch (error) {
-			console.error("Erro ao enviar dados:", error);
-			setOutput("Cadastro existente, por favor modificar o e-mail ou CPF");
-		}
+	let errorMessage;
+		  
+			if (error.response && error.response.data && error.response.data.message) {
+			  if (error.response.data.message.includes("CPF já cadastrado")) {
+				errorMessage = "CPF inserido ja cadastrado. Ja tem uma conta? Faça login. Se ainda não tem, favor conferir os dados no formulario.";
+			  } else if (error.response.data.message.includes("E-mail já cadastrado")) {
+				errorMessage = "Email inserido já cadastrado. Ja tem uma conta? faça login. Se ainda não tem, favor conferir os dados no formulario.";
+			  } 
+			}else {
+				errorMessage = "Ops! A conexão falhou. O cadastro não foi bem sucedido, vamos tentar de novo?";
+			  }
+		  
+			console.error("Error ao enviar os dados:", error);
+			setOutput(errorMessage);
+		  }
 	}
 
 	return (
@@ -466,7 +476,8 @@ function FormularioEducadorSocial() {
 						{/* Certificado */}
 						<div className="input-field">
 							<label htmlFor="certificate">
-								<p>9. Certificado (opcional)</p>
+								<p>9. Certificado</p>
+								<span className="errorChar"> * </span>
 							</label>
 							<input
 								className={`input-text ${errors.certificate ? "invalid" : "valid"}`}
@@ -514,7 +525,6 @@ function FormularioEducadorSocial() {
 												errors.day ? "invalid" : "valid"
 											}`}
 											{...register(`availableTimes.${index}.day`)}
-											// control={control}
 										>
 											{daysAvailable.map((daysAvailable) => (
 												<option key={daysAvailable.value} value={daysAvailable.value}>
@@ -531,7 +541,6 @@ function FormularioEducadorSocial() {
 												errors.hour ? "invalid" : "valid"
 											}`}
 											{...register(`availableTimes.${index}.hour`)}
-											// control={control}
 										>
 											{hourAvailable.map((hourAvailable) => (
 												<option key={hourAvailable.value} value={hourAvailable.value}>
@@ -569,7 +578,6 @@ function FormularioEducadorSocial() {
 							</div>
 						);
 					})}
-					{/* *************************************** */}
 
 					<div className="lembre-text">
 						<h1>Lembre-se:</h1>
@@ -740,7 +748,7 @@ function FormularioEducadorSocial() {
 					>
 						{isSubmitting ? "Carregando..." : "Enviar"}
 					</button>
-					<pre>{output}</pre>
+					<pre className="error-message-api">{output}</pre>
 				</form>
 			</div>
 			<footer className="App-footer" />

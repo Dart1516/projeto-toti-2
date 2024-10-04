@@ -6,10 +6,11 @@ import "../../../assets/styles/App.css";
 import "../../../assets/styles/SejaVoluntario.css";
 import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
 import Visibility from "@mui/icons-material/VisibilityOutlined";
+import { FaPlus, FaTrash } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Api } from "../../../services/api";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ErrorMessage } from "@hookform/error-message";
@@ -92,15 +93,19 @@ const createFormDataSchema = z.object({
 			/^\(\d{2}\)\d{5}-\d{4}$/,
 			"Número de telefone inválido. Exemplo: (99)99999-9999",
 		),
-	rede_social: z.string().nonempty("URl é obrigatório"),
+	rede_social: z.string().optional(),
 	crp: z
 		.string()
 		.nonempty("O CRP é obrigatório")
 		.regex(/^\d{2}-\d{6}$/, "Formato do CRP inválido. Exemplo: 99-999999"),
 	specialization: z.string().nonempty("A área é obrigatório"),
 	state: z.string().nonempty("O estado é obrigatório"),
-	day: z.string().nonempty("Selecione um dia"),
-	hour: z.string().nonempty("Selecione a hora"),
+	availableTimes: z.array(
+		z.object({
+			day: z.string().nonempty("Selecione o dia"),
+			hour: z.string().nonempty("Selecione a hora"),
+		}),
+	),
 	email: z
 		.string()
 		.nonempty("O e-mail é obrigatório")
@@ -267,22 +272,26 @@ function FormularioPsicologo() {
 		}
 	});
 
+	const daySuffixes = ["ro", "do", "ro", "to", "to", "to", "mo"];
+
 	const {
 		register,
-
 		handleSubmit,
-		setValue,
 		formState: { isLoading, isSubmitting, errors },
+		control,
 	} = useForm({
 		resolver: zodResolver(dataSuperRefineSchema),
 	});
 
+	const { fields, append, remove } = useFieldArray({
+		control,
+		name: "availableTimes",
+	});
+
 	async function createData(formData) {
-		const { verifyEmail, verifyPassword, birthDate, day, hour, ...rest } =
-			formData;
+		const { verifyEmail, verifyPassword, birthDate, ...rest } = formData;
 		const dataToSend = {
 			...rest,
-			availableTimes: [{ day: formData.day, hour: formData.hour }],
 			// Mudar a dara a ISO 8601 exemplo 2004-11-26T00:00:00.000+00:00
 			birthDate: moment(birthDate).format("YYYY-MM-DD[T]HH:mm:ss[Z]"),
 		};
@@ -290,14 +299,25 @@ function FormularioPsicologo() {
 		console.log("Dados do Formulario ", dataToSend);
 		try {
 			const response = await Api.post("/cadastro/psicologos", dataToSend);
-			if (!response.ok) {
-				throw new Error("Erro ao enviar dados");
+			if (response) {
+				router.push("../../obrigado-page");
 			}
-			router.push("../../obrigado-page");
 			console.log(response);
 		} catch (error) {
-			console.error("Erro ao enviar dados:", error);
-			setOutput("Cadastro existente, por favor modificar o e-mail ou CPF");
+			let errorMessage;
+		  
+			if (error.response && error.response.data && error.response.data.message) {
+			  if (error.response.data.message.includes("CPF já cadastrado")) {
+				errorMessage = "CPF inserido ja cadastrado. Ja tem uma conta? Faça login. Se ainda não tem, favor conferir os dados no formulario.";
+			  } else if (error.response.data.message.includes("E-mail já cadastrado")) {
+				errorMessage = "Email inserido já cadastrado. Ja tem uma conta? faça login. Se ainda não tem, favor conferir os dados no formulario.";
+			  } 
+			}else {
+				errorMessage = "Ops! A conexão falhou. O cadastro não foi bem sucedido, vamos tentar de novo?";
+			  }
+		  
+			console.error("Error ao enviar os dados:", error);
+			setOutput(errorMessage);
 		}
 	}
 
@@ -394,8 +414,7 @@ function FormularioPsicologo() {
 						{/* Rede social */}
 						<div className="input-field">
 							<label htmlFor="rede_social">
-								<p>5. Rede social</p>
-								<span className="errorChar"> * </span>
+								<p>5. Rede social (opcional)</p>
 							</label>
 							<input
 								className={`input-text ${errors.rede_social ? "invalid" : "valid"}`}
@@ -478,55 +497,92 @@ function FormularioPsicologo() {
 								as="p"
 							/>
 						</div>
-
-						{/* Dia*/}
-						<div className="input-field">
-							<label htmlFor="day">
-								<p>9. Dia disponível</p>
-								<span className="errorChar"> * </span>
-							</label>
-							<select
-								className={`input-text ${errors.day ? "invalid" : "valid"}`}
-								{...register("day")}
-							>
-								{daysAvailable.map((daysAvailable) => (
-									<option key={daysAvailable.value} value={daysAvailable.value}>
-										{daysAvailable.label}
-									</option>
-								))}
-							</select>
-							<ErrorMessage
-								className="error-message"
-								errors={errors}
-								name="day"
-								as="p"
-							/>
-						</div>
-
-						{/* Hora*/}
-						<div className="input-field">
-							<label htmlFor="hour">
-								<p>10. Hora disponível</p>
-								<span className="errorChar"> * </span>
-							</label>
-							<select
-								className={`input-text ${errors.hour ? "invalid" : "valid"}`}
-								{...register("hour")}
-							>
-								{hourAvailable.map((hourAvailable) => (
-									<option key={hourAvailable.value} value={hourAvailable.value}>
-										{hourAvailable.label}
-									</option>
-								))}
-							</select>
-							<ErrorMessage
-								className="error-message"
-								errors={errors}
-								name="hour"
-								as="p"
-							/>
-						</div>
 					</div>
+
+					<label htmlFor="availableTimes">
+						<p>
+							9. Quando você pode ajudar? Adicione seus horários disponíveis clicando
+							no ícone
+						</p>
+						{fields.length < 7 && (
+							<span className="plusChar">
+								<FaPlus onClick={() => append({})} title="Agregar horário" size={20} />
+							</span>
+						)}
+					</label>
+					{fields.map((field, index) => {
+						return (
+							<div className="form-group formulario" key={field.id}>
+								<div className="dia-disponible">
+									<label htmlFor={field.id} />
+									{/* Dia */}
+									<div>
+										<p>
+											{`${index + 1}${
+												daySuffixes[index % daySuffixes.length]
+											} dia disponível`}
+											<span className="errorChar"> * </span>
+										</p>
+									</div>
+									<div>
+										<select
+											className={`input-text form-select ${
+												errors.day ? "invalid" : "valid"
+											}`}
+											{...register(`availableTimes.${index}.day`)}
+										>
+											{daysAvailable.map((daysAvailable) => (
+												<option key={daysAvailable.value} value={daysAvailable.value}>
+													{daysAvailable.label}
+												</option>
+											))}
+										</select>
+									</div>
+
+									{/* Hora */}
+									<div>
+										<select
+											className={`input-text form-select ${
+												errors.hour ? "invalid" : "valid"
+											}`}
+											{...register(`availableTimes.${index}.hour`)}
+										>
+											{hourAvailable.map((hourAvailable) => (
+												<option key={hourAvailable.value} value={hourAvailable.value}>
+													{hourAvailable.label}
+												</option>
+											))}
+										</select>
+									</div>
+
+									{index > 0 && (
+										<span className="deleteChar">
+											<FaTrash onClick={() => remove(index)} title="Eliminar" size={15} />
+										</span>
+									)}
+								</div>
+								<div className="containerErrorDay">
+									<ErrorMessage
+										className="error-message"
+										errors={errors}
+										name={`availableTimes.${index}.day`}
+										as="p"
+										render={({ message }) => <p>{message}</p>}
+									/>
+									{errors?.availableTimes?.[index]?.day &&
+										errors?.availableTimes?.[index]?.hour && <span>e</span>}
+
+									<ErrorMessage
+										className="error-message"
+										errors={errors}
+										name={`availableTimes.${index}.hour`}
+										as="p"
+										render={({ message }) => <p>{message}</p>}
+									/>
+								</div>
+							</div>
+						);
+					})}
 
 					<div className="lembre-text">
 						<h1>Lembre-se:</h1>
@@ -697,7 +753,7 @@ function FormularioPsicologo() {
 					>
 						{isSubmitting ? "Carregando..." : "Enviar"}
 					</button>
-					<pre>{output}</pre>
+					<pre className="error-message-api">{output}</pre>
 				</form>
 			</div>
 			<footer className="App-footer" />
