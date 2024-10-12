@@ -1,8 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import Header from "../../../components/Header-NavMenu";
-import "../../../assets/styles/Button.css";
-import "../../../assets/styles/recuperarSenha.css";
+// import "../../../assets/styles/Button.css";
+// import "../../../assets/styles/recuperarSenha.css";
+import styles1 from "../../../assets/styles/Button.module.css";
+import styles2 from "../../../assets/styles/recuperarSenha.module.css";
+
 import { Typography } from "@mui/material";
 import { Api } from "../../../services/api";
 import { useRouter } from "next/navigation";
@@ -108,9 +111,9 @@ const RecuperarSenha = () => {
 		switch (step) {
 			case 1:
 				return (
-					<div className="form-recovery-password">
+					<div className={styles2["form-recovery-password"]}>
 						<h2>Recuperar senha</h2>
-						<div className="form-method">
+						<div className={styles2["form-method"]}>
 							<label htmlFor="email" id="email-label">
 								Email:
 							</label>
@@ -122,11 +125,11 @@ const RecuperarSenha = () => {
 								onChange={handleInputChange}
 								placeholder="Ingrese su correo electrónico"
 								required
-								className="input-method"
+								className={styles2["input-method"]}
 							/>
 						</div>
 
-						<button className="btnRecuperarSenha" onClick={handleSubmit}>
+						<button className={styles2.btnRecuperarSenha} onClick={handleSubmit}>
 							Enviar código
 						</button>
 						{error && <p className="error">{error}</p>}
@@ -134,9 +137,9 @@ const RecuperarSenha = () => {
 				);
 			case 2:
 				return (
-					<div className="form-recovery-password">
+					<div className={styles2["form-recovery-password"]}>
 						<h2>Validar código</h2>
-						<div className="form-method">
+						<div className={styles2["form-method"]}>
 							<label htmlFor="code">Código:</label>
 							<input
 								type="text"
@@ -146,10 +149,10 @@ const RecuperarSenha = () => {
 								onChange={handleInputChange}
 								placeholder="Ingrese el código recibido"
 								required
-								className="input-method"
+								className={styles2["input-method"]}
 							/>
 						</div>
-						<div className="form-method">
+						<div className={styles2["form-method"]}>
 							<label htmlFor="newPassword">Nova Senha:</label>
 							<input
 								type="password"
@@ -159,14 +162,14 @@ const RecuperarSenha = () => {
 								onChange={handleInputChange}
 								placeholder="Ingrese su nueva contraseña"
 								required
-								className="input-method"
+								className={styles2["input-method"]}
 							/>
 						</div>
-						<div className="form-recovery-button">
-							<button className="btnRecuperarSenha" onClick={() => setStep(1)}>
+						<div className={styles2["form-recovery-button"]}>
+							<button className={styles2.btnRecuperarSenha} onClick={() => setStep(1)}>
 								Voltar
 							</button>
-							<button className="btnRecuperarSenha" onClick={handleVerifyCode}>
+							<button className={styles2.btnRecuperarSenha} onClick={handleVerifyCode}>
 								Atualizar senha
 							</button>
 						</div>
@@ -179,14 +182,17 @@ const RecuperarSenha = () => {
 				);
 			case 3:
 				return (
-					<div className="form-recovery-password">
+					<div className={styles2["form-recovery-password"]}>
 						<h2>Nova senha</h2>
 						<p>Senha restablecida com sucesso.</p>
-						<div className="form-recovery-button">
-							<button className="btnRecuperarSenha" onClick={() => setStep(1)}>
+						<div className={styles2["form-recovery-button"]}>
+							<button className={styles2.btnRecuperarSenha} onClick={() => setStep(1)}>
 								Voltar
 							</button>
-							<button className="btnRecuperarSenha" onClick={handleNewPasswordSubmit}>
+							<button
+								className={styles2.btnRecuperarSenha}
+								onClick={handleNewPasswordSubmit}
+							>
 								Fazer login
 							</button>
 						</div>

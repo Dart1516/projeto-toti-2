@@ -1,36 +1,39 @@
 "use client";
 
 import React from "react";
-import "../../../assets/styles/App.css";
-import "../../../assets/styles/SejaVoluntario.css";
-import "../../../assets/styles/avisoLegal.css";
+// import "../../../assets/styles/App.css";
+// import "../../../assets/styles/SejaVoluntario.css";
+// import "../../../assets/styles/avisoLegal.css";
+import styles1 from "../../../assets/styles/App.module.css";
+import styles2 from "../../../assets/styles/SejaVoluntario.module.css";
+import styles3 from "../../../assets/styles/avisoLegal.module.css";
 import { useRouter } from "next/navigation";
 
 function TermoResponsabilidadePsicólogos() {
 	const router = useRouter();
 	return (
-		<div className="App">
-			<div className="container-body">
-				<div className="aviso-legal">
-					<h2 className="color-title">
+		<div className={styles1.App}>
+			<div className={styles3["container-body"]}>
+				<div className={styles3["aviso-legal"]}>
+					<h2 className={`${styles2.titleh2} ${styles3["color-title"]}`}>
 						Termo de Responsabilidade para Psicólogos Voluntários
 					</h2>
 					<h3>
 						Consultoria Online para Imigrantes, Refugiados e Apátridas Vítimas das
 						Enchentes no RS
 					</h3>
-					<div className="legal-content">
+					<div className={styles3["legal-content"]}>
 						<p>
 							Ao marcar a caixa abaixo, concordo com os seguintes termos de
 							responsabilidade como psicólogo voluntário de Toters do bem:
 						</p>
 
-						<h3 className="space-text">Parte Responsável:</h3>
+						<h3 className={styles3["space-text"]}>Parte Responsável:</h3>
 						<p>Psicólogo(a) ___________________________</p>
 						<p>CRP ______________</p>
-						<h3 className="space-text">Parte Beneficiária:</h3>
+						<h3 className={styles3["space-text"]}>Parte Beneficiária:</h3>
 						<p>Imigrantes, Refugiados e Apátridas Vítimas das Enchentes no RS</p>
-						<h3 className="space-text">Objetivo:</h3>
+						<h3 className={styles3["space-text"]}>Objetivo:</h3>
 						<p>
 							O presente termo tem como objetivo formalizar o compromisso do(a)
 							psicólogo(a) em realizar pelo menos 10 (dez) sessões completas de
@@ -38,7 +41,7 @@ function TermoResponsabilidadePsicólogos() {
 							refugiados e apátridas que foram vítimas das enchentes ocorridas no
 							estado do Rio Grande do Sul (RS).
 						</p>
-						<h3 className="space-text">Cláusulas:</h3>
+						<h3 className={styles3["space-text"]}>Cláusulas:</h3>
 
 						<h3>1. Compromisso de Atendimento:</h3>
 						<p>

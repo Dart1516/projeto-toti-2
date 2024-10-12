@@ -23,14 +23,14 @@
     color: var(--color6);
   }
   
-  .button0,a{
+  .button0{
     text-decoration: none;
     transition: 0.5s;
     opacity: 1;
     /* color: var(--color1); */
   }
   
-  .button0:hover,a:hover {
+  .button0:hover{
     opacity: .9;
   }
   

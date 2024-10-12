@@ -1,12 +1,16 @@
 "use client";
 
-import "../../../assets/styles/App.css";
-import "../../../assets/styles/SejaVoluntario.css";
-import "../../../assets/styles/AtendimentoFormulario.css";
+// import "../../../assets/styles/App.css";
+// import "../../../assets/styles/SejaVoluntario.css";
+// import "../../../assets/styles/AtendimentoFormulario.css";
+import styles1 from "../../../assets/styles/App.module.css";
+import styles2 from "../../../assets/styles/SejaVoluntario.module.css";
+import styles3 from "../../../assets/styles/AtendimentoFormulario.module.css";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import Header from "../../../components/Header-NavMenu";
 import { novoClienteValidator } from "./novoClienteValidator";
+import React from "react";
 
 export default function FormCliente() {
 	const {
@@ -48,25 +52,35 @@ export default function FormCliente() {
 	}
 
 	return (
-		<div className="App SV">
+		<div className={`${styles1.App} ${styles2.SV}`}>
 			<div className="">
 				<Header />
 			</div>
-			<div className="wrapper">
-				<span className="background-image" />
-				<div className="form-aside">
-					<div className="container-titulo">
-						<h2 style={{ color: "black", fontSize: "32px" }}>Quero ser atendido </h2>
+			<div className={styles3.wrapper}>
+				<span className={styles2["background-image"]} />
+				<div className={styles2["form-aside"]}>
+					<div className={styles2["container-titulo"]}>
+						<h2
+							style={{ color: "black", fontSize: "32px" }}
+							className={styles2.titleh2}
+						>
+							Quero ser atendido{" "}
+						</h2>
 						<p style={{ textAlign: "left" }}>
 							Abaixo, você pode criar sua conta e receber ajuda para SOS Rio Grande do
 							Sul.
 						</p>
 					</div>
-					<div className="form-container">
-						<p className="form-title">Dados pessoais</p>
-						<form className="inputs-container" onSubmit={handleSubmit(onSubmit)}>
-							<div className="input-container">
-								<label htmlFor="cpf">CPF</label>
+					<div className={styles3["form-container"]}>
+						<p className={styles3["form-title"]}>Dados pessoais</p>
+						<form
+							className={styles3["inputs-container"]}
+							onSubmit={handleSubmit(onSubmit)}
+						>
+							<div className={styles3["input-container"]}>
+								<label className={styles2.labelItem} htmlFor="cpf">
+									CPF
+								</label>
 								<Controller
 									name="cpf"
 									control={control}
@@ -74,7 +88,7 @@ export default function FormCliente() {
 									render={({ field }) => (
 										<input
 											placeholder="000.000.000-00"
-											className="input-reset"
+											className={styles3["input-reset"]}
 											max={14}
 											{...field}
 											onChange={(e) => {
@@ -88,10 +102,12 @@ export default function FormCliente() {
 									<p style={{ color: "red", fontSize: "12px" }}>{errors.cpf.message}</p>
 								)}
 							</div>
-							<div className="input-container">
-								<label htmlFor="nome">Nome</label>
+							<div className={styles3["input-container"]}>
+								<label className={styles2.labelItem} htmlFor="nome">
+									Nome
+								</label>
 								<input
-									className="input-reset"
+									className={styles3["input-reset"]}
 									name="nome"
 									placeholder="Nome completo"
 									{...register("nome")}
@@ -100,10 +116,12 @@ export default function FormCliente() {
 									<p style={{ color: "red", fontSize: "12px" }}>{errors.nome.message}</p>
 								)}
 							</div>
-							<div className="input-container">
-								<label htmlFor="email">Email</label>
+							<div className={styles3["input-container"]}>
+								<label className={styles2.labelItem} htmlFor="email">
+									Email
+								</label>
 								<input
-									className="input-reset"
+									className={styles3["input-reset"]}
 									name="email"
 									placeholder="fulano@gmail.com"
 									type="email"
@@ -115,8 +133,10 @@ export default function FormCliente() {
 									</p>
 								)}
 							</div>
-							<div className="input-container">
-								<label htmlFor="numero">Telefone</label>
+							<div className={styles3["input-container"]}>
+								<label className={styles2.labelItem} htmlFor="numero">
+									Telefone
+								</label>
 								<Controller
 									name="numero"
 									control={control}
@@ -124,7 +144,7 @@ export default function FormCliente() {
 									render={({ field }) => (
 										<input
 											placeholder="(00) 9 0000-0000"
-											className="input-reset"
+											className={styles3["input-reset"]}
 											type="tel"
 											{...field}
 											onChange={(e) => {
@@ -140,7 +160,7 @@ export default function FormCliente() {
 									</p>
 								)}
 							</div>
-							<button className={"SV"} type="submit">
+							<button className={styles2.SV} type="submit">
 								Enviar
 							</button>
 						</form>

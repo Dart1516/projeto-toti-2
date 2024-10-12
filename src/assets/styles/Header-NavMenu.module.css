@@ -1,9 +1,9 @@
 /* ----- Barra de navegación -----*/
 
-footer {
+/* footer {
   display: flex;
   background-color: var(--color4);
-}
+} */
 
 .heder_nav_container {
     display: flex;

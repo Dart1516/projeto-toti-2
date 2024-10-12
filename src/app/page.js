@@ -16,8 +16,10 @@ import educador from "../assets/images/educador-social.svg";
 import lideres from "../assets/images/lideres.svg";
 import psicologa from "../assets/images/psicologa.svg";
 import Footer from "../components/Footer";
-import "../assets/styles/App.css";
-import "../assets/styles/HomePage.css";
+// import "../assets/styles/App.css";
+// import "../assets/styles/HomePage.css";
+import styles1 from "../assets/styles/App.module.css";
+import styles2 from "../assets/styles/HomePage.module.css";
 import Video1 from "../assets/videos/home.mp4";
 
 export default function Home() {
@@ -31,12 +33,12 @@ export default function Home() {
 	};
 
 	return (
-		<div className="App">
-			<div className="body">
-				<section className="background-main">
-					<main className="main">
-						<div className="text-home">
-							<div className="text-container">
+		<div className={styles1.App}>
+			<div className={styles2.body}>
+				<section className={styles2["background-main"]}>
+					<main className={styles2.main}>
+						<div className={styles2["text-home"]}>
+							<div className={styles2["text-container"]}>
 								<h1>TOTERS DO BEM, SOS RIO GRANDE DO SUL</h1>
 								<p>
 									Conectando voluntários e instituições para fortalecer o Rio Grande do
@@ -51,15 +53,15 @@ export default function Home() {
                   educadores sociais.
                 </p> */}
 							</div>
-							<div className="sub-text-home">
+							<div className={styles2["sub-text-home"]}>
 								<Link href="/servicos">Quero ser voluntário</Link>
 								{/* <Link href="/servicos">Quero ser atendido</Link> */}
 							</div>
 						</div>
 					</main>
 				</section>
-				<div className="voluntariado">
-					<div className="tipo-vo-texto">
+				<div className={styles2.voluntariado}>
+					<div className={styles2["tipo-vo-texto"]}>
 						<Typography variant="h3">
 							<strong>Como você pode ajudar?</strong>
 						</Typography>
@@ -68,9 +70,9 @@ export default function Home() {
 							afetadas, há várias maneiras pelas quais você pode contribuir:
 						</p>
 					</div>
-					<div className="card-container">
-						<div className="card-item">
-							<div className="card-img">
+					<div className={styles2["card-container"]}>
+						<div className={styles2["card-item"]}>
+							<div className={styles2["card-img"]}>
 								<Image
 									src={psicologa}
 									alt="A imagem mostra duas pessoas sentadas frente a frente em um escritório ou sala de estar iluminada. A pessoa à esquerda, que parece ser uma profissional, está tomando notas enquanto conversa com a outra pessoa à direita, que está sentada em uma cadeira e parece estar compartilhando algo. Entre elas há uma mesa de vidro e uma planta grande. Há luz natural entrando por uma janela ao fundo."
@@ -78,7 +80,7 @@ export default function Home() {
 									height={300}
 								/>
 							</div>
-							<div className="card-text">
+							<div className={styles2["card-text"]}>
 								<h2>Voluntariado Psicológico</h2>
 								<p>
 									O especialista capaz de oferecer ajuda psicológica, dando as
@@ -89,8 +91,8 @@ export default function Home() {
 								<Link href="/psicologo">Junte-se a causa</Link>
 							</div>
 						</div>
-						<div className="card-item">
-							<div className="card-img">
+						<div className={styles2["card-item"]}>
+							<div className={styles2["card-img"]}>
 								<Image
 									src={educador}
 									alt=" A imagem captura um close-up de duas mãos entrelaçadas. Uma pessoa segura a mão da outra com delicadeza, transmitindo um gesto de apoio, conforto e empatia. O fundo desfocado, com tons quentes, reforça a sensação de acolhimento e conexão"
@@ -98,7 +100,7 @@ export default function Home() {
 									height={300}
 								/>
 							</div>
-							<div className="card-text">
+							<div className={styles2["card-text"]}>
 								<h2>Educadores Sociais</h2>
 								<p>
 									Profissionais que trabalham para promover o bem-estar e a inclusão
@@ -109,8 +111,8 @@ export default function Home() {
 								<Link href="/educador">Junte-se a causa</Link>
 							</div>
 						</div>
-						<div className="card-item">
-							<div className="card-img">
+						<div className={styles2["card-item"]}>
+							<div className={styles2["card-img"]}>
 								<Image
 									src={lideres}
 									alt="A imagem mostra um grupo de pessoas, que uniram suas mãos no centro da imagem. As mãos, que pertencem a pessoas de diferentes idades e tons de pele, estão sobrepostas uma sobre a outra, formando uma pilha que simboliza a união, o trabalho em equipe e a colaboração"
@@ -118,7 +120,7 @@ export default function Home() {
 									height={300}
 								/>
 							</div>
-							<div className="card-text">
+							<div className={styles2["card-text"]}>
 								<h2>Líderes Comunitários</h2>
 								<p>
 									Pessoas que organizam e mobilizam ações de apoio em situações de crise,
@@ -130,32 +132,32 @@ export default function Home() {
 						</div>
 					</div>
 				</div>
-				<div className="video-espacio">
-					<div className="video">
+				<div className={styles2["video-espacio"]}>
+					<div className={styles2.video}>
 						{/* biome-ignore lint/a11y/useMediaCaption: <explanation> */}
 						<video src={Video1} controls />
 					</div>
-					<div className="text-video">
-						<div className="titulo-video">
-							<h2 className="titulo-h2">Estragos no Rio Grande do Sul</h2>
+					<div className={styles2["text-video"]}>
+						<div className={styles2["titulo-video"]}>
+							<h2 className={styles2["titulo-h2"]}>Estragos no Rio Grande do Sul</h2>
 						</div>
 						<p>
 							As chuvas que atingem o Rio Grande do Sul causam muita destruição. O
 							governo do estado já considera a tragédia como a pior da história
 						</p>
-						<div className="sub-text-video">
+						<div className={styles2["sub-text-video"]}>
 							<Link href="/servicos">Quero ser voluntário</Link>
 						</div>
 					</div>
 				</div>
-				<section className="registro-processo">
-					<main className="processo-voluntariado">
-						<div className="container-caixa">
+				<section className={styles2["registro-processo"]}>
+					<main className={styles2["processo-voluntariado"]}>
+						<div className={styles2["container-caixa"]}>
 							<h1>Processo de Voluntariado</h1>
-							<div className="processos">
-								<div className="processo">
+							<div className={styles2.processos}>
+								<div className={styles2.processo}>
 									<h2>01</h2>
-									<div className="texto-processo">
+									<div className={styles2["texto-processo"]}>
 										<h3>Registro</h3>
 										<p>
 											Preencha o <Link href={"/servicos"}>formulário</Link> com seus dados
@@ -163,9 +165,9 @@ export default function Home() {
 										</p>
 									</div>
 								</div>
-								<div className="processo">
+								<div className={styles2.processo}>
 									<h2>02</h2>
-									<div className="texto-processo">
+									<div className={styles2["texto-processo"]}>
 										<h3>Para onde vão meus dados?</h3>
 										<p>
 											Iram ao banco de dados que estará disponível para os lideres dos
@@ -173,9 +175,9 @@ export default function Home() {
 										</p>
 									</div>
 								</div>
-								<div className="processo">
+								<div className={styles2.processo}>
 									<h2>03</h2>
-									<div className="texto-processo">
+									<div className={styles2["texto-processo"]}>
 										<h3>Depois do cadastro</h3>
 										<p>
 											o Lider do refugiado que precise da sua ajuda entrará em contato, e
@@ -184,9 +186,9 @@ export default function Home() {
 										</p>
 									</div>
 								</div>
-								<div className="processo">
+								<div className={styles2.processo}>
 									<h2>04</h2>
-									<div className="texto-processo">
+									<div className={styles2["texto-processo"]}>
 										<h3>Depois do contato</h3>
 										<p>
 											Comece a oferecer seu apoio às comunidades afetadas. O líder
@@ -197,12 +199,12 @@ export default function Home() {
 							</div>
 						</div>
 					</main>
-					<main className="processo-lider">
-						<div className="container-caixa">
-							<div className="processos">
-								<div className="processo">
+					<main className={styles2["processo-lider"]}>
+						<div className={styles2["container-caixa"]}>
+							<div className={styles2.processos}>
+								<div className={styles2.processo}>
 									<h2>01</h2>
-									<div className="texto-processo">
+									<div className={styles2["texto-processo"]}>
 										<h3>Registro</h3>
 										<p>
 											Preencha o <Link href={"/servicos"}>formulário</Link> de inscrição
@@ -210,16 +212,16 @@ export default function Home() {
 										</p>
 									</div>
 								</div>
-								<div className="processo">
+								<div className={styles2.processo}>
 									<h2>02</h2>
-									<div className="texto-processo">
+									<div className={styles2["texto-processo"]}>
 										<h3>Para onde vão meus dados?</h3>
 										<p>só você terá acesso a seus dados.</p>
 									</div>
 								</div>
-								<div className="processo">
+								<div className={styles2.processo}>
 									<h2>03</h2>
-									<div className="texto-processo">
+									<div className={styles2["texto-processo"]}>
 										<h3>Depois do cadastro</h3>
 										<p>
 											Com o email e a senha que você cadastrou, terá acesso a lista dos
@@ -227,9 +229,9 @@ export default function Home() {
 										</p>
 									</div>
 								</div>
-								<div className="processo">
+								<div className={styles2.processo}>
 									<h2>04</h2>
-									<div className="texto-processo">
+									<div className={styles2["texto-processo"]}>
 										<h3>Depois do contato</h3>
 										<p>
 											Será disponibilizado telefone e email do voluntario para você entrar
@@ -242,12 +244,12 @@ export default function Home() {
 						</div>
 					</main>
 				</section>
-				<div className="banner-espacio">
-					<div className="texto-video">
+				<div className={styles2["banner-espacio"]}>
+					<div className={styles2["texto-video"]}>
 						<h2>Faça parte dos que fazem a diferença</h2>
 					</div>
-					<div className="desplazarImágenes">
-						<div className="contenedorImágenes">
+					<div className={styles2.desplazarImágenes}>
+						<div className={styles2.contenedorImágenes}>
 							<Image
 								src={Banner1}
 								alt="A imagem mostra um grupo de pessoas reunidas em uma área ao ar livre dentro de uma comunidade. A maioria das pessoas são mulheres, algumas com crianças, que estão formando um círculo ou semicírculo. No centro, uma mulher vestida com uma jaqueta azul e um boné parece estar liderando uma conversa ou reunião, enquanto os outros a escutam atentamente. A cena acontece sob um céu claro, com cercas de madeira e casas ao fundo, sugerindo que estão em uma área residencial ou em um bairro humilde."
@@ -317,23 +319,27 @@ export default function Home() {
 						</div>
 					</div>
 				</div>
-				<div className="perguntas-section">
-					<h2 className="titulo-h2 second">Perguntas frequentes</h2>
-					<div className="pergunta">
-						<div className="pergunta-encabeçado">
-							<div className="titulo-pergunta">
+				<div className={styles2["perguntas-section"]}>
+					<h2 className={`${styles2["titulo-h2"]} ${styles2.second}`}>
+						Perguntas frequentes
+					</h2>
+					<div className={styles2.pergunta}>
+						<div className={styles2["pergunta-encabeçado"]}>
+							<div className={styles2["titulo-pergunta"]}>
 								<h2>01</h2>
 								<h1>O que é a Comunidade Toti</h1>
 							</div>
 							<button
-								className={`sign ${activeIndices[0] ? "active" : ""}`}
+								className={`${styles2.sign} ${activeIndices[0] ? styles2.active : ""}`}
 								onClick={() => toggleSign(0)}
 							>
 								<div />
 								<div />
 							</button>
 						</div>
-						<div className={`resposta ${activeIndices[0] ? "show" : ""}`}>
+						<div
+							className={`${styles2.resposta} ${activeIndices[0] ? styles2.show : ""}`}
+						>
 							<p>
 								A Comunidade Toti é um coletivo de profissionais que tem como objetivo
 								conectar Psicólogos e Educadores Sociais com um Líder Comunitário para
@@ -341,21 +347,23 @@ export default function Home() {
 							</p>
 						</div>
 					</div>
-					<div className="pergunta">
-						<div className="pergunta-encabeçado">
-							<div className="titulo-pergunta">
+					<div className={styles2.pergunta}>
+						<div className={styles2["pergunta-encabeçado"]}>
+							<div className={styles2["titulo-pergunta"]}>
 								<h2>02</h2>
 								<h1>Como posso me voluntariar?</h1>
 							</div>
 							<button
-								className={`sign ${activeIndices[1] ? "active" : ""}`}
+								className={`${styles2.sign} ${activeIndices[1] ? styles2.active : ""}`}
 								onClick={() => toggleSign(1)}
 							>
 								<div />
 								<div />
 							</button>
 						</div>
-						<div className={`resposta ${activeIndices[1] ? "show" : ""}`}>
+						<div
+							className={`${styles2.resposta} ${activeIndices[1] ? styles2.show : ""}`}
+						>
 							<p>
 								Para se voluntariar, basta acessar a página Serviços e selecionar sua
 								categoria. Após isso, você irá preencher preencher um formulário com
@@ -365,21 +373,23 @@ export default function Home() {
 							</p>
 						</div>
 					</div>
-					<div className="pergunta">
-						<div className="pergunta-encabeçado">
-							<div className="titulo-pergunta">
+					<div className={styles2.pergunta}>
+						<div className={styles2["pergunta-encabeçado"]}>
+							<div className={styles2["titulo-pergunta"]}>
 								<h2>03</h2>
 								<h1>Quem é que é o Líder Comunitario?</h1>
 							</div>
 							<button
-								className={`sign ${activeIndices[2] ? "active" : ""}`}
+								className={`${styles2.sign} ${activeIndices[2] ? styles2.active : ""}`}
 								onClick={() => toggleSign(2)}
 							>
 								<div />
 								<div />
 							</button>
 						</div>
-						<div className={`resposta ${activeIndices[2] ? "show" : ""}`}>
+						<div
+							className={`${styles2.resposta} ${activeIndices[2] ? styles2.show : ""}`}
+						>
 							<p>
 								O líder comunitário é a pessoa responsável por prestar coordenação e
 								ajuda às pessoas em situação de vulnerabilidade, que buscam diferentes
@@ -392,21 +402,23 @@ export default function Home() {
 							</p>
 						</div>
 					</div>
-					<div className="pergunta">
-						<div className="pergunta-encabeçado">
-							<div className="titulo-pergunta">
+					<div className={styles2.pergunta}>
+						<div className={styles2["pergunta-encabeçado"]}>
+							<div className={styles2["titulo-pergunta"]}>
 								<h2>03</h2>
 								<h1>Quais são as áreas de atuação para voluntários?</h1>
 							</div>
 							<button
-								className={`sign ${activeIndices[3] ? "active" : ""}`}
+								className={`${styles2.sign} ${activeIndices[3] ? styles2.active : ""}`}
 								onClick={() => toggleSign(3)}
 							>
 								<div />
 								<div />
 							</button>
 						</div>
-						<div className={`resposta ${activeIndices[3] ? "show" : ""}`}>
+						<div
+							className={`${styles2.resposta} ${activeIndices[3] ? styles2.show : ""}`}
+						>
 							<p>
 								Por enquanto, os voluntários podem atuar em três áreas, incluindo apoio
 								psicológico, educação social e liderança de grupos. Nosso objetivo é
@@ -414,21 +426,23 @@ export default function Home() {
 							</p>
 						</div>
 					</div>
-					<div className="pergunta">
-						<div className="pergunta-encabeçado">
-							<div className="titulo-pergunta">
+					<div className={styles2.pergunta}>
+						<div className={styles2["pergunta-encabeçado"]}>
+							<div className={styles2["titulo-pergunta"]}>
 								<h2>04</h2>
 								<h1>Quais são os benefícios de se voluntariar?</h1>
 							</div>
 							<button
-								className={`sign ${activeIndices[4] ? "active" : ""}`}
+								className={`${styles2.sign} ${activeIndices[4] ? styles2.active : ""}`}
 								onClick={() => toggleSign(4)}
 							>
 								<div />
 								<div />
 							</button>
 						</div>
-						<div className={`resposta ${activeIndices[4] ? "show" : ""}`}>
+						<div
+							className={`${styles2.resposta} ${activeIndices[4] ? styles2.show : ""}`}
+						>
 							<p>
 								Voluntariar-se para apoiar o Estado do Rio Grande do Sul proporciona uma
 								oportunidade única de impactar positivamente a vida de pessoas em um

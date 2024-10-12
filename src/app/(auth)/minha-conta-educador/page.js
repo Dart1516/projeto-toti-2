@@ -1,9 +1,12 @@
 "use client";
 import { useState } from "react";
 import { FaPlus, FaTrash } from "react-icons/fa";
-import "../../../assets/styles/App.css";
-import "../../../assets/styles/MinhaConta.css";
-import "../../../assets/styles/SejaVoluntario.css";
+// import "../../../assets/styles/App.css";
+// import "../../../assets/styles/MinhaConta.css";
+// import "../../../assets/styles/SejaVoluntario.css";
+import styles1 from "../../../assets/styles/App.module.css";
+import styles2 from "../../../assets/styles/MinhaConta.module.css";
+import styles3 from "../../../assets/styles/SejaVoluntario.module.css";
 import Footer from "../../../components/Footer";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -96,75 +99,97 @@ function MinhaContaEducador() {
 	});
 
 	return (
-		<form onSubmit={handleSubmit(formLog)} className="App-Conta">
-			<div className="minhaConta">
-				<div className="section">
-					<h2 className="titulo-conta">Minha Conta</h2>
-					<h2 className="subtitulo-conta">Dados Pessoais</h2>
-					<div className="inputs">
-						<div className="input-field">
-							<label htmlFor="cpf">CPF</label>
+		<form onSubmit={handleSubmit(formLog)} className={styles2["App-Conta"]}>
+			<div className={styles2.minhaConta}>
+				<div className={styles2.section}>
+					<h2 className={`${styles3.titleh2} ${styles2["titulo-conta"]}`}>
+						Minha Conta
+					</h2>
+					<h2 className={`${styles3.titleh2} ${styles2["subtitulo-conta"]}`}>
+						Dados Pessoais
+					</h2>
+					<div className={styles2.inputs}>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="cpf">
+								CPF
+							</label>
 							<input
 								type="text"
 								id="cpf"
 								placeholder="CPF"
-								className="input-text"
+								className={styles2["input-text"]}
 								{...register("cpf")}
 							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="nome">Nome completo</label>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="nome">
+								Nome completo
+							</label>
 							<input
 								type="text"
 								id="nome"
 								placeholder="Nome completo"
-								className="input-text"
+								className={styles2["input-text"]}
 								{...register("nome")}
 							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="dataNascimento">Data de nascimento</label>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="dataNascimento">
+								Data de nascimento
+							</label>
 							<input
 								type="date"
 								id="dataNascimento"
 								placeholder="Data de nascimento"
-								className="input-text"
+								className={styles2["input-text"]}
 								{...register("dataNascimento")}
 							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="telefone">Telefone</label>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="telefone">
+								Telefone
+							</label>
 							<input
 								type="text"
 								id="telefone"
 								placeholder="Telefone (WhatsApp)"
-								className="input-text"
+								className={styles2["input-text"]}
 								{...register("telefone")}
 							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="instagram">Instagram (opcional)</label>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="instagram">
+								Instagram (opcional)
+							</label>
 							<input
 								type="text"
 								id="instagram"
 								placeholder="Instagram"
-								className="input-text"
+								className={styles2["input-text"]}
 								{...register("instagram")}
 							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="certificado">Certificado</label>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="certificado">
+								Certificado
+							</label>
 							<input
 								type="text"
 								id="certificado"
 								placeholder="certificado"
-								className="input-text"
+								className={styles2["input-text"]}
 								{...register("crp")}
 							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="estado">Estado</label>
-							<select id="estado" className="input-text" {...register("estado")}>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="estado">
+								Estado
+							</label>
+							<select
+								id="estado"
+								className={styles2["input-text"]}
+								{...register("estado")}
+							>
 								<option value="">Selecione um estado</option>
 								<option value="AC">Acre (AC)</option>
 								<option value="AL">Alagoas (AL)</option>
@@ -195,68 +220,80 @@ function MinhaContaEducador() {
 								<option value="TO">Tocantins (TO)</option>
 							</select>
 						</div>
-						<div className="input-field">
-							<label htmlFor="cidade">Cidade</label>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="cidade">
+								Cidade
+							</label>
 							<input
 								type="text"
 								id="cidade"
 								placeholder="Cidade"
-								className="input-text"
+								className={styles2["input-text"]}
 								{...register("cidade")}
 							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="endereço">Endereço</label>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="endereço">
+								Endereço
+							</label>
 							<input
 								type="text"
 								id="endereço"
 								placeholder="Endereço"
-								className="input-text"
+								className={styles2["input-text"]}
 								{...register("endereco")}
 							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="numero">Número</label>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="numero">
+								Número
+							</label>
 							<input
 								type="text"
 								id="numero"
 								placeholder="Número"
-								className="input-text"
+								className={styles2["input-text"]}
 								{...register("numero")}
 							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="complemento">Complemento</label>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="complemento">
+								Complemento
+							</label>
 							<input
 								type="text"
 								id="complemento"
 								placeholder="Complemento"
-								className="input-text"
+								className={styles2["input-text"]}
 								{...register("complemento")}
 							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="bairro">Bairro</label>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="bairro">
+								Bairro
+							</label>
 							<input
 								type="text"
 								id="bairro"
 								placeholder="Bairro"
-								className="input-text"
+								className={styles2["input-text"]}
 								{...register("bairro")}
 							/>
 						</div>
 					</div>
-					<div className="buttons">
+					<div className={styles2.buttons}>
 						<button>Cancelar</button>
 						<button>Salvar alterações</button>
 					</div>
 				</div>
 
-				<div className="section">
-					<h2 className="subtitulo-conta">Serviço</h2>
-					<div className="radio-espacio">
+				<div className={styles2.section}>
+					<h2 className={`${styles3.titleh2} ${styles2["subtitulo-conta"]}`}>
+						Serviço
+					</h2>
+					<div className={styles2["radio-espacio"]}>
 						<p>Disponibilidade para prestar serviço na sua cidade ou bairro?</p>
-						<div className="radio-option">
+						<div className={styles2["radio-option"]}>
 							<input
 								type="radio"
 								id="sim"
@@ -265,9 +302,11 @@ function MinhaContaEducador() {
 								checked={selectedOption === "sim"}
 								onChange={() => handleOptionChange("sim")}
 							/>
-							<label htmlFor="sim">Sim</label>
+							<label className={styles3.labelItem} htmlFor="sim">
+								Sim
+							</label>
 						</div>
-						<div className="radio-option">
+						<div className={styles2["radio-option"]}>
 							<input
 								type="radio"
 								id="nao"
@@ -276,26 +315,30 @@ function MinhaContaEducador() {
 								checked={selectedOption === "nao"}
 								onChange={() => handleOptionChange("nao")}
 							/>
-							<label htmlFor="nao">Não</label>
+							<label className={styles3.labelItem} htmlFor="nao">
+								Não
+							</label>
 						</div>
 					</div>
-					<div className="buttons">
+					<div className={styles2.buttons}>
 						<button>Cancelar</button>
 						<button>Salvar alterações</button>
 					</div>
 				</div>
 
-				<div className="form-group">
-					<h2 className="subtitulo-conta">Disponibilidade</h2>
+				<div className={styles2["form-group"]}>
+					<h2 className={`${styles3.titleh2} ${styles2["subtitulo-conta"]}`}>
+						Disponibilidade
+					</h2>
 					{formData.additionalDays.map((additionalDay, index) => (
-						<div key={index} className="dia-disponible">
+						<div key={index} className={styles3["dia-disponible"]}>
 							<div>
-								<h4>
+								<h4 className={styles3.titleh4}>
 									Dia {index + 1}
 									<span>*</span>
 								</h4>
 								<select
-									className="form-select"
+									className={styles3["form-select"]}
 									name="day"
 									value={additionalDay.day}
 									onChange={(e) => handleDayChange(index, e)}
@@ -312,11 +355,11 @@ function MinhaContaEducador() {
 								</select>
 							</div>
 							<div>
-								<h4>
+								<h4 className={styles3.titleh4}>
 									Hora<span>*</span>
 								</h4>
 								<select
-									className="form-select"
+									className={styles3["form-select"]}
 									name="hour"
 									value={additionalDay.hour}
 									onChange={(e) => handleDayChange(index, e)}
@@ -343,43 +386,52 @@ function MinhaContaEducador() {
 							)}
 						</div>
 					))}
-					<div className="button-dia-espacio" onClick={addDay}>
+					<div className={styles2["button-dia-espacio"]} onClick={addDay}>
 						<FaPlus />
-						<h4 onClick={addDay} className="texto-dia">
+						<h4
+							onClick={addDay}
+							className={`${styles3.titleh4} ${styles2["texto-dia"]}`}
+						>
 							Adicionar outro dia
 						</h4>
 					</div>
-					<div className="input-field">
-						<label htmlFor="observacao">Observação</label>
+					<div className={styles2["input-field"]}>
+						<label className={styles3.labelItem} htmlFor="observacao">
+							Observação
+						</label>
 						<textarea
 							id="observacao"
 							name="observacao"
 							value={formData.observacao}
 							onChange={handleInputChange}
 							placeholder="Observacao"
-							className="textarea-conta"
+							className={`${styles3.textareaItem} ${styles2["textarea-conta"]}`}
 						/>
 					</div>
-					<div className="buttons">
+					<div className={styles2.buttons}>
 						<button>Cancelar</button>
 						<button>Salvar alterações</button>
 					</div>
 				</div>
 
-				<div className="section">
-					<h2 className="subtitulo-conta">Cadastro</h2>
-					<div className="input-field">
-						<label htmlFor="observacao">Observação</label>
+				<div className={styles2.section}>
+					<h2 className={`${styles3.titleh2} ${styles2["subtitulo-conta"]}`}>
+						Cadastro
+					</h2>
+					<div className={styles2["input-field"]}>
+						<label className={styles3.labelItem} htmlFor="observacao">
+							Observação
+						</label>
 						<textarea
 							id="observacao"
 							name="observacao"
 							value={formData.observacao}
 							onChange={handleInputChange}
 							placeholder="Observacao"
-							className="textarea-conta"
+							className={`${styles3.textareaItem} ${styles2["textarea-conta"]}`}
 						/>
 					</div>
-					<div className="buttons">
+					<div className={styles2.buttons}>
 						<button>Cancelar</button>
 						<button>Salvar alterações</button>
 					</div>

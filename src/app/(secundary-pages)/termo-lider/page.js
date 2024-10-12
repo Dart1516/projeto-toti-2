@@ -1,20 +1,25 @@
 "use client";
 
 import React from "react";
-import "../../../assets/styles/App.css";
-import "../../../assets/styles/SejaVoluntario.css";
-import "../../../assets/styles/avisoLegal.css";
+// import "../../../assets/styles/App.css";
+// import "../../../assets/styles/SejaVoluntario.css";
+// import "../../../assets/styles/avisoLegal.css";
+import styles1 from "../../../assets/styles/App.module.css";
+import styles2 from "../../../assets/styles/SejaVoluntario.module.css";
+import styles3 from "../../../assets/styles/avisoLegal.module.css";
 import { useRouter } from "next/navigation";
 
 function TermoResponsabilidadePsicólogos() {
 	const router = useRouter();
 	return (
-		<div className="App">
-			<div className="container-body">
-				<div className="aviso-legal">
-					<h2>Termo de Responsabilidade para Líderes Comunitários Voluntários</h2>
+		<div className={styles1.App}>
+			<div className={styles3["container-body"]}>
+				<div className={styles3["aviso-legal"]}>
+					<h2 className={styles2.titleh2}>
+						Termo de Responsabilidade para Líderes Comunitários Voluntários
+					</h2>
 
-					<div className="legal-content">
+					<div className={styles3["legal-content"]}>
 						<p>
 							Ao marcar a caixa abaixo, concordo com os seguintes termos de
 							responsabilidade como psicólogo voluntário de Toters do bem:

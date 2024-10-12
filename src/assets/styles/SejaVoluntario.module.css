@@ -1,16 +1,18 @@
 
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+}*/
 
-body {
+/* .general {
   margin: 0;
   background: hsl(0, 0%, 96%);
   color: var(--color5);
   line-height: 1.6;
-}
+  padding: 0;
+  box-sizing: border-box;
+}  */
 
 .background-image {
   width: 100%;
@@ -36,6 +38,10 @@ body {
   max-width: 900px;
   padding: 90px 80px;
   z-index: 1;
+  margin: 0;
+  color: var(--color5);
+  line-height: 1.6;
+  box-sizing: border-box;
 }
 
 .container-titulo {
@@ -61,7 +67,7 @@ body {
   background-color: var(--color2); /* Color de la línea */
 }
 
-h2 {
+.titleh2 {
   text-align: center;
   margin-bottom: 20px;
   font-weight: 700;
@@ -84,7 +90,7 @@ h2 {
   flex-direction: column;
   
 } 
-label {
+.labelItem {
   display: flex;
   align-items: center;
 }
@@ -206,7 +212,7 @@ label {
   align-items: center;
 }
 
-h4 {
+.titleh4 {
   padding-bottom: 6px;
   font-weight: 400;
   color: var(--color5);
@@ -339,7 +345,16 @@ button.submit-disabled:hover {
   opacity: 0.3;
   cursor: not-allowed;
 }
-
+.error-message-api{
+  color: red;
+  font-size: 0.9rem;
+  padding: 1px;
+  overflow: hidden;
+  text-align: start;
+  white-space: wrap;
+  max-width: 100%;
+  max-height: 3rem;
+}
 @media (max-width: 850px) {
   .container {
     width: 100%;
@@ -401,7 +416,7 @@ button.submit-disabled:hover {
 
   .input-text,
   .form-select,
-  textarea {
+  .textareaItem {
     padding: 5px;
     font-size: clamp(0.5em, 0.5em + 1vw, 0.8em);
   }

@@ -9,8 +9,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import "../../../assets/styles/App.css";
-import "../../../assets/styles/interfazLider.css";
+//import "../../../assets/styles/App.css";
+//import "../../../assets/styles/interfazLider.css";
+import styles1 from "../../../assets/styles/App.module.css";
+import styles2 from "../../../assets/styles/interfazLider.module.css";
 import { Api } from "../../../services/api";
 import React from "react";
 
@@ -90,44 +92,44 @@ function InterfazLider() {
 	const endPage = Math.min(startPage + maxPagesToShow - 1, pageNumbers.length);
 
 	return (
-		<div className="App">
-			<div className="App-body">
-				<h2 className="titulo-table">Cadastro especialidades</h2>
-				<div className="cards-container">
-					<div className="card">
-						<FontAwesomeIcon icon={faUser} className="icon-table" />
+		<div className={styles1.App}>
+			<div className={styles1["App-body"]}>
+				<h2 className={styles2["titulo-table"]}>Cadastro especialidades</h2>
+				<div className={styles2["cards-container"]}>
+					<div className={styles2.card}>
+						<FontAwesomeIcon icon={faUser} className={styles2["icon-table"]} />
 						<p>{psicólogosCount}</p>
 						<h3>Psicólogos</h3>
 					</div>
-					<div className="card">
-						<FontAwesomeIcon icon={faBuilding} className="icon-table" />
+					<div className={styles2.card}>
+						<FontAwesomeIcon icon={faBuilding} className={styles2["icon-table"]} />
 						<p>{educadoresCount}</p>
 						<h3>Educadores</h3>
 					</div>
-					<div className="card">
-						<FontAwesomeIcon icon={faEllipsisH} className="icon-table" />
+					<div className={styles2.card}>
+						<FontAwesomeIcon icon={faEllipsisH} className={styles2["icon-table"]} />
 						<p>{total}</p>
 						<h3>Total</h3>
 					</div>
 				</div>
 
-				<h2 className="titulo-table">Voluntarios</h2>
+				<h2 className={styles2["titulo-table"]}>Voluntarios</h2>
 
-				<div className="filter-container">
-					<div className="input-space">
+				<div className={styles2["filter-container"]}>
+					<div className={styles2["input-space"]}>
 						<h4>Buscar</h4>
-						<div className="input-icon">
-							<FontAwesomeIcon icon={faSearch} className="icon-lupa" />
+						<div className={styles2["input-icon"]}>
+							<FontAwesomeIcon icon={faSearch} className={styles2["icon-lupa"]} />
 							<input
 								type="text"
 								placeholder="Nome"
 								value={filter.name}
 								onChange={(e) => setFilter({ ...filter, name: e.target.value })}
-								className="input-filter"
+								className={styles2["input-filter"]}
 							/>
 						</div>
 					</div>
-					<div className="input-space">
+					<div className={styles2["input-space"]}>
 						<h4>Especialidade</h4>
 						<input
 							type="text"
@@ -136,25 +138,25 @@ function InterfazLider() {
 							onChange={(e) =>
 								setFilter({ ...filter, specialization: e.target.value })
 							}
-							className="input-filter"
+							className={styles2["input-filter"]}
 						/>
 					</div>
-					<div className="input-space">
+					<div className={styles2["input-space"]}>
 						<h4>Estado/Cidade</h4>
 						<input
 							type="text"
 							placeholder="Estado/Cidade"
 							value={filter.state}
 							onChange={(e) => setFilter({ ...filter, state: e.target.value })}
-							className="input-filter"
+							className={styles2["input-filter"]}
 						/>
 					</div>
 				</div>
-				<h2 className="title-count">
-					Todos <span className="background-total">{total}</span>
+				<h2 className={styles2["title-count"]}>
+					Todos <span className={styles2["background-total"]}>{total}</span>
 				</h2>
-				<div className="table-container">
-					<table className="professional-table">
+				<div className={styles2["table-container"]}>
+					<table className={styles2["professional-table"]}>
 						<thead>
 							<tr>
 								<th>Nome</th>
@@ -190,7 +192,7 @@ function InterfazLider() {
 							))}
 						</tbody>
 					</table>
-					<div className="pagination">
+					<div className={styles2.pagination}>
 						{/* Flecha < */}
 						<button
 							onClick={() => setCurrentPage((prevPage) => Math.max(prevPage - 1, 1))}

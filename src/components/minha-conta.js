@@ -3,9 +3,12 @@ import { format } from "date-fns";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useUser } from "../api/UserContext";
-import "../assets/styles/App.css";
-import "../assets/styles/MinhaConta.css";
-import "../assets/styles/SejaVoluntario.css";
+// import "../assets/styles/App.css";
+// import "../assets/styles/MinhaConta.css";
+// import "../assets/styles/SejaVoluntario.css";
+import styles1 from "../assets/styles/App.module.css";
+import styles2 from "../assets/styles/MinhaConta.module.css";
+import styles3 from "../assets/styles/SejaVoluntario.module.css";
 export default function MinhaContaForm() {
 	const { user } = useUser();
 
@@ -27,13 +30,17 @@ export default function MinhaContaForm() {
 	};
 
 	return (
-		<div className="section">
-			<h2 className="titulo-conta">Minha Conta</h2>
-			<h2 className="subtitulo-conta">Dados Pessoais</h2>
+		<div className={styles2.section}>
+			<h2 className={`${styles3.titleh2} ${styles2.section}`}>Minha Conta</h2>
+			<h2 className={`${styles3.titleh2} ${styles2["subtitulo-conta"]}`}>
+				Dados Pessoais
+			</h2>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<div className="inputs">
-					<div className="input-field">
-						<label htmlFor="cpf">CPF</label>
+				<div className={styles3.inputs}>
+					<div className={styles3["input-field"]}>
+						<label className={styles3.labelItem} htmlFor="cpf">
+							CPF
+						</label>
 						<input
 							type="text"
 							id="cpf"
@@ -42,49 +49,63 @@ export default function MinhaContaForm() {
 							{...register("cpf")}
 						/>
 					</div>
-					<div className="input-field">
-						<label htmlFor="nome">Nome completo</label>
+					<div className={styles3["input-field"]}>
+						<label className={styles3.labelItem} htmlFor="nome">
+							Nome completo
+						</label>
 						<input
 							type="text"
 							id="nome"
 							placeholder="Nome completo"
-							className="input-text"
+							className={styles3["input-text"]}
 							{...register("nome")}
 						/>
 					</div>
-					<div className="input-field">
-						<label htmlFor="dataNascimento">Data de nascimento</label>
+					<div className={styles3["input-field"]}>
+						<label className={styles3.labelItem} htmlFor="dataNascimento">
+							Data de nascimento
+						</label>
 						<input
 							type="date"
 							id="dataNascimento"
 							placeholder="Data de nascimento"
-							className="input-text"
+							className={styles3["input-text"]}
 							{...register("dataNascimento")}
 						/>
 					</div>
-					<div className="input-field">
-						<label htmlFor="telefone">Telefone</label>
+					<div className={styles3["input-field"]}>
+						<label className={styles3.labelItem} htmlFor="telefone">
+							Telefone
+						</label>
 						<input
 							type="text"
 							id="telefone"
 							placeholder="Telefone (WhatsApp)"
-							className="input-text"
+							className={styles3["input-text"]}
 							{...register("telefone")}
 						/>
 					</div>
-					<div className="input-field">
-						<label htmlFor="instagram">Instagram (opcional)</label>
+					<div className={styles3["input-field"]}>
+						<label className={styles3.labelItem} htmlFor="instagram">
+							Instagram (opcional)
+						</label>
 						<input
 							type="text"
 							id="instagram"
 							placeholder="Instagram"
-							className="input-text"
+							className={styles3["input-text"]}
 							{...register("instagram")}
 						/>
 					</div>
-					<div className="input-field">
-						<label htmlFor="estado">Estado</label>
-						<select id="estado" className="input-text" {...register("estado")}>
+					<div className={styles3["input-field"]}>
+						<label className={styles3.labelItem} htmlFor="estado">
+							Estado
+						</label>
+						<select
+							id="estado"
+							className={styles3["input-text"]}
+							{...register("estado")}
+						>
 							<option value="">Selecione um estado</option>
 							<option value="AC">Acre (AC)</option>
 							<option value="AL">Alagoas (AL)</option>
@@ -116,7 +137,7 @@ export default function MinhaContaForm() {
 						</select>
 					</div>
 				</div>
-				<div className="buttons">
+				<div className={styles3.buttons}>
 					<button type="button">Cancelar</button>
 					<button type="submit">Salvar alterações</button>
 				</div>

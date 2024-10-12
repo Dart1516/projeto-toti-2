@@ -22,7 +22,9 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useUser } from "../../../api/UserContext";
 import { Api } from "../../../services/api";
-import "./../../../assets/styles/SejaVoluntario.css";
+// import "./../../../assets/styles/SejaVoluntario.css";
+import styles1 from "../../../assets/styles/App.module.css";
+import styles2 from "../../../assets/styles/SejaVoluntario.module.css";
 import { ROLES } from "../../../utils/constants";
 
 const StyledContainer = styled("div")(({ theme }) => ({
@@ -173,13 +175,18 @@ const Acesso = () => {
 	};
 
 	return (
-		<div className="App SV">
-			<div className="background-image" />
-			<StyledContainer>
-				<Typography variant="h4" color="black">
+		<div className={`${styles1.App} ${styles2.SV}`}>
+			<div className={styles2["background-image"]} />
+			<StyledContainer className={styles2.general}>
+				<Typography
+					variant="h4"
+					color="black"
+					paddingBottom="6px"
+					fontWeight="400px"
+				>
 					Seja bem-vindo(a) de volta
 				</Typography>
-				<Typography variant="body">
+				<Typography variant="body" color="#7a7a7a">
 					Ainda não faz parte da equipe de voluntarios?{" "}
 					<Link href="/servicos">Clique aquí.</Link>
 				</Typography>
@@ -193,6 +200,7 @@ const Acesso = () => {
 									justifyContent: "start",
 									display: "flex",
 									textAlign: "left",
+									color: "#7a7a7a",
 								}}
 							>
 								Email
@@ -201,7 +209,7 @@ const Acesso = () => {
 								type="email"
 								{...register("email")}
 								required
-								className="input-text login"
+								className={`${styles2["input-text"]} ${styles2.login}`}
 							/>
 							{errors.email && <p style={{ color: "red" }}>{errors.email.message}</p>}
 						</FormControl>
@@ -213,6 +221,7 @@ const Acesso = () => {
 									justifyContent: "start",
 									display: "flex",
 									textAlign: "left",
+									color: "#7a7a7a",
 								}}
 							>
 								Senha
@@ -222,7 +231,7 @@ const Acesso = () => {
 								required
 								label="senha"
 								fullWidth
-								className="input-text login"
+								className={`${styles2["input-text"]} ${styles2.login}`}
 								{...register("password")}
 								endAdornment={
 									<InputAdornment position="end">
@@ -249,6 +258,7 @@ const Acesso = () => {
 										}}
 									/>
 								}
+								style={{ color: "#7a7a7a" }}
 								label="Lembrar de mim"
 							/>
 							<StyledLink href="/recuperar-senha">Esqueceu a senha?</StyledLink>

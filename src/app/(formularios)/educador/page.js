@@ -3,8 +3,10 @@
 /* Formulario com Resolver (React Hoork From + ZOD)*/
 import React, { useState } from "react";
 import InputMask from "react-input-mask";
-import "../../../assets/styles/App.css";
-import "../../../assets/styles/SejaVoluntario.css";
+// import "../../../assets/styles/App.css";
+// import "../../../assets/styles/SejaVoluntario.css";
+import styles1 from "../../../assets/styles/App.module.css";
+import styles2 from "../../../assets/styles/SejaVoluntario.module.css";
 import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
 import Visibility from "@mui/icons-material/VisibilityOutlined";
 import { FaPlus, FaTrash } from "react-icons/fa";
@@ -270,7 +272,7 @@ function FormularioEducadorSocial() {
 			setIsCepFocused(false);
 		}
 	}
-let response;
+	let response;
 	async function createData(formData) {
 		const { verifyEmail, verifyPassword, birthDate, cep, ...rest } = formData;
 		const dataToSend = {
@@ -284,49 +286,56 @@ let response;
 			const response = await Api.post("/cadastro/educador", dataToSend);
 			if (response) {
 				router.push("../../obrigado-page");
-			}console.log(response);
+			}
+			console.log(response);
 		} catch (error) {
-	let errorMessage;
-		  
-			if (error.response && error.response.data && error.response.data.message) {
-			  if (error.response.data.message.includes("CPF já cadastrado")) {
-				errorMessage = "CPF inserido ja cadastrado. Ja tem uma conta? Faça login. Se ainda não tem, favor conferir os dados no formulario.";
-			  } else if (error.response.data.message.includes("E-mail já cadastrado")) {
-				errorMessage = "Email inserido já cadastrado. Ja tem uma conta? faça login. Se ainda não tem, favor conferir os dados no formulario.";
-			  } 
-			}else {
-				errorMessage = "Ops! A conexão falhou. O cadastro não foi bem sucedido, vamos tentar de novo?";
-			  }
-		  
+			let errorMessage;
+
+			if (error.response?.data?.message) {
+				if (error.response.data.message.includes("CPF já cadastrado")) {
+					errorMessage =
+						"CPF inserido ja cadastrado. Ja tem uma conta? Faça login. Se ainda não tem, favor conferir os dados no formulario.";
+				} else if (error.response.data.message.includes("E-mail já cadastrado")) {
+					errorMessage =
+						"Email inserido já cadastrado. Ja tem uma conta? faça login. Se ainda não tem, favor conferir os dados no formulario.";
+				}
+			} else {
+				errorMessage =
+					"Ops! A conexão falhou. O cadastro não foi bem sucedido, vamos tentar de novo?";
+			}
+
 			console.error("Error ao enviar os dados:", error);
 			setOutput(errorMessage);
-		  }
+		}
 	}
 
 	return (
-		<div className="App SV">
-			<div className="background-image" />
-			<div className="container">
-				<div className="container-titulo">
-					<h2>SOS Rio Grande do Sul </h2>
-					<h2>Cadastro de Psicólogos Voluntários</h2>
+		<div className={`${styles1.App} ${styles2.SV}`}>
+			<div className={styles2["background-image"]} />
+			<div className={styles2.container}>
+				<div className={styles2["container-titulo"]}>
+					<h2 className={styles2.titleh2}>SOS Rio Grande do Sul </h2>
+					<h2 className={styles2.titleh2}>Cadastro de Psicólogos Voluntários</h2>
 				</div>
-				<form onSubmit={handleSubmit(createData)} className="general-inputs">
-					<div className="inputs formCadastro">
+				<form
+					onSubmit={handleSubmit(createData)}
+					className={styles2["general-inputs"]}
+				>
+					<div className={`${styles2.inputs} ${styles2.formCadastro}`}>
 						{/* Nome */}
-						<div className="input-field">
-							<label htmlFor="name">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="name">
 								<span>1. Nome completo</span>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
 							<input
-								className={`input-text ${errors.name ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.name ? "invalid" : "valid"}`}
 								type="text"
 								placeholder="Digite seu nome completo"
 								{...register("name")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="name"
 								as="p"
@@ -334,19 +343,19 @@ let response;
 						</div>
 
 						{/* CPF*/}
-						<div className="input-field">
-							<label htmlFor="cpf">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="cpf">
 								<p>2. CPF</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
 							<InputMask
 								mask="999.999.999-99"
-								className={`input-text ${errors.cpf ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.cpf ? "invalid" : "valid"}`}
 								placeholder="Digite o CPF, um valor numérico"
 								{...register("cpf")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="cpf"
 								as="p"
@@ -354,19 +363,19 @@ let response;
 						</div>
 
 						{/* Data nasc*/}
-						<div className="input-field">
-							<label htmlFor="birthDate">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="birthDate">
 								<p>3. Data de nascimento</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
 							<input
-								className={`input-text ${errors.birthDate ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.birthDate ? "invalid" : "valid"}`}
 								type="date"
 								placeholder="Digite seu nome completo"
 								{...register("birthDate")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="birthDate"
 								as="p"
@@ -374,19 +383,19 @@ let response;
 						</div>
 
 						{/* Telefone*/}
-						<div className="input-field">
-							<label htmlFor="phoneNumber">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="phoneNumber">
 								<p>4. Número do whatsApp</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
 							<InputMask
 								mask="(99)99999-9999"
-								className={`input-text ${errors.phoneNumber ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.phoneNumber ? "invalid" : "valid"}`}
 								placeholder="Digite seu número"
 								{...register("phoneNumber")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="phoneNumber"
 								as="p"
@@ -394,18 +403,18 @@ let response;
 						</div>
 
 						{/* Rede social */}
-						<div className="input-field">
-							<label htmlFor="rede_social">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="rede_social">
 								<p>5. Rede social (opcional)</p>
 							</label>
 							<input
-								className={`input-text ${errors.rede_social ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.rede_social ? "invalid" : "valid"}`}
 								type="text"
 								placeholder="Digite seu rede social"
 								{...register("rede_social")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="rede_social"
 								as="p"
@@ -413,19 +422,19 @@ let response;
 						</div>
 
 						{/* Profissão */}
-						<div className="input-field">
-							<label htmlFor="profession">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="profession">
 								<p>6. Profissão</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
 							<input
-								className={`input-text ${errors.profession ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.profession ? "invalid" : "valid"}`}
 								type="text"
 								placeholder="Digite seu rede social"
 								{...register("profession")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="profession"
 								as="p"
@@ -433,19 +442,19 @@ let response;
 						</div>
 
 						{/* CEP */}
-						<div className="input-field">
-							<label htmlFor="cep">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="cep">
 								<p> 7. CEP</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
 							<InputMask
 								mask="99999-999"
-								className={`input-text ${errors.cep ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.cep ? "invalid" : "valid"}`}
 								placeholder="Digite seu CEP, um valor numérico"
 								{...register("cep", { onBlur: handleCEPApi })}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="cep"
 								as="p"
@@ -453,20 +462,20 @@ let response;
 						</div>
 
 						{/* Endereço */}
-						<div className="input-field">
-							<label htmlFor="neighborhood">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="neighborhood">
 								<p>8. Endereço</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
 							<input
-								className={`input-text ${errors.neighborhood ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.neighborhood ? "invalid" : "valid"}`}
 								type="text"
 								placeholder="Preencha um CEP válido"
 								disabled
 								{...register("neighborhood")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="neighborhood"
 								as="p"
@@ -474,19 +483,19 @@ let response;
 						</div>
 
 						{/* Certificado */}
-						<div className="input-field">
-							<label htmlFor="certificate">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="certificate">
 								<p>9. Certificado</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
 							<input
-								className={`input-text ${errors.certificate ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.certificate ? "invalid" : "valid"}`}
 								type="text"
 								placeholder="Digite seu rede social"
 								{...register("certificate")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="certificate"
 								as="p"
@@ -494,34 +503,37 @@ let response;
 						</div>
 					</div>
 
-					<label htmlFor="availableTimes">
+					<label className={styles2.labelItem} htmlFor="availableTimes">
 						<p>
 							10. Quando você pode ajudar? Adicione seus horários disponíveis clicando
 							no ícone
 						</p>
 						{fields.length < 7 && (
-							<span className="plusChar">
+							<span className={styles2.plusChar}>
 								<FaPlus onClick={() => append({})} title="Agregar horário" size={20} />
 							</span>
 						)}
 					</label>
 					{fields.map((field, index) => {
 						return (
-							<div className="form-group formulario" key={field.id}>
-								<div className="dia-disponible">
-									<label htmlFor={field.id} />
+							<div
+								className={`${styles2["form-group"]} ${styles2.formulario}`}
+								key={field.id}
+							>
+								<div className={styles2["dia-disponible"]}>
+									<label className={styles2.labelItem} htmlFor={field.id} />
 									{/* Dia */}
 									<div>
 										<p>
 											{`${index + 1}${
 												daySuffixes[index % daySuffixes.length]
 											} dia disponível`}
-											<span className="errorChar"> * </span>
+											<span className={styles2.errorChar}> * </span>
 										</p>
 									</div>
 									<div>
 										<select
-											className={`input-text form-select ${
+											className={`${styles2["input-text"]} ${styles2[form - select]} ${
 												errors.day ? "invalid" : "valid"
 											}`}
 											{...register(`availableTimes.${index}.day`)}
@@ -537,7 +549,7 @@ let response;
 									{/* Hora */}
 									<div>
 										<select
-											className={`input-text form-select ${
+											className={`${styles2["input-text"]} ${styles2["form-select"]} ${
 												errors.hour ? "invalid" : "valid"
 											}`}
 											{...register(`availableTimes.${index}.hour`)}
@@ -551,14 +563,14 @@ let response;
 									</div>
 
 									{index > 0 && (
-										<span className="deleteChar">
+										<span className={styles2.deleteChar}>
 											<FaTrash onClick={() => remove(index)} title="Eliminar" size={15} />
 										</span>
 									)}
 								</div>
-								<div className="containerErrorDay">
+								<div className={styles2.containerErrorDay}>
 									<ErrorMessage
-										className="error-message"
+										className={styles2["error-message"]}
 										errors={errors}
 										name={`availableTimes.${index}.day`}
 										as="p"
@@ -568,7 +580,7 @@ let response;
 										errors?.availableTimes?.[index]?.hour && <span>e</span>}
 
 									<ErrorMessage
-										className="error-message"
+										className={styles2["error-message"]}
 										errors={errors}
 										name={`availableTimes.${index}.hour`}
 										as="p"
@@ -579,7 +591,7 @@ let response;
 						);
 					})}
 
-					<div className="lembre-text">
+					<div className={styles2["lembre-text"]}>
 						<h1>Lembre-se:</h1>
 						<p>
 							Seu e-mail e senha cadastrados serão seu login para o acesso na
@@ -591,21 +603,21 @@ let response;
 						</p>
 					</div>
 
-					<div className="inputs formCadastro">
+					<div className={`${styles2.inputs} ${styles2.formCadastro}`}>
 						{/* Email */}
-						<div className="input-field">
-							<label htmlFor="email">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="email">
 								<p>E-mail para cadastro</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
 							<input
-								className={`input-text ${errors.email ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.email ? "invalid" : "valid"}`}
 								type="email"
 								placeholder="Digite seu e-mail"
 								{...register("email")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="email"
 								as="p"
@@ -613,19 +625,19 @@ let response;
 						</div>
 
 						{/* Verifique Email */}
-						<div className="input-field">
-							<label htmlFor="verifyEmail">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="verifyEmail">
 								<p>Verificação do e-mail</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
 							<input
-								className={`input-text ${errors.verifyEmail ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.verifyEmail ? "invalid" : "valid"}`}
 								type="email"
 								placeholder="Confirme seu e-mail"
 								{...register("verifyEmail")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="verifyEmail"
 								as="p"
@@ -633,20 +645,20 @@ let response;
 						</div>
 
 						{/* Senha */}
-						<div className="input-field">
-							<label htmlFor="password">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="password">
 								<p>Senha</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
-							<div className="input-container">
+							<div className={styles2["input-container"]}>
 								<input
-									className={`input-text ${errors.password ? "invalid" : "valid"}`}
+									className={`${styles2["input-text"]} ${errors.password ? "invalid" : "valid"}`}
 									type={showPassword ? "text" : "password"}
 									placeholder="Crie uma senha"
 									{...register("password")}
 								/>
 								<button
-									className="visibility-icon"
+									className={styles2["visibility-icon"]}
 									type="button"
 									onClick={togglePasswordVisibility}
 								>
@@ -654,7 +666,7 @@ let response;
 								</button>
 							</div>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="password"
 								as="p"
@@ -662,20 +674,20 @@ let response;
 						</div>
 
 						{/* Confirmar Senha */}
-						<div className="input-field">
-							<label htmlFor="verifyPassword">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="verifyPassword">
 								<p>Verificação de senha</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
-							<div className="input-container">
+							<div className={styles2["input-container"]}>
 								<input
-									className={`input-text ${errors.verifyPassword ? "invalid" : "valid"}`}
+									className={`${styles2["input-text"]} ${errors.verifyPassword ? "invalid" : "valid"}`}
 									type={showPassword ? "text" : "password"}
 									placeholder="Confirme sua senha"
 									{...register("verifyPassword")}
 								/>
 								<button
-									className="visibility-icon"
+									className={styles2["visibility-icon"]}
 									type="button"
 									onClick={togglePasswordVisibility}
 								>
@@ -683,7 +695,7 @@ let response;
 								</button>
 							</div>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="verifyPassword"
 								as="p"
@@ -692,11 +704,13 @@ let response;
 					</div>
 
 					{/* Observações */}
-					<div className="opcional">
-						<label htmlFor="notes">Observações (opcional)</label>
+					<div className={styles2.opcional}>
+						<label className={styles2.labelItem} htmlFor="notes">
+							Observações (opcional)
+						</label>
 
 						<textarea
-							className="contact-inputs"
+							className={`${styles2.textareaItem} ${styles2["contact-inputs"]}`}
 							{...register("notes")}
 							cols={60}
 							rows={10}
@@ -706,9 +720,9 @@ let response;
 
 					{/* Termos legais */}
 					<div>
-						<div className="legal">
+						<div className={styles2.legal}>
 							<input type="checkbox" {...register("termos")} />
-							<label htmlFor="termos">
+							<label className={styles2.labelItem} htmlFor="termos">
 								<p>
 									Confirmo que
 									<strong>&nbsp;li e aceito o </strong>
@@ -731,9 +745,9 @@ let response;
 								</p>
 							</label>
 						</div>
-						<div className="errorTermo">
+						<div className={styles2.errorTermo}>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="termos"
 								as="p"
@@ -742,13 +756,13 @@ let response;
 					</div>
 
 					<button
-						className={`SV${isLoading ? " submit-disabled" : ""}`}
+						className={`${styles2.SV} ${isLoading ? styles2["submit-disabled"] : ""}`}
 						type="submit"
 						disabled={isSubmitting}
 					>
 						{isSubmitting ? "Carregando..." : "Enviar"}
 					</button>
-					<pre className="error-message-api">{output}</pre>
+					<pre className={styles2["error-message-api"]}>{output}</pre>
 				</form>
 			</div>
 			<footer className="App-footer" />

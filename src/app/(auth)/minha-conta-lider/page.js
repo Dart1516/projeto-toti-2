@@ -2,9 +2,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useUser } from "../../../api/UserContext";
-import "../../../assets/styles/App.css";
-import "../../../assets/styles/MinhaConta.css";
-import "../../../assets/styles/SejaVoluntario.css";
+// import "../../../assets/styles/App.css";
+// import "../../../assets/styles/MinhaConta.css";
+// import "../../../assets/styles/SejaVoluntario.css";
+import styles1 from "../../../assets/styles/App.module.css";
+import styles2 from "../../../assets/styles/MinhaConta.module.css";
+import styles3 from "../../../assets/styles/SejaVoluntario.module.css";
 import Footer from "../../../components/Footer";
 
 function MinhaContaLider() {
@@ -24,65 +27,85 @@ function MinhaContaLider() {
 	});
 
 	return (
-		<div className="App-Conta">
-			<div className="minhaConta">
-				<div className="section">
-					<h2 className="titulo-conta">Minha Conta</h2>
-					<h2 className="subtitulo-conta">Dados Pessoais</h2>
-					<div className="inputs">
-						<div className="input-field">
-							<label htmlFor="cpf">Cpf representante</label>
+		<div className={styles2["App-Conta"]}>
+			<div className={styles2.minhaConta}>
+				<div className={styles2.section}>
+					<h2 className={`${styles3.titleh2} ${styles2["titulo-conta"]}`}>
+						Minha Conta
+					</h2>
+					<h2 className={`${styles3.titleh2} ${styles2["subtitulo-conta"]}`}>
+						Dados Pessoais
+					</h2>
+					<div className={styles2.inputs}>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="cpf">
+								Cpf representante
+							</label>
 							<input
 								type="text"
 								id="cpf"
 								placeholder="Cpf representante"
-								className="input-text"
+								className={styles2["input-text"]}
 								{...register("cpf")}
 							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="nome">Nome representante</label>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="nome">
+								Nome representante
+							</label>
 							<input
 								type="text"
 								id="nome"
 								placeholder="Nome representante"
-								className="input-text"
+								className={styles2["input-text"]}
 								{...register("nome")}
 							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="email">E-mail representante</label>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="email">
+								E-mail representante
+							</label>
 							<input
 								type="text"
 								id="email"
 								placeholder="E-mail representante"
-								className="input-text"
+								className={styles2["input-text"]}
 								{...register("email")}
 							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="telefone">Telefone representante</label>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="telefone">
+								Telefone representante
+							</label>
 							<input
 								type="text"
 								id="telefone"
 								placeholder="Telefone (WhatsApp)"
-								className="input-text"
+								className={styles2["input-text"]}
 								{...register("telefone")}
 							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="area">Área em que trabalha</label>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="area">
+								Área em que trabalha
+							</label>
 							<input
 								type="text"
 								id="area"
 								placeholder="Área em que trabalha"
-								className="input-text"
+								className={styles2["input-text"]}
 								{...register("area")}
 							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="estado">Estado que reside</label>
-							<select id="estado" className="input-text" {...register("estado")}>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="estado">
+								Estado que reside
+							</label>
+							<select
+								id="estado"
+								className={styles2["input-text"]}
+								{...register("estado")}
+							>
 								<option value="">Selecione um estado</option>
 								<option value="AC">Acre (AC)</option>
 								<option value="AL">Alagoas (AL)</option>
@@ -113,60 +136,79 @@ function MinhaContaLider() {
 								<option value="TO">Tocantins (TO)</option>
 							</select>
 						</div>
-						<div className="input-field">
-							<label htmlFor="endereço">Endereço</label>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="endereço">
+								Endereço
+							</label>
 							<input
 								type="text"
 								id="endereço"
 								placeholder="Endereço"
-								className="input-text"
+								className={styles2["input-text"]}
 								{...register("address")}
 							/>
 						</div>
 					</div>
-					<div className="buttons">
+					<div className={styles2.buttons}>
 						<button>Cancelar</button>
 						<button>Salvar alterações</button>
 					</div>
 				</div>
 
-				<div className="section">
-					<h2 className="subtitulo-conta">Dados ONG</h2>
-					<div className="inputs">
-						<div className="input-field">
-							<label htmlFor="CNPJ">CNPJ</label>
-							<input type="text" id="CNPJ" placeholder="CNPJ" className="input-text" />
+				<div className={styles2.section}>
+					<h2 className={`${styles3.titleh2} ${styles2["subtitulo-conta"]}`}>
+						Dados ONG
+					</h2>
+					<div className={styles2.inputs}>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="CNPJ">
+								CNPJ
+							</label>
+							<input
+								type="text"
+								id="CNPJ"
+								placeholder="CNPJ"
+								className={styles2["input-text"]}
+							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="nomeOng">Nome</label>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="nomeOng">
+								Nome
+							</label>
 							<input
 								type="text"
 								id="nomeOng"
 								placeholder="Nome"
-								className="input-text"
+								className={styles2["input-text"]}
 							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="emailOng">E-mail</label>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="emailOng">
+								E-mail
+							</label>
 							<input
 								type="text"
 								id="emailOng"
 								placeholder="E-mail"
-								className="input-text"
+								className={styles2["input-text"]}
 							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="telefoneOng">Telefone</label>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="telefoneOng">
+								Telefone
+							</label>
 							<input
 								type="text"
 								id="telefoneOng"
 								placeholder="Telefone"
-								className="input-text"
+								className={styles2["input-text"]}
 							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="estadoOng">Estado</label>
-							<select id="estadoOng" className="input-text">
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="estadoOng">
+								Estado
+							</label>
+							<select id="estadoOng" className={styles2["input-text"]}>
 								<option value="">Selecione um estado</option>
 								<option value="AC">Acre (AC)</option>
 								<option value="AL">Alagoas (AL)</option>
@@ -197,32 +239,38 @@ function MinhaContaLider() {
 								<option value="TO">Tocantins (TO)</option>
 							</select>
 						</div>
-						<div className="input-field">
-							<label htmlFor="endereçoOng">Endereço</label>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="endereçoOng">
+								Endereço
+							</label>
 							<input
 								type="text"
 								id="endereçoOng"
 								placeholder="Endereço"
-								className="input-text"
+								className={styles2["input-text"]}
 							/>
 						</div>
 					</div>
-					<div className="buttons">
+					<div className={styles2.buttons}>
 						<button>Cancelar</button>
 						<button>Salvar alterações</button>
 					</div>
 				</div>
 
-				<div className="section">
-					<h2 className="subtitulo-conta">Cadastro</h2>
-					<label htmlFor="observacao">Observação</label>
+				<div className={styles2.section}>
+					<h2 className={`${styles3.titleh2} ${styles2["subtitulo-conta"]}`}>
+						Cadastro
+					</h2>
+					<label className={styles3.labelItem} htmlFor="observacao">
+						Observação
+					</label>
 					<textarea
 						id="observacao"
 						placeholder="Observação"
-						className="textarea-conta"
+						className={`${styles3.textareaItem} ${styles2["textarea-conta"]}`}
 						{...register("notes")}
 					/>
-					<div className="buttons">
+					<div className={styles2.buttons}>
 						<button>Cancelar</button>
 						<button>Salvar alterações</button>
 					</div>

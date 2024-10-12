@@ -1,20 +1,23 @@
 "use client";
 
 import React from "react";
-import "../../../assets/styles/App.css";
-import "../../../assets/styles/SejaVoluntario.css";
-import "../../../assets/styles/avisoLegal.css";
+// import "../../../assets/styles/App.css";
+// import "../../../assets/styles/SejaVoluntario.css";
+// import "../../../assets/styles/avisoLegal.css";
+import styles1 from "../../../assets/styles/App.module.css";
+import styles2 from "../../../assets/styles/SejaVoluntario.module.css";
+import styles3 from "../../../assets/styles/avisoLegal.module.css";
 import { useRouter } from "next/navigation";
 
 function AvisoLegal() {
 	const router = useRouter();
 	return (
-		<div className="App">
-			<div className="container-body">
-				<div className="aviso-legal">
-					<h2>Aviso Legal de Proteção de Dados</h2>
+		<div className={styles1.App}>
+			<div className={styles3["container-body"]}>
+				<div className={styles3["aviso-legal"]}>
+					<h2 className={styles2.titleh2}>Aviso Legal de Proteção de Dados</h2>
 
-					<div className="legal-content">
+					<div className={styles3["legal-content"]}>
 						<h3>1. Identificação do Responsável pelo Tratamento</h3>
 						<p>
 							Nome da organização: Toters do Bem <br />

@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useUser } from "../api/UserContext";
-import "../assets/styles/Header-Minha-Conta.css";
+// import "../assets/styles/Header-Minha-Conta.css";
+import styles1 from "../assets/styles/Header-Minha-Conta.module.css";
+import styles2 from "../assets/styles/Header-NavMenu.module.css";
 import { ROLES } from "./../utils/constants";
 
 function HeaderLogin() {
@@ -48,14 +50,14 @@ function HeaderLogin() {
 
 	if (!user) {
 		return (
-			<ul className="auth-links">
+			<ul className={styles2["auth-links"]}>
 				<li>
 					<Link href="/acesso" passHref>
 						Login
 					</Link>
 				</li>
 				<li>
-					<Link href="/servicos" passHref className="register-btn">
+					<Link href="/servicos" passHref className={styles2["register-btn"]}>
 						CADASTRAR
 					</Link>
 				</li>
@@ -66,12 +68,12 @@ function HeaderLogin() {
 	const name = user?.name?.split(" ")[0];
 
 	return (
-		<div className="dropdown" ref={dropdownRef}>
-			<button className="dropbtn" onClick={toggleDropdown}>
+		<div className={styles1.dropdown} ref={dropdownRef}>
+			<button className={styles1.dropbtn} onClick={toggleDropdown}>
 				Olá, <span>{name}!</span>
 			</button>
 			{dropdownOpen && (
-				<div className="dropdown-content show">
+				<div className={`${styles1["dropdown-content"]} ${styles1.show}`}>
 					<Link href={getRolePath()}>Minha Conta</Link>
 					{user.role === ROLES.LIDER && (
 						<Link href="/interfaz-lider">Lista de Voluntariados</Link>

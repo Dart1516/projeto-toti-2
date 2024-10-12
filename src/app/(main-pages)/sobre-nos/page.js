@@ -3,9 +3,13 @@
 import Image from "next/image"; // Importar el componente Image de next/image
 import Link from "next/link"; // Importar el componente Link de next/link
 import React, { useState } from "react";
+import Header from "../../../components/Header-NavMenu";
 import Footer from "../../../components/Footer";
-import "../../../assets/styles/Mobile-Menu.module.css";
-import "../../../assets/styles/App.css";
+// import "../../../assets/styles/Mobile-Menu.module.css";
+// import "../../../assets/styles/App.css";
+import styles1 from "../../../assets/styles/App.module.css";
+import styles2 from "../../../assets/styles/Mobile-Menu.module.css";
+import styles3 from "../../../assets/styles/sobreNos.module.css";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import PeopleIcon from "@mui/icons-material/People";
 import SecurityIcon from "@mui/icons-material/Security";
@@ -45,8 +49,6 @@ import victor from "../../../assets/images/toters/Victor.png";
 import yuri from "../../../assets/images/toters/Yuri.jpg";
 import yurisay from "../../../assets/images/toters/Yurisay.jpg";
 import imgComunidade from "../../../assets/images/voluntarios.jpg";
-import "../../../assets/styles/sobreNos.css";
-import Header from "../../../components/Header-NavMenu";
 
 const About = () => {
 	const [showAllCards, setShowAllCards] = useState(false);
@@ -102,7 +104,7 @@ const About = () => {
 			<header className="App-header">
 				<Header />
 			</header>
-			<div id="about">
+			<div className={styles3.about}>
 				<Container
 					maxWidth="xl"
 					style={{
@@ -114,11 +116,11 @@ const About = () => {
 					}}
 				>
 					{/* conteúdo da primeira div ---------------------------------------------------- */}
-					<div className="grid-container-main">
-						<div className="text-main">
+					<div className={styles3["grid-container-main"]}>
+						<div className={styles3["text-main"]}>
 							<Typography variant="h4" color="black" fontWeight={700}>
 								Quem Somos?
-								<hr className="hr" />
+								<hr className={styles3.hr} />
 							</Typography>
 							<Typography variant="body">
 								A Comunidade Toti é um coletivo de profissionais imigrantes de
@@ -129,13 +131,13 @@ const About = () => {
 							</Typography>
 						</div>
 						{/* img da primeira div -------------------- */}
-						<div className="img-main" />
+						<div className={styles3["img-main"]} />
 					</div>
 
 					{/* conteúdo da segunda div -------------------------------------- */}
-					<div className="grid-container-main reverse">
+					<div className={`${styles3["grid-container-main"]} ${styles3.reverse}`}>
 						{/* img da segunda div--------------------- */}
-						<div className="img-main-center">
+						<div className={styles3["img-main-center"]}>
 							<StyledImg
 								src={imgComunidade}
 								alt="Voluntarios no RS"
@@ -146,9 +148,9 @@ const About = () => {
 								As Toters Marianela Arana & Mayfer Ramirez, são voluntarias no RS
 							</span>
 						</div>
-						<div className="text-main">
+						<div className={styles3["text-main"]}>
 							<Typography variant="h4" color="black" fontWeight={700}>
-								Nossa visão <hr className="hr" />
+								Nossa visão <hr className={styles3.hr} />
 							</Typography>
 							<Typography variant="body">
 								Em resposta a os recentes eventos no Rio Grande do Sul, nossa comunidade
@@ -170,15 +172,15 @@ const About = () => {
 					</div>
 
 					{/* conteúdo da terceira div ---------------------------------------------------- */}
-					<div className="grid-container-main" marginTop={10}>
-						<div className="text-main">
+					<div className={styles3["grid-container-main"]} marginTop={10}>
+						<div className={styles3["text-main"]}>
 							<Typography
 								textAlign="start"
 								variant="h4"
 								color="black"
 								fontWeight={700}
 							>
-								Faça parte você também <hr className="hr" />
+								Faça parte você também <hr className={styles3.hr} />
 							</Typography>
 							<Typography textAlign="start" variant="body">
 								Convidamos profissionais de todas as áreas a se juntarem a este
@@ -189,7 +191,7 @@ const About = () => {
 							</Typography>
 						</div>
 						{/* img da primeira div -------------------- */}
-						<div className="img-main">
+						<div className={styles3["img-main"]}>
 							<StyledImg
 								src={imagenGente}
 								alt="Imagem sobre nós"
@@ -227,7 +229,7 @@ const About = () => {
 					</Grid>
 
 					{/* ============================== NOSSOS VALORES ================================== */}
-					<div className="nossoValores">
+					<div className={styles3.nossoValores}>
 						<Typography
 							textAlign="center"
 							justifyContent="center"
@@ -236,7 +238,7 @@ const About = () => {
 							fontWeight={700}
 						>
 							Nossos valores
-							<hr className="hr center" />
+							<hr className={`${styles3.hr} ${styles3.center}`} />
 						</Typography>
 						<Grid
 							container
@@ -331,7 +333,7 @@ const About = () => {
 						</Grid>
 					</div>
 					{/* CARDS DO TIME--------------------------------------*/}
-					<div id="container-time">
+					<div className={styles3["container-time"]}>
 						<Typography
 							textAlign="center"
 							justifyContent="center"
@@ -340,11 +342,11 @@ const About = () => {
 							fontWeight={700}
 						>
 							Nosso Time
-							<hr className="hr center" />
+							<hr className={`${styles3.hr} ${styles3.center}`} />
 						</Typography>
 
-						<div id="grid-container-cards">
-							<Card className="card-toter">
+						<div className={styles3["grid-container-cards"]}>
+							<Card className={styles3["card-toter"]}>
 								<Image
 									src={barbara}
 									alt="Mulher com cabelo longo e escuro. Está vestida com um suéter preto. Sua expressão é séria e profissional. A foto está em preto e branco."
@@ -375,7 +377,7 @@ const About = () => {
 									</Button>
 								</CardActions>
 							</Card>
-							<Card className="card-toter">
+							<Card className={styles3["card-toter"]}>
 								<Image
 									src={bruno}
 									alt="Homem jovem com cabelo curto e óculos. Sorri e veste uma camiseta escura. A imagem parece ser tirada ao ar livre."
@@ -405,7 +407,7 @@ const About = () => {
 									</Button>
 								</CardActions>
 							</Card>
-							<Card className="card-toter">
+							<Card className={styles3["card-toter"]}>
 								<Image
 									src={camila}
 									alt="Mulher jovem com cabelo longo e escuro, ligeiramente inclinado para a frente. Parece séria e está vestida com uma camiseta de cor escura."
@@ -436,7 +438,9 @@ const About = () => {
 								</CardActions>
 							</Card>
 
-							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+							<Card
+								className={`${styles3["card-toter"]} ${showAllCards ? "" : styles3.hidden}`}
+							>
 								<Image
 									src={david}
 									alt="Homem com cabelo curto e escuro, com um largo sorriso. Usa uma camisa branca e uma gravata azul, posando de forma formal."
@@ -467,7 +471,9 @@ const About = () => {
 								</CardActions>
 							</Card>
 
-							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+							<Card
+								className={`${styles3["card-toter"]} ${showAllCards ? "" : styles3.hidden}`}
+							>
 								<Image
 									src={daysi}
 									alt="Mulher com cabelo castanho claro e liso, penteado para um lado. Veste uma blusa de manga longa e tem uma expressão amigável."
@@ -497,7 +503,9 @@ const About = () => {
 									</Button>
 								</CardActions>
 							</Card>
-							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+							<Card
+								className={`${styles3["card-toter"]} ${showAllCards ? "" : styles3.hidden}`}
+							>
 								<Image
 									src={henry}
 									alt="Um homem com óculos e camisa polo marrom"
@@ -528,7 +536,9 @@ const About = () => {
 								</CardActions>
 							</Card>
 
-							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+							<Card
+								className={`${styles3["card-toter"]} ${showAllCards ? "" : styles3.hidden}`}
+							>
 								<Image
 									src={jani}
 									alt="Mulher jovem com cabelo longo e liso, tingido de uma cor loiro escuro. Está sorrindo e veste uma jaqueta escura com uma blusa vermelha."
@@ -558,7 +568,9 @@ const About = () => {
 									</Button>
 								</CardActions>
 							</Card>
-							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+							<Card
+								className={`${styles3["card-toter"]} ${showAllCards ? "" : styles3.hidden}`}
+							>
 								<Image
 									src={luis}
 									alt="Homem de pele escura e cabelo curto. A imagem mostra um logotipo digital sobre o rosto, indicando que pode estar usando um efeito visual na foto"
@@ -589,7 +601,9 @@ const About = () => {
 									</Button>
 								</CardActions>
 							</Card>
-							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+							<Card
+								className={`${styles3["card-toter"]} ${showAllCards ? "" : styles3.hidden}`}
+							>
 								<Image
 									src={manuel}
 									alt="Homem jovem com cabelo curto e crespo. Veste uma camisa branca e uma gravata vermelha, com um fundo de tela azul brilhante."
@@ -619,7 +633,9 @@ const About = () => {
 									</Button>
 								</CardActions>
 							</Card>
-							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+							<Card
+								className={`${styles3["card-toter"]} ${showAllCards ? "" : styles3.hidden}`}
+							>
 								<Image
 									src={marianela}
 									alt="Mulher com óculos e cabelo longo e escuro. Está vestida com um suéter cinza claro e aparece sorrindo."
@@ -649,7 +665,9 @@ const About = () => {
 									</Button>
 								</CardActions>
 							</Card>
-							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+							<Card
+								className={`${styles3["card-toter"]} ${showAllCards ? "" : styles3.hidden}`}
+							>
 								<Image
 									src={maria}
 									alt="Mulher com cabelo longo e escuro, preso. Usa óculos e uma camiseta escura. Está sorrindo e parece estar em um ambiente interno."
@@ -679,7 +697,9 @@ const About = () => {
 									</Button>
 								</CardActions>
 							</Card>
-							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+							<Card
+								className={`${styles3["card-toter"]} ${showAllCards ? "" : styles3.hidden}`}
+							>
 								<Image
 									src={merlina}
 									alt="Mulher com cabelo cacheado. Camiseta roxa"
@@ -709,7 +729,9 @@ const About = () => {
 									</Button>
 								</CardActions>
 							</Card>
-							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+							<Card
+								className={`${styles3["card-toter"]} ${showAllCards ? "" : styles3.hidden}`}
+							>
 								<Image
 									src={miguel}
 									alt="miguel"
@@ -739,7 +761,9 @@ const About = () => {
 									</Button>
 								</CardActions>
 							</Card>
-							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+							<Card
+								className={`${styles3["card-toter"]} ${showAllCards ? "" : styles3.hidden}`}
+							>
 								<Image
 									src={nadi}
 									alt="Mulher com cabelo curto e preto, penteado para cima. Sorri amplamente e veste uma camiseta de cor escura. O fundo de sua foto é de cor amarela brilhante."
@@ -769,7 +793,9 @@ const About = () => {
 									</Button>
 								</CardActions>
 							</Card>
-							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+							<Card
+								className={`${styles3["card-toter"]} ${showAllCards ? "" : styles3.hidden}`}
+							>
 								<Image
 									src={natalia}
 									alt="Mulher branca de cabelo preto, com vestido preto"
@@ -799,7 +825,9 @@ const About = () => {
 									</Button>
 								</CardActions>
 							</Card>
-							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+							<Card
+								className={`${styles3["card-toter"]} ${showAllCards ? "" : styles3.hidden}`}
+							>
 								<Image
 									src={patricia}
 									alt="Mulher com cabelo longo e escuro. Com ropa elegante preta e branca"
@@ -829,7 +857,9 @@ const About = () => {
 									</Button>
 								</CardActions>
 							</Card>
-							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+							<Card
+								className={`${styles3["card-toter"]} ${showAllCards ? "" : styles3.hidden}`}
+							>
 								<Image
 									src={samuel}
 									alt="Homem usando óculos de sol e mochila"
@@ -859,7 +889,9 @@ const About = () => {
 									</Button>
 								</CardActions>
 							</Card>
-							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+							<Card
+								className={`${styles3["card-toter"]} ${showAllCards ? "" : styles3.hidden}`}
+							>
 								<Image
 									src={sergio}
 									alt="Homem branco, com camiseta azul"
@@ -889,7 +921,9 @@ const About = () => {
 									</Button>
 								</CardActions>
 							</Card>
-							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+							<Card
+								className={`${styles3["card-toter"]} ${showAllCards ? "" : styles3.hidden}`}
+							>
 								<Image
 									src={victor}
 									alt="Homem com camiseta preta e fone de ouvido"
@@ -920,7 +954,9 @@ const About = () => {
 								</CardActions>
 							</Card>
 
-							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+							<Card
+								className={`${styles3["card-toter"]} ${showAllCards ? "" : styles3.hidden}`}
+							>
 								<Image
 									src={yuri}
 									alt="Homem jovem com cabelo curto e loiro, camiseta preta"
@@ -950,7 +986,9 @@ const About = () => {
 									</Button>
 								</CardActions>
 							</Card>
-							<Card className={`card-toter ${showAllCards ? "" : "hidden"}`}>
+							<Card
+								className={`${styles3["card-toter"]} ${showAllCards ? "" : styles3.hidden}`}
+							>
 								<Image
 									src={yurisay}
 									alt="Mulher com cabelo preto longo, camiseta branca"

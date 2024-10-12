@@ -1,8 +1,10 @@
 import Image from "next/image"; // Importar el componente Image de next/image
 import Link from "next/link";
 import React from "react";
-import "../assets/styles/App.css";
-import "../assets/styles/Footer.css";
+//import "../assets/styles/App.css";
+//import "../assets/styles/Footer.css";
+import styles1 from "../assets/styles/App.module.css";
+import styles2 from "../assets/styles/Footer.module.css";
 import { FaEnvelope, FaPhone } from "react-icons/fa";
 import logo from "../../src/assets/images/logos/toters-logo-green-dark.svg";
 
@@ -11,9 +13,9 @@ function Footer() {
 	// const currentMonth = new Date().toLocaleString("default", { month: "long" });
 
 	return (
-		<div className="footer-container">
-			<div className="footer-columns">
-				<div className="footer-column">
+		<div className={styles2["footer-container"]}>
+			<div className={styles2["footer-columns"]}>
+				<div className={styles2["footer-column"]}>
 					<h4>Sobre nós</h4>
 					<ul>
 						<li>
@@ -37,9 +39,9 @@ function Footer() {
 						</li>
 					</ul>
 				</div>
-				<div className="footer-column">
+				<div className={styles2["footer-column"]}>
 					<h4>Parceiros</h4>
-					<ul className="parceiros">
+					<ul className={styles2.parceiros}>
 						<li>
 							<Link
 								href="https://www.associacaodosangolanos.ong.br/"
@@ -51,7 +53,7 @@ function Footer() {
 						</li>
 					</ul>
 				</div>
-				<div className="footer-column">
+				<div className={styles2["footer-column"]}>
 					<h4>Serviço</h4>
 					<ul>
 						<li>
@@ -62,14 +64,14 @@ function Footer() {
 						</li>
 					</ul>
 				</div>
-				<div className="footer-column">
+				<div className={styles2["footer-column"]}>
 					<h4>Contato</h4>
 					<ul>
-						<li className="contato-footer">
-							<FaEnvelope className="icon-footer" />{" "}
+						<li className={styles2["contato-footer"]}>
+							<FaEnvelope className={styles2["icon-footer"]} />{" "}
 							<a href="mailto:admin@totersdobem.com.br">admin@totersdobem.com.br</a>
 						</li>
-						{/* <li className="contato-footer">
+						{/* <li className=contato-footer">
               <FaPhone className="icon-footer" />{' '}
               <a href="tel:+559999999999">Telefone</a>
             </li> */}
@@ -77,11 +79,11 @@ function Footer() {
 				</div>
 			</div>
 			<hr />
-			<div className="footer-logo-container">
+			<div className={styles2["footer-logo-container"]}>
 				<Image
 					src={logo}
 					alt="Toters do bem Logo"
-					className="footer-logo"
+					className={styles2["footer-logo"]}
 					width={150}
 					height={50}
 				/>

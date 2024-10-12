@@ -2,8 +2,10 @@
 /* Formulario com Resolver (React Hoork From + ZOD)*/
 import React, { useState } from "react";
 import InputMask from "react-input-mask";
-import "../../../assets/styles/App.css";
-import "../../../assets/styles/SejaVoluntario.css";
+// import "../../../assets/styles/App.css";
+// import "../../../assets/styles/SejaVoluntario.css";
+import styles1 from "../../../assets/styles/App.module.css";
+import styles2 from "../../../assets/styles/SejaVoluntario.module.css";
 import VisibilityOff from "@mui/icons-material/VisibilityOffOutlined";
 import Visibility from "@mui/icons-material/VisibilityOutlined";
 import { FaPlus, FaTrash } from "react-icons/fa";
@@ -305,46 +307,52 @@ function FormularioPsicologo() {
 			console.log(response);
 		} catch (error) {
 			let errorMessage;
-		  
-			if (error.response && error.response.data && error.response.data.message) {
-			  if (error.response.data.message.includes("CPF já cadastrado")) {
-				errorMessage = "CPF inserido ja cadastrado. Ja tem uma conta? Faça login. Se ainda não tem, favor conferir os dados no formulario.";
-			  } else if (error.response.data.message.includes("E-mail já cadastrado")) {
-				errorMessage = "Email inserido já cadastrado. Ja tem uma conta? faça login. Se ainda não tem, favor conferir os dados no formulario.";
-			  } 
-			}else {
-				errorMessage = "Ops! A conexão falhou. O cadastro não foi bem sucedido, vamos tentar de novo?";
-			  }
-		  
+
+			if (error.response?.data?.message) {
+				if (error.response.data.message.includes("CPF já cadastrado")) {
+					errorMessage =
+						"CPF inserido ja cadastrado. Ja tem uma conta? Faça login. Se ainda não tem, favor conferir os dados no formulario.";
+				} else if (error.response.data.message.includes("E-mail já cadastrado")) {
+					errorMessage =
+						"Email inserido já cadastrado. Ja tem uma conta? faça login. Se ainda não tem, favor conferir os dados no formulario.";
+				}
+			} else {
+				errorMessage =
+					"Ops! A conexão falhou. O cadastro não foi bem sucedido, vamos tentar de novo?";
+			}
+
 			console.error("Error ao enviar os dados:", error);
 			setOutput(errorMessage);
 		}
 	}
 
 	return (
-		<div className="App SV">
-			<div className="background-image" />
-			<div className="container">
-				<div className="container-titulo">
-					<h2>SOS Rio Grande do Sul </h2>
-					<h2>Cadastro de Psicólogos Voluntários</h2>
+		<div className={`${styles1.App} ${styles2.SV}`}>
+			<div className={styles2["background-image"]} />
+			<div className={styles2.container}>
+				<div className={styles2["container-titulo"]}>
+					<h2 className={styles2.titleh2}>SOS Rio Grande do Sul </h2>
+					<h2 className={styles2.titleh2}>Cadastro de Psicólogos Voluntários</h2>
 				</div>
-				<form onSubmit={handleSubmit(createData)} className="general-inputs">
-					<div className="inputs formCadastro">
+				<form
+					onSubmit={handleSubmit(createData)}
+					className={styles2["general-inputs"]}
+				>
+					<div className={`${styles2.inputs} ${styles2.formCadastro}`}>
 						{/* Nome */}
-						<div className="input-field">
-							<label htmlFor="name">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="name">
 								<p>1. Nome completo</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
 							<input
-								className={`input-text ${errors.name ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.name ? "invalid" : "valid"}`}
 								type="text"
 								placeholder="Digite seu nome completo"
 								{...register("name")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="name"
 								as="p"
@@ -352,19 +360,19 @@ function FormularioPsicologo() {
 						</div>
 
 						{/* CPF*/}
-						<div className="input-field">
-							<label htmlFor="cpf">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="cpf">
 								<p>2. CPF</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
 							<InputMask
 								mask="999.999.999-99"
-								className={`input-text ${errors.cpf ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.cpf ? "invalid" : "valid"}`}
 								placeholder="Digite o CPF, um valor numérico"
 								{...register("cpf")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="cpf"
 								as="p"
@@ -372,19 +380,19 @@ function FormularioPsicologo() {
 						</div>
 
 						{/* Data nasc*/}
-						<div className="input-field">
-							<label htmlFor="birthDate">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="birthDate">
 								<p>3. Data de nascimento</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
 							<input
-								className={`input-text ${errors.birthDate ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.birthDate ? "invalid" : "valid"}`}
 								type="date"
 								placeholder="Digite seu nome completo"
 								{...register("birthDate")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="birthDate"
 								as="p"
@@ -392,19 +400,19 @@ function FormularioPsicologo() {
 						</div>
 
 						{/* Telefone*/}
-						<div className="input-field">
-							<label htmlFor="phoneNumber">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="phoneNumber">
 								<p>4. Número do whatsApp</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
 							<InputMask
 								mask="(99)99999-9999"
-								className={`input-text ${errors.phoneNumber ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.phoneNumber ? "invalid" : "valid"}`}
 								placeholder="Digite seu número"
 								{...register("phoneNumber")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="phoneNumber"
 								as="p"
@@ -412,18 +420,18 @@ function FormularioPsicologo() {
 						</div>
 
 						{/* Rede social */}
-						<div className="input-field">
-							<label htmlFor="rede_social">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="rede_social">
 								<p>5. Rede social (opcional)</p>
 							</label>
 							<input
-								className={`input-text ${errors.rede_social ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.rede_social ? "invalid" : "valid"}`}
 								type="text"
 								placeholder="Digite seu rede social"
 								{...register("rede_social")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="rede_social"
 								as="p"
@@ -431,19 +439,19 @@ function FormularioPsicologo() {
 						</div>
 
 						{/* CRP*/}
-						<div className="input-field">
-							<label htmlFor="crp">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="crp">
 								<p>6. CRP</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
 							<InputMask
 								mask="99-999999"
-								className={`input-text ${errors.crp ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.crp ? "invalid" : "valid"}`}
 								placeholder="Digite seu CRP, um valor numérico"
 								{...register("crp")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="crp"
 								as="p"
@@ -451,13 +459,13 @@ function FormularioPsicologo() {
 						</div>
 
 						{/* Area de Especialização*/}
-						<div className="input-field">
-							<label htmlFor="specialization">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="specialization">
 								<p>7. Área de especialização</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
 							<select
-								className={`input-text ${errors.specialization ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.specialization ? "invalid" : "valid"}`}
 								{...register("specialization")}
 							>
 								{areasPsychology.map((areasPsychology) => (
@@ -467,7 +475,7 @@ function FormularioPsicologo() {
 								))}
 							</select>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="specialization"
 								as="p"
@@ -475,13 +483,13 @@ function FormularioPsicologo() {
 						</div>
 
 						{/* Estado*/}
-						<div className="input-field">
-							<label htmlFor="state">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="state">
 								<p>8. Estado</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
 							<select
-								className={`input-text ${errors.state ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.state ? "invalid" : "valid"}`}
 								{...register("state")}
 							>
 								{stateBrasil.map((stateBrasil) => (
@@ -491,7 +499,7 @@ function FormularioPsicologo() {
 								))}
 							</select>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="state"
 								as="p"
@@ -499,34 +507,37 @@ function FormularioPsicologo() {
 						</div>
 					</div>
 
-					<label htmlFor="availableTimes">
+					<label className={styles2.labelItem} htmlFor="availableTimes">
 						<p>
 							9. Quando você pode ajudar? Adicione seus horários disponíveis clicando
 							no ícone
 						</p>
 						{fields.length < 7 && (
-							<span className="plusChar">
+							<span className={styles2.plusChar}>
 								<FaPlus onClick={() => append({})} title="Agregar horário" size={20} />
 							</span>
 						)}
 					</label>
 					{fields.map((field, index) => {
 						return (
-							<div className="form-group formulario" key={field.id}>
-								<div className="dia-disponible">
-									<label htmlFor={field.id} />
+							<div
+								className={`${styles2["form-group"]} ${styles2.formulario}`}
+								key={field.id}
+							>
+								<div className={styles2["dia-disponible"]}>
+									<label className={styles2.labelItem} htmlFor={field.id} />
 									{/* Dia */}
 									<div>
 										<p>
 											{`${index + 1}${
 												daySuffixes[index % daySuffixes.length]
 											} dia disponível`}
-											<span className="errorChar"> * </span>
+											<span className={styles2.errorChar}> * </span>
 										</p>
 									</div>
 									<div>
 										<select
-											className={`input-text form-select ${
+											className={`${styles2["input-text"]} ${styles2["form-select"]} ${
 												errors.day ? "invalid" : "valid"
 											}`}
 											{...register(`availableTimes.${index}.day`)}
@@ -542,7 +553,7 @@ function FormularioPsicologo() {
 									{/* Hora */}
 									<div>
 										<select
-											className={`input-text form-select ${
+											className={`${styles2["input-text"]} ${styles2["form-select"]} ${
 												errors.hour ? "invalid" : "valid"
 											}`}
 											{...register(`availableTimes.${index}.hour`)}
@@ -556,14 +567,14 @@ function FormularioPsicologo() {
 									</div>
 
 									{index > 0 && (
-										<span className="deleteChar">
+										<span className={styles2.deleteChar}>
 											<FaTrash onClick={() => remove(index)} title="Eliminar" size={15} />
 										</span>
 									)}
 								</div>
-								<div className="containerErrorDay">
+								<div className={styles2.containerErrorDay}>
 									<ErrorMessage
-										className="error-message"
+										className={styles2["error-message"]}
 										errors={errors}
 										name={`availableTimes.${index}.day`}
 										as="p"
@@ -573,7 +584,7 @@ function FormularioPsicologo() {
 										errors?.availableTimes?.[index]?.hour && <span>e</span>}
 
 									<ErrorMessage
-										className="error-message"
+										className={styles2["error-message"]}
 										errors={errors}
 										name={`availableTimes.${index}.hour`}
 										as="p"
@@ -584,7 +595,7 @@ function FormularioPsicologo() {
 						);
 					})}
 
-					<div className="lembre-text">
+					<div className={styles2["lembre-text"]}>
 						<h1>Lembre-se:</h1>
 						<p>
 							Seu e-mail e senha cadastrados serão seu login para o acesso na
@@ -596,21 +607,21 @@ function FormularioPsicologo() {
 						</p>
 					</div>
 
-					<div className="inputs formCadastro">
+					<div className={`${styles2.inputs} ${styles2.formCadastro}`}>
 						{/* Email */}
-						<div className="input-field">
-							<label htmlFor="email">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="email">
 								<p>E-mail para cadastro</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
 							<input
-								className={`input-text ${errors.email ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.email ? "invalid" : "valid"}`}
 								type="email"
 								placeholder="Digite seu e-mail"
 								{...register("email")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="email"
 								as="p"
@@ -618,19 +629,19 @@ function FormularioPsicologo() {
 						</div>
 
 						{/* Verifique Email */}
-						<div className="input-field">
-							<label htmlFor="verifyEmail">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="verifyEmail">
 								<p>Verificação do e-mail</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
 							<input
-								className={`input-text ${errors.verifyEmail ? "invalid" : "valid"}`}
+								className={`${styles2["input-text"]} ${errors.verifyEmail ? "invalid" : "valid"}`}
 								type="email"
 								placeholder="Confirme seu e-mail"
 								{...register("verifyEmail")}
 							/>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="verifyEmail"
 								as="p"
@@ -638,20 +649,20 @@ function FormularioPsicologo() {
 						</div>
 
 						{/* Senha */}
-						<div className="input-field">
-							<label htmlFor="password">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="password">
 								<p>Senha</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
-							<div className="input-container">
+							<div className={styles2["input-container"]}>
 								<input
-									className={`input-text ${errors.password ? "invalid" : "valid"}`}
+									className={`${styles2["input-text"]} ${errors.password ? "invalid" : "valid"}`}
 									type={showPassword ? "text" : "password"}
 									placeholder="Crie uma senha"
 									{...register("password")}
 								/>
 								<button
-									className="visibility-icon"
+									className={styles2["visibility-icon"]}
 									type="button"
 									onClick={togglePasswordVisibility}
 								>
@@ -659,7 +670,7 @@ function FormularioPsicologo() {
 								</button>
 							</div>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="password"
 								as="p"
@@ -667,20 +678,20 @@ function FormularioPsicologo() {
 						</div>
 
 						{/* Confirmar Senha */}
-						<div className="input-field">
-							<label htmlFor="verifyPassword">
+						<div className={styles2["input-field"]}>
+							<label className={styles2.labelItem} htmlFor="verifyPassword">
 								<p>Verificação de senha</p>
-								<span className="errorChar"> * </span>
+								<span className={styles2.errorChar}> * </span>
 							</label>
-							<div className="input-container">
+							<div className={styles2["input-container"]}>
 								<input
-									className={`input-text ${errors.verifyPassword ? "invalid" : "valid"}`}
+									className={`${styles2["input-text"]} ${errors.verifyPassword ? "invalid" : "valid"}`}
 									type={showPassword ? "text" : "password"}
 									placeholder="Confirme sua senha"
 									{...register("verifyPassword")}
 								/>
 								<button
-									className="visibility-icon"
+									className={styles2["visibility-icon"]}
 									type="button"
 									onClick={togglePasswordVisibility}
 								>
@@ -688,7 +699,7 @@ function FormularioPsicologo() {
 								</button>
 							</div>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="verifyPassword"
 								as="p"
@@ -697,11 +708,13 @@ function FormularioPsicologo() {
 					</div>
 
 					{/* Observações */}
-					<div className="opcional">
-						<label htmlFor="notes">Observações (opcional)</label>
+					<div className={styles2.opcional}>
+						<label className={styles2.labelItem} htmlFor="notes">
+							Observações (opcional)
+						</label>
 
 						<textarea
-							className="contact-inputs"
+							className={`${styles2.textareaItem} ${styles2["contact-inputs"]}`}
 							{...register("notes")}
 							cols={60}
 							rows={10}
@@ -711,9 +724,9 @@ function FormularioPsicologo() {
 
 					{/* Termos legais */}
 					<div>
-						<div className="legal">
+						<div className={styles2.legal}>
 							<input type="checkbox" {...register("termos")} />
-							<label htmlFor="termos">
+							<label className={styles2.labelItem} htmlFor="termos">
 								<p>
 									Confirmo que
 									<strong>&nbsp;li e aceito o </strong>
@@ -736,9 +749,9 @@ function FormularioPsicologo() {
 								</p>
 							</label>
 						</div>
-						<div className="errorTermo">
+						<div className={styles2.errorTermo}>
 							<ErrorMessage
-								className="error-message"
+								className={styles2["error-message"]}
 								errors={errors}
 								name="termos"
 								as="p"
@@ -747,13 +760,13 @@ function FormularioPsicologo() {
 					</div>
 
 					<button
-						className={`SV${isLoading ? " submit-disabled" : ""}`}
+						className={`${styles2.SV} ${isLoading ? styles2["submit-disabled"] : ""}`}
 						type="submit"
 						disabled={isSubmitting}
 					>
 						{isSubmitting ? "Carregando..." : "Enviar"}
 					</button>
-					<pre className="error-message-api">{output}</pre>
+					<pre className={styles2["error-message-api"]}>{output}</pre>
 				</form>
 			</div>
 			<footer className="App-footer" />

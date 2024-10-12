@@ -1,14 +1,18 @@
 "use client";
 import { useUser } from "../../../api/UserContext";
-import "../../../assets/styles/App.css";
-import "../../../assets/styles/MinhaConta.css";
-import "../../../assets/styles/SejaVoluntario.css";
+// import "../../../assets/styles/App.css";
+// import "../../../assets/styles/MinhaConta.css";
+// import "../../../assets/styles/SejaVoluntario.css";
+import styles1 from "../../../assets/styles/App.module.css";
+import styles2 from "../../../assets/styles/MinhaConta.module.css";
+import styles3 from "../../../assets/styles/SejaVoluntario.module.css";
 import { useRouter } from "next/navigation";
 import { Router } from "next/router";
 import { useEffect, useState } from "react";
 import { FaPlus, FaTrash } from "react-icons/fa";
 import Footer from "../../../components/Footer";
 import MinhaContaForm from "../../../components/minha-conta";
+import React from "react";
 
 function MinhaConta() {
 	const { user } = useUser();
@@ -52,29 +56,42 @@ function MinhaConta() {
 	}, [user, router]);
 
 	return (
-		<div className="App-Conta">
-			<div className="minhaConta">
+		<div className={styles2["App-Conta"]}>
+			<div className={styles2.minhaConta}>
 				<MinhaContaForm />
 
-				<div className="section">
-					<h2 className="subtitulo-conta">Voluntariado</h2>
-					<div className="inputs">
-						<div className="input-field">
-							<label htmlFor="crp">CRP</label>
-							<input type="text" id="crp" placeholder="CRP" className="input-text" />
+				<div className={styles2.section}>
+					<h2 className={`${styles3.titleh2} ${styles2["subtitulo-conta"]}`}>
+						Voluntariado
+					</h2>
+					<div className={styles2.inputs}>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="crp">
+								CRP
+							</label>
+							<input
+								type="text"
+								id="crp"
+								placeholder="CRP"
+								className={styles2["input-text"]}
+							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="area">Área de especialização</label>
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="area">
+								Área de especialização
+							</label>
 							<input
 								type="text"
 								id="area"
 								placeholder="Área de especialização"
-								className="input-text"
+								className={styles2["input-text"]}
 							/>
 						</div>
-						<div className="input-field">
-							<label htmlFor="tipodevoluntariado">Tipo de voluntariado</label>
-							<select id="tipodevoluntariado" className="input-text">
+						<div className={styles2["input-field"]}>
+							<label className={styles3.labelItem} htmlFor="tipodevoluntariado">
+								Tipo de voluntariado
+							</label>
+							<select id="tipodevoluntariado" className={styles2["input-text"]}>
 								<option value="">Tipo de voluntariado</option>
 								<option value="Educador Social">Educador Social</option>
 								<option value="Liderança">Liderança</option>
@@ -82,23 +99,25 @@ function MinhaConta() {
 							</select>
 						</div>
 					</div>
-					<div className="buttons">
+					<div className={styles2.buttons}>
 						<button>Cancelar</button>
 						<button>Salvar alterações</button>
 					</div>
 				</div>
 
-				<div className="form-group">
-					<h2 className="subtitulo-conta">Disponibilidade</h2>
+				<div className={styles2["form-group"]}>
+					<h2 className={`${styles3.titleh2} ${styles2["subtitulo-conta"]}`}>
+						Disponibilidade
+					</h2>
 					{formData.additionalDays.map((additionalDay, index) => (
-						<div key={index} className="dia-disponible">
+						<div key={index} className={styles2["dia-disponible"]}>
 							<div>
-								<h4>
+								<h4 className={styles3.titleh4}>
 									Dia {index + 1}
 									<span>*</span>
 								</h4>
 								<select
-									className="form-select"
+									className={styles3["form-select"]}
 									name="day"
 									value={additionalDay.day}
 									onChange={(e) => handleDayChange(index, e)}
@@ -115,11 +134,11 @@ function MinhaConta() {
 								</select>
 							</div>
 							<div>
-								<h4>
+								<h4 className={styles3.titleh4}>
 									Hora<span>*</span>
 								</h4>
 								<select
-									className="form-select"
+									className={styles3["form-select"]}
 									name="hour"
 									value={additionalDay.hour}
 									onChange={(e) => handleDayChange(index, e)}
@@ -146,29 +165,36 @@ function MinhaConta() {
 							)}
 						</div>
 					))}
-					<div className="button-dia-espacio" onClick={addDay}>
+					<div className={styles2["button-dia-espacio"]} onClick={addDay}>
 						<FaPlus />
-						<h4 onClick={addDay} className="texto-dia">
+						<h4
+							onClick={addDay}
+							className={`${styles3.titleh4} ${styles2["texto-dia"]}`}
+						>
 							Adicionar outro dia
 						</h4>
 					</div>
-					<div className="buttons">
+					<div className={styles2.buttons}>
 						<button>Cancelar</button>
 						<button>Salvar alterações</button>
 					</div>
 				</div>
 
-				<div className="section">
-					<h2 className="subtitulo-conta">Cadastro</h2>
-					<div className="input-field">
-						<label htmlFor="observacao">Observação</label>
+				<div className={styles2.section}>
+					<h2 className={`${styles3.titleh2} ${styles2["subtitulo-conta"]}`}>
+						Cadastro
+					</h2>
+					<div className={styles2["input-field"]}>
+						<label className={styles3.labelItem} htmlFor="observacao">
+							Observação
+						</label>
 						<textarea
 							id="observacao"
 							placeholder="observacao"
-							className="textarea-conta"
+							className={`${styles3.textareaItem} ${styles2["textarea-conta"]}`}
 						/>
 					</div>
-					<div className="buttons">
+					<div className={styles2.buttons}>
 						<button>Cancelar</button>
 						<button>Salvar alterações</button>
 					</div>
