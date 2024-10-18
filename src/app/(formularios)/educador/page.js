@@ -315,7 +315,7 @@ function FormularioEducadorSocial() {
 			<div className={styles2.container}>
 				<div className={styles2["container-titulo"]}>
 					<h2 className={styles2.titleh2}>SOS Rio Grande do Sul </h2>
-					<h2 className={styles2.titleh2}>Cadastro de Psicólogos Voluntários</h2>
+					<h2 className={styles2.titleh2}>Cadastro de Educador Social Voluntário</h2>
 				</div>
 				<form
 					onSubmit={handleSubmit(createData)}
