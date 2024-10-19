@@ -727,7 +727,7 @@ function FormularioEducadorSocial() {
 									Confirmo que
 									<strong>&nbsp;li e aceito o </strong>
 									<Link
-										href="../../termo-psicologo"
+										href="../../termo-educador"
 										target="_blank"
 										rel="noopener noreferrer"
 									>
