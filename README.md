@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# TOTERS DO BEM, SOS RIO GRANDE DO SUL
 
-## Getting Started
+Este é o repositório do projeto Toter do Bem, um aplicativo web desenvolvido com Next.js.
 
-First, run the development server:
+TOTERS DO BEM, SOS RIO GRANDE DO SUL
+
+## Visão Geral
+
+O projeto Toti é uma plataforma que conecta voluntários e instituições para fortalecer o Rio Grande do Sul. Visando oferecer ajuda prática e esperança àqueles afetados pelas inundações no RS, disponibilizando serviços com psicólogos e educadores sociais.
+
+## Tecnologias Utilizadas
+
+* Next.js
+* npm (Gerenciador de dependências)
+* git
+
+## Como Clonar e Executar o Projeto
+
+1.  Clone o repositório:
+
+    ```bash
+    git clone https://github.com/Dart1516/projeto-toti-2.git
+    ```
+
+2.  Navegue até o diretório do projeto:
+
+    ```bash
+    cd projeto-toti-2
+    ```
+
+3.  Instale as dependências:
+
+    ```bash
+    npm install
+    ```
+
+4.  Execute o projeto em modo de desenvolvimento:
+
+    ```bash
+    npm run dev
+    ```
+
+5.  Abra o navegador e acesse `http://localhost:3000`.
+
+## Atualizando Dependências
+
+Para atualizar as dependências do projeto, execute o seguinte comando:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm update
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Contribuindo
+Faça um fork do repositório.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Crie uma branch com a sua feature ou correção de bug:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+git checkout -b minha-feature
+```
 
-## Learn More
+Faça as alterações e commite:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+git commit -m "Adiciona minha feature"
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Envie as alterações para o seu fork:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+```bash
+git push origin minha-feature
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Crie um pull request (PR) para a branch main deste repositório.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Como Criar um Pull Request
+Acesse a página do seu fork no GitHub.
+Clique no botão "Compare & pull request".
+Preencha o título e a descrição do PR.
+Clique no botão "Create pull request".
+
